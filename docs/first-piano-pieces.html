@@ -1,5 +1,29 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Times of Day — Eight First Piano Pieces | SAJA Music</title><link href="https://fonts.googleapis.com/css?family=Varela+Round|Nunito:400,600,700" rel="stylesheet"><script src="https://cdn.jsdelivr.net/npm/vexflow@4.2.3/build/cjs/vexflow.js"></script><style>:root{--accent:#8B2E3C;--panel:#F4F1EB}body{font-family:Nunito,sans-serif;background:#fafafa;color:#211c15;margin:0}main{max-width:1000px;margin:auto;padding:32px 22px}h1,h2{font-family:'Varela Round',sans-serif}h1{color:var(--accent)}.intro{max-width:750px;line-height:1.6}.piece{background:white;border:1px solid #e3ded7;border-radius:12px;padding:18px 22px;margin:24px 0}.score{overflow-x:auto}.score svg{display:block;min-width:1010px}.controls{display:flex;gap:16px;flex-wrap:wrap;background:var(--panel);padding:14px;border-radius:10px}button{border:0;border-radius:6px;padding:9px 14px;background:var(--accent);color:white;cursor:pointer;font:inherit}small{color:#666}.error{color:#a00}@media print{.controls,.intro button{display:none}.piece{break-inside:avoid;border:0}main{padding:0}}</style></head><body><main><h1>Times of Day — First Piano Pieces</h1><p class="intro">Eight gentle pieces inspired by different times of day, for beginning pianists. Both hands remain in C position: right hand C4–G4, left hand C3–G3. The first two pieces use only low C semibreves in the left hand; later pieces introduce other bass notes. The left hand plays one semibreve per bar. The right hand plays four crotchets in each bar, finishing each piece with a C semibreve. The final three pieces introduce more stepwise melodic movement. Play gently, and listen to the sound of each note.</p><div class="controls"><label><input id="names" type="checkbox" checked> Show note names inside noteheads</label><button onclick="window.print()">Print pieces</button></div><div id="pieces"></div><p><small>Original beginner compositions for SAJA Music. Requires an internet connection to load VexFlow.</small></p></main><script>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Times of Day — Eight First Piano Pieces | SAJA Music</title>
+<link href="https://fonts.googleapis.com/css?family=Varela+Round|Nunito:400,600,700" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/vexflow@4.2.3/build/cjs/vexflow.js"></script>
+<style>
+:root{--accent:#8B2E3C;--panel:#F4F1EB}
+*{box-sizing:border-box}body{font-family:Nunito,sans-serif;background:#fafafa;color:#211c15;margin:0}
+main{max-width:1100px;margin:auto;padding:32px 22px}h1,h2{font-family:'Varela Round',sans-serif}h1{color:var(--accent)}
+.intro{max-width:800px;line-height:1.6}.piece{background:white;border:1px solid #e3ded7;border-radius:12px;padding:18px 22px;margin:24px 0}
+.piece-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.piece-heading h2{margin:8px 0}
+.score{overflow-x:auto}.score svg{display:block;min-width:1010px}.controls{display:flex;gap:16px;flex-wrap:wrap;background:var(--panel);padding:14px;border-radius:10px;align-items:center}
+button{border:0;border-radius:6px;padding:9px 14px;background:var(--accent);color:white;cursor:pointer;font:inherit}button:hover{filter:brightness(1.1)}small{color:#666}.error{color:#a00}
+@media print{@page{size:A4 landscape;margin:12mm}body{background:white}.controls,.print-piece,.intro,main>h1,main>p:last-child{display:none!important}.piece{break-inside:avoid;border:0}main{padding:0}}
+</style>
+</head>
+<body><main>
+<h1>Times of Day — First Piano Pieces</h1>
+<p class="intro">Eight gentle pieces inspired by different times of day, for beginning pianists. Both hands remain in C position: right hand C4–G4, left hand C3–G3. The first two pieces use only low C semibreves in the left hand; later pieces introduce other bass notes. The left hand plays one semibreve per bar. The right hand plays four crotchets in each bar, finishing each piece with a C semibreve. The final three pieces introduce more stepwise melodic movement. Play gently, and listen to the sound of each note.</p>
+<div class="controls"><label><input id="names" type="checkbox" checked> Show note names inside noteheads</label></div>
+<div id="pieces"></div>
+<p><small>Original beginner compositions for SAJA Music. Requires an internet connection to load VexFlow.</small></p>
+</main>
+<script>
 const compositions=[
  {title:'1. Morning Light',description:'A quiet echo: repeat each little idea before moving on.',rh:[['c','c','d','d'],['c','c','d','d'],['e','e','d','d'],['c','c','c','c'],['d','d','e','e'],['d','d','e','e'],['d','d','c','c'],['c','c','c','c']],lh:['c','c','c','c','c','c','c','c']},
  {title:'2. Midday Stillness',description:'A gentle melody over a steady low C, with familiar patterns to build confidence.',rh:[['e','e','e','e'],['e','e','e','e'],['d','d','d','d'],['d','d','d','d'],['e','e','d','d'],['e','e','d','d'],['c','c','c','c'],['c','c','c','c']],lh:['c','c','c','c','c','c','c','c']},
@@ -10,11 +34,61 @@ const compositions=[
  {title:'7. Afternoon Breeze',description:'Follow the little waves of notes, moving mostly one step at a time.',rh:[['e','f','g','f'],['e','d','c','d'],['e','d','e','f'],['g','f','e','d'],['c','d','e','f'],['g','f','e','d'],['e','d','c','d'],['c','c','c','c']],lh:['c','g','f','g','c','f','g','c']},
  {title:'8. Moonrise',description:'A soft, flowing night melody with gentle rising and falling phrases.',rh:[['g','f','e','d'],['c','d','e','f'],['g','f','e','f'],['e','d','c','c'],['c','d','e','f'],['g','f','e','d'],['e','d','c','d'],['c','c','c','c']],lh:['c','f','g','c','f','g','g','c']}
 ];
-function render(){const host=document.getElementById('pieces');host.innerHTML='';if(!(window.VexFlow || window.Vex?.Flow)){host.innerHTML='<p class="error">VexFlow did not initialise. Check the browser console for the script-loading error.</p>';return;}const VF=window.VexFlow || window.Vex?.Flow;const show=document.getElementById('names').checked;
-for(const piece of compositions){const section=document.createElement('section');section.className='piece';section.innerHTML=`<h2>${piece.title}</h2><p>${piece.description}</p><div class="score"></div>`;host.appendChild(section);const el=section.querySelector('.score');try{const width=1010,height=485;const renderer=new VF.Renderer(el,VF.Renderer.Backends.SVG);renderer.resize(width,height);const ctx=renderer.getContext();const staveWidth=240, startX=20, gap=0;let labelTargets=[];
-for(let i=0;i<8;i++){const row=Math.floor(i/4),col=i%4,x=startX+col*(staveWidth+gap),top=38+row*218;const upper=new VF.Stave(x,top,staveWidth),lower=new VF.Stave(x,top+94,staveWidth);if(col===3){upper.setEndBarType(i===7?VF.Barline.type.END:VF.Barline.type.SINGLE);lower.setEndBarType(i===7?VF.Barline.type.END:VF.Barline.type.SINGLE);}if(col>0){upper.setBegBarType(VF.Barline.type.NONE);lower.setBegBarType(VF.Barline.type.NONE);}if(col===0){upper.addClef('treble').addTimeSignature('4/4');lower.addClef('bass').addTimeSignature('4/4');}upper.setContext(ctx).draw();lower.setContext(ctx).draw();new VF.StaveConnector(upper,lower).setType(i===7?VF.StaveConnector.type.BOLD_DOUBLE_RIGHT:VF.StaveConnector.type.SINGLE_RIGHT).setContext(ctx).draw();if(col===0){new VF.StaveConnector(upper,lower).setType(VF.StaveConnector.type.BRACE).setContext(ctx).draw();new VF.StaveConnector(upper,lower).setType(VF.StaveConnector.type.SINGLE_LEFT).setContext(ctx).draw();}
-const rn=i===7?[new VF.StaveNote({clef:'treble',keys:['c/4'],duration:'w'})]:piece.rh[i].map(p=>new VF.StaveNote({clef:'treble',keys:[p+'/4'],duration:'q'}));const ln=[new VF.StaveNote({clef:'bass',keys:[piece.lh[i]+'/3'],duration:'w'})];const rv=new VF.Voice({num_beats:4,beat_value:4}).addTickables(rn),lv=new VF.Voice({num_beats:4,beat_value:4}).addTickables(ln);new VF.Formatter().joinVoices([rv]).format([rv],staveWidth-(col===0?95:30));new VF.Formatter().joinVoices([lv]).format([lv],staveWidth-(col===0?95:30));rv.draw(ctx,upper);lv.draw(ctx,lower);for(const [notes,bass] of [[rn,false],[ln,true]]){for(const n of notes){const key=n.getKeys()[0];labelTargets.push({note:n,letter:key[0].toUpperCase(),whole:n.getDuration()==='w',fingerY:bass?lower.getYForLine(4)+26:upper.getYForLine(0)-23,finger:String((bass?{'c':5,'d':4,'e':3,'f':2,'g':1}:{'c':1,'d':2,'e':3,'f':4,'g':5})[key[0]]),bass});}}}
-{const svg=el.querySelector('svg');for(const t of labelTargets){const ys=t.note.getYs();if(!ys||!ys.length)continue;const ns='http://www.w3.org/2000/svg';const x=t.note.getAbsoluteX()+5;const y=ys[0];if(show){const circle=document.createElementNS(ns,'ellipse');circle.setAttribute('cx',x);circle.setAttribute('cy',y);circle.setAttribute('rx',t.whole?'9.5':'8.2');circle.setAttribute('ry','6.5');circle.setAttribute('fill',t.whole?'white':'#111');circle.setAttribute('stroke','#111');circle.setAttribute('stroke-width','1.1');svg.appendChild(circle);const txt=document.createElementNS(ns,'text');txt.setAttribute('x',x);txt.setAttribute('y',y+3.1);txt.setAttribute('font-family','Arial,sans-serif');txt.setAttribute('font-size','10');txt.setAttribute('font-weight','bold');txt.setAttribute('text-anchor','middle');txt.setAttribute('fill',t.whole?'#111':'white');txt.textContent=t.letter;svg.appendChild(txt);}const finger=document.createElementNS(ns,'text');finger.setAttribute('x',x);finger.setAttribute('y',t.fingerY);finger.setAttribute('font-family','Arial,sans-serif');finger.setAttribute('font-size','12');finger.setAttribute('text-anchor','middle');finger.setAttribute('fill','#333');finger.textContent=t.finger;svg.appendChild(finger);}}
-}catch(e){const p=document.createElement('p');p.className='error';p.textContent='Rendering error: '+e.message;el.appendChild(p);console.error(e);}}}
-document.getElementById('names').addEventListener('change',render);window.addEventListener('load',render);
+function render(){
+ const host=document.getElementById('pieces');host.innerHTML='';
+ if(!(window.VexFlow||window.Vex?.Flow)){host.innerHTML='<p class="error">VexFlow did not initialise. Check the browser console for the script-loading error.</p>';return;}
+ const VF=window.VexFlow||window.Vex?.Flow,show=document.getElementById('names').checked;
+ compositions.forEach((piece,index)=>{
+  const section=document.createElement('section');section.className='piece';
+  section.innerHTML=`<div class="piece-heading"><h2>${piece.title}</h2><button class="print-piece" type="button">Print / Save PDF</button></div><p>${piece.description}</p><div class="score"></div>`;
+  section.querySelector('button').addEventListener('click',()=>printPiece(index));host.appendChild(section);
+  const el=section.querySelector('.score');
+  try{
+   const width=1010,height=485,renderer=new VF.Renderer(el,VF.Renderer.Backends.SVG);renderer.resize(width,height);
+   const ctx=renderer.getContext(),staveWidth=240,startX=20,gap=0;let labelTargets=[];
+   for(let i=0;i<8;i++){
+    const row=Math.floor(i/4),col=i%4,x=startX+col*(staveWidth+gap),top=38+row*218;
+    const upper=new VF.Stave(x,top,staveWidth),lower=new VF.Stave(x,top+94,staveWidth);
+    if(col===3){upper.setEndBarType(i===7?VF.Barline.type.END:VF.Barline.type.SINGLE);lower.setEndBarType(i===7?VF.Barline.type.END:VF.Barline.type.SINGLE);}
+    if(col>0){upper.setBegBarType(VF.Barline.type.NONE);lower.setBegBarType(VF.Barline.type.NONE);}
+    if(col===0){upper.addClef('treble').addTimeSignature('4/4');lower.addClef('bass').addTimeSignature('4/4');}
+    upper.setContext(ctx).draw();lower.setContext(ctx).draw();
+    new VF.StaveConnector(upper,lower).setType(i===7?VF.StaveConnector.type.BOLD_DOUBLE_RIGHT:VF.StaveConnector.type.SINGLE_RIGHT).setContext(ctx).draw();
+    if(col===0){new VF.StaveConnector(upper,lower).setType(VF.StaveConnector.type.BRACE).setContext(ctx).draw();new VF.StaveConnector(upper,lower).setType(VF.StaveConnector.type.SINGLE_LEFT).setContext(ctx).draw();}
+    const rn=i===7?[new VF.StaveNote({clef:'treble',keys:['c/4'],duration:'w'})]:piece.rh[i].map(p=>new VF.StaveNote({clef:'treble',keys:[p+'/4'],duration:'q'}));
+    const ln=[new VF.StaveNote({clef:'bass',keys:[piece.lh[i]+'/3'],duration:'w'})];
+    const rv=new VF.Voice({num_beats:4,beat_value:4}).addTickables(rn),lv=new VF.Voice({num_beats:4,beat_value:4}).addTickables(ln);
+    new VF.Formatter().joinVoices([rv]).format([rv],staveWidth-(col===0?95:30));
+    new VF.Formatter().joinVoices([lv]).format([lv],staveWidth-(col===0?95:30));
+    rv.draw(ctx,upper);lv.draw(ctx,lower);
+    for(const [notes,bass] of [[rn,false],[ln,true]])for(const n of notes){const key=n.getKeys()[0];labelTargets.push({note:n,letter:key[0].toUpperCase(),whole:n.getDuration()==='w',fingerY:bass?lower.getYForLine(4)+26:upper.getYForLine(0)-23,finger:String((bass?{c:5,d:4,e:3,f:2,g:1}:{c:1,d:2,e:3,f:4,g:5})[key[0]]),bass});}
+   }
+   const svg=el.querySelector('svg'),ns='http://www.w3.org/2000/svg';
+   for(const t of labelTargets){const ys=t.note.getYs();if(!ys||!ys.length)continue;const x=t.note.getAbsoluteX()+5,y=ys[0];
+    if(show){const circle=document.createElementNS(ns,'ellipse');circle.setAttribute('cx',x);circle.setAttribute('cy',y);circle.setAttribute('rx',t.whole?'9.5':'8.2');circle.setAttribute('ry','6.5');circle.setAttribute('fill',t.whole?'white':'#111');circle.setAttribute('stroke','#111');circle.setAttribute('stroke-width','1.1');svg.appendChild(circle);
+     const txt=document.createElementNS(ns,'text');txt.setAttribute('x',x);txt.setAttribute('y',y+3.1);txt.setAttribute('font-family','Arial,sans-serif');txt.setAttribute('font-size','10');txt.setAttribute('font-weight','bold');txt.setAttribute('text-anchor','middle');txt.setAttribute('fill',t.whole?'#111':'white');txt.textContent=t.letter;svg.appendChild(txt);}
+    const finger=document.createElementNS(ns,'text');finger.setAttribute('x',x);finger.setAttribute('y',t.fingerY);finger.setAttribute('font-family','Arial,sans-serif');finger.setAttribute('font-size','12');finger.setAttribute('text-anchor','middle');finger.setAttribute('fill','#333');finger.textContent=t.finger;svg.appendChild(finger);
+   }
+  }catch(e){const p=document.createElement('p');p.className='error';p.textContent='Rendering error: '+e.message;el.appendChild(p);console.error(e);}
+ });
+}
+function printPiece(index){
+ const piece=compositions[index],svg=document.querySelectorAll('.piece .score svg')[index];
+ if(!svg){alert('The score has not rendered yet.');return;}
+ const popup=window.open('','_blank');if(!popup){alert('Please allow pop-ups to print this piece.');return;}
+ const cleanSvg=svg.cloneNode(true);cleanSvg.setAttribute('xmlns','http://www.w3.org/2000/svg');cleanSvg.setAttribute('width','1010');cleanSvg.setAttribute('height','485');cleanSvg.setAttribute('viewBox','0 0 1010 485');
+ const esc=s=>s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ popup.document.open();popup.document.write(`<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>${esc(piece.title)} — SAJA Music</title><style>
+ @page{size:A4 landscape;margin:12mm}*{box-sizing:border-box}html,body{margin:0;padding:0;background:white;color:#211c15;font-family:Arial,sans-serif}
+ .page{width:100%;max-width:273mm;margin:0 auto}.brand{font-size:10pt;letter-spacing:1.8px;color:#8B2E3C;font-weight:bold;margin:0 0 10mm}
+ h1{font-size:20pt;font-weight:600;margin:0 0 3mm}.description{font-size:10pt;color:#555;margin:0 0 5mm}
+ .notation{width:100%;margin:0 auto}.notation svg{display:block;width:100%;height:auto;max-height:135mm}
+ footer{border-top:1px solid #ddd;margin-top:6mm;padding-top:3mm;font-size:8pt;color:#777;display:flex;justify-content:space-between}
+ .print-action{position:fixed;right:16px;top:16px;background:#8B2E3C;color:white;border:0;border-radius:6px;padding:10px 15px;font-size:14px;cursor:pointer}
+ @media print{.print-action{display:none!important}body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+ </style></head><body><button class="print-action" onclick="window.print()">Print / Save PDF</button><article class="page"><div class="brand">SAJA MUSIC · FIRST PIANO PIECES</div><h1>${esc(piece.title)}</h1><p class="description">${esc(piece.description)}</p><div class="notation">${cleanSvg.outerHTML}</div><footer><span>Times of Day — First Piano Pieces</span><span>SAJA Music · saja-music.com</span></footer></article></body></html>`);popup.document.close();
+ popup.focus();
+}
+document.getElementById('names').addEventListener('change',render);
+window.addEventListener('load',render);
 </script></body></html>
