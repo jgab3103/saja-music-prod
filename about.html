@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Learn about SAJA Music's philosophy of open music education, our teaching and research background, and enquiries for music lessons." name="description"/>
+<title>About | SAJA Music</title><link href="assets/favicon.ico" rel="icon"/>
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900" rel="stylesheet"/>
+<link href="css/styles.css" rel="stylesheet"/><style>
+
+:root{--accent:#8B2E3C;--paper:#FAFAFA;--panel:#F4F1EB}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;padding-top:80px;background:var(--paper);color:#111;font:16.5px/1.7 Nunito,sans-serif}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+#mainNav,#mainNav.navbar-shrink{background:var(--paper)!important;border-bottom:1px solid rgba(0,0,0,.06);min-height:80px}
+#mainNav{display:flex;align-items:center;width:100%;left:0;right:0;top:0;z-index:1030;position:fixed;padding:0}
+#mainNav a{color:#111!important;text-decoration:none!important;border:0!important}
+#mainNav .site-nav-inner{flex:1;width:100%;max-width:1320px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;min-height:80px}
+#mainNav .navbar-brand{display:inline-block;margin:0;padding:0;white-space:nowrap;letter-spacing:.19em;font-size:1.18rem}
+#mainNav .nav-links{margin-left:auto;display:flex;gap:2.5rem;align-items:center;justify-content:flex-end}
+@media(min-width:576px){#mainNav .site-nav-inner{max-width:540px}}
+@media(min-width:768px){#mainNav .site-nav-inner{max-width:720px}}
+@media(min-width:992px){#mainNav .site-nav-inner{max-width:960px}}
+@media(min-width:1200px){#mainNav .site-nav-inner{max-width:1140px}}
+@media(min-width:1400px){#mainNav .site-nav-inner{max-width:1320px}}
+@media(max-width:600px){body{padding-top:74px}#mainNav .site-nav-inner{min-height:74px;padding:0 16px}#mainNav .navbar-brand{font-size:.94rem;letter-spacing:.12em}#mainNav .nav-links{gap:12px;font-size:.76rem}}
+
+.shell{width:100%;max-width:1160px;margin:auto;padding:0 32px}
+.hero{margin:40px auto 44px;padding:58px 60px 62px;background:var(--panel);border-radius:8px}
+.eyebrow{font-size:.78rem;letter-spacing:.24em;color:#716964;margin:0 0 14px;font-weight:700}
+h1,h2,h3{font-family:'Varela Round',sans-serif;font-weight:500;line-height:1.3}
+h1{font-size:clamp(2.1rem,3.6vw,3.1rem);margin:0 0 20px}h2{font-size:1.65rem;margin:0 0 22px}
+.hero p{max-width:790px;margin:0 0 15px;color:#393532;font-size:1.06rem}.hero p:last-child{margin-bottom:0}
+.section{padding:30px 4px 52px;border-bottom:1px solid #e8e2dd}
+.two-col{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:76px}
+.prose p{margin:0 0 18px;color:#49443f;max-width:65ch}
+.credential{padding:0 0 18px;margin:0 0 18px;border-bottom:1px solid #eee7e1}.credential:last-child{border:0}
+.credential strong{display:block;font-size:1rem;color:#28231f;margin-bottom:4px}.credential span{color:#655d58;font-size:.95rem}
+.contact-panel{background:var(--panel);border-radius:8px;padding:38px 44px;margin:48px 0 100px;display:grid;grid-template-columns:1.2fr .8fr;gap:35px;align-items:center}
+.contact-panel h2{margin:0 0 14px}.contact-panel p{color:#514b46;margin:0 0 10px}
+.actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:flex-end}
+.button{display:inline-block;padding:12px 20px;border:1px solid var(--accent);border-radius:5px;font-weight:800;font-size:.91rem;text-align:center}
+.button.primary{background:var(--accent);color:white}.button.secondary{color:var(--accent);background:transparent}
+.button:hover{filter:brightness(.9);text-decoration:none}
+.footer{border-top:1px solid rgba(0,0,0,.06);padding:65px 24px;text-align:center;color:#666;font-size:.95rem}
+@media(max-width:900px){.two-col{gap:30px}.contact-panel{grid-template-columns:1fr}.actions{justify-content:flex-start}}
+@media(max-width:650px){.shell{padding:0 22px}.hero{margin-top:22px;padding:32px 26px}.two-col{grid-template-columns:1fr}.section{padding:22px 2px 38px}.contact-panel{padding:28px 26px;margin-bottom:65px}.actions{flex-direction:column}.button{width:100%}}
+
+/* About Us profiles */
+.about-hero{display:block}
+.about-hero-copy{max-width:850px}
+.team-intro{max-width:850px;color:#49443f;margin:0 0 28px}
+.team-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;margin:30px 0 12px}
+.team-card{display:grid;grid-template-columns:minmax(0,1fr);gap:0;align-items:start;background:#fff;border:1px solid #e9e2dc;border-radius:7px;padding:25px}
+
+.team-card h3{font-size:1.24rem;margin:0 0 4px}
+.team-role{font-size:.82rem;letter-spacing:.025em;font-weight:800;color:var(--accent);margin:0 0 12px}
+.team-card p:not(.team-role){color:#514b46;font-size:.95rem;line-height:1.65;margin:0}
+.team-project{color:#49443f;max-width:850px;margin:22px 0 0}
+@media(max-width:900px){.team-card{padding:20px}}
+@media(max-width:700px){.team-grid{grid-template-columns:1fr}}
+
+</style></head><body>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav"><div class="site-nav-inner"><a class="navbar-brand" href="./index.html">SAJA MUSIC</a><div class="nav-links"><a href="./teaching.html">Discovery</a><a href="./pathways.html">Learning Pathways</a><a aria-current="page" href="./about.html">About</a></div></div></nav>
+<main class="shell">
+<section class="hero about-hero"><div class="about-hero-copy"><div class="eyebrow">SAJA MUSIC / ABOUT</div><h1>Music education, open to everyone.</h1>
+
+<p>We believe that high-quality music educational resources should be easy to find, enjoyable to use and freely available. That's why our resources are open to everyone, without advertising or paywalls.</p></div></section>
+<section aria-labelledby="philosophy" class="section"><h2 id="philosophy">Our mission</h2>
+
+
+
+<div class="two-col">
+
+    <div class="prose">
+        <p>
+            Learning music is an incredibly exciting journey. There is so much to explore,
+            from developing instrumental technique and aural skills to improvisation,
+            composition, electronic music, orchestration and ensemble performance.
+            You might be learning your first few notes, writing a pop song, experimenting
+            with synthesisers or composing a symphony. The possibilities are almost endless.
+        </p>
+
+        <p>
+      We created SAJA Music because, as musicians and educators, we often found ourselves searching for learning resources that simply weren't available, or weren't as accessible, engaging or useful as we hoped. We also kept meeting students who were eager to learn and teachers who struggled to find high-quality, freely available materials. We don't believe educators should have to compromise on quality simply because they don't have access to expensive resources or subscriptions. We already have so many great teachers. Let's give them great resources to work with.
+        </p>
+    </div>
+
+    <div class="prose">
+        <p>
+            We also wanted to create a place where people could explore music freely,
+            follow their curiosity and discover new things, regardless of their
+            age, experience or musical interests. Somewhere that brings together
+            traditional musicianship, creative exploration and modern technology,
+            with resources that are genuinely useful for both independent learners
+            and teachers. Everything is free to use, without advertising, paywalls
+            or compulsory accounts.
+        </p>
+
+        <p>
+            SAJA Music is an ongoing project, shaped by our experiences teaching,
+            performing, composing and researching music. We're continually adding
+            new resources, experimenting with ideas and refining what we've created.
+            Above all, we hope to share some of the excitement and enjoyment
+            that comes from learning music.
+        </p>
+    </div>
+
+</div>
+
+
+
+
+</section>
+<section aria-labelledby="people" class="section">
+<h2 id="people">About Us</h2>
+<p class="team-intro">SAJA Music was founded by Sally Howe and Jamie Gabriel. Between us, we bring many years of experience teaching, composing, recording and performing music. </p>
+<div class="team-grid">
+  <article class="team-card">
+
+    <div>
+      <h3>Jamie Gabriel</h3>
+      <p class="team-role">Co-Founder · Technical Lead &amp; Learning Design</p>
+    <p>
+    Jamie is a musician, educator and software developer with a PhD in computational musicology, where his research explored computational approaches to music analysis and the development of search engines for music data. He has developed a wide range of music software and brings extensive experience teaching and performing music, alongside a longstanding interest in making music education more accessible through technology.
+</p>
+    </div>
+  </article>
+  <article class="team-card">
+
+    <div>
+      <h3>Sally Howe</h3>
+      <p class="team-role">Co-Founder · Learning &amp; Design</p>
+      <p>Sally is a musician, composer, performer and educator with a Bachelor of Music from the University of Auckland. She has extensive experience teaching students of all ages, designing tailored learning resources to suit individual needs and interests, and performing across a wide range of musical settings.</p>
+    </div>
+  </article>
+</div>
+
+</section>
+<section aria-labelledby="lessons" class="contact-panel"><div><div class="eyebrow">GET IN TOUCH</div><h2 id="lessons">Lessons and enquiries</h2><p>If you are interested in private tutition or workshops, just hit the link.</p><p>We also welcome questions, feedback and suggestions about what to build next.</p></div><div class="actions"><a class="button primary" href="./lessons.html">Lessons & Workshops →</a><a class="button secondary" href="./contact.html">Get in touch →</a></div></section>
+</main><footer class="footer">SAJA Music · Free music education resources</footer></body></html>
