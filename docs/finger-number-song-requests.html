@@ -30,6 +30,7 @@ main.article{max-width:960px;margin:auto;padding:55px 24px 100px}.back-link{font
 .thumb-shift-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
 .thumb-shift-row .mini-keyboard{width:min(100%,300px)}
 @media(max-width:600px){.keyboard-position{gap:8px;padding:12px}.mini-keyboard{width:100%}}
+.mini-keyboard{display:block;width:min(100%,378px);height:auto;margin:10px 0}.keyboard-position{background:var(--panel);padding:14px 18px;border-radius:7px;margin-bottom:20px}.keyboard-caption{font-weight:800}.keyboard-caption span{display:block;font-weight:400;font-size:13px}.thumb-shift-row .mini-keyboard{margin-top:8px}
 </style></head><body>
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav"><div class="site-nav-inner"><a class="navbar-brand" href="./index.html">SAJA MUSIC</a><div class="nav-links"><a href="./teaching.html">Discovery</a><a href="./pathways.html">Learning Pathways</a><a href="./about.html">About</a></div></div></nav>
 <main class="article"><a class="back-link" href="./teaching.html">← Teaching resources</a><div class="eyebrow">Piano learning · Pre-reading</div><h1>Finger Number Songs</h1>
@@ -48,6 +49,30 @@ let songs=[],song=null,objectURL=null,playSections=null,timers=[],playToken=0;
 const escapeHTML=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function stop(){playToken++;timers.forEach(clearTimeout);timers=[];player.pause();try{player.currentTime=0}catch(e){}document.querySelectorAll('.note.active').forEach(n=>n.classList.remove('active'));status.textContent='Ready to practise.'}
 function setSong(id){stop();song=songs.find(s=>s.id===id)||songs[0];if(!song)return;tempo.value=song.tempo||90;$('bpm').textContent=tempo.value+' BPM';picker.value=song.id;$('songHeader').innerHTML=`<h2>${escapeHTML(song.title)}</h2><p>${escapeHTML(song.composer||'')} · ${escapeHTML(song.level||'Beginner')}</p><p>${escapeHTML(song.description||'')}</p>`;renderSections();generate(song.sections.map((_,i)=>i));}
+function keyboardSVG(thumb){
+  const white=['C','D','E','F','G','A','B'];
+  const keyWidth=27, height=96, top=30;
+  const keys=[];const black=[];
+  let targetX=null;
+  for(let octave=4;octave<=5;octave++){
+    white.forEach((letter,i)=>{
+      const x=((octave-4)*7+i)*keyWidth;
+      const pitch=letter+octave;
+      const selected=pitch===thumb;
+      if(selected)targetX=x+keyWidth/2;
+      keys.push(`<rect x="${x}" y="${top}" width="${keyWidth}" height="${height}" fill="${selected?'#eed6db':'white'}" stroke="#4c4545" stroke-width="1.2"/>`);
+      if(letter==='C')keys.push(`<text x="${x+keyWidth/2}" y="${top+height-9}" font-size="11" text-anchor="middle" fill="#6b6262">${pitch}</text>`);
+      if(['C','D','F','G','A'].includes(letter)){
+        const blackPitch=letter+'#'+octave;
+        const bx=x+keyWidth-8;
+        if(blackPitch===thumb)targetX=x+keyWidth;
+        black.push(`<rect x="${bx}" y="${top}" width="16" height="60" rx="2" fill="${blackPitch===thumb?'#8B2E3C':'#29252a'}"/>`);
+      }
+    });
+  }
+  const arrow=targetX===null?'':`<path d="M ${targetX} 3 V 21 M ${targetX-6} 15 L ${targetX} 23 L ${targetX+6} 15" fill="none" stroke="#8B2E3C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>`;
+  return `<svg class="mini-keyboard" viewBox="0 0 378 130" role="img" aria-label="Piano keyboard with arrow pointing to ${escapeHTML(thumb)}" xmlns="http://www.w3.org/2000/svg">${keys.join('')}${black.join('')}${arrow}</svg>`;
+}
 function renderSections(){
   sections.innerHTML='';
   const el=document.createElement('section');el.className='part';
