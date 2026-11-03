@@ -54,6 +54,30 @@ main.article{max-width:960px;margin:auto;padding:55px 24px 100px}.back-link{font
   .thumb-shift-row .mini-keyboard{max-width:220px!important}
   .legend{font-size:9pt!important;margin-top:8px!important}
 }
+
+/* Ink-saving, high-contrast black-and-white print stylesheet. */
+@media print{
+  html,body,main.article,#sections,.part,.notes,.note-row,.note,
+  .keyboard-position,.thumb-shift-row,.keyboard-caption,.legend{
+    background:#fff!important;color:#000!important;
+    box-shadow:none!important;text-shadow:none!important;
+  }
+  .keyboard-position,.thumb-shift-row{border:1px solid #555!important;border-radius:0!important}
+  .keyboard-caption,.keyboard-caption span,.thumb-shift strong,.thumb-shift span{color:#000!important}
+  .note-row .note{
+    background:#fff!important;border:2.2px solid #111!important;
+    border-radius:3px!important;color:#000!important;
+    print-color-adjust:economy!important;-webkit-print-color-adjust:economy!important;
+  }
+  .note-row .note.active{background:#fff!important;border-color:#111!important}
+  .finger{color:#000!important;font-weight:700!important}
+  .note small,.legend{color:#111!important}
+  .note-row::after{background:none!important}
+  .mini-keyboard rect[fill="#eed6db"]{fill:#fff!important;stroke:#000!important;stroke-width:3!important}
+  .mini-keyboard rect[fill="#8B2E3C"]{fill:#000!important}
+  .mini-keyboard path{stroke:#000!important;stroke-width:4!important}
+  .mini-keyboard text{fill:#000!important}
+}
 </style></head><body>
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav"><div class="site-nav-inner"><a class="navbar-brand" href="./index.html">SAJA MUSIC</a><div class="nav-links"><a href="./teaching.html">Discovery</a><a href="./pathways.html">Learning Pathways</a><a href="./about.html">About</a></div></div></nav>
 <main class="article"><a class="back-link" href="./teaching.html">← Teaching resources</a><div class="eyebrow">Piano learning · Pre-reading</div><h1>Finger Number Songs</h1>
