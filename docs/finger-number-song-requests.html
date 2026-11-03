@@ -21,6 +21,15 @@ main.article{max-width:960px;margin:auto;padding:55px 24px 100px}.back-link{font
 .audio-card-subtitle{font:400 .75rem 'Nunito',sans-serif;color:#756b6d;line-height:1.5}
 .audio-card audio{display:block;width:100%;height:45px;margin:0;accent-color:var(--accent)}
 @media(max-width:420px){.audio-card{padding:13px 12px}}
+
+/* Visual starting position: an octave-and-a-half keyboard with a thumb marker. */
+.keyboard-position{display:flex;align-items:center;gap:20px;flex-wrap:wrap;background:var(--panel);padding:15px 18px;border-radius:8px;margin:0 0 20px}
+.keyboard-caption{font-weight:800;font-size:14px;color:var(--ink)}
+.keyboard-caption span{display:block;font-size:12px;font-weight:600;color:var(--muted)}
+.mini-keyboard{width:min(100%,390px);height:auto;display:block}
+.thumb-shift-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.thumb-shift-row .mini-keyboard{width:min(100%,300px)}
+@media(max-width:600px){.keyboard-position{gap:8px;padding:12px}.mini-keyboard{width:100%}}
 </style></head><body>
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav"><div class="site-nav-inner"><a class="navbar-brand" href="./index.html">SAJA MUSIC</a><div class="nav-links"><a href="./teaching.html">Discovery</a><a href="./pathways.html">Learning Pathways</a><a href="./about.html">About</a></div></div></nav>
 <main class="article"><a class="back-link" href="./teaching.html">← Teaching resources</a><div class="eyebrow">Piano learning · Pre-reading</div><h1>Finger Number Songs</h1>
@@ -53,9 +62,9 @@ function renderSections(){
     if(beats>=8-1e-9)flush();
   }));flush();
   let visualRow=0;const notes=rows.map(r=>r.kind==='shift'
-    ? `<div class="thumb-shift thumb-shift-row" role="note"><strong>Move your thumb to ${escapeHTML(r.part.thumb)}</strong><span>${escapeHTML(r.part.instruction||'')}</span></div>`
+    ? `<div class="thumb-shift thumb-shift-row" role="note"><div><strong>Move your thumb to ${escapeHTML(r.part.thumb)}</strong><span>Follow the arrow on the keyboard.</span></div>${keyboardSVG(r.part.thumb)}</div>`
     : `<div class="note-row ${++visualRow%2===0?'row-pair-end':''}">${r.items.map(({n,si,ni,duration})=>`<div class="note" style="--units:${Math.round(duration*2)}" data-section="${si}" data-note="${ni}" aria-label="Finger ${n[2]}, pitch ${escapeHTML(n[0])}, ${duration} beats"><div class="finger">${n[2]}</div><small>${duration>1?'Hold '+duration+' beats':duration<1?'Quick beat':'1 beat'}</small></div>`).join('')}</div>`).join('');
-  el.innerHTML=`<div class="hand-position">${escapeHTML(first.hand||'Right hand')} · Start with thumb on ${escapeHTML(first.thumb)}</div><p class="instruction">${escapeHTML(first.instruction||'')}</p><div class="notes">${notes}</div><div class="legend">Big number = finger to press · Each row contains at most 8 beats · Quick beat = a shorter note</div>`;
+  el.innerHTML=`<div class="keyboard-position"><div class="keyboard-caption">${escapeHTML(first.hand||'Right hand')} · Thumb on ${escapeHTML(first.thumb)}<span>Find the key marked by the arrow.</span></div>${keyboardSVG(first.thumb)}</div><div class="notes">${notes}</div><div class="legend">Big number = finger to press · Each row contains at most 8 beats · Quick beat = a shorter note</div>`;
   sections.appendChild(el);
 }
 function clearAudio(){player.pause();player.removeAttribute('src');player.load();if(objectURL){URL.revokeObjectURL(objectURL);objectURL=null}}
