@@ -1,28 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Times of Day — Eight First Piano Pieces | SAJA Music</title>
-<link href="https://fonts.googleapis.com/css?family=Varela+Round|Nunito:400,600,700" rel="stylesheet">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="Eight gentle beginner piano pieces — Times of Day | SAJA Music" />
+<meta name="author" content="SAJA Music" />
+<title>Times of Day — First Piano Pieces | SAJA Music</title>
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,500,600,700,800,900" rel="stylesheet" />
+<link href="css/styles.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/vexflow@4.2.3/build/cjs/vexflow.js"></script>
 <style>
-:root{--accent:#8B2E3C;--panel:#F4F1EB}
-*{box-sizing:border-box}body{font-family:Nunito,sans-serif;background:#fafafa;color:#211c15;margin:0}
-main{max-width:1100px;margin:auto;padding:32px 22px}h1,h2{font-family:'Varela Round',sans-serif}h1{color:var(--accent)}
-.intro{max-width:800px;line-height:1.6}.piece{background:white;border:1px solid #e3ded7;border-radius:12px;padding:18px 22px;margin:24px 0}
-.piece-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.piece-heading h2{margin:8px 0}
-.score{overflow-x:auto}.score svg{display:block;min-width:1010px}.controls{display:flex;gap:16px;flex-wrap:wrap;background:var(--panel);padding:14px;border-radius:10px;align-items:center}
-button{border:0;border-radius:6px;padding:9px 14px;background:var(--accent);color:white;cursor:pointer;font:inherit}button:hover{filter:brightness(1.1)}small{color:#666}.error{color:#a00}
-@media print{@page{size:A4 landscape;margin:12mm}body{background:white}.controls,.print-piece,.intro,main>h1,main>p:last-child{display:none!important}.piece{break-inside:avoid;border:0}main{padding:0}}
+:root{--accent:#8B2E3C;--paper:#FAFAFA;--panel:#F4F1EB}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--paper)}
+body{margin:0;padding-top:80px;font-family:'Nunito',sans-serif;background:var(--paper);color:#111;line-height:1.75;font-size:16.5px}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(139,46,60,.35);transition:.2s}
+a:hover{color:#111;border-bottom-color:rgba(139,46,60,.75)}
+#mainNav,#mainNav.navbar-shrink{position:fixed;top:0;left:0;right:0;z-index:1030;background:var(--paper)!important;border-bottom:1px solid rgba(0,0,0,.05);min-height:80px;display:flex;align-items:center}
+#mainNav .container{width:100%;max-width:1140px;margin:auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center}
+#mainNav a{color:#111!important;text-decoration:none!important;border:none!important}
+.nav-links{display:flex;gap:2.5rem;align-items:center}
+.article{max-width:1100px;margin:0 auto;padding:60px 24px 120px}
+.article-header{max-width:720px}
+.back-link{display:inline-block;margin-bottom:24px;font-size:.95rem}
+h1,h2{font-family:'Varela Round',sans-serif;font-weight:500;line-height:1.35}
+h1{font-size:1.9rem;margin:0 0 10px}
+h2{font-size:1.2rem}
+.meta{color:rgba(0,0,0,.55);font-size:.9rem;margin-bottom:30px}
+p{max-width:65ch;margin:0 0 22px}
+.intro{max-width:65ch;line-height:1.75}
+.piece{background:#fff;border:1px solid #e3ded7;border-radius:5px;padding:22px 24px;margin:26px 0}
+.piece-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.piece-heading h2{margin:6px 0 10px}
+.piece p{max-width:65ch}
+.score{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.score svg{display:block;min-width:1010px}
+.controls{display:flex;gap:16px;flex-wrap:wrap;background:var(--panel);padding:18px 22px;border-radius:4px;align-items:center;margin:25px 0}
+.controls label{cursor:pointer}
+input[type=checkbox]{accent-color:var(--accent)}
+button{font:700 .92rem 'Nunito',sans-serif;border:1px solid var(--accent);border-radius:5px;background:var(--accent);color:#fff;padding:9px 15px;cursor:pointer}
+button:hover{background:#722633}
+button:focus-visible,input:focus-visible{outline:3px solid #bb838c;outline-offset:2px}
+small{color:#666}.error{color:#a00}
+.footer{background:var(--paper);border-top:1px solid rgba(0,0,0,.06);padding:80px 30px;text-align:center;font-size:.95rem;color:rgba(0,0,0,.7)}
+@media(max-width:700px){.nav-links{gap:1.1rem;font-size:.81rem}#mainNav .container{padding:0 14px}#mainNav .navbar-brand{font-size:.94rem}.article{padding:36px 18px 80px}h1{font-size:1.55rem}.piece{padding:16px 14px}.piece-heading{align-items:flex-start}}
+@media print{@page{size:A4 landscape;margin:12mm}body{background:#fff;padding:0!important}#mainNav,.footer,.controls,.print-piece,.intro,.article-header,.article>p:last-child{display:none!important}.piece{break-inside:avoid;border:0;padding:0;margin:0 0 12mm}.article{max-width:none;padding:0}.score{overflow:visible}.score svg{max-width:100%;min-width:0;height:auto}}
 </style>
 </head>
-<body><main>
-<h1>Times of Day — First Piano Pieces</h1>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container px-4 px-lg-5">
+    <a class="navbar-brand" href="./index.html">SAJA MUSIC</a>
+    <div class="nav-links">
+      <a href="./teaching.html">Discovery</a>
+      <a href="./pathways.html">Learning Pathways</a>
+      <a href="./about.html">About</a>
+    </div>
+  </div>
+</nav>
+<main class="article">
+<div class="article-header">
+  <a class="back-link" href="./pathways.html">← Learning Pathways</a>
+  <h1>Times of Day — First Piano Pieces</h1>
+  <div class="meta">Piano Foundations · Beginner · Eight pieces</div>
+</div>
 <p class="intro">Eight gentle pieces inspired by different times of day, for beginning pianists. Both hands remain in C position: right hand C4–G4, left hand C3–G3. The first two pieces use only low C semibreves in the left hand; later pieces introduce other bass notes. The left hand plays one semibreve per bar. The right hand plays four crotchets in each bar, finishing each piece with a C semibreve. The final three pieces introduce more stepwise melodic movement. Play gently, and listen to the sound of each note.</p>
 <div class="controls"><label><input id="names" type="checkbox" checked> Show note names inside noteheads</label></div>
 <div id="pieces"></div>
 <p><small>Original beginner compositions for SAJA Music. Requires an internet connection to load VexFlow.</small></p>
 </main>
+<footer class="footer"><div>SAJA MUSIC · Free and open music education</div></footer>
 <script>
 const compositions=[
  {title:'1. Morning Light',description:'A quiet echo: repeat each little idea before moving on.',rh:[['c','c','d','d'],['c','c','d','d'],['e','e','d','d'],['c','c','c','c'],['d','d','e','e'],['d','d','e','e'],['d','d','c','c'],['c','c','c','c']],lh:['c','c','c','c','c','c','c','c']},
