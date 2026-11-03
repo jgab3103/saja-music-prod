@@ -1,28 +1,880 @@
 {
   "songs": [
     {
-      "id": "king-of-rivals", "title": "King of Rivals", "composer": "MiniBloxia", "level": "Beginner", "tempo": 90,
+      "id": "king-of-rivals",
+      "title": "King of Rivals",
+      "composer": "MiniBloxia",
+      "level": "Beginner",
+      "tempo": 90,
       "description": "Learn the two little tunes, then play them together.",
       "sections": [
-        {"title":"The first little tune", "hand":"Right hand", "thumb":"A4", "instruction":"Place your right thumb (finger 1) on A, above middle C.", "notes":[["A4",1,1],["A4",1,1],["C5",0.5,3],["B4",0.5,2],["A4",0.5,1],["B4",0.5,2]]},
-        {"title":"The second little tune", "hand":"Right hand", "thumb":"E4", "instruction":"Move your right thumb (finger 1) to E, just above middle C.", "notes":[["F4",1,2],["F4",0.5,2],["G4",0.5,3],["E4",2,1]]}
+        {
+          "title": "The first little tune",
+          "hand": "Right hand",
+          "thumb": "A4",
+          "instruction": "Place your right thumb (finger 1) on A, above middle C.",
+          "notes": [
+            [
+              "A4",
+              1,
+              1
+            ],
+            [
+              "A4",
+              1,
+              1
+            ],
+            [
+              "C5",
+              0.5,
+              3
+            ],
+            [
+              "B4",
+              0.5,
+              2
+            ],
+            [
+              "A4",
+              0.5,
+              1
+            ],
+            [
+              "B4",
+              0.5,
+              2
+            ]
+          ]
+        },
+        {
+          "title": "The second little tune",
+          "hand": "Right hand",
+          "thumb": "E4",
+          "instruction": "Move your right thumb (finger 1) to E, just above middle C.",
+          "notes": [
+            [
+              "F4",
+              1,
+              2
+            ],
+            [
+              "F4",
+              0.5,
+              2
+            ],
+            [
+              "G4",
+              0.5,
+              3
+            ],
+            [
+              "E4",
+              2,
+              1
+            ]
+          ]
+        }
       ]
     },
     {
-      "id":"mary-had-a-little-lamb", "title":"Mary Had a Little Lamb", "composer":"Traditional", "level":"First songs", "tempo":95,
-      "description":"A familiar melody using just three fingers.",
-      "sections":[
-        {"title":"The melody", "hand":"Right hand", "thumb":"C4", "instruction":"Place your right thumb (finger 1) on middle C. Keep one finger on each neighbouring white key.",
-         "notes":[["E4",1,3],["D4",1,2],["C4",1,1],["D4",1,2],["E4",1,3],["E4",1,3],["E4",2,3],["D4",1,2],["D4",1,2],["D4",2,2],["E4",1,3],["G4",1,5],["G4",2,5],["E4",1,3],["D4",1,2],["C4",1,1],["D4",1,2],["E4",1,3],["E4",1,3],["E4",1,3],["E4",1,3],["D4",1,2],["D4",1,2],["E4",1,3],["D4",1,2],["C4",2,1]]}
+      "id": "mary-had-a-little-lamb",
+      "title": "Mary Had a Little Lamb",
+      "composer": "Traditional",
+      "level": "First songs",
+      "tempo": 95,
+      "description": "A familiar melody using just three fingers.",
+      "sections": [
+        {
+          "title": "The melody",
+          "hand": "Right hand",
+          "thumb": "C4",
+          "instruction": "Place your right thumb (finger 1) on middle C. Keep one finger on each neighbouring white key.",
+          "notes": [
+            [
+              "E4",
+              1,
+              3
+            ],
+            [
+              "D4",
+              1,
+              2
+            ],
+            [
+              "C4",
+              1,
+              1
+            ],
+            [
+              "D4",
+              1,
+              2
+            ],
+            [
+              "E4",
+              1,
+              3
+            ],
+            [
+              "E4",
+              1,
+              3
+            ],
+            [
+              "E4",
+              2,
+              3
+            ],
+            [
+              "D4",
+              1,
+              2
+            ],
+            [
+              "D4",
+              1,
+              2
+            ],
+            [
+              "D4",
+              2,
+              2
+            ],
+            [
+              "E4",
+              1,
+              3
+            ],
+            [
+              "G4",
+              1,
+              5
+            ],
+            [
+              "G4",
+              2,
+              5
+            ],
+            [
+              "E4",
+              1,
+              3
+            ],
+            [
+              "D4",
+              1,
+              2
+            ],
+            [
+              "C4",
+              1,
+              1
+            ],
+            [
+              "D4",
+              1,
+              2
+            ],
+            [
+              "E4",
+              1,
+              3
+            ],
+            [
+              "E4",
+              1,
+              3
+            ],
+            [
+              "E4",
+              1,
+              3
+            ],
+            [
+              "E4",
+              1,
+              3
+            ],
+            [
+              "D4",
+              1,
+              2
+            ],
+            [
+              "D4",
+              1,
+              2
+            ],
+            [
+              "E4",
+              1,
+              3
+            ],
+            [
+              "D4",
+              1,
+              2
+            ],
+            [
+              "C4",
+              4,
+              1
+            ]
+          ]
+        }
       ]
     },
     {
-      "id":"ode-to-joy", "title":"Ode to Joy", "composer":"Ludwig van Beethoven (adapted)", "level":"Beginner", "tempo":90,
-      "description":"A short, simplified version of Beethoven's famous melody.",
-      "sections":[
-        {"title":"The opening melody", "hand":"Right hand", "thumb":"C4", "instruction":"Place your right thumb (finger 1) on middle C. Each finger stays on its own white key.",
-         "notes":[["E4",1,3],["E4",1,3],["F4",1,4],["G4",1,5],["G4",1,5],["F4",1,4],["E4",1,3],["D4",1,2],["C4",1,1],["C4",1,1],["D4",1,2],["E4",1,3],["E4",1,3],["D4",1,2],["D4",2,2],
-         ["E4",1,3],["E4",1,3],["F4",1,4],["G4",1,5],["G4",1,5],["F4",1,4],["E4",1,3],["D4",1,2],["C4",1,1],["C4",1,1],["D4",1,2],["E4",1,3],["D4",1,2],["C4",1,1],["C4",2,1]]}
+      "id": "ode-to-joy",
+      "title": "Ode to Joy",
+      "composer": "Ludwig van Beethoven (adapted)",
+      "level": "Beginner",
+      "tempo": 90,
+      "description": "A short, simplified version of Beethoven’s famous melody.",
+      "sections": [
+        {
+          "title": "The opening melody",
+          "hand": "Right hand",
+          "thumb": "C4",
+          "instruction": "Place your right thumb (finger 1) on middle C. Each finger stays on its own white key.",
+          "notes": [
+            [
+              "E4",
+              1,
+              3
+            ],
+            [
+              "E4",
+              1,
+              3
+            ],
+            [
+              "F4",
+              1,
+              4
+            ],
+            [
+              "G4",
+              1,
+              5
+            ],
+            [
+              "G4",
+              1,
+              5
+            ],
+            [
+              "F4",
+              1,
+              4
+            ],
+            [
+              "E4",
+              1,
+              3
+            ],
+            [
+              "D4",
+              1,
+              2
+            ],
+            [
+              "C4",
+              1,
+              1
+            ],
+            [
+              "C4",
+              1,
+              1
+            ],
+            [
+              "D4",
+              1,
+              2
+            ],
+            [
+              "E4",
+              1,
+              3
+            ],
+            [
+              "E4",
+              1,
+              3
+            ],
+            [
+              "D4",
+              1,
+              2
+            ],
+            [
+              "D4",
+              2,
+              2
+            ],
+            [
+              "E4",
+              1,
+              3
+            ],
+            [
+              "E4",
+              1,
+              3
+            ],
+            [
+              "F4",
+              1,
+              4
+            ],
+            [
+              "G4",
+              1,
+              5
+            ],
+            [
+              "G4",
+              1,
+              5
+            ],
+            [
+              "F4",
+              1,
+              4
+            ],
+            [
+              "E4",
+              1,
+              3
+            ],
+            [
+              "D4",
+              1,
+              2
+            ],
+            [
+              "C4",
+              1,
+              1
+            ],
+            [
+              "C4",
+              1,
+              1
+            ],
+            [
+              "D4",
+              1,
+              2
+            ],
+            [
+              "E4",
+              1,
+              3
+            ],
+            [
+              "D4",
+              1,
+              2
+            ],
+            [
+              "C4",
+              1,
+              1
+            ],
+            [
+              "C4",
+              2,
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hot-cross-buns",
+      "title": "Hot Cross Buns",
+      "composer": "Traditional English",
+      "level": "First songs",
+      "tempo": 90,
+      "description": "A three-finger melody with easy repeated patterns.",
+      "sections": [
+        {
+          "title": "The melody",
+          "hand": "Right hand",
+          "thumb": "C4",
+          "instruction": "Place your right thumb (finger 1) on the key shown by the arrow.",
+          "notes": [
+            [
+              "E4",
+              1,
+              3
+            ],
+            [
+              "D4",
+              1,
+              2
+            ],
+            [
+              "C4",
+              2,
+              1
+            ],
+            [
+              "E4",
+              1,
+              3
+            ],
+            [
+              "D4",
+              1,
+              2
+            ],
+            [
+              "C4",
+              2,
+              1
+            ],
+            [
+              "C4",
+              0.5,
+              1
+            ],
+            [
+              "C4",
+              0.5,
+              1
+            ],
+            [
+              "C4",
+              0.5,
+              1
+            ],
+            [
+              "C4",
+              0.5,
+              1
+            ],
+            [
+              "D4",
+              0.5,
+              2
+            ],
+            [
+              "D4",
+              0.5,
+              2
+            ],
+            [
+              "D4",
+              0.5,
+              2
+            ],
+            [
+              "D4",
+              0.5,
+              2
+            ],
+            [
+              "E4",
+              1,
+              3
+            ],
+            [
+              "D4",
+              1,
+              2
+            ],
+            [
+              "C4",
+              2,
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "frere-jacques",
+      "title": "Frère Jacques",
+      "composer": "Traditional French",
+      "level": "First songs",
+      "tempo": 92,
+      "description": "The familiar opening four phrases, all within five white keys.",
+      "sections": [
+        {
+          "title": "The opening phrases",
+          "hand": "Right hand",
+          "thumb": "C4",
+          "instruction": "Place your right thumb (finger 1) on the key shown by the arrow.",
+          "notes": [
+            [
+              "C4",
+              1,
+              1
+            ],
+            [
+              "D4",
+              1,
+              2
+            ],
+            [
+              "E4",
+              1,
+              3
+            ],
+            [
+              "C4",
+              1,
+              1
+            ],
+            [
+              "C4",
+              1,
+              1
+            ],
+            [
+              "D4",
+              1,
+              2
+            ],
+            [
+              "E4",
+              1,
+              3
+            ],
+            [
+              "C4",
+              1,
+              1
+            ],
+            [
+              "E4",
+              1,
+              3
+            ],
+            [
+              "F4",
+              1,
+              4
+            ],
+            [
+              "G4",
+              2,
+              5
+            ],
+            [
+              "E4",
+              1,
+              3
+            ],
+            [
+              "F4",
+              1,
+              4
+            ],
+            [
+              "G4",
+              2,
+              5
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "au-clair-de-la-lune",
+      "title": "Au Clair de la Lune",
+      "composer": "Traditional French",
+      "level": "Beginner",
+      "tempo": 88,
+      "description": "A gentle opening melody with repeated notes and held notes.",
+      "sections": [
+        {
+          "title": "The opening melody",
+          "hand": "Right hand",
+          "thumb": "C4",
+          "instruction": "Place your right thumb (finger 1) on the key shown by the arrow.",
+          "notes": [
+            [
+              "C4",
+              1,
+              1
+            ],
+            [
+              "C4",
+              1,
+              1
+            ],
+            [
+              "C4",
+              1,
+              1
+            ],
+            [
+              "D4",
+              1,
+              2
+            ],
+            [
+              "E4",
+              2,
+              3
+            ],
+            [
+              "D4",
+              1,
+              2
+            ],
+            [
+              "C4",
+              1,
+              1
+            ],
+            [
+              "E4",
+              1,
+              3
+            ],
+            [
+              "D4",
+              1,
+              2
+            ],
+            [
+              "D4",
+              1,
+              2
+            ],
+            [
+              "C4",
+              2,
+              1
+            ],
+            [
+              "C4",
+              0.5,
+              1
+            ],
+            [
+              "C4",
+              0.5,
+              1
+            ],
+            [
+              "D4",
+              0.5,
+              2
+            ],
+            [
+              "E4",
+              0.5,
+              3
+            ],
+            [
+              "D4",
+              0.5,
+              2
+            ],
+            [
+              "C4",
+              0.5,
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lightly-row",
+      "title": "Lightly Row",
+      "composer": "Traditional German",
+      "level": "Beginner",
+      "tempo": 94,
+      "description": "A familiar five-finger tune with steps and small skips.",
+      "sections": [
+        {
+          "title": "The opening melody",
+          "hand": "Right hand",
+          "thumb": "C4",
+          "instruction": "Place your right thumb (finger 1) on the key shown by the arrow.",
+          "notes": [
+            [
+              "G4",
+              1,
+              5
+            ],
+            [
+              "E4",
+              1,
+              3
+            ],
+            [
+              "E4",
+              2,
+              3
+            ],
+            [
+              "F4",
+              1,
+              4
+            ],
+            [
+              "D4",
+              1,
+              2
+            ],
+            [
+              "D4",
+              2,
+              2
+            ],
+            [
+              "C4",
+              1,
+              1
+            ],
+            [
+              "D4",
+              1,
+              2
+            ],
+            [
+              "E4",
+              1,
+              3
+            ],
+            [
+              "F4",
+              1,
+              4
+            ],
+            [
+              "G4",
+              1,
+              5
+            ],
+            [
+              "G4",
+              1,
+              5
+            ],
+            [
+              "G4",
+              2,
+              5
+            ],
+            [
+              "G4",
+              1,
+              5
+            ],
+            [
+              "E4",
+              1,
+              3
+            ],
+            [
+              "E4",
+              2,
+              3
+            ],
+            [
+              "F4",
+              1,
+              4
+            ],
+            [
+              "D4",
+              1,
+              2
+            ],
+            [
+              "D4",
+              1,
+              2
+            ],
+            [
+              "C4",
+              1,
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "jingle-bells",
+      "title": "Jingle Bells (Opening)",
+      "composer": "James Lord Pierpont (adapted)",
+      "level": "Beginner",
+      "tempo": 100,
+      "description": "The familiar opening refrain, adapted for five fingers.",
+      "sections": [
+        {
+          "title": "The opening refrain",
+          "hand": "Right hand",
+          "thumb": "C4",
+          "instruction": "Place your right thumb (finger 1) on the key shown by the arrow.",
+          "notes": [
+            [
+              "E4",
+              1,
+              3
+            ],
+            [
+              "E4",
+              1,
+              3
+            ],
+            [
+              "E4",
+              2,
+              3
+            ],
+            [
+              "E4",
+              1,
+              3
+            ],
+            [
+              "E4",
+              1,
+              3
+            ],
+            [
+              "E4",
+              2,
+              3
+            ],
+            [
+              "E4",
+              1,
+              3
+            ],
+            [
+              "G4",
+              1,
+              5
+            ],
+            [
+              "C4",
+              1,
+              1
+            ],
+            [
+              "D4",
+              1,
+              2
+            ],
+            [
+              "E4",
+              4,
+              3
+            ]
+          ]
+        }
       ]
     }
   ]
