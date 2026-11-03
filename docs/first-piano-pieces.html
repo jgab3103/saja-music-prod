@@ -75,14 +75,14 @@ small{color:#666}.error{color:#a00}
 <footer class="footer"><div>SAJA MUSIC · Free and open music education</div></footer>
 <script>
 const compositions=[
- {title:'1. Morning Light',description:'A quiet echo: repeat each little idea before moving on.',rh:[['c','c','d','d'],['c','c','d','d'],['e','e','d','d'],['c','c','c','c'],['d','d','e','e'],['d','d','e','e'],['d','d','c','c'],['c','c','c','c']],lh:['c','c','c','c','c','c','c','c']},
- {title:'2. Midday Stillness',description:'A gentle melody over a steady low C, with familiar patterns to build confidence.',rh:[['e','e','e','e'],['e','e','e','e'],['d','d','d','d'],['d','d','d','d'],['e','e','d','d'],['e','e','d','d'],['c','c','c','c'],['c','c','c','c']],lh:['c','c','c','c','c','c','c','c']},
- {title:'3. Afternoon Hush',description:'The bass begins to move while the melody stays gentle and repetitive.',rh:[['d','d','e','e'],['d','d','e','e'],['f','f','e','e'],['f','f','e','e'],['d','d','c','c'],['d','d','c','c'],['c','c','d','d'],['c','c','c','c']],lh:['c','c','f','f','g','g','c','c']},
- {title:'4. Dusk',description:'The day grows quiet, with soft repeated notes and gentle steps.',rh:[['e','e','e','e'],['e','e','e','e'],['d','d','c','c'],['d','d','c','c'],['e','e','f','f'],['e','e','f','f'],['d','d','c','c'],['c','c','c','c']],lh:['c','c','g','g','f','f','g','c']},
- {title:'5. Late at Night',description:'A peaceful night-time lullaby with a returning melody.',rh:[['g','g','e','e'],['g','g','e','e'],['f','f','d','d'],['e','e','e','e'],['e','e','d','d'],['e','e','d','d'],['d','d','c','c'],['c','c','c','c']],lh:['c','c','g','c','f','f','g','c']},
- {title:'6. First Light',description:'A new day begins: the melody rises and falls gently by step.',rh:[['c','d','e','f'],['e','d','c','d'],['e','f','g','f'],['e','d','c','c'],['d','e','f','g'],['f','e','d','c'],['d','e','d','c'],['c','c','c','c']],lh:['c','c','f','c','g','f','g','c']},
- {title:'7. Afternoon Breeze',description:'Follow the little waves of notes, moving mostly one step at a time.',rh:[['e','f','g','f'],['e','d','c','d'],['e','d','e','f'],['g','f','e','d'],['c','d','e','f'],['g','f','e','d'],['e','d','c','d'],['c','c','c','c']],lh:['c','g','f','g','c','f','g','c']},
- {title:'8. Moonrise',description:'A soft, flowing night melody with gentle rising and falling phrases.',rh:[['g','f','e','d'],['c','d','e','f'],['g','f','e','f'],['e','d','c','c'],['c','d','e','f'],['g','f','e','d'],['e','d','c','d'],['c','c','c','c']],lh:['c','f','g','c','f','g','g','c']}
+ {title:'1. Morning Light',description:'A quiet echo: repeat each little idea before moving on.',rh:[['c','c','d','d'],['c','c','d','d'],['e','e','d','d'],['c','c','c','c'],['e','e','f','f'],['e','e','f','f'],['e','e','d','d'],['c']],lh:['c','c','c','c','c','c','c','c']},
+ {title:'2. Midday Stillness',description:'A gentle melody over a steady low C, with familiar patterns to build confidence.',rh:[['e','e','e','e'],['e','e','e','e'],['d','d','d','d'],['d','d','d','d'],['e','e','d','d'],['e','e','d','d'],['c','c','c','c'],['c']],lh:['c','c','c','c','c','c','c','c']},
+ {title:'3. Afternoon Hush',description:'The bass begins to move while the melody stays gentle and repetitive.',rh:[['e','e','d','d'],['e','e','d','d'],['f','f','e','e'],['f','f','e','e'],['d','d','c','c'],['d','d','c','c'],['c','c','d','d'],['c']],lh:['c','c','g','g','g','g','c','c']},
+ {title:'4. Dusk',description:'The day grows quiet, with soft repeated notes and gentle steps.',rh:[['e','e','e','e'],['e','e','e','e'],['d','d','c','c'],['d','d','c','c'],['e','e','f','f'],['e','e','f','f'],['d','d','c','c'],['c']],lh:['c','c','g','g','g','g','g','c']},
+ {title:'5. Late at Night',description:'A peaceful night-time lullaby with a returning melody.',rh:[['g','g','e','e'],['g','g','e','e'],['f','f','d','d'],['e','e','e','e'],['e','e','d','d'],['e','e','d','d'],['d','d','c','c'],['c']],lh:['c','c','g','c','g','g','g','c']},
+ {title:'6. First Light',description:'A new day begins: the melody rises and falls gently by step.',rh:[['c','d','e','f'],['e','d','c','d'],['e','f','g','f'],['e','d','c','c'],['d','e','f','g'],['f','e','d','c'],['d','e','d','c'],['c']],lh:['c','c','g','c','g','g','g','c']},
+ {title:'7. Afternoon Breeze',description:'Follow the little waves of notes, moving mostly one step at a time.',rh:[['e','f','g','f'],['e','d','c','d'],['e','d','e','f'],['g','f','e','d'],['c','d','e','f'],['g','f','e','d'],['e','d','c','d'],['c']],lh:['c','g','g','g','c','g','g','c']},
+ {title:'8. Moonrise',description:'A soft, flowing night melody with gentle rising and falling phrases.',rh:[['g','f','e','d'],['c','d','e','f'],['g','f','e','f'],['e','d','c','c'],['c','d','e','f'],['g','f','e','d'],['e','d','c','d'],['c']],lh:['c','g','g','c','g','g','g','c']}
 ];
 function render(){
  const host=document.getElementById('pieces');host.innerHTML='';
@@ -94,24 +94,24 @@ function render(){
   section.querySelector('button').addEventListener('click',()=>printPiece(index));host.appendChild(section);
   const el=section.querySelector('.score');
   try{
-   const width=1010,height=485,renderer=new VF.Renderer(el,VF.Renderer.Backends.SVG);renderer.resize(width,height);
+   const width=1010,height=piece.rh.length>8?705:485,renderer=new VF.Renderer(el,VF.Renderer.Backends.SVG);renderer.resize(width,height);
    const ctx=renderer.getContext(),staveWidth=240,startX=20,gap=0;let labelTargets=[];
-   for(let i=0;i<8;i++){
+   for(let i=0;i<piece.rh.length;i++){
     const row=Math.floor(i/4),col=i%4,x=startX+col*(staveWidth+gap),top=38+row*218;
     const upper=new VF.Stave(x,top,staveWidth),lower=new VF.Stave(x,top+94,staveWidth);
-    if(col===3){upper.setEndBarType(i===7?VF.Barline.type.END:VF.Barline.type.SINGLE);lower.setEndBarType(i===7?VF.Barline.type.END:VF.Barline.type.SINGLE);}
+    if(col===3){upper.setEndBarType(i===piece.rh.length-1?VF.Barline.type.END:VF.Barline.type.SINGLE);lower.setEndBarType(i===piece.rh.length-1?VF.Barline.type.END:VF.Barline.type.SINGLE);}
     if(col>0){upper.setBegBarType(VF.Barline.type.NONE);lower.setBegBarType(VF.Barline.type.NONE);}
     if(col===0){upper.addClef('treble').addTimeSignature('4/4');lower.addClef('bass').addTimeSignature('4/4');}
     upper.setContext(ctx).draw();lower.setContext(ctx).draw();
-    new VF.StaveConnector(upper,lower).setType(i===7?VF.StaveConnector.type.BOLD_DOUBLE_RIGHT:VF.StaveConnector.type.SINGLE_RIGHT).setContext(ctx).draw();
+    new VF.StaveConnector(upper,lower).setType(i===piece.rh.length-1?VF.StaveConnector.type.BOLD_DOUBLE_RIGHT:VF.StaveConnector.type.SINGLE_RIGHT).setContext(ctx).draw();
     if(col===0){new VF.StaveConnector(upper,lower).setType(VF.StaveConnector.type.BRACE).setContext(ctx).draw();new VF.StaveConnector(upper,lower).setType(VF.StaveConnector.type.SINGLE_LEFT).setContext(ctx).draw();}
-    const rn=i===7?[new VF.StaveNote({clef:'treble',keys:['c/4'],duration:'w'})]:piece.rh[i].map(p=>new VF.StaveNote({clef:'treble',keys:[p+'/4'],duration:'q'}));
-    const ln=[new VF.StaveNote({clef:'bass',keys:[piece.lh[i]+'/3'],duration:'w'})];
+    const rn=piece.rh[i].map(p=>p==='rest'?new VF.StaveNote({clef:'treble',keys:['b/4'],duration:'wr'}):new VF.StaveNote({clef:'treble',keys:[p+'/4'],duration:piece.rh[i].length===1?'w':'q'}));
+    const ln=[piece.lh[i]==='rest'?new VF.StaveNote({clef:'bass',keys:['d/3'],duration:'wr'}):new VF.StaveNote({clef:'bass',keys:[piece.lh[i]+'/3'],duration:'w'})];
     const rv=new VF.Voice({num_beats:4,beat_value:4}).addTickables(rn),lv=new VF.Voice({num_beats:4,beat_value:4}).addTickables(ln);
     new VF.Formatter().joinVoices([rv]).format([rv],staveWidth-(col===0?95:30));
     new VF.Formatter().joinVoices([lv]).format([lv],staveWidth-(col===0?95:30));
     rv.draw(ctx,upper);lv.draw(ctx,lower);
-    for(const [notes,bass] of [[rn,false],[ln,true]])for(const n of notes){const key=n.getKeys()[0];labelTargets.push({note:n,letter:key[0].toUpperCase(),whole:n.getDuration()==='w',fingerY:bass?lower.getYForLine(4)+26:upper.getYForLine(0)-23,finger:String((bass?{c:5,d:4,e:3,f:2,g:1}:{c:1,d:2,e:3,f:4,g:5})[key[0]]),bass});}
+    for(const [notes,bass] of [[rn,false],[ln,true]])for(const n of notes){if(n.isRest())continue;const key=n.getKeys()[0];labelTargets.push({note:n,letter:key[0].toUpperCase(),whole:n.getDuration()==='w',fingerY:bass?lower.getYForLine(4)+26:upper.getYForLine(0)-23,finger:String((bass?{c:5,d:4,e:3,f:2,g:1}:{c:1,d:2,e:3,f:4,g:5})[key[0]]),bass});}
    }
    const svg=el.querySelector('svg'),ns='http://www.w3.org/2000/svg';
    for(const t of labelTargets){const ys=t.note.getYs();if(!ys||!ys.length)continue;const x=t.note.getAbsoluteX()+5,y=ys[0];
@@ -126,7 +126,7 @@ function printPiece(index){
  const piece=compositions[index],svg=document.querySelectorAll('.piece .score svg')[index];
  if(!svg){alert('The score has not rendered yet.');return;}
  const popup=window.open('','_blank');if(!popup){alert('Please allow pop-ups to print this piece.');return;}
- const cleanSvg=svg.cloneNode(true);cleanSvg.setAttribute('xmlns','http://www.w3.org/2000/svg');cleanSvg.setAttribute('width','1010');cleanSvg.setAttribute('height','485');cleanSvg.setAttribute('viewBox','0 0 1010 485');
+ const cleanSvg=svg.cloneNode(true);cleanSvg.setAttribute('xmlns','http://www.w3.org/2000/svg');cleanSvg.setAttribute('width','1010');const scoreHeight=piece.rh.length>8?705:485;cleanSvg.setAttribute('height',String(scoreHeight));cleanSvg.setAttribute('viewBox',`0 0 1010 ${scoreHeight}`);
  const esc=s=>s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  popup.document.open();popup.document.write(`<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>${esc(piece.title)} — SAJA Music</title><style>
  @page{size:A4 landscape;margin:12mm}*{box-sizing:border-box}html,body{margin:0;padding:0;background:white;color:#211c15;font-family:Arial,sans-serif}
