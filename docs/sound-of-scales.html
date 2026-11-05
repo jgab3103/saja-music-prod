@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="The Sound of Scales: an ambient listening lab exploring melodic movement above a C drone." />
 <meta name="author" content="SAJA Music" />
 <title>The Sound of Scales | SAJA Music</title>
 <link rel="icon" href="assets/favicon.ico" />
 <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
-<link href="https://fonts.googleapis.com/css?family=Nunito:300,400,500,600,700,800" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,500,600,700,800,900" rel="stylesheet" />
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 <link href="css/styles.css" rel="stylesheet" />
 <style>
 :root{--accent:#8B2E3C;--paper:#FAFAFA;--panel:#F4F1EB;--ink:#282420;--muted:#706761;--line:#ded6cf}
@@ -32,6 +33,14 @@ button:hover{filter:brightness(1.1)}
 button.secondary{background:transparent;color:inherit;border-color:#a99793}
 button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #b57d8c;outline-offset:3px}
 .controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:20px 0}
+.controls button{min-height:48px;display:inline-flex;align-items:center;justify-content:center}
+button.degree-toggle,button.bass-toggle{font-size:.9rem;font-weight:800}
+button.bass-toggle[aria-pressed="true"],button.degree-toggle[aria-pressed="true"]{background:#ead3db;color:#39282d;border-color:#ead3db}
+.degree-display{position:absolute;right:20px;top:50%;transform:translateY(-50%);min-width:112px;height:65px;padding:5px 10px;border:1px solid #bb95a4aa;border-radius:16px;background:#503b46dd;color:#ffebf1;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 24px #d4a9b829;z-index:1}
+.degree-display[hidden]{display:none}
+.degree-number{white-space:nowrap;font:400 1.45rem/1 'Varela Round',Nunito,sans-serif}
+.degree-caption{font-size:.57rem;text-transform:uppercase;letter-spacing:.12em;margin-top:4px;color:#e7cbd5}
+
 .visual{height:128px;display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0 5px;overflow:hidden;position:relative}
 .visual:before,.visual:after{content:'';position:absolute;inset:auto 0 50%;height:1px;background:#6b5a59;opacity:.35}
 .orb{width:24px;height:24px;flex:0 0 24px;border-radius:50%;background:#d8aaba;box-shadow:0 0 16px #d4a9b850;opacity:.3;transform:scale(.7);transition:transform .9s,opacity .8s,box-shadow .9s}
@@ -46,75 +55,360 @@ select{background:white;border:1px solid #c8bfb7;border-radius:8px;max-width:100
 input[type=range]{width:100%;accent-color:var(--accent);margin:12px 0 0;cursor:pointer}
 .grid2{display:grid;grid-template-columns:1.12fr .88fr;gap:20px}
 .movement{display:grid;gap:17px}
+.scale-info{margin-top:22px;padding:14px 17px;border-top:1px solid var(--line);background:#ffffff80;border-radius:0 0 10px 10px;color:var(--muted);font-size:.91rem;line-height:1.6}
+.scale-info strong{color:var(--accent)}
 .note{font-size:.9rem;border-left:3px solid var(--accent);padding:0 0 0 15px;margin-top:18px}
 .note p{margin:0}
 footer{font-size:.85rem;margin-top:35px;color:var(--muted)}
 a{color:var(--accent)}
 #status{font-size:.85rem}
-@media(max-width:680px){main{padding:30px 16px 65px}.panel{padding:19px}.fieldset,.grid2{grid-template-columns:1fr}.visual{gap:5px}.orb{width:17px;height:17px;flex-basis:17px}}
+/* Twelve-note chromatic palette: two rows of six, with muted and out-of-scale states. */
+.pitch-selector{margin:6px 0 0;max-width:650px}
+.pitch-selector-heading{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;color:#ead9d4;font-size:.86rem;font-weight:800;margin:0 0 9px}
+.pitch-selector-heading #noteSelectionStatus{font-weight:500;color:#c3adae;font-size:.77rem}
+.pitch-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:7px}
+button.pitch-key{min-width:0;padding:9px 3px;border:1px solid #b98699;background:#694354;color:#fff0f4;border-radius:8px;line-height:1.1;font-size:.86rem;font-weight:800;transition:background .2s,border-color .2s,opacity .2s}
+button.pitch-key[aria-pressed="false"]{background:#352d30;color:#ac9fa3;border-color:#65575b;opacity:.75;text-decoration:line-through}
+button.pitch-key:disabled{background:#292728;color:#70696b;border-color:#514849;opacity:.48;text-decoration:none;cursor:default}
+button.pitch-key.sounding:not(:disabled){box-shadow:0 0 0 2px #f5d3de,0 0 16px #d4a9b877}
+.pitch-help{font-size:.77rem;line-height:1.45;margin:9px 0 0;color:#c3adae!important}
+@media(max-width:680px){main{padding:30px 16px 65px}.panel{padding:19px}.fieldset,.grid2{grid-template-columns:1fr}.visual{gap:5px}.orb{width:17px;height:17px;flex-basis:17px}.degree-display{right:4px;min-width:92px;height:56px}.degree-number{font-size:1.18rem}}
 @media(prefers-reduced-motion:reduce){.orb{transition:none}}
+
+/* SAJA Music navigation and article design */
+html{scroll-behavior:smooth;background:var(--paper)}
+body{padding-top:80px;font-size:16.5px;line-height:1.75;color:#111}
+#mainNav,#mainNav.navbar-shrink{background:var(--paper)!important;border-bottom:1px solid rgba(0,0,0,.05);min-height:80px}
+#mainNav a{color:#111!important;text-decoration:none!important;border:0!important}
+#mainNav .container{display:flex;justify-content:space-between;align-items:center;min-height:80px;gap:15px}
+.nav-links{display:flex;gap:2.5rem;align-items:center}
+.nav-links a{border-bottom:none}
+.lab-article{max-width:990px;margin:0 auto;padding:60px 24px 100px}
+.back-link{display:inline-block;margin-bottom:24px;font-size:.95rem}
+.lab-article h1{font-family:'Varela Round',sans-serif;font-size:1.9rem;font-weight:500;line-height:1.35;margin:0 0 10px}
+.lab-article h2{font-family:'Varela Round',sans-serif;font-weight:500}
+.lab-article p{max-width:65ch}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(139,46,60,.35);transition:.2s}
+a:hover{color:#111;border-bottom-color:rgba(139,46,60,.75)}
+.footer{background:var(--paper);border-top:1px solid rgba(0,0,0,.06);padding:80px 30px;text-align:center;font-size:.95rem;color:rgba(0,0,0,.7);margin-top:0}
+.footer p{margin:5px auto 0;color:rgba(0,0,0,.6)}
+.raga-note p{margin-bottom:18px}
+.raga-note p:last-child{margin-bottom:0}
+@media(max-width:700px){.nav-links{gap:1.4rem;font-size:.95rem}.lab-article{padding:30px 16px 65px}.lab-article h1{font-size:1.55rem}}
 </style>
 </head>
 <body>
-<main>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" aria-label="Main navigation">
+  <div class="container px-4 px-lg-5">
+    <a class="navbar-brand" href="./index.html">SAJA MUSIC</a>
+    <div class="nav-links"><a href="./teaching.html">Discover</a><a href="./pathways.html">Learn</a><a href="./about.html">About</a></div>
+  </div>
+</nav>
+<main class="lab-article">
+  <!-- <a class="back-link" href="./pathways.html">← Learning pathways</a> -->
   <div class="eyebrow">SAJA Music · Listening Lab</div>
-  <h1>The Sound of Scales</h1>
+  <h1>Sound of Scales Lab</h1>
   <p class="lead">What does a scale <em>feel</em> like? Let melodies wander through its notes above a continuous C drone. Shift the balance between steps, thirds and fourths, and listen to how the character changes.</p>
 
   <section class="panel playpanel" aria-label="Playback">
     <div class="playtop"><div><div class="eyebrow">Ambient scale generator</div><h2 style="margin:7px 0">Listen without an ending</h2></div><span class="pill" id="status" role="status">Ready to play</span></div>
-    <div class="visual" id="visual" aria-hidden="true"></div>
+    <div class="visual" id="visual" aria-hidden="true"><div class="degree-display" id="degreeDisplay" hidden><span class="degree-number" id="degreeNumber">–</span><span class="degree-caption">Above C</span></div></div>
     <div class="now" id="now" aria-live="off">C drone · choose a scale and press Play</div>
-    <div class="controls"><button id="play" type="button">▶ Play</button><button id="new" type="button" class="secondary">New wandering path</button></div>
-    <p style="font-size:.85rem;margin:0">Audio begins only when you press Play. Headphones recommended.</p>
+    <div class="controls"><button id="play" type="button">▶ Play</button><button id="new" type="button" class="secondary">New wandering path</button><button id="showDegrees" type="button" class="secondary degree-toggle" aria-pressed="false" aria-controls="degreeDisplay">Show interval</button><button id="bassToggle" type="button" class="secondary bass-toggle" aria-pressed="false" title="Let the low C drone move through scale notes, returning to C after 3, 4, then 5 melody notes">Allow bass movement</button></div>
+    <div class="pitch-selector" aria-label="Choose which notes the melody can play">
+      <div class="pitch-selector-heading"><span>Notes above the C drone</span><span id="noteSelectionStatus" role="status">Select notes to mute</span></div>
+      <div class="pitch-grid" id="pitchGrid" role="group" aria-label="Twelve chromatic notes"></div>
+      <p class="pitch-help">Bright notes belong to the selected scale. Tap one to mute or restore it; grey notes are outside the selected scale. With bass movement off, the low C drone remains fixed; turn it on to let the bass roam and return to C in repeating 3-, 4- and 5-note phrases.</p>
+    </div>
+    <p style="font-size:.85rem;margin:12px 0 0">Audio begins only when you press Play. Headphones recommended.</p>
   </section>
 
   <div class="grid2">
-    <section class="panel"><h2>Choose the sound world</h2>
+    <section class="panel"><h2>Choose scale</h2>
       <div class="fieldset">
         <div class="field"><label for="scale">Scale</label><select id="scale">
-          <option value="major">C major · bright, open</option>
-          <option value="lydian">C Lydian · floating</option>
-          <option value="mixolydian">C Mixolydian · earthy</option>
-          <option value="dorian" selected>C Dorian · reflective</option>
-          <option value="minor">C natural minor · wistful</option>
-          <option value="phrygian">C Phrygian · shadowy</option>
-          <option value="pentatonic">C major pentatonic · spacious</option>
-          <option value="minorPent">C minor pentatonic · warm</option>
-          <option value="whole">C whole tone · weightless</option>
-        </select><small>Every scale is rooted on C so the drone stays the same.</small></div>
+          <optgroup label="Diatonic modes">
+            <option value="major">C Ionian (Major)</option>
+            <option value="dorian" selected>C Dorian</option>
+            <option value="phrygian">C Phrygian</option>
+            <option value="lydian">C Lydian</option>
+            <option value="mixolydian">C Mixolydian</option>
+            <option value="minor">C Aeolian (Natural Minor)</option>
+            <option value="locrian">C Locrian</option>
+          </optgroup>
+          <optgroup label="Harmonic minor modes">
+            <option value="harmMinor">C Harmonic Minor</option>
+            <option value="locrianNat6">C Locrian ♮6</option>
+            <option value="ionianSharp5">C Ionian ♯5</option>
+            <option value="dorianSharp4">C Dorian ♯4</option>
+            <option value="phrygianDom">C Phrygian Dominant (Spanish Phrygian)</option>
+            <option value="lydianSharp2">C Lydian ♯2</option>
+            <option value="superLocrianBB7">C Super Locrian ♭♭7</option>
+          </optgroup>
+          <optgroup label="Melodic minor modes">
+            <option value="melMinor">C Melodic Minor (Jazz)</option>
+            <option value="dorianFlat2">C Dorian ♭2</option>
+            <option value="lydianAug">C Lydian Augmented</option>
+            <option value="lydianDom">C Lydian Dominant</option>
+            <option value="mixoFlat6">C Mixolydian ♭6</option>
+            <option value="locrianNat2">C Locrian ♮2</option>
+            <option value="altered">C Altered (Super Locrian)</option>
+          </optgroup>
+          <optgroup label="Other seven-note scales">
+            <option value="harmMajor">C Harmonic Major</option>
+            <option value="doubleHarmMajor">C Double Harmonic Major (Byzantine)</option>
+            <option value="hungMinor">C Hungarian Minor</option>
+            <option value="hungMajor">C Hungarian Major</option>
+            <option value="neapMinor">C Neapolitan Minor</option>
+            <option value="neapMajor">C Neapolitan Major</option>
+            <option value="romanianMinor">C Romanian Minor</option>
+            <option value="enigmatic">C Enigmatic</option>
+          </optgroup>
+          <optgroup label="Pentatonic and blues scales">
+            <option value="pentatonic">C Major Pentatonic</option>
+            <option value="minorPent">C Minor Pentatonic</option>
+            <option value="egyptian">C Egyptian Pentatonic</option>
+            <option value="hirajoshi">C Hirajoshi</option>
+            <option value="insen">C Insen</option>
+            <option value="iwato">C Iwato</option>
+            <option value="kumoi">C Kumoi</option>
+            <option value="ritsusen">C Ritsusen</option>
+            <option value="yo">C Yo</option>
+            <option value="minorBlues">C Minor Blues</option>
+            <option value="majorBlues">C Major Blues</option>
+          </optgroup>
+          <optgroup label="Symmetrical and synthetic scales">
+            <option value="chromatic">C Chromatic</option>
+            <option value="whole">C Whole Tone</option>
+            <option value="dimWH">C Diminished (Whole–Half)</option>
+            <option value="dimHW">C Diminished (Half–Whole)</option>
+            <option value="augmented">C Augmented</option>
+            <option value="prometheus">C Prometheus</option>
+            <option value="tritone">C Tritone</option>
+            <option value="messiaen3">C Messiaen Mode 3</option>
+          </optgroup>
+          <optgroup label="Indian classical · raga pitch collections">
+            <option value="ragaYaman">C Yaman</option>
+            <option value="ragaBhairav">C Bhairav</option>
+            <option value="ragaBhairavi">C Bhairavi</option>
+            <option value="ragaKafi">C Kafi</option>
+            <option value="ragaKhamaj">C Khamaj</option>
+            <option value="ragaTodi">C Todi (Hindustani)</option>
+            <option value="ragaMarwa">C Marwa</option>
+            <option value="ragaPurvi">C Purvi</option>
+            <option value="ragaCharukesi">C Charukesi</option>
+            <option value="ragaKiravani">C Kiravani</option>
+            <option value="ragaHamsadhwani">C Hamsadhwani</option>
+            <option value="ragaMohanam">C Mohanam</option>
+            <option value="ragaHindolam">C Hindolam</option>
+            <option value="ragaRevati">C Revati</option>
+            <option value="ragaShivaranjani">C Shivaranjani</option>
+            <option value="ragaAbhogi">C Abhogi</option>
+          </optgroup>
+        </select><small>Every collection begins on C. Some names have variant forms; these are equal-tempered pitch sets, not complete traditional performance systems.</small></div>
         <div class="field"><label for="tone">Instrument colour</label><select id="tone"><option value="glass">Soft glass</option><option value="warm" selected>Warm pad</option><option value="breath">Air and breath</option></select><small>A slowly blooming, synthesised sound.</small></div>
         <div class="field"><label for="pace">Time between notes <output id="paceVal">3.5 s</output></label><input id="pace" type="range" min="1.2" max="8" step="0.1" value="3.5" /><small>Slower notes leave more space for resonance.</small></div>
-        <div class="field"><label for="space">Reverb <output id="spaceVal">65%</output></label><input id="space" type="range" min="0" max="100" step="1" value="65" /><small>How much the notes dissolve into the room.</small></div>
+        <div class="field"><label for="space">Reverb <output id="spaceVal">65%</output></label><input id="space" type="range" min="0" max="150" step="1" value="65" /><small>How much the notes dissolve into the room. Above 100% is extra spacious.</small></div>
         <div class="field"><label for="drone">Drone level <output id="droneVal">35%</output></label><input id="drone" type="range" min="0" max="100" step="1" value="35" /><small>A soft, sustained C beneath everything.</small></div>
         <div class="field"><label for="volume">Overall volume <output id="volumeVal">55%</output></label><input id="volume" type="range" min="0" max="100" step="1" value="55" /><small>Start quietly and adjust to taste.</small></div>
       </div>
+      <div class="scale-info" id="scaleInfo" role="status" aria-live="polite"></div>
     </section>
     <section class="panel"><h2>How should the melody move?</h2><div class="movement">
       <div class="field"><label for="steps">By steps <output id="stepsVal">60%</output></label><input id="steps" type="range" min="0" max="100" value="60" /><small>To a neighbouring scale note: up or down.</small></div>
       <div class="field"><label for="thirds">By thirds <output id="thirdsVal">25%</output></label><input id="thirds" type="range" min="0" max="100" value="25" /><small>Skip one scale note, creating a gentle leap.</small></div>
       <div class="field"><label for="fourths">By fourths <output id="fourthsVal">15%</output></label><input id="fourths" type="range" min="0" max="100" value="15" /><small>Leap three scale positions: wider and more open.</small></div>
       <div class="field"><label for="register">Register <output id="registerVal">Mid–high</output></label><input id="register" type="range" min="0" max="2" step="1" value="1" /><small>Change the region where the melody wanders.</small></div>
-    </div><div class="note"><p>These are <strong>relative weights</strong>, not fixed percentages. For example, steps 60, thirds 25 and fourths 15 produces roughly a 60/25/15 blend. Set any slider to zero to exclude that movement.</p></div></section>
+    </div><div class="note"><p>These are <strong>relative weights</strong>, not fixed percentages. With the default settings, steps, thirds and fourths make a 60/25/15 blend. Set a slider to zero to exclude that movement. The optional interval display shows each sounding pitch relative to the C drone, including enharmonic equivalents.</p></div></section>
   </div>
-  <section class="panel"><h2>A small listening experiment</h2><p>Begin with only stepwise movement. Then raise the thirds and listen for a more arpeggiated shape. Add fourths and notice the openness they introduce. Finally, change modes while the C drone continues: the root stays fixed, but the sense of colour shifts around it.</p><p>There is no score to follow and no correct answer. This is an exercise in hearing the character of a scale through repeated, evolving musical gestures.</p></section>
-  <footer>SAJA Music · Free music learning resources · <a href="./pathways.html">Learning pathways</a></footer>
+  <section class="panel raga-note" aria-label="About the scales"><h2>About the included scales</h2>
+    <p>The Sound of Scales Lab is intended to be an exploratory listening resource, rather than an authoritative reference on scales, modes or musical traditions.</p>
+    <p>There is extensive and fascinating scholarship on the naming, spelling, classification, tuning and temperament of scales across different historical periods and musical cultures. Even the concept of a scale, and how it is understood and used, varies considerably between traditions.</p>
+    <p>In this lab, we have represented a wide variety of pitch collections using twelve-tone equal temperament, with C as a common reference point. Our aim is to provide different contexts for listening to different groupings of the twelve chromatic tones, exploring how their relationships create different musical colours and experiences.</p>
+    <p>This distinction is particularly important for the Indian classical pitch collections included here. A <em>raga</em> is much more than a collection of notes. Its identity can involve characteristic melodic phrases, ascending and descending patterns, ornamentation, tuning and conventions of performance. The simplified pitch collections presented here do not attempt to create music in these traditions, but does seek to introduce listeners to some of the amazing characteristics that can be found in them.</p>
+    <p>We encourage listeners to treat the scale names as starting points for exploration, rather than definitive classifications, and to investigate the rich musical histories and traditions associated with them.</p>
+  </section>
+  <section class="panel"><h2>A small listening experiment</h2><p>Begin with only stepwise movement. Then raise the thirds and listen for a more arpeggiated shape. Add fourths to hear how wider leaps change the atmosphere. Try muting different scale notes while the C drone holds steady. Finally, change modes while the C drone continues: the root stays fixed, but the sense of colour shifts around it.</p><p>There is no score to follow and no correct answer. This is an exercise in hearing the character of a scale through repeated, evolving musical gestures.</p></section>
 </main>
+<footer class="footer"><div>SAJA MUSIC</div><p>Free music learning resources</p></footer>
 <script>
 (() => {
 'use strict';
 const $ = id => document.getElementById(id);
 const scales = {
- major:[0,2,4,5,7,9,11],lydian:[0,2,4,6,7,9,11],mixolydian:[0,2,4,5,7,9,10],
- dorian:[0,2,3,5,7,9,10],minor:[0,2,3,5,7,8,10],phrygian:[0,1,3,5,7,8,10],
- pentatonic:[0,2,4,7,9],minorPent:[0,3,5,7,10],whole:[0,2,4,6,8,10]
+ ragaYaman:[0,2,4,6,7,9,11],
+ ragaBhairav:[0,1,4,5,7,8,11],
+ ragaBhairavi:[0,1,3,5,7,8,10],
+ ragaKafi:[0,2,3,5,7,9,10],
+ ragaKhamaj:[0,2,4,5,7,9,10],
+ ragaTodi:[0,1,3,6,7,8,11],
+ ragaMarwa:[0,1,4,6,9,11],
+ ragaPurvi:[0,1,4,6,7,8,11],
+ ragaCharukesi:[0,2,4,5,7,8,10],
+ ragaKiravani:[0,2,3,5,7,8,11],
+ ragaHamsadhwani:[0,2,4,7,11],
+ ragaMohanam:[0,2,4,7,9],
+ ragaHindolam:[0,3,5,8,10],
+ ragaRevati:[0,1,5,7,10],
+ ragaShivaranjani:[0,2,3,7,9],
+ ragaAbhogi:[0,2,3,5,9],
+ chromatic:[0,1,2,3,4,5,6,7,8,9,10,11],
+ major:[0,2,4,5,7,9,11],
+ dorian:[0,2,3,5,7,9,10],
+ phrygian:[0,1,3,5,7,8,10],
+ lydian:[0,2,4,6,7,9,11],
+ mixolydian:[0,2,4,5,7,9,10],
+ minor:[0,2,3,5,7,8,10],
+ locrian:[0,1,3,5,6,8,10],
+ harmMinor:[0,2,3,5,7,8,11],
+ locrianNat6:[0,1,3,5,6,9,10],
+ ionianSharp5:[0,2,4,5,8,9,11],
+ dorianSharp4:[0,2,3,6,7,9,10],
+ phrygianDom:[0,1,4,5,7,8,10],
+ lydianSharp2:[0,3,4,6,7,9,11],
+ superLocrianBB7:[0,1,3,4,6,8,9],
+ melMinor:[0,2,3,5,7,9,11],
+ dorianFlat2:[0,1,3,5,7,9,10],
+ lydianAug:[0,2,4,6,8,9,11],
+ lydianDom:[0,2,4,6,7,9,10],
+ mixoFlat6:[0,2,4,5,7,8,10],
+ locrianNat2:[0,2,3,5,6,8,10],
+ altered:[0,1,3,4,6,8,10],
+ harmMajor:[0,2,4,5,7,8,11],
+ doubleHarmMajor:[0,1,4,5,7,8,11],
+ hungMinor:[0,2,3,6,7,8,11],
+ hungMajor:[0,3,4,6,7,9,10],
+ neapMinor:[0,1,3,5,7,8,11],
+ neapMajor:[0,1,3,5,7,9,11],
+ romanianMinor:[0,2,3,6,7,9,10],
+ enigmatic:[0,1,4,6,8,10,11],
+ pentatonic:[0,2,4,7,9],
+ minorPent:[0,3,5,7,10],
+ egyptian:[0,2,5,7,10],
+ hirajoshi:[0,2,3,7,8],
+ insen:[0,1,5,7,10],
+ iwato:[0,1,5,6,10],
+ kumoi:[0,2,3,7,9],
+ ritsusen:[0,2,5,7,9],
+ yo:[0,2,5,7,9],
+ minorBlues:[0,3,5,6,7,10],
+ majorBlues:[0,2,3,4,7,9],
+ whole:[0,2,4,6,8,10],
+ dimWH:[0,2,3,5,6,8,9,11],
+ dimHW:[0,1,3,4,6,7,9,10],
+ augmented:[0,3,4,7,8,11],
+ prometheus:[0,2,4,6,9,10],
+ tritone:[0,1,4,6,7,10],
+ messiaen3:[0,2,3,4,6,7,8,10,11]
 };
+const scaleDescriptions = {
+ "ragaYaman": "The pitch collection used in Yaman: a major-type collection with a raised 4th (tivra Ma).",
+ "ragaBhairav": "The pitch collection used in Bhairav: lowered 2nd and 6th against a major 3rd and 7th.",
+ "ragaBhairavi": "The pitch collection associated with Bhairavi: lowered 2nd, 3rd, 6th and 7th.",
+ "ragaKafi": "The Kafi pitch collection, corresponding to the Dorian interval pattern.",
+ "ragaKhamaj": "The Khamaj pitch collection, with a major 3rd and lowered 7th; performances may use other nuances.",
+ "ragaTodi": "A Hindustani Todi pitch collection: lowered 2nd, 3rd and 6th, with raised 4th and natural 7th.",
+ "ragaMarwa": "A six-note Marwa pitch collection with lowered 2nd and raised 4th; the 5th (Pa) is omitted.",
+ "ragaPurvi": "The Purvi pitch collection: lowered 2nd and 6th with raised 4th.",
+ "ragaCharukesi": "A Carnatic parent-scale collection with a major 3rd, lowered 6th and lowered 7th.",
+ "ragaKiravani": "The Carnatic Kiravani parent-scale collection; matches harmonic minor in equal temperament.",
+ "ragaHamsadhwani": "A five-note collection with major 2nd and 3rd, perfect 5th and major 7th.",
+ "ragaMohanam": "A five-note collection corresponding to major pentatonic in equal temperament.",
+ "ragaHindolam": "A five-note collection with minor 3rd, perfect 4th, minor 6th and minor 7th.",
+ "ragaRevati": "A five-note collection with lowered 2nd and 7th, perfect 4th and 5th.",
+ "ragaShivaranjani": "A five-note collection with major 2nd, minor 3rd, perfect 5th and major 6th.",
+ "ragaAbhogi": "A five-note collection with major 2nd and 6th, minor 3rd and perfect 4th.",
+ "chromatic": "All twelve semitones of the equal-tempered octave, moving above a C tonal centre.",
+ "major": "The 1st mode of the major scale.",
+ "dorian": "The 2nd mode of the major scale.",
+ "phrygian": "The 3rd mode of the major scale.",
+ "lydian": "The 4th mode of the major scale.",
+ "mixolydian": "The 5th mode of the major scale.",
+ "minor": "The 6th mode of the major scale.",
+ "locrian": "The 7th mode of the major scale.",
+ "harmMinor": "The parent harmonic minor scale.",
+ "locrianNat6": "The 2nd mode of harmonic minor.",
+ "ionianSharp5": "The 3rd mode of harmonic minor.",
+ "dorianSharp4": "The 4th mode of harmonic minor.",
+ "phrygianDom": "The 5th mode of harmonic minor.",
+ "lydianSharp2": "The 6th mode of harmonic minor.",
+ "superLocrianBB7": "The 7th mode of harmonic minor.",
+ "melMinor": "The parent ascending melodic minor scale, played in both directions.",
+ "dorianFlat2": "The 2nd mode of melodic minor.",
+ "lydianAug": "The 3rd mode of melodic minor.",
+ "lydianDom": "The 4th mode of melodic minor.",
+ "mixoFlat6": "The 5th mode of melodic minor.",
+ "locrianNat2": "The 6th mode of melodic minor.",
+ "altered": "The 7th mode of melodic minor.",
+ "harmMajor": "A major scale with a lowered 6th.",
+ "doubleHarmMajor": "A major-type scale with lowered 2nd and 6th.",
+ "hungMinor": "A minor scale with raised 4th and 7th.",
+ "hungMajor": "A seven-note scale with both minor and major 3rds.",
+ "neapMinor": "A harmonic minor scale with a lowered 2nd.",
+ "neapMajor": "A seven-note collection with a lowered 2nd and 3rd, and major 6th and 7th.",
+ "romanianMinor": "A Dorian-type scale with a raised 4th.",
+ "enigmatic": "An unusual seven-note collection with close semitone clusters.",
+ "pentatonic": "A five-note major collection without the 4th or 7th.",
+ "minorPent": "A five-note minor collection without the 2nd or 6th.",
+ "egyptian": "A five-note collection built from tones and minor thirds.",
+ "hirajoshi": "A five-note collection containing semitones.",
+ "insen": "A five-note collection with a flattened 2nd.",
+ "iwato": "A five-note collection with closely spaced tones.",
+ "kumoi": "A five-note collection with contrasting wide and narrow intervals.",
+ "ritsusen": "A five-note anhemitonic collection.",
+ "yo": "A five-note collection without semitones.",
+ "minorBlues": "Minor pentatonic with an added flattened 5th.",
+ "majorBlues": "Major pentatonic with an added flattened 3rd.",
+ "whole": "A six-note symmetrical scale built entirely from whole tones.",
+ "dimWH": "An eight-note scale alternating whole and half steps.",
+ "dimHW": "An eight-note scale alternating half and whole steps.",
+ "augmented": "A symmetrical six-note scale alternating minor thirds and semitones.",
+ "prometheus": "A six-note synthetic scale associated with Scriabin.",
+ "tritone": "A symmetrical six-note collection organised around tritones.",
+ "messiaen3": "A nine-note symmetrical scale: Messiaen’s third mode of limited transposition."
+};
+function updateScaleInfo(){
+ const selected=$('scale').selectedOptions[0];
+ $('scaleInfo').textContent=scaleDescriptions[selected.value] || 'A scale rooted on C.';
+}
 const names=['C','C♯','D','E♭','E','F','F♯','G','A♭','A','B♭','B'];
+const activePitches=new Set(); // semitone offsets above C (0–11)
+const pitchButtons=[];
+for(let pc=0;pc<12;pc++){
+ const b=document.createElement('button');b.type='button';b.className='pitch-key';
+ b.textContent=names[pc];b.setAttribute('aria-label',names[pc]);b.dataset.pitch=pc;
+ b.addEventListener('click',()=>{
+  if(!scales[$('scale').value].includes(pc))return;
+  if(activePitches.has(pc))activePitches.delete(pc);else activePitches.add(pc);
+  updatePitchButtons();
+  // Future notes use the new selection. Existing reverb tails fade naturally.
+  generation++;if(ctx&&playing)nextAt=ctx.currentTime+.025;
+ });
+ $('pitchGrid').appendChild(b);pitchButtons.push(b);
+}
+function resetPitchSelection(){activePitches.clear();for(const pc of scales[$('scale').value])activePitches.add(pc);updatePitchButtons()}
+function updatePitchButtons(sounding=null){
+ const scale=scales[$('scale').value];
+ for(let pc=0;pc<12;pc++){
+  const b=pitchButtons[pc],inScale=scale.includes(pc),enabled=activePitches.has(pc);
+  b.disabled=!inScale;b.setAttribute('aria-pressed',String(inScale&&enabled));
+  b.classList.toggle('sounding',pc===sounding&&enabled);
+  b.title=!inScale?'Not in this scale':enabled?'Mute '+names[pc]:'Restore '+names[pc];
+ }
+ $('noteSelectionStatus').textContent=activePitches.size+' of '+scale.length+' notes enabled';
+}
+
 let ctx, master, wet, dry, droneGain, droneNodes=[], delay, delayFeedback, delayFilter;
-let playing=false, timer=null, nextAt=0, degree=0, generation=0, scheduled=[], orbIndex=0;
+let playing=false, timer=null, nextAt=0, degree=0, generation=0, scheduled=[], orbIndex=0, showDegrees=false;
+// Bass movement is optional: each phrase lasts 3, then 4, then 5 melodic notes.
+// The last note of each phrase returns the bass to C2, regardless of the scale.
+let bassEnabled=false, bassPhrase=0, bassNoteInPhrase=0, bassDegree=0;
+const bassPhraseLengths=[3,4,5];
+function resetBassPhrase(){bassPhrase=0;bassNoteInPhrase=0;bassDegree=0}
+
 const orbCount=15;
 for(let i=0;i<orbCount;i++){let o=document.createElement('span');o.className='orb';$('visual').appendChild(o)}
-const orbs=[...$('visual').children];
+const orbs=[...$('visual').querySelectorAll('.orb')];
 const val = id => Number($(id).value);
 const clamp=(v,lo,hi)=>Math.max(lo,Math.min(hi,v));
 const freq=midi=>440*Math.pow(2,(midi-69)/12);
@@ -125,7 +419,7 @@ function updateLabels(){
  $('registerVal').textContent=['Low–mid','Mid–high','High–floating'][val('register')];
 }
 for(const id of ['steps','thirds','fourths','space','drone','volume','pace','register'])$(id).addEventListener('input',()=>{updateLabels();liveSettings()});
-$('scale').addEventListener('change',()=>{degree=0;generation++;nextAt=ctx?ctx.currentTime+.15:0;scheduled.forEach(v=>{try{v.stop()}catch(e){}});scheduled=[];if(playing)refreshDrone()});
+$('scale').addEventListener('change',()=>{updateScaleInfo();resetPitchSelection();resetBassPhrase();if(ctx&&playing)setBassPitch(36,ctx.currentTime+.02);degree=0;$('degreeNumber').textContent='–';generation++;nextAt=ctx?ctx.currentTime+.15:0;scheduled.forEach(v=>{try{v.stop()}catch(e){}});scheduled=[];if(playing)refreshDrone()});
 $('tone').addEventListener('change',()=>{if(playing)refreshDrone()});
 function impulse(seconds=5,decay=2.4){let len=Math.floor(ctx.sampleRate*seconds),buffer=ctx.createBuffer(2,len,ctx.sampleRate);
  for(let ch=0;ch<2;ch++){let data=buffer.getChannelData(ch);for(let i=0;i<len;i++){let t=i/len;data[i]=(Math.random()*2-1)*Math.pow(1-t,decay)*(1-.32*t)}}return buffer}
@@ -149,7 +443,7 @@ function setup(){
 function liveSettings(){if(!ctx)return;const t=ctx.currentTime;
  master.gain.setTargetAtTime(val('volume')/100*.7,t,.08);
  wet.gain.setTargetAtTime(val('space')/100*.84,t,.1);
- dry.gain.setTargetAtTime(.8-val('space')/100*.34,t,.1);
+ dry.gain.setTargetAtTime(Math.max(.3,.8-val('space')/100*.34),t,.1);
  if(droneGain)droneGain.gain.setTargetAtTime(playing?val('drone')/100*.16:0,t,.2);
 }
 function oscill(freqHz,type,at,dest,gainAmount,detune=0){
@@ -160,28 +454,91 @@ function startDrone(){
  if(!ctx)return;let t=ctx.currentTime+.025;droneGain.gain.cancelScheduledValues(t);droneGain.gain.setTargetAtTime(val('drone')/100*.16,t,1);
  const filt=ctx.createBiquadFilter();filt.type='lowpass';filt.frequency.value=460;filt.Q.value=.3;filt.connect(droneGain);
  const voices=[[65.406,'sine',.8,-4],[130.813,'triangle',.22,3],[196,'sine',.12,0],[261.626,'sine',.07,2]];
+ // Store ratios so the entire low drone can follow a single bass note smoothly.
+ const base=65.406;
  const nodes=voices.map(([f,shape,level,det])=>oscill(f,shape,t,filt,level,det).o);
- droneNodes.push({nodes,filt});
+ droneNodes.push({nodes,filt,ratios:voices.map(v=>v[0]/base)});
+ if(bassEnabled&&bassDegree!==0)setBassPitch(bassMidiForDegree(bassDegree),t+.05);
 }
 function refreshDrone(){
  if(!ctx||!playing)return;const t=ctx.currentTime;
  droneGain.gain.setTargetAtTime(0,t,.06);
  setTimeout(()=>{if(!playing)return;droneNodes.forEach(d=>{d.nodes.forEach(o=>{try{o.stop()}catch(e){}});d.filt.disconnect()});droneNodes=[];startDrone()},300);
 }
+// Low-register bass notes are drawn from the selected C scale, not the
+// melody's mute palette. The root is always available as the tonal anchor.
+function bassMidiForDegree(d){
+ const sc=scales[$('scale').value],n=sc.length;
+ return 36+12*Math.floor(d/n)+sc[((d%n)+n)%n];
+}
+function setBassPitch(midi,at){
+ if(!ctx)return;
+ const target=freq(midi);
+ for(const voice of droneNodes){
+  voice.nodes.forEach((o,i)=>{
+   const param=o.frequency;
+   param.cancelScheduledValues(at);
+   param.setTargetAtTime(target*voice.ratios[i],at,.25);
+  });
+ }
+}
+function nextBassMidi(){
+ if(!bassEnabled)return 36;
+ const length=bassPhraseLengths[bassPhrase];
+ if(bassNoteInPhrase===length-1){
+  bassDegree=0;
+  bassNoteInPhrase=0;
+  bassPhrase=(bassPhrase+1)%bassPhraseLengths.length;
+ }else{
+  const n=scales[$('scale').value].length;
+  const candidates=[-2,-1,1,2].map(delta=>bassDegree+delta)
+   .filter(d=>d>=0&&d<=Math.min(n-1,5));
+  bassDegree=candidates.length?candidates[Math.floor(Math.random()*candidates.length)]:1;
+  bassNoteInPhrase++;
+ }
+ return bassMidiForDegree(bassDegree);
+}
 function chooseMovement(){const w=[val('steps'),val('thirds'),val('fourths')],sum=w.reduce((a,b)=>a+b,0);
  if(!sum)return 0;
- let r=Math.random()*sum;for(let i=0;i<3;i++){r-=w[i];if(r<0)return [1,2,3][i]}return 1;
+ let r=Math.random()*sum;for(let i=0;i<w.length;i++){r-=w[i];if(r<0)return i+1}return 1;
 }
 function pickNext(){
- let scale=scales[$('scale').value],len=scale.length,reg=val('register'),range=[[ -len, len],[0,2*len],[len,3*len]][reg];
- let distance=chooseMovement();if(!distance)return degree;
- let choices=[];for(const dir of [-1,1]){let d=degree+dir*distance;
- if(d>=range[0]&&d<=range[1])choices.push(d)}
- if(!choices.length)return clamp(degree,range[0],range[1]);
- if(choices.length===2){let midpoint=(range[0]+range[1])/2;let pDown=clamp(.5+(degree-midpoint)/(range[1]-range[0])*.5,.22,.78);return Math.random()<pDown?choices[0]:choices[1]}
- return choices[0];
+ const scale=scales[$('scale').value],len=scale.length,reg=val('register');
+ const range=[[-len,len],[0,2*len],[len,3*len]][reg];
+ const available=[];
+ for(let d=range[0];d<=range[1];d++){
+  const pc=scale[((d%len)+len)%len];
+  if(activePitches.has(pc))available.push(d);
+ }
+ if(!available.length)return null; // the drone continues if every note is muted
+ if(!available.includes(degree)){
+  return available.reduce((best,d)=>Math.abs(d-degree)<Math.abs(best-degree)?d:best,available[0]);
+ }
+ if(available.length===1)return available[0];
+ const distance=chooseMovement();
+ if(!distance)return degree;
+ // Try the requested scalar distance in either direction. If that note is
+ // muted, move onwards to the next enabled note in the same direction.
+ const candidates=[];
+ for(const dir of [-1,1]){
+  const target=degree+dir*distance;
+  const chosen=dir>0?available.find(d=>d>=target):[...available].reverse().find(d=>d<=target);
+  if(chosen!==undefined)candidates.push(chosen);
+ }
+ if(!candidates.length){
+  const others=available.filter(d=>d!==degree);
+  return others[Math.floor(Math.random()*others.length)];
+ }
+ if(candidates.length===1)return candidates[0];
+ const midpoint=(range[0]+range[1])/2;
+ const pDown=clamp(.5+(degree-midpoint)/(range[1]-range[0])*.5,.22,.78);
+ return Math.random()<pDown?candidates[0]:candidates[1];
 }
 function midiForDegree(d){let scale=scales[$('scale').value],n=scale.length,oct=Math.floor(d/n),index=((d%n)+n)%n;return 60+12*oct+scale[index]}
+// Pitch-class interval from the C drone (octave-equivalent rather than a compound interval).
+const intervalsAboveC=['1 / 8ve','♭2 / ♯1','2nd','♭3 / ♯2','3rd','4th','♯4 / ♭5','5th','♭6 / ♯5','6th','♭7 / ♯6','7th'];
+function intervalFromC(midi){return intervalsAboveC[((midi-60)%12+12)%12]}
+
 function playVoice(midi,at,duration){
  let colour=$('tone').value,f=freq(midi),amp={warm:.11,glass:.072,breath:.085}[colour],attack={warm:1.05,glass:.32,breath:1.35}[colour];
  const a=ctx.createGain();a.gain.setValueAtTime(.0001,at);a.gain.exponentialRampToValueAtTime(amp,at+attack);
@@ -203,12 +560,24 @@ function playVoice(midi,at,duration){
 function schedule(){if(!playing||!ctx)return;const until=ctx.currentTime+.18;
  while(nextAt<until){
   let stepTime=val('pace');
-  degree=pickNext();let midi=midiForDegree(degree);
+  const nextDegree=pickNext();
+  if(nextDegree===null){
+   $('now').textContent='All scale notes muted · C drone only';
+   $('degreeNumber').textContent='–';
+   updatePitchButtons();
+   nextAt=ctx.currentTime+Math.max(.15,stepTime);
+   break;
+  }
+  degree=nextDegree;let midi=midiForDegree(degree);
+  let intervalLabel=intervalFromC(midi);
   let at=Math.max(nextAt,ctx.currentTime+.015);
   playVoice(midi,at,stepTime*1.05);
+  if(bassEnabled)setBassPitch(nextBassMidi(),at);
   let token=generation,delayMs=Math.max(0,(at-ctx.currentTime)*1000);
   setTimeout(()=>{if(!playing||token!==generation)return;
    $('now').textContent=noteName(midi)+' · '+$('scale').selectedOptions[0].text.split(' · ')[0]+' · over C';
+    $('degreeNumber').textContent=intervalLabel;
+    updatePitchButtons(((midi%12)+12)%12);
    orbs.forEach(o=>o.classList.remove('lit'));orbs[orbIndex++%orbCount].classList.add('lit');
   },delayMs);
   nextAt=at+stepTime*(.91+Math.random()*.18);
@@ -221,20 +590,27 @@ function silenceScheduled(){if(!ctx)return;let t=ctx.currentTime;
 async function play(){
  try{if(!ctx)setup();await ctx.resume();playing=true;generation++;
  master.gain.setTargetAtTime(val('volume')/100*.7,ctx.currentTime,.1);
- startDrone();liveSettings();degree=val('register')===0?0:val('register')===1?scales[$('scale').value].length:scales[$('scale').value].length*2;
+ resetBassPhrase();startDrone();liveSettings();degree=val('register')===0?0:val('register')===1?scales[$('scale').value].length:scales[$('scale').value].length*2;
  nextAt=ctx.currentTime+.18;timer=setInterval(schedule,45);schedule();
  $('play').textContent='■ Stop';$('status').textContent='Playing';
  }catch(err){playing=false;$('status').textContent='Audio unavailable';$('now').textContent='Your browser could not start audio: '+err.message}
 }
-function stop(){playing=false;generation++;clearInterval(timer);timer=null;
+function stop(){playing=false;generation++;clearInterval(timer);timer=null;resetBassPhrase();
  if(ctx){master.gain.setTargetAtTime(0,ctx.currentTime,.04);droneGain.gain.setTargetAtTime(0,ctx.currentTime,.04);setTimeout(()=>{if(!playing)silenceScheduled()},180)}
- $('play').textContent='▶ Play';$('status').textContent='Stopped';$('now').textContent='C drone · press Play to listen again';orbs.forEach(o=>o.classList.remove('lit'));
+ $('play').textContent='▶ Play';$('status').textContent='Stopped';$('now').textContent='C drone · press Play to listen again';$('degreeNumber').textContent='–';orbs.forEach(o=>o.classList.remove('lit'));updatePitchButtons();
 }
 $('play').addEventListener('click',()=>playing?stop():play());
-$('new').addEventListener('click',()=>{degree=val('register')*scales[$('scale').value].length;generation++;if(ctx)nextAt=ctx.currentTime+.11;$('now').textContent=playing?'A new path begins…':'New path ready · press Play';});
+$('showDegrees').addEventListener('click',()=>{showDegrees=!showDegrees;$('degreeDisplay').hidden=!showDegrees;$('showDegrees').setAttribute('aria-pressed',String(showDegrees));$('showDegrees').textContent=showDegrees?'Hide interval':'Show interval';});
+$('bassToggle').addEventListener('click',()=>{
+ bassEnabled=!bassEnabled;resetBassPhrase();
+ $('bassToggle').setAttribute('aria-pressed',String(bassEnabled));
+ $('bassToggle').textContent=bassEnabled?'Bass movement on':'Allow bass movement';
+ if(playing&&ctx)setBassPitch(36,ctx.currentTime+.02);
+});
+$('new').addEventListener('click',()=>{resetBassPhrase();if(playing&&ctx)setBassPitch(36,ctx.currentTime+.02);degree=val('register')*scales[$('scale').value].length;generation++;if(ctx)nextAt=ctx.currentTime+.11;$('now').textContent=playing?'A new path begins…':'New path ready · press Play';$('degreeNumber').textContent='–';});
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&playing)stop()});
 window.addEventListener('pagehide',()=>{if(playing)stop()});
-updateLabels();
+updateLabels();resetPitchSelection();updateScaleInfo();
 })();
 </script>
 </body>
