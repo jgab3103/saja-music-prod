@@ -62,7 +62,7 @@ select,input[type=number]{padding:7px;border:1px solid #c9c0b8;border-radius:5px
 <div class="card"><strong id="rolltitle">Right hand · C4–G4</strong><p class="help">8 bars of 4/4. Each column is a quarter-note beat. Select a duration, then click the starting beat. Click an existing note to remove it. You can switch hands at any time.</p><div class="scroll"><div id="head" class="rollhead"></div><div id="roll" class="roll"></div></div><p class="status" id="status" aria-live="polite"></p></div>
 <div class="card"><strong>Copy this composition</strong><p class="help">The output updates automatically. <code>|</code> separates bars; <code>rest</code> represents silence. Empty beats are exported as rests.</p><textarea id="output" class="output" readonly></textarea><div class="toolbar"><button id="copy" class="primary">Copy string</button><button id="download">Save text</button><button id="example">Load gentle example</button></div></div>
 <small>All editing happens locally in this browser tab. No account or internet connection is required for the editor itself.</small>
-</main><footer class="footer"><div>jamie@jamiegabriel.org</div></footer>
+</main><footer class="footer"><div>SAJA MUSIC</div></footer>
 <script>
 (()=>{'use strict';const $=id=>document.getElementById(id), beats=32, notes={RH:[],LH:[]}, history=[];let audio=null, timers=[],playing=false;const pitches={RH:['G4','F4','E4','D4','C4'],LH:['G3','F3','E3','D3','C3']};
 function snapshot(){history.push(JSON.stringify(notes));if(history.length>100)history.shift()}

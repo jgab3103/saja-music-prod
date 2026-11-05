@@ -28,7 +28,7 @@
 <div class="endless-row" id="endless-row-b"><div class="endless-label">Bar B · Up next</div><div class="score-wrap"></div></div>
 <div class="controls endless-controls"><button class="primary" id="endless-play" type="button">▶ Play rhythms</button><button id="endless-stop" type="button">■ Stop</button><label for="endless-tempo">Tempo <input id="endless-tempo" max="120" min="40" step="5" type="range" value="60"/><output id="endless-bpm">60 BPM</output></label></div>
 <p aria-live="polite" class="muted" id="endless-status">Ready to begin. Count aloud and clap each new note.</p>
-</div><h2>Before you go</h2><p>Can you tap a steady pulse, count to four, and explain the difference between a quarter note, a half note and a whole note? You now have the foundations for reading simple rhythms.</p><p class="muted">Next time: more ways to make rhythms with our four beats.</p></main><footer class="footer"><div>SAJA MUSIC · Music learning for everyone</div></footer><script>(()=>{'use strict';
+</div><h2>Before you go</h2><p>Can you tap a steady pulse, count to four, and explain the difference between a quarter note, a half note and a whole note? You now have the foundations for reading simple rhythms.</p><p class="muted">Next time: more ways to make rhythms with our four beats.</p></main><footer class="footer"><div>SAJA MUSIC</div></footer><script>(()=>{'use strict';
 const play=document.getElementById('play'),stop=document.getElementById('stop'),tempo=document.getElementById('tempo'),bpm=document.getElementById('bpm'),status=document.getElementById('audio-status');
 const beats=[1,2,3,4].map(n=>document.getElementById('beat'+n));
 let ctx=null,timer=null,visuals=[],generation=0,step=0,nextTime=0,pattern=null,scoreWrap=null;let oscillators=[];
