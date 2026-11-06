@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="SAJA Music technical discussion paper on managing browser audio across devices, browsers and operating systems." />
+<meta name="author" content="SAJA Music" />
+<title>Managing Audio Across Devices and Browsers | SAJA Music</title>
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,500,600,700,800,900" rel="stylesheet" />
+<link href="css/styles.css" rel="stylesheet" />
+<style>
+:root{--accent:#8B2E3C;--paper:#FAFAFA;--panel:#F4F1EB}
+html{scroll-behavior:smooth;background:var(--paper)}
+body{margin:0;font-family:'Nunito',sans-serif;background:var(--paper);color:#111;line-height:1.75;font-size:16.5px;padding-top:80px}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(139,46,60,.35);transition:.2s}
+a:hover{color:#111;border-bottom-color:rgba(139,46,60,.75)}
+#mainNav,#mainNav.navbar-shrink{background:var(--paper)!important;border-bottom:1px solid rgba(0,0,0,.05);min-height:80px}
+#mainNav a{color:#111!important;text-decoration:none!important;border:none!important}
+.nav-links{display:flex;gap:2.5rem;align-items:center}.nav-links a{border-bottom:none}
+.article{max-width:720px;margin:0 auto;padding:60px 24px 120px}
+h1,h2,h3{font-family:'Varela Round',sans-serif;font-weight:500;line-height:1.4}
+h1{font-size:1.9rem;margin:0 0 10px}h2{font-size:1.18rem;margin:38px 0 15px}h3{font-size:1rem;margin:24px 0 10px}
+.meta{color:rgba(0,0,0,.55);font-size:.9rem;margin-bottom:36px}
+p{max-width:65ch;margin:0 0 22px}
+ul{padding-left:23px;margin:0 0 24px}li{margin:0 0 9px}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.88em;background:var(--panel);padding:2px 5px;border-radius:3px}
+pre{background:var(--panel);border-radius:4px;padding:18px 20px;overflow-x:auto;line-height:1.6;margin:18px 0 26px}
+pre code{background:none;padding:0;font-size:.84rem;white-space:pre}
+.note{background:var(--panel);padding:22px 24px;border-radius:4px;margin:32px 0}
+.note p:last-child{margin-bottom:0}
+/* Working-document annotations */
+.working-banner{background:var(--panel);border-left:3px solid var(--accent);padding:15px 20px;margin:14px 0 30px;font-size:.93rem}
+.working-banner p{margin:0 0 7px}.working-banner p:last-child{margin-bottom:0}
+.edit-note{color:#6c625b;font-size:.86rem;font-style:italic}
+.revision{background:rgba(139,46,60,.07);padding:1px 4px}
+del{color:#817b78;text-decoration-color:#8B2E3C;text-decoration-thickness:1.5px}
+.task-list{padding-left:25px;margin-bottom:26px}.task-list li{padding-left:5px;margin-bottom:13px}
+.section-flag{display:inline-block;font-family:'Nunito',sans-serif;font-weight:700;font-size:.65rem;letter-spacing:.07em;text-transform:uppercase;vertical-align:middle;background:var(--panel);color:#655b54;padding:2px 7px;margin-left:8px;border-radius:3px}
+.references{margin-top:44px}.references ol{padding-left:22px}.references li{overflow-wrap:anywhere;margin-bottom:14px}
+.footer{background:var(--paper);border-top:1px solid rgba(0,0,0,.06);padding:80px 30px;text-align:center;font-size:.95rem;color:rgba(0,0,0,.7)}
+@media(max-width:700px){.nav-links{gap:1.4rem;font-size:.95rem}h1{font-size:1.55rem}h2{font-size:1.12rem}.article{padding-top:42px}pre{padding:14px}}
+</style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container px-4 px-lg-5">
+    <a class="navbar-brand" href="./index.html">SAJA MUSIC</a>
+    <div class="nav-links">
+      <a href="./teaching.html">Discover</a>
+      <a href="./pathways.html">Learn</a>
+      <a href="./about.html">About</a>
+    </div>
+  </div>
+</nav>
+<main class="article">
+<h1>Managing Audio Across Devices and Browsers</h1>
+<div class="meta">SAJA Music &nbsp;·&nbsp;  Discussion Paper &nbsp;·&nbsp; Last edit: 11.29pm, 3rd November 2026<br />Status: Working discussion; no common implementation finalised</div>
+<div class="working-banner">
+<p><strong>Working document / shared for reference</strong></p>
+<p>Draft notes from current audio compatibility investigations. Sections contain provisional approaches, open questions and inline revisions. This is not an agreed implementation plan.</p>
+
+</div>
+<h2>Abstract <span class="section-flag">Draft</span></h2>
+<p>The development of browser-based music applications introduces a number of challenges concerning audio generation, playback and consistency across devices. While the Web Audio API provides a sophisticated environment for synthesis, signal processing and musical interaction, the behaviour of audio applications remains dependent on browser implementations, operating-system policies and hardware characteristics.</p>
+<p>During the development of SAJA Music's interactive learning resources, we have encountered differences in audio behaviour between desktop computers, mobile phones and tablets. These include restrictions on audio initialisation, inconsistent playback under iOS silent mode, differences in perceived sound quality and challenges associated with audio scheduling and application lifecycle management.</p>
+<p>This paper considers these issues as part of a broader discussion about designing a common audio architecture for browser-based music education applications. We examine the principal technical considerations, possible approaches to improving compatibility and the implications of developing a shared audio management layer.</p>
+<p>The objective is not to establish a definitive solution, but to document our current understanding, identify outstanding questions and inform future development.</p>
+<h2>1. Introduction</h2>
+<p>Browser-based environments support several methods of implementing interactive music software. The Web Audio API supports real-time synthesis, filtering, dynamic signal processing, mixing and precise scheduling of musical events.</p>
+<p>These facilities allow music learning tools to run within a browser without a separate application installation.</p>
+<p>At SAJA Music, we use browser-based audio extensively in applications for rhythm, pitch recognition, ear training, scale exploration and other forms of interactive musical learning.</p>
+<p>The resources are intended for use across a range of devices. Students may access them on desktop computers, school-managed laptops, tablets or personal mobile phones.</p>
+<p>Consistency across environments is a design requirement, although the degree of achievable consistency remains under investigation.</p>
+<p>An application may work correctly on a desktop browser but produce no sound on an iPhone. A rhythm exercise may behave differently after the device has been locked and unlocked. An older tablet may produce sound with a noticeably different timbre or response time.</p>
+<p>These observations raise the question of which audio-related responsibilities should be managed centrally and which should remain within individual applications.</p>
+<h2>2. Audio Generation and Playback Mechanisms <span class="section-flag">Notes</span></h2>
+<p>There are several approaches to audio playback in web applications, each with different technical characteristics.</p>
+<h3>2.1 HTML5 media playback</h3>
+<p>The HTML5 <code>&lt;audio&gt;</code> element provides a relatively straightforward means of playing existing audio files.</p>
+<pre><code class="language-html">&lt;audio src=&quot;example.mp3&quot; controls&gt;&lt;/audio&gt;
+</code></pre>
+<p>This approach is suitable for recordings, musical examples and other resources where the audio content is predetermined.</p>
+<p>The browser handles decoding, buffering and playback through its media subsystem.</p>
+<p>However, the HTML5 media model provides less direct control over the precise timing of individual musical events.</p>
+<h3>2.2 Web Audio</h3>
+<p>The Web Audio API provides a programmable audio processing environment based on interconnected audio nodes.</p>
+<p>A simple oscillator can be constructed as follows:</p>
+<pre><code class="language-javascript">const context = new AudioContext();
+
+const oscillator = context.createOscillator();
+
+oscillator.type = &quot;sine&quot;;
+oscillator.frequency.value = 440;
+
+oscillator.connect(context.destination);
+
+oscillator.start();
+</code></pre>
+<p>More sophisticated applications can combine oscillators, gain envelopes, filters, convolution effects and sample playback into complex audio graphs.</p>
+<p>This approach is particularly useful for interactive music applications in which sound needs to be generated or modified dynamically.</p>
+<h3>2.3 A hybrid approach</h3>
+<p>The mechanisms are not mutually exclusive.</p>
+<p>An ear-training application might generate notes through Web Audio while also providing recorded instrumental examples through HTML5 media playback.</p>
+<p>Similarly, short samples can be decoded into <code>AudioBuffer</code> objects and scheduled using the Web Audio API.</p>
+<p>The choice should depend on the musical requirements of the application.</p>
+<p>One question for future development is whether a common audio management layer should <del>abstract all playback mechanisms behind a single interface</del> <span class="revision">coordinate initialisation and lifecycle while leaving playback mechanisms application-specific</span>. Neither model has been adopted. <span class="edit-note">[Architecture: revisit after comparative testing.]</span></p>
+<h2>3. Mobile Browser Audio Policies</h2>
+<p>Browser policies affect how applications are permitted to initiate audio playback.</p>
+<h3>3.1 User interaction requirements</h3>
+<p>Modern browsers generally restrict audio playback that begins without an explicit user interaction.</p>
+<p>For Web Audio applications, this commonly means that an <code>AudioContext</code> must be created or resumed following a user gesture.</p>
+<pre><code class="language-javascript">let audioContext;
+
+async function initialiseAudio() {
+
+    if (!audioContext) {
+        audioContext = new AudioContext();
+    }
+
+    if (audioContext.state === &quot;suspended&quot;) {
+        await audioContext.resume();
+    }
+
+    return audioContext;
+}
+</code></pre>
+<p>This function should be invoked in response to an appropriate user interaction, such as pressing a Play button.</p>
+<p>The resulting initialisation requirements need to be considered within each application.</p>
+<p>We have previously encountered situations where audio scheduling and interface updates continued even though the underlying audio context had not been correctly activated.</p>
+<p>An important distinction is therefore required between the application having scheduled audio and the browser having successfully started audible playback.</p>
+<h3>3.2 Audio sessions and iOS silent mode</h3>
+<p>A related issue concerns the interaction between Web Audio and iOS audio session policies.</p>
+<p>During testing, we observed that browser-generated audio may be inaudible when an iPhone is set to silent mode, despite the application otherwise appearing to function normally.</p>
+<p>Historically, iOS Safari has treated Web Audio differently from ordinary HTML5 media playback.</p>
+<p>The underlying issue concerns audio session classification.</p>
+<p>The Audio Session API provides a mechanism for declaring the intended purpose of an application's audio output.</p>
+<p>The <code>playback</code> classification is one candidate for testing:</p>
+<pre><code class="language-javascript">if (&quot;audioSession&quot; in navigator) {
+    navigator.audioSession.type = &quot;playback&quot;;
+}
+</code></pre>
+<p>On supported iOS versions, this can allow Web Audio to remain audible when the device is in silent mode.</p>
+<p>The API is not universally supported, however, and remains an area requiring compatibility testing.</p>
+<p>Several questions remain relevant:</p>
+<ul>
+<li>Should every SAJA Music application explicitly request a playback session?</li>
+<li>How should applications behave on browsers without Audio Session API support?</li>
+<li>What happens when another application interrupts the audio session?</li>
+<li>How reliably is the session restored after switching applications or locking the device?</li>
+</ul>
+<p>The broader point is that audio generation and audio output policy are separate concerns. A functioning audio graph does not necessarily guarantee audible output.</p>
+<h2>4. Audio Scheduling and Timing</h2>
+<p>Reliable timing is fundamental to many music applications.</p>
+<p>A rhythm exercise, metronome or melodic transcription tool needs to maintain accurate temporal relationships between musical events.</p>
+<h3>4.1 JavaScript timing</h3>
+<p>JavaScript provides familiar scheduling mechanisms such as <code>setTimeout()</code> and <code>setInterval()</code>.</p>
+<p>These are convenient for updating interfaces but are not sufficiently reliable as the sole timing mechanism for precision musical playback.</p>
+<p>JavaScript execution may be delayed by rendering, garbage collection, browser throttling or other processing activity.</p>
+<p>These delays can become noticeable in applications involving rapid rhythmic subdivisions or tightly coordinated musical events.</p>
+<h3>4.2 Audio clock scheduling</h3>
+<p>The Web Audio API provides a separate audio timeline through <code>AudioContext.currentTime</code>.</p>
+<p>Musical events can be scheduled against this timeline rather than relying entirely on JavaScript callbacks.</p>
+<pre><code class="language-javascript">const now = audioContext.currentTime;
+
+oscillator.start(now + 0.1);
+oscillator.stop(now + 0.6);
+</code></pre>
+<p>A common approach is to use a short, periodically refreshed scheduling window in which JavaScript schedules events ahead of time using the audio context clock.</p>
+<p>This separates the execution of scheduled musical events from the precise timing of JavaScript callbacks.</p>
+<p>However, it introduces questions concerning scheduling horizons, cancellation, tempo changes and recovery following interruptions.</p>
+<h3>4.3 Different applications, different requirements</h3>
+<p>Not every application requires the same scheduling architecture.</p>
+<p>A pitch recognition exercise may only need to trigger a single note in response to a user action.</p>
+<p>A metronome requires accurate, repeated scheduling.</p>
+<p>A polyphonic synthesis application may require simultaneous voices, envelopes and dynamic parameter changes.</p>
+<p>It remains to be determined whether a single scheduling abstraction is appropriate across these applications.</p>
+<p>A shared timing utility might be appropriate for rhythm-based resources, while simpler applications could continue to use more direct audio triggering.</p>
+<h2>5. Device Capabilities, Latency and Sound Quality</h2>
+<p>Even when an application produces audible output on different devices, the experience may not be identical.</p>
+<h3>5.1 Output latency</h3>
+<p>Audio latency can vary with the operating system, browser, audio hardware and selected output device.</p>
+<p>The Web Audio API provides properties such as <code>baseLatency</code> and <code>outputLatency</code> that may help characterise aspects of this behaviour.</p>
+<pre><code class="language-javascript">console.log(audioContext.baseLatency);
+console.log(audioContext.outputLatency);
+</code></pre>
+<p>These values are not available consistently on all older browsers and should not be interpreted as exact measurements of the full delay between a user action and the resulting audible sound.</p>
+<p>They may still be used as partial diagnostic measurements.</p>
+<p>Latency is relevant to user-input-driven instruments and rhythm exercises because it affects the interval between an action and audible output.</p>
+<h3>5.2 Sample rates</h3>
+<p>Different audio devices and browser implementations may use different sample rates.</p>
+<p>The <code>AudioContext.sampleRate</code> property identifies the sample rate used by a particular context.</p>
+<p>For basic oscillator synthesis, much of this complexity is handled internally by the browser.</p>
+<p>The effect of differences in sample rate on synthesis, sample playback and resampling warrants further testing. Context options and device output paths may also affect latency and performance.</p>
+<h3>5.3 Output devices and interruptions</h3>
+<p>Playback may be affected by wired headphones, Bluetooth output, external audio interfaces, backgrounding, screen locking and interruptions from other applications. These cases need separate testing because a running <code>AudioContext</code> does not establish that sound is audible at the intended output.</p>
+<h2>6. Current Development Position <span class="section-flag">Open</span></h2>
+<p>Different SAJA Music pages currently use different audio generation, initialisation and scheduling strategies. We are using these implementations to investigate device-specific behaviour rather than treating any one approach as the settled pattern. <strong>A common implementation has not been finalised.</strong></p>
+<p>A possible direction is to separate the browser-facing concerns—session configuration, context initialisation, context state and interruption handling—from the musical concerns of synthesis, sample management and event scheduling. <del>Consolidate all audio handling in one shared module.</del> <span class="revision">Current alternative under consideration: a small set of shared browser-facing utilities, with synthesis and scheduling retained in each application.</span> The choice remains open.</p>
+<p>No comparative test results or final compatibility matrix are presented in this paper. The work described here is exploratory.</p>
+<h2>7. Questions for Further Investigation <span class="section-flag">To test</span></h2>
+<p class="edit-note">Working test list; numbering is for discussion, not priority.</p>
+<ol class="task-list">
+<li>Which audio session configurations work across the iOS and browser versions in use?</li>
+<li>How do HTML5 media, sample-based Web Audio and oscillator-based Web Audio differ under silent mode?</li>
+<li>Which operations must take place directly inside a user gesture?</li>
+<li>What state must be restored after screen locking, backgrounding or an interruption?</li>
+<li>Which scheduling functions could be shared without changing individual applications’ timing requirements?</li>
+<li>What diagnostics would distinguish a suspended context, an output policy issue and an application scheduling problem?</li>
+<li>What device and browser combinations should form the initial test matrix?</li>
+</ol>
+<h2>8. Discussion <span class="section-flag">Pending</span></h2>
+<p>The current work concerns the boundaries between browser audio APIs, operating-system policies and application-level scheduling. At present there is insufficient comparative testing to select one implementation for all SAJA Music pages. The next step is to evaluate the strategies already in use under repeatable conditions and document differences in initialisation, audible output, latency and recovery after interruptions.</p>
+<p>This discussion paper is an internal working note made public to document the questions and approaches under consideration. It should not be interpreted as a specification or statement that the proposed architecture has been implemented.</p>
+<div class="note">
+<p><strong>Items not resolved in this draft</strong></p>
+<ol class="task-list">
+<li>Record browser and operating-system versions alongside test observations.</li>
+<li>Compare the existing per-page audio strategies under the same playback conditions.</li>
+<li>Decide whether session setup and context recovery should be shared.</li>
+<li>Review this note when test results are available; retain superseded proposals in the document where they explain the decision.</li>
+</ol>
+<p class="edit-note">No decisions or test outcomes are implied by this list.</p>
+</div>
+<h2>References and Further Reading</h2>
+<ol>
+<li>W3C. <a href="https://www.w3.org/TR/webaudio/">Web Audio API</a>.</li>
+<li>MDN Web Docs. <a href="https://developer.mozilla.org/en-US/docs/Web/API/Audio_Session_API">Audio Session API</a>.</li>
+<li>MDN Web Docs. <a href="https://developer.mozilla.org/en-US/docs/Web/API/AudioSession/type">AudioSession: type</a>.</li>
+<li>MDN Web Docs. <a href="https://developer.mozilla.org/en-US/docs/Web/API/AudioContext/resume">AudioContext: resume()</a>.</li>
+<li>WebKit Bugzilla. <a href="https://bugs.webkit.org/show_bug.cgi?id=237322">Bug 237322: Web Audio muted when iOS ringer is muted</a>.</li>
+<li>WebKit Bugzilla. <a href="https://bugs.webkit.org/show_bug.cgi?id=251532">Bug 251532: Web Audio muted when silent switch is on</a>.</li>
+<li>Feross Aboukhadijeh. <a href="https://github.com/feross/unmute-ios-audio">unmute-ios-audio</a>.</li>
+<li>Chris Wilson. <a href="https://web.dev/articles/audio-scheduling">A Tale of Two Clocks: Scheduling Web Audio with Precision</a>.</li>
+</ol>
+</main>
+<footer class="footer"><div>SAJA MUSIC</div></footer>
+</body>
+</html>
