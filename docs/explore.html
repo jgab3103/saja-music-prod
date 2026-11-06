@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="An overview of SAJA Music: free interactive music learning tools, learning pathways and opportunities for collaboration." />
+<meta name="author" content="SAJA Music" />
+<title>SAJA Music | Overview</title>
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,500,600,700,800,900" rel="stylesheet" />
+<link href="css/styles.css" rel="stylesheet" />
+<style>
+:root{--accent:#8B2E3C;--paper:#FAFAFA;--panel:#F4F1EB;--ink:#242020;--muted:#675f5d;--line:#e4dfdc}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--paper)}
+body{margin:0;padding-top:80px;font:16.5px/1.75 'Nunito',sans-serif;color:var(--ink);background:var(--paper)}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(139,46,60,.35);transition:color .2s,border-color .2s}
+a:hover{color:#111;border-bottom-color:var(--accent)}
+/* Same navigation as the rest of the SAJA Music site */
+#mainNav,#mainNav.navbar-shrink{background:var(--paper)!important;border-bottom:1px solid rgba(0,0,0,.05);min-height:80px}
+#mainNav a{color:#111!important;text-decoration:none!important;border:0!important}
+#mainNav .nav-links{display:flex;gap:2.5rem;align-items:center}
+/* Page */
+.overview{max-width:1080px;margin:0 auto;padding:58px 25px 100px}
+.overview h1,.overview h2,.overview h3{font-family:'Varela Round',sans-serif;font-weight:500;line-height:1.35;color:#1f1c1c}
+.overview p{margin:0 0 19px}
+.eyebrow{color:var(--accent);font-size:.78rem;letter-spacing:.13em;text-transform:uppercase;font-weight:800;margin:0 0 13px}
+.intro-grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(250px,.75fr);gap:60px;align-items:start;padding-bottom:57px;border-bottom:1px solid var(--line)}
+.intro-grid h1{font-size:clamp(2.1rem,4.5vw,3.45rem);letter-spacing:-.035em;margin:0 0 22px}
+.lead{font-size:1.15rem;line-height:1.75;color:#403b3a;max-width:650px}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.actions a{display:inline-flex;align-items:center;justify-content:center;padding:10px 17px;border:1px solid var(--accent);border-radius:4px;font-size:.92rem;font-weight:700}
+.actions .primary{background:var(--accent);color:white}
+.actions .secondary{background:transparent;color:var(--accent)}
+.fact-panel{background:var(--panel);border-radius:5px;padding:25px 27px;margin-top:10px}
+.fact-panel h2{font-size:1.1rem;margin:0 0 17px}
+.fact-panel dl{margin:0}.fact-panel dt{font-size:.74rem;color:var(--muted);font-weight:800;letter-spacing:.07em;text-transform:uppercase;margin-top:16px}
+.fact-panel dt:first-child{margin-top:0}.fact-panel dd{margin:3px 0 0;font-size:.96rem}
+.section{padding:59px 0 0}.section-head{max-width:750px;margin-bottom:25px}
+.section h2{font-size:1.75rem;margin:0 0 13px}.section-head p{color:var(--muted)}
+.features{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+.feature{background:#fff;border:1px solid var(--line);border-radius:5px;padding:25px 23px;display:flex;flex-direction:column;min-height:236px}
+.feature .number{font-size:.75rem;font-weight:800;letter-spacing:.1em;color:var(--accent);margin-bottom:19px}
+.feature h3{font-size:1.12rem;margin:0 0 10px}.feature p{font-size:.94rem;line-height:1.65;color:#5b5350;flex:1;margin-bottom:22px}
+.feature a{align-self:flex-start;font-size:.92rem;font-weight:800}
+.area-list{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0 0;padding:0;list-style:none}
+.area-list li{border:1px solid #ded7d2;background:#fff;border-radius:3px;padding:7px 13px;font-size:.9rem}
+.two-column{display:grid;grid-template-columns:1fr 1fr;gap:52px;padding-top:3px}
+.two-column h3{font-size:1.15rem;margin:0 0 13px}.two-column p{color:#595251}
+.final-panel{margin-top:64px;padding:35px 40px;background:var(--panel);display:grid;grid-template-columns:1.6fr 1fr;gap:35px;align-items:center;border-radius:5px}
+.final-panel h2{font-size:1.5rem;margin:0 0 12px}.final-panel p{margin-bottom:0;color:#544c4a}.final-panel .actions{margin:0;justify-content:flex-end}
+.small-note{font-size:.83rem;color:var(--muted);margin-top:15px!important}
+.footer{background:var(--paper);border-top:1px solid rgba(0,0,0,.06);padding:80px 30px;text-align:center;font-size:.95rem;color:rgba(0,0,0,.7)}
+@media(max-width:850px){.intro-grid{grid-template-columns:1fr;gap:20px}.fact-panel{max-width:650px}.features{grid-template-columns:repeat(2,minmax(0,1fr))}.two-column{gap:25px}.final-panel{grid-template-columns:1fr}.final-panel .actions{justify-content:flex-start}}
+@media(max-width:700px){#mainNav .nav-links{gap:1.4rem;font-size:.95rem}.overview{padding:35px 18px 75px}.features,.two-column{grid-template-columns:1fr}.section{padding-top:43px}.feature{min-height:unset}.final-panel{padding:26px 23px;margin-top:45px}}
+@media(max-width:390px){#mainNav .nav-links{gap:.75rem;font-size:.82rem}#mainNav .navbar-brand{font-size:.9rem}}
+</style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container px-4 px-lg-5">
+    <a class="navbar-brand" href="./index.html">SAJA MUSIC</a>
+    <div class="nav-links">
+      <a href="./teaching.html">Discover</a>
+      <a href="./pathways.html">Learn</a>
+      <a href="./about.html">About</a>
+    </div>
+  </div>
+</nav>
+<main class="overview">
+  <section class="intro-grid" aria-labelledby="page-title">
+    <div>
+      <div class="eyebrow">SAJA Music · At a glance</div>
+      <h1 id="page-title">Music education, open to everyone.</h1>
+      <p class="lead">SAJA Music develops freely accessible music education resources that bring together practical musicianship, learning design and interactive technology.</p>
+      <p>Our growing collection includes browser-based tools, structured exercises, articles and learning pathways for students, teachers and musicians. All resources are available without advertising, subscriptions or paywalls.</p>
+      <div class="actions">
+        <a class="primary" href="#selected-resources">Explore selected resources</a>
+        <a class="secondary" href="./teaching.html">Browse the full collection</a>
+      </div>
+    </div>
+    <aside class="fact-panel" aria-label="Project summary">
+      <h2>Project snapshot</h2>
+      <dl>
+        <dt>Founded</dt><dd>2025</dd>
+        <dt>Co-founders</dt><dd>Jamie Gabriel and Sally Jamila</dd>
+        <dt>Current stage</dt><dd>Public beta · November 2026</dd>
+        <dt>Access</dt><dd>Free, browser-based resources</dd>
+        <dt>Areas</dt><dd>Music education, research and technology</dd>
+      </dl>
+    </aside>
+  </section>
+
+  <section class="section" id="selected-resources">
+    <div class="section-head">
+      <div class="eyebrow">01 · Selected work</div>
+      <h2>A few places to begin</h2>
+      <p>These examples illustrate different approaches across the site: exploration, structured practice, interactive notation and music technology.</p>
+    </div>
+    <div class="features">
+      <article class="feature"><div class="number">01 / AURAL SKILLS</div><h3>Sound of Scales Lab</h3><p>Explore how scales sound through an interactive environment for listening and comparison.</p><a href="./sound-of-scales.html">Open the lab</a></article>
+      <article class="feature"><div class="number">02 / RHYTHM</div><h3>BeatMatrix</h3><p>Build rhythmic patterns with subdivisions, accents, linked bars and changes in tempo.</p><a href="./beatmatrix.html">Try BeatMatrix</a></article>
+      <article class="feature"><div class="number">03 / RHYTHM</div><h3>Rhythm Fundamentals Lab</h3><p>Work with time signatures, note values and randomly generated rhythm-reading exercises.</p><a href="./rhythm-fundamentals-lab.html">Open the lab</a></article>
+      <article class="feature"><div class="number">04 / PIANO</div><h3>First Piano Pieces</h3><p>Short beginner pieces with visual learning support and printable materials for practice.</p><a href="./first-piano-pieces.html">Explore the pieces</a></article>
+      <article class="feature"><div class="number">05 / RHYTHMIC THINKING</div><h3>Introduction to Konnokol</h3><p>An introduction to an alternative system for thinking about, vocalising and understanding rhythm.</p><a href="./konnakol-1.html">Read the introduction</a></article>
+      <article class="feature"><div class="number">06 / GUIDED STUDY</div><h3>Learning Pathways</h3><p>Organised sequences connecting introductory lessons, exercises and exploratory tools.</p><a href="./pathways.html">View the pathways</a></article>
+    </div>
+  </section>
+
+  <section class="section" id="areas">
+    <div class="section-head">
+      <div class="eyebrow">02 · Scope</div>
+      <h2>Learning areas</h2>
+      <p>The collection spans foundational musicianship, historical and theoretical study, creative work and digital music technology.</p>
+    </div>
+    <ul class="area-list">
+      <li>Rhythm</li><li>Piano</li><li>Aural skills</li><li>Music history</li><li>Music theory</li><li>Composition</li><li>Improvisation</li><li>Counterpoint</li><li>Orchestration</li><li>Sound synthesis</li><li>Performance</li>
+    </ul>
+  </section>
+
+  <section class="section" id="approach">
+    <div class="section-head"><div class="eyebrow">03 · Approach</div><h2>How we develop resources</h2></div>
+    <div class="two-column">
+      <div><h3>Music first</h3><p>Resources are designed around musical activities: hearing, performing, reading, experimenting and creating. Interactive tools sit alongside written explanations and practical exercises.</p></div>
+      <div><h3>Iterative development</h3><p>SAJA Music is in beta. We are continuing to develop the collection, test resources across devices and revise material in response to use and feedback.</p></div>
+    </div>
+  </section>
+
+  <section class="final-panel" id="collaboration">
+    <div><div class="eyebrow">04 · Collaboration</div><h2>Research, education and collaboration</h2><p>We are interested in conversations with educators, schools, researchers, arts organisations and potential supporters about learning resources, workshops, curriculum development and collaborative projects.</p></div>
+    <div class="actions"><a class="primary" href="mailto:connect@saja-music.com">Get in touch</a><a class="secondary" href="./about.html">About SAJA Music</a></div>
+  </section>
+  <p class="small-note">SAJA Music entered public beta in November 2026. Resources and features continue to change during development.</p>
+</main>
+<footer class="footer"><div>SAJA MUSIC</div></footer>
+</body>
+</html>
