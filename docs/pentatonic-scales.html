@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Explore major and minor pentatonic guitar scale shapes in all twelve keys — SAJA Music">
+<meta name="author" content="SAJA Music"><title>Pentatonic Scale Shapes | SAJA Music</title>
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,500,600,700,800,900" rel="stylesheet">
+<link href="css/styles.css" rel="stylesheet">
+<style>
+:root{--accent:#8B2E3C;--paper:#FAFAFA;--panel:#F4F1EB;--ink:#211d1a}
+*{box-sizing:border-box}html{background:var(--paper)}body{margin:0;padding-top:80px;background:var(--paper);color:var(--ink);font:16.5px/1.75 'Nunito',sans-serif}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+#mainNav,#mainNav.navbar-shrink{background:var(--paper)!important;border-bottom:1px solid rgba(0,0,0,.06);min-height:80px}
+#mainNav a{color:#111!important;border:0!important;text-decoration:none!important}
+.nav-links{display:flex;gap:2.5rem;align-items:center}
+.article{max-width:1100px;margin:0 auto;padding:55px 24px 100px}.back-link{display:inline-block;font-size:.94rem;margin-bottom:23px}
+h1,h2,h3{font-family:'Varela Round',sans-serif;font-weight:500}h1{font-size:2rem;line-height:1.35;margin:0 0 9px}h2{font-size:1.36rem;margin:34px 0 12px}h3{font-size:1.05rem;margin:0}
+p{max-width:80ch;margin:12px 0 20px}.meta{color:#777;font-size:.91rem;margin-bottom:20px}
+.controls{background:var(--panel);padding:22px 24px;border-radius:5px;margin:27px 0;display:flex;flex-wrap:wrap;align-items:end;gap:16px}
+.control-item{flex:1 1 190px;min-width:0}.controls label{display:block;font-weight:800;font-size:.85rem;margin-bottom:6px}
+.controls select{font:inherit;background:white;border:1px solid #c9c0bb;border-radius:4px;padding:10px 12px;width:100%}
+button{font:700 .9rem 'Nunito',sans-serif;cursor:pointer;border:1px solid #baada7;padding:11px 16px;border-radius:4px;background:white;color:var(--ink)}button:hover{color:var(--accent);border-color:var(--accent)}
+.legend{display:flex;align-items:center;gap:23px;flex-wrap:wrap;font-size:.88rem;color:#59514e;margin:16px 0 20px}.legend-piece{display:inline-flex;align-items:center;gap:9px}
+.dot{display:inline-block;width:16px;height:16px;border-radius:50%;background:#8b2e3c}.dot.root{background:#fff;border:4px solid #8b2e3c}
+.board-card,.shape-card{border:1px solid #e2dad5;background:#fff;border-radius:6px;padding:18px 20px}.board-card{overflow-x:auto}
+.board-card svg{width:100%;min-width:680px;display:block}.shape-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.shape-card{break-inside:avoid;min-width:0}
+.shape-card svg{display:block;width:100%;max-width:490px;margin:12px auto 0}.shape-card .fret-range{font-size:.81rem;color:#706762;margin-top:3px}
+.note{background:var(--panel);border-radius:5px;padding:19px 22px;margin:25px 0}.practice{padding-left:22px;max-width:78ch}.practice li{padding:3px 0}.footer{border-top:1px solid rgba(0,0,0,.06);padding:60px 30px;text-align:center;color:#666}
+@media(max-width:700px){.article{padding:35px 16px 70px}.nav-links{gap:1.2rem;font-size:.9rem}.shape-grid{grid-template-columns:1fr}.controls{padding:17px}.board-card,.shape-card{padding:13px}}
+@media(max-width:420px){.nav-links{gap:.7rem;font-size:.77rem}}
+@page{size:A4 portrait;margin:13mm}
+@media print{body{padding-top:0;font-size:10pt;-webkit-print-color-adjust:exact;print-color-adjust:exact}#mainNav,.back-link,.controls,.footer,.no-print{display:none!important}.article{max-width:none;padding:0}h1{font-size:19pt}h2{font-size:13pt;margin:7mm 0 3mm}.board-card{display:none}.shape-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:3mm}.shape-card{padding:3mm}.shape-card svg{max-height:65mm}.note{padding:3mm}.practice{font-size:9pt}.legend{margin:3mm 0}}
+</style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav"><div class="container px-4 px-lg-5"><a class="navbar-brand" href="./index.html">SAJA MUSIC</a><div class="nav-links"><a href="./teaching.html">Discover</a><a href="./pathways.html">Learn</a><a href="./about.html">About</a></div></div></nav>
+<main class="article">
+<a class="back-link" href="./pathways.html">← Learning Pathways</a>
+<h1>Pentatonic Scale Shapes</h1>
+<div class="meta">Modern Guitar · Standard tuning (E–A–D–G–B–E)</div>
+<p>The pentatonic scale uses five notes. Explore its major and minor forms across the guitar neck, then learn five movable, two-notes-per-string shapes. Choose a key to transpose every diagram.</p>
+<div class="controls no-print"><div class="control-item"><label for="quality">Scale</label><select id="quality"><option value="minor">Minor pentatonic</option><option value="major">Major pentatonic</option></select></div><div class="control-item"><label for="root">Key</label><select id="root"></select></div><button id="printBtn" type="button">Print / Save PDF</button></div>
+<h2 id="selectedTitle">E minor pentatonic</h2>
+<p id="scaleInfo"></p>
+<div class="legend"><span class="legend-piece"><span class="dot"></span> Scale note</span><span class="legend-piece"><span class="dot root"></span> Root note</span><span>High E string at the top · Low E at the bottom</span></div>
+<section><h2>Across the fretboard</h2><p>Every dot belongs to the chosen scale. The outlined dots are the tonic, which gives the scale its name.</p><div class="board-card" id="fullBoard"></div></section>
+<section><h2>Five movable shapes</h2><p>These patterns cover the same five notes in different regions of the neck. Some positions wrap into the lower octave so all five remain accessible near the nut.</p><div class="shape-grid" id="shapeGrid"></div></section>
+<section class="note"><h2 style="margin-top:0">How to practise</h2><ol class="practice"><li>Start with Shape 1. Play from the lowest string to the highest, then back down, one note at a time.</li><li>Use alternate picking (down–up) and a steady, slow pulse. Keep each note clear.</li><li>Learn each shape without looking at the diagram, then connect neighbouring shapes.</li><li>Find and pause on the outlined root notes. Listen to how the other notes sound against them.</li><li>Improvise a two-bar phrase using just three or four notes. Leave space between ideas.</li></ol><p id="relativeNote"></p></section>
+</main><footer class="footer">SAJA MUSIC · <a href="https://saja-music.com/">saja-music.com</a></footer>
+<script>
+'use strict';
+const chromatic=['C','C♯ / D♭','D','E♭ / D♯','E','F','F♯ / G♭','G','A♭ / G♯','A','B♭ / A♯','B'];
+const shortNames=['C','C♯','D','E♭','E','F','F♯','G','A♭','A','B♭','B'];
+const midiOpen=[64,59,55,50,45,40]; // high E down to low E
+const minorIntervals=[0,3,5,7,10], majorIntervals=[0,2,4,7,9];
+// Five traditional A-minor pentatonic positions, low E to high E.
+const aMinorShapes=[
+ [[5,8],[5,7],[5,7],[5,7],[5,8],[5,8]],
+ [[8,10],[7,10],[7,10],[7,9],[8,10],[8,10]],
+ [[10,12],[10,12],[10,12],[9,12],[10,13],[10,12]],
+ [[12,15],[12,15],[12,14],[12,14],[13,15],[12,15]],
+ [[15,17],[15,17],[14,17],[14,17],[15,17],[15,17]]
+];
+const ns='http://www.w3.org/2000/svg';
+const mod=(n,m)=>((n%m)+m)%m;
+function node(name,attrs={},txt){const n=document.createElementNS(ns,name);for(const [k,v] of Object.entries(attrs))n.setAttribute(k,v);if(txt!==undefined)n.textContent=txt;return n;}
+const rootSelect=document.getElementById('root'),qualitySelect=document.getElementById('quality');
+shortNames.forEach((s,i)=>rootSelect.add(new Option(chromatic[i],i)));
+rootSelect.value='4';qualitySelect.value='minor';
+function makeBoard(start,end,notes,rootPC,overview=false){
+ const w=overview?970:510, h=overview?212:206, left=overview?56:52,right=w-16,top=36,bottom=h-37;
+ const count=end-start+1,step=(right-left)/count,ys=Array.from({length:6},(_,i)=>top+i*(bottom-top)/5);
+ const svg=node('svg',{viewBox:`0 0 ${w} ${h}`,role:'img','aria-label':`Guitar fretboard, frets ${start} through ${end}`});
+ for(let f=start;f<=end;f++){
+  const x=left+(f-start+.5)*step;
+  svg.append(node('text',{x,y:19,'font-size':overview?13:15,'text-anchor':'middle',fill:'#6d6561'},String(f)));
+  svg.append(node('line',{x1:left+(f-start)*step,y1:top-9,x2:left+(f-start)*step,y2:bottom+9,stroke:f===0?'#3e3531':'#c8beb7','stroke-width':f===0?5:1.2}));
+ }
+ svg.append(node('line',{x1:right,y1:top-9,x2:right,y2:bottom+9,stroke:'#c8beb7','stroke-width':1.2}));
+ const stringLabels=['e','B','G','D','A','E'];
+ ys.forEach((y,i)=>{
+  svg.append(node('text',{x:18,y:y+5,'font-size':15,'font-weight':700,fill:'#514945','text-anchor':'middle'},stringLabels[i]));
+  svg.append(node('line',{x1:left,y1:y,x2:right,y2:y,stroke:'#9c948e','stroke-width':1+i*.25}));
+ });
+ notes.forEach(({string,fret})=>{
+  if(fret<start||fret>end)return;
+  const pc=mod(midiOpen[string]+fret,12),isRoot=pc===rootPC;
+  const x=left+(fret-start+.5)*step,y=ys[string],r=Math.min(overview?10:14,step*.36);
+  svg.append(node('circle',{cx:x,cy:y,r,fill:isRoot?'#fff':'#8B2E3C',stroke:'#8B2E3C','stroke-width':isRoot?4:1}));
+ });
+ return svg;
+}
+function render(){
+ const root=Number(rootSelect.value),quality=qualitySelect.value,minorRoot=quality==='minor'?root:mod(root-3,12);
+ const intervals=quality==='minor'?minorIntervals:majorIntervals;
+ const allowed=new Set(intervals.map(i=>mod(root+i,12)));
+ const all=[];
+ for(let string=0;string<6;string++)for(let fret=0;fret<=15;fret++)if(allowed.has(mod(midiOpen[string]+fret,12)))all.push({string,fret});
+ const name=shortNames[root],relative=quality==='minor'?mod(root+3,12):minorRoot;
+ document.getElementById('selectedTitle').textContent=`${name} ${quality} pentatonic`;
+ document.getElementById('scaleInfo').textContent=`Scale formula: ${quality==='minor'?'1 – ♭3 – 4 – 5 – ♭7':'1 – 2 – 3 – 5 – 6'}. Five notes, repeated in every octave.`;
+ document.getElementById('relativeNote').textContent=quality==='minor'?`Relative major: ${shortNames[relative]} major pentatonic uses the same five pitches, with a different root.`:`Relative minor: ${shortNames[relative]} minor pentatonic uses the same five pitches, with a different root.`;
+ document.getElementById('fullBoard').replaceChildren(makeBoard(0,15,all,root,true));
+ // Transpose A-minor boxes to the selected pentatonic pitch collection.
+ // Choose a convenient nearby octave for each complete box; preserve all string positions.
+ let delta=mod(minorRoot-9,12);if(delta>2)delta-=12;
+ const grid=document.getElementById('shapeGrid');grid.replaceChildren();
+ aMinorShapes.forEach((pattern,index)=>{
+  const transposed=pattern.map(pair=>pair.map(f=>f+delta));
+  let min=Math.min(...transposed.flat()),shift=0;
+  while(min+shift<0)shift+=12;
+  while(min+shift>=12)shift-=12;
+  const pairs=transposed.map(p=>p.map(f=>f+shift));
+  const frets=pairs.flat(),first=Math.min(...frets),last=Math.max(...frets);
+  const notes=pairs.flatMap((arr,lowString)=>arr.map(fret=>({string:5-lowString,fret})));
+  const card=document.createElement('div');card.className='shape-card';
+  const title=document.createElement('h3');title.textContent=`Shape ${index+1}`;
+  const range=document.createElement('div');range.className='fret-range';range.textContent=`Frets ${first}–${last}`;
+  card.append(title,range,makeBoard(first,last,notes,root));grid.append(card);
+ });
+}
+rootSelect.addEventListener('change',render);qualitySelect.addEventListener('change',render);
+document.getElementById('printBtn').addEventListener('click',()=>window.print());
+render();
+</script>
+</body></html>
