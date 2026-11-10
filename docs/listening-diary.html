@@ -5,10 +5,10 @@
 
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-<meta name="description" content="Listening Diary – Jamie Gabriel"/>
+<meta name="description" content="Explore significant musical works in their historical and geographical context."/>
 <meta name="author" content="Jamie Gabriel"/>
 
-<title>Listening Diary</title>
+<title>Listening in Context | SAJA Music</title>
 
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -422,6 +422,12 @@ select,
 }
 
 
+.preset-years{display:flex;gap:8px;flex-wrap:wrap}
+.preset-years button{border:1px solid #d8d1ca;border-radius:4px;padding:8px 12px;background:white;color:#333;font:700 13px 'Nunito',sans-serif;cursor:pointer}
+.preset-years button:hover,.preset-years button.active{background:var(--accent);border-color:var(--accent);color:white}
+.range-description{font-size:1rem}
+.works-table td:last-child{min-width:190px}
+.empty-works{padding:30px;text-align:center;color:#666;background:white}
 /* Shared SAJA Music navigation */
 #mainNav,#mainNav.navbar-shrink{position:fixed!important;top:0;left:0;right:0;width:100%;min-height:80px;padding:0!important;margin:0;background:var(--paper)!important;border-bottom:1px solid rgba(0,0,0,.06);display:flex;align-items:center;z-index:1030;box-sizing:border-box}
 #mainNav .site-nav-inner{flex:1;width:100%;max-width:1320px;min-height:80px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;box-sizing:border-box}
@@ -467,26 +473,17 @@ select,
 
 <section class="diary">
 
-    <h1>Listening In Context</h1>
+    <h1>Listening in Context</h1>
 
 <p class="intro">
-    Keeping a list of the music you've been listening to is a great way
-    to discover new ideas, explore different styles and composers, and
-    develop a deeper appreciation of music. It's also a wonderful way
-    to look back on your musical journey and see how your tastes and
-    interests evolve over time
-    <br/><br/>
-    Here are some of the things we've been listening to, studying and
-    teaching lately. Explore the map, follow the timeline and click
-    on the dots to discover more. What have you been listening to?
-    <br/><br/>
-    You can also explore an interactive timeline showing when composers
-    lived and how their lives overlapped
-
-
-    <a href="./composers.html">here</a>.
-    <br/><br/>
-    <a href="#why-listening-diary">Why this is important.</a>
+    Explore music through time and place. Choose a period — perhaps 1860 to 1870 —
+    to discover significant works composed around the world, where they were written,
+    and when and where they were first performed. Switch between the map and the
+    chronological list to find connections across composers, places and traditions.
+    Use the works as a starting point for listening and further exploration.
+    <br><br>
+    Curious about the people behind the music? Explore our
+    <a href="./composers.html">interactive composers timeline</a>.
 </p>
 
     <div class="panel">
@@ -498,7 +495,7 @@ select,
                 <div class="label">Composition</div>
 
                 <div class="range-description">
-                    Show works composed from
+                    Show works dated from
                     <span id="minYearValue">1600</span>
                     to
                     <span id="maxYearValue">2026</span>
@@ -527,40 +524,16 @@ select,
             </div>
 
             <div class="control-block">
-
-                <div class="label">Listening</div>
-
-                <div class="range-description">
-                    Show music I listened to from
-                    <span id="minListenValue">January 1991</span>
-                    to
-                    <span id="maxListenValue">September 2026</span>
+                <div class="label">Explore a period</div>
+                <div class="preset-years" aria-label="Suggested date ranges">
+                    <button type="button" data-start="1600" data-end="1750">1600–1750</button>
+                    <button type="button" data-start="1750" data-end="1820">1750–1820</button>
+                    <button type="button" data-start="1820" data-end="1900">1820–1900</button>
+                    <button type="button" data-start="1860" data-end="1870">1860–1870</button>
+                    <button type="button" data-start="1900" data-end="1950">1900–1950</button>
+                    <button type="button" data-start="1950" data-end="2026">1950–2026</button>
+                    <button type="button" id="allYears">All years</button>
                 </div>
-
-                <div class="listen-selects">
-
-                    <div>
-
-                        <div class="listen-select-label">
-                            From
-                        </div>
-
-                        <select id="minListenSelect"></select>
-
-                    </div>
-
-                    <div>
-
-                        <div class="listen-select-label">
-                            To
-                        </div>
-
-                        <select id="maxListenSelect"></select>
-
-                    </div>
-
-                </div>
-
             </div>
 
             <div class="control-block">
@@ -570,8 +543,8 @@ select,
                 <input
                     id="searchFilter"
                     type="search"
-                    placeholder="Composer, work, period, place, notes..."
-                    aria-label="Search listening diary"
+                    placeholder="Composer, work, period, city, notes..."
+                    aria-label="Search works by composer, title, period or place"
                 >
 
             </div>
@@ -632,8 +605,8 @@ select,
                             Period
                         </th>
 
-                        <th data-sort="listens">
-                            When I was <br/>listening to this
+                        <th data-sort="notes">
+                            About the work
                         </th>
 
                     </tr>
@@ -662,37 +635,21 @@ select,
 
 </section>
 
-<section class="diary" id="why-listening-diary">
-
-    <h2>Why keep a listening diary?</h2>
-
+<section class="diary" id="about-this-explorer">
+    <h2>Explore, compare, listen</h2>
     <p>
-        Listening is one of the most important parts of learning music,
-        but it is so easy for it to become something we do without really
-        noticing how much we are hearing, discovering and learning.
-        A listening diary is a great way of making that process visible
-        and keeps you exploring new things.
+        Music history is not a single sequence of styles. Works written in the same
+        decade can reveal very different musical worlds, shaped by local traditions,
+        cultural exchange, travel, technology and performance. Narrow the dates,
+        move around the map, and listen to contrasting works from the same period.
     </p>
-
     <p>
-        There are lots of ways to keep one. A simple list with basic
-        information is fine, tracking particular composers, performances
-        or works. I like the combination of geography and history.
-        Mapping music makes it possible to see composers and works in their
-        historical context, compare different composers and traditions,
-        and follow the ways musical ideas travelled and changed as composers
-        encountered different influences.
+        The map uses the place of composition recorded for each work; a first
+        performance may have taken place somewhere else, and many works were
+        composed over several years or in more than one location. Dates and places
+        are a guide to exploration rather than a complete historical account.
+        This is a growing, selective collection, not an exhaustive catalogue.
     </p>
-
-    <p>
-        It is also a great way of tracking your own musical journey.
-        When I look back over my diary, I am fascinated to see how my
-        interests have developed, the things that I keep returning to,
-        and the connections I was not aware of. Most importantly, it
-        encourages the habit of regular, active listening
-        and continually finding new music.
-    </p>
-
 </section>
 
 <footer class="footer">
@@ -705,9 +662,9 @@ select,
 
 
 <!-- Only used for map-marker details on mobile screens. -->
-<dialog id="mobileDiaryDialog" class="mobile-diary-dialog" aria-label="Listening diary work details">
+<dialog id="mobileDiaryDialog" class="mobile-diary-dialog" aria-label="Music work details">
   <div class="mobile-diary-dialog-inner">
-    <div class="mobile-diary-dialog-top"><span>Listening diary</span><button type="button" class="mobile-diary-close" id="mobileDiaryClose" aria-label="Close details">×</button></div>
+    <div class="mobile-diary-dialog-top"><span>Listening in context</span><button type="button" class="mobile-diary-close" id="mobileDiaryClose" aria-label="Close details">×</button></div>
     <div class="mobile-diary-dialog-content" id="mobileDiaryContent"></div>
   </div>
 </dialog>
@@ -716,969 +673,127 @@ select,
 <script src="works.js"></script>
 
 <script>
+/* This page continues to read the original works.js records and their existing fields.
+   Historical year, not listening date, determines which works appear. */
+const WORKS = typeof works !== 'undefined' && Array.isArray(works) ? works : [];
+const yearMin = document.getElementById('minYearSlider');
+const yearMax = document.getElementById('maxYearSlider');
+const yearMinLabel = document.getElementById('minYearValue');
+const yearMaxLabel = document.getElementById('maxYearValue');
+const search = document.getElementById('searchFilter');
+const count = document.getElementById('count');
+const tableBody = document.getElementById('worksTableBody');
+const mapEl = document.getElementById('map');
+const tableEl = document.getElementById('table-view');
+const dialog = document.getElementById('mobileDiaryDialog');
+const dialogContent = document.getElementById('mobileDiaryContent');
+document.getElementById('mobileDiaryClose').addEventListener('click',()=>dialog.close());
+dialog.addEventListener('click',e=>{ if(e.target===dialog)dialog.close(); });
 
-/* --------------------------------------------------
-   Map
--------------------------------------------------- */
+const map = L.map('map',{worldCopyJump:true}).setView([25,10],2);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{
+  attribution:'&copy; OpenStreetMap contributors'
+}).addTo(map);
+const markers = L.layerGroup().addTo(map);
+let sortField='year', sortDirection='asc';
+const colors={Baroque:'#8B2E3C',Classical:'#3B5B92',Romantic:'#5F7A39',Modern:'#B36B2C',Jazz:'#222222'};
+const text = value => value == null || value === '' ? '—' : String(value);
+const safe = value => text(value).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+const validYear = work => Number.isFinite(Number(work.year));
 
-const mobileDiaryDialog = document.getElementById("mobileDiaryDialog");
-const mobileDiaryContent = document.getElementById("mobileDiaryContent");
-const mobileDiaryClose = document.getElementById("mobileDiaryClose");
-mobileDiaryClose.addEventListener("click", () => mobileDiaryDialog.close());
-mobileDiaryDialog.addEventListener("click", event => {
-    if(event.target === mobileDiaryDialog) mobileDiaryDialog.close();
-});
-
-const map = L.map("map", {
-    worldCopyJump:true
-}).setView([25,10],2);
-
-L.tileLayer(
-    "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
-    {
-        attribution:"&copy; OpenStreetMap contributors"
-    }
-).addTo(map);
-
-
-/* --------------------------------------------------
-   Elements
--------------------------------------------------- */
-
-const minSlider =
-    document.getElementById("minYearSlider");
-
-const maxSlider =
-    document.getElementById("maxYearSlider");
-
-const minListenSelect =
-    document.getElementById("minListenSelect");
-
-const maxListenSelect =
-    document.getElementById("maxListenSelect");
-
-const minYearValue =
-    document.getElementById("minYearValue");
-
-const maxYearValue =
-    document.getElementById("maxYearValue");
-
-const minListenValue =
-    document.getElementById("minListenValue");
-
-const maxListenValue =
-    document.getElementById("maxListenValue");
-
-const searchFilter =
-    document.getElementById("searchFilter");
-
-const count =
-    document.getElementById("count");
-
-const markerLayer =
-    L.layerGroup().addTo(map);
-
-const tabs =
-    document.querySelectorAll(".view-tab");
-
-const mapView =
-    document.getElementById("map");
-
-const tableView =
-    document.getElementById("table-view");
-
-const tableBody =
-    document.getElementById("worksTableBody");
-
-let tableSortField = "year";
-let tableSortDirection = "asc";
-
-
-/* --------------------------------------------------
-   Listening date range
--------------------------------------------------- */
-
-const LISTEN_START_YEAR = 1991;
-const LISTEN_START_MONTH = 1;
-
-
-/* --------------------------------------------------
-   Find earliest and latest listening dates
-   in the diary
--------------------------------------------------- */
-
-function getListeningBounds(){
-
-    const dates = [];
-
-    works.forEach(work => {
-
-        if(
-            work.listens &&
-            Array.isArray(work.listens)
-        ){
-
-            work.listens.forEach(date => {
-
-                if(date){
-                    dates.push(String(date));
-                }
-
-            });
-
-        }
-
+function matchingWorks(){
+  const lo=Number(yearMin.value),hi=Number(yearMax.value);
+  const terms=search.value.toLocaleLowerCase().trim().split(/\s+/).filter(Boolean);
+  return WORKS.filter(w=>{
+    if(!validYear(w)||Number(w.year)<lo||Number(w.year)>hi)return false;
+    const haystack=[w.composer,w.title,w.year,w.composedPlace,w.birthplace,
+      w.firstPerformancePlace,w.firstPerformanceDate,w.period,w.notes]
+      .filter(v=>v!=null).join(' ').toLocaleLowerCase();
+    return terms.every(t=>haystack.includes(t));
+  });
+}
+function setRange(start,end){
+  yearMin.value=start;yearMax.value=end;update();
+}
+function update(changed){
+  if(Number(yearMin.value)>Number(yearMax.value)){
+    if(changed===yearMin) yearMax.value=yearMin.value;
+    else yearMin.value=yearMax.value;
+  }
+  yearMinLabel.textContent=yearMin.value;
+  yearMaxLabel.textContent=yearMax.value;
+  document.querySelectorAll('.preset-years [data-start]').forEach(b=>{
+    const selected=Number(b.dataset.start)===Number(yearMin.value)&&Number(b.dataset.end)===Number(yearMax.value);
+    b.classList.toggle('active',selected);
+    b.setAttribute('aria-pressed',String(selected));
+  });
+  const visible=matchingWorks();
+  count.textContent=visible.length;
+  markers.clearLayers();
+  const bounds=[];
+  visible.forEach(w=>{
+    const lat=Number(w.lat),lng=Number(w.lng);
+    if(!Number.isFinite(lat)||!Number.isFinite(lng))return;
+    const marker=L.circleMarker([lat,lng],{radius:7,fillColor:colors[w.period]||'#8B2E3C',color:'#fff',weight:2,fillOpacity:1});
+    const surname=String(w.composer||'Composer').split(',')[0].trim();
+    marker.bindTooltip(surname,{permanent:true,direction:'right',offset:[10,0],className:'composer-label'});
+    const biography=(w.born||w.died||w.birthplace)
+      ? `<p>${safe(w.born||'?')}–${safe(w.died||'present')} · Born: ${safe(w.birthplace)}</p>` : '';
+    const html=`<p><strong>${safe(w.composer)}</strong></p>${biography}
+      <h3>${safe(w.title)}</h3>
+      <p><em>Composed:</em> ${safe(w.year)} · ${safe(w.composedPlace)}</p>
+      <p><em>First performed:</em> ${safe(w.firstPerformancePlace)}<br>
+      <em>First performance date:</em> ${safe(w.firstPerformanceDate)}</p>
+      <p><em>Period:</em> ${safe(w.period)}</p>
+      ${w.notes?`<p><em>About the work:</em> ${safe(w.notes)}</p>`:''}`;
+    marker.bindPopup(html);
+    marker.on('click',()=>{
+      if(window.matchMedia('(max-width:700px)').matches){
+        marker.closePopup();dialogContent.innerHTML=html;
+        if(!dialog.open)dialog.showModal();
+      }
     });
-
-    if(!dates.length){
-
-        return {
-            earliest:"1991-01",
-            latest:"2026-09"
-        };
-
-    }
-
-    dates.sort();
-
-    return {
-        earliest:dates[0],
-        latest:dates[dates.length - 1]
-    };
-
+    marker.addTo(markers);bounds.push([lat,lng]);
+  });
+  if(bounds.length)map.fitBounds(bounds,{padding:[40,40],maxZoom:5});
+  else map.setView([25,10],2);
+  renderTable(visible);
 }
-
-const listeningBounds =
-    getListeningBounds();
-
-
-/* --------------------------------------------------
-   Convert YYYY-MM to number
--------------------------------------------------- */
-
-function monthToNumber(value){
-
-    const parts =
-        String(value).split("-");
-
-    const year =
-        Number(parts[0]);
-
-    const month =
-        Number(parts[1]);
-
-    return (
-        (year - LISTEN_START_YEAR) * 12 +
-        (month - LISTEN_START_MONTH)
-    );
-
+function renderTable(data=matchingWorks()){
+  const sorted=[...data].sort((a,b)=>{
+    const av=a[sortField]??'',bv=b[sortField]??'';
+    const comparison=(sortField==='year')?Number(av)-Number(bv):String(av).localeCompare(String(bv));
+    return sortDirection==='asc'?comparison:-comparison;
+  });
+  tableBody.innerHTML=sorted.length?sorted.map(w=>`<tr>
+    <td>${safe(w.composer)}</td><td>${safe(w.title)}</td><td>${safe(w.year)}</td>
+    <td>${safe(w.composedPlace)}</td>
+    <td>${safe(w.firstPerformancePlace)}${w.firstPerformanceDate?`<br><small>${safe(w.firstPerformanceDate)}</small>`:''}</td>
+    <td class="period-cell">${safe(w.period)}</td><td>${safe(w.notes)}</td>
+  </tr>`).join(''):'<tr><td colspan="7" class="empty-works">No works match these dates and search terms. Try widening the range.</td></tr>';
+  document.querySelectorAll('.works-table th').forEach(th=>{
+    th.classList.toggle('sort-asc',th.dataset.sort===sortField&&sortDirection==='asc');
+    th.classList.toggle('sort-desc',th.dataset.sort===sortField&&sortDirection==='desc');
+  });
 }
-
-
-/* --------------------------------------------------
-   Convert number to YYYY-MM
--------------------------------------------------- */
-
-function numberToMonth(value){
-
-    const totalMonths =
-        Number(value);
-
-    const year =
-        LISTEN_START_YEAR +
-        Math.floor(totalMonths / 12);
-
-    const month =
-        (totalMonths % 12) + 1;
-
-    return (
-        String(year) +
-        "-" +
-        String(month).padStart(2,"0")
-    );
-
-}
-
-
-/* --------------------------------------------------
-   Format YYYY-MM for display
--------------------------------------------------- */
-
-function formatListenDate(date){
-
-    if(!date){
-        return "—";
-    }
-
-    const parts =
-        String(date).split("-");
-
-    const year =
-        parts[0];
-
-    const month =
-        parts[1];
-
-    if(!month){
-
-        return year;
-
-    }
-
-    const dateObject =
-        new Date(
-            Number(year),
-            Number(month) - 1,
-            1
-        );
-
-    return dateObject.toLocaleDateString(
-        "en-AU",
-        {
-            month:"long",
-            year:"numeric"
-        }
-    );
-
-}
-
-
-/* --------------------------------------------------
-   Configure listening dropdowns
--------------------------------------------------- */
-
-const earliestListenNumber =
-    monthToNumber(
-        listeningBounds.earliest
-    );
-
-const latestListenNumber =
-    monthToNumber(
-        listeningBounds.latest
-    );
-
-for(
-    let i = earliestListenNumber;
-    i <= latestListenNumber;
-    i++
-){
-
-    const date =
-        numberToMonth(i);
-
-    const label =
-        formatListenDate(date);
-
-    const minOption =
-        document.createElement("option");
-
-    minOption.value =
-        date;
-
-    minOption.textContent =
-        label;
-
-    minListenSelect.appendChild(
-        minOption
-    );
-
-    const maxOption =
-        document.createElement("option");
-
-    maxOption.value =
-        date;
-
-    maxOption.textContent =
-        label;
-
-    maxListenSelect.appendChild(
-        maxOption
-    );
-
-}
-
-minListenSelect.value =
-    listeningBounds.earliest;
-
-maxListenSelect.value =
-    listeningBounds.latest;
-
-
-/* --------------------------------------------------
-   Get most recent listen
--------------------------------------------------- */
-
-function mostRecentListen(work){
-
-    if(
-        !work.listens ||
-        !Array.isArray(work.listens) ||
-        work.listens.length === 0
-    ){
-
-        return null;
-
-    }
-
-    return [...work.listens]
-        .sort()
-        .at(-1);
-
-}
-
-
-/* --------------------------------------------------
-   Check listening range
--------------------------------------------------- */
-
-function wasListenedToInRange(
-    work,
-    minListen,
-    maxListen
-){
-
-    if(
-        !work.listens ||
-        !Array.isArray(work.listens) ||
-        work.listens.length === 0
-    ){
-
-        return false;
-
-    }
-
-    return work.listens.some(listen => {
-
-        return listen >= minListen &&
-               listen <= maxListen;
-
-    });
-
-}
-
-
-/* --------------------------------------------------
-   Get current filters
--------------------------------------------------- */
-
-function getFilters(){
-
-    let minYear =
-        Number(minSlider.value);
-
-    let maxYear =
-        Number(maxSlider.value);
-
-    if(minYear > maxYear){
-
-        minYear = maxYear;
-
-    }
-
-    let minListen =
-        minListenSelect.value;
-
-    let maxListen =
-        maxListenSelect.value;
-
-    if(minListen > maxListen){
-
-        minListen = maxListen;
-
-    }
-
-    return {
-
-        minYear,
-        maxYear,
-        minListen,
-        maxListen,
-        searchQuery:searchFilter.value.trim().toLocaleLowerCase()
-
-    };
-
-}
-
-
-/* --------------------------------------------------
-   Colour by period
--------------------------------------------------- */
-
-function colour(p){
-
-    return {
-
-        "Baroque":"#8B2E3C",
-        "Classical":"#3B5B92",
-        "Romantic":"#5F7A39",
-        "Modern":"#B36B2C",
-        "Jazz":"#222222"
-
-    }[p] || "#8B2E3C";
-
-}
-
-
-/* --------------------------------------------------
-   Filter works
--------------------------------------------------- */
-
-function filteredWorks(){
-
-    const filters =
-        getFilters();
-
-    const searchTerms =
-        filters.searchQuery.split(/\s+/).filter(Boolean);
-
-    return works.filter(work => {
-
-        const compositionMatches =
-            work.year >= filters.minYear &&
-            work.year <= filters.maxYear;
-
-        const listeningMatches =
-            wasListenedToInRange(
-                work,
-                filters.minListen,
-                filters.maxListen
-            );
-
-        const searchableText = [
-            work.composer,
-            work.title,
-            work.year,
-            work.composedPlace,
-            work.birthplace,
-            work.firstPerformancePlace,
-            work.firstPerformanceDate,
-            work.period,
-            work.notes,
-            ...(Array.isArray(work.listens) ? work.listens : [])
-        ]
-            .filter(value => value != null)
-            .join(" ")
-            .toLocaleLowerCase();
-
-        const searchMatches =
-            searchTerms.every(term =>
-                searchableText.includes(term)
-            );
-
-        return (
-            compositionMatches &&
-            listeningMatches &&
-            searchMatches
-        );
-
-    });
-
-}
-
-
-/* --------------------------------------------------
-   Draw map
--------------------------------------------------- */
-
-function draw(changedControl){
-
-    markerLayer.clearLayers();
-
-    let minYear =
-        Number(minSlider.value);
-
-    let maxYear =
-        Number(maxSlider.value);
-
-    if(minYear > maxYear){
-
-        if(changedControl === minSlider){
-
-            minSlider.value = maxYear;
-            minYear = maxYear;
-
-        }else{
-
-            maxSlider.value = minYear;
-            maxYear = minYear;
-
-        }
-
-    }
-
-    let minListen =
-        minListenSelect.value;
-
-    let maxListen =
-        maxListenSelect.value;
-
-    if(minListen > maxListen){
-
-        if(changedControl === minListenSelect){
-
-            minListenSelect.value = maxListen;
-            minListen = maxListen;
-
-        }else{
-
-            maxListenSelect.value = minListen;
-            maxListen = minListen;
-
-        }
-
-    }
-
-    minYearValue.textContent =
-        minYear;
-
-    maxYearValue.textContent =
-        maxYear;
-
-    minListenValue.textContent =
-        formatListenDate(minListen);
-
-    maxListenValue.textContent =
-        formatListenDate(maxListen);
-
-    const visible =
-        filteredWorks();
-
-    count.textContent =
-        visible.length;
-
-    const bounds = [];
-
-    visible.forEach(work => {
-
-        const marker =
-            L.circleMarker(
-                [work.lat, work.lng],
-                {
-                    radius:7,
-                    fillColor:colour(work.period),
-                    color:"#ffffff",
-                    weight:2,
-                    fillOpacity:1
-                }
-            );
-
-        const surname = work.composer.includes(",")
-            ? work.composer.split(",")[0].trim()
-            : work.composer.trim();
-
-        marker.bindTooltip(
-            surname,
-            {
-                permanent:true,
-                direction:"right",
-                offset:[10,0],
-                className:"composer-label"
-            }
-        );
-
-        const recentListen =
-            mostRecentListen(work);
-
-        const listeningHistory =
-            work.listens &&
-            Array.isArray(work.listens) &&
-            work.listens.length
-
-                ? [...work.listens]
-                    .sort()
-                    .map(listen =>
-                        formatListenDate(listen)
-                    )
-                    .join(", ")
-
-                : "—";
-
-        const popupHTML = `
-
-            <p>
-                <strong>${work.composer}</strong>
-                ${work.born}–${work.died || "present"}<br>
-                Born: ${work.birthplace}
-            </p>
-
-            <h3>${work.title}</h3>
-
-            <p>
-                <em>Music composed:</em>
-                ${work.year} · ${work.composedPlace}
-            </p>
-
-            <p>
-                <em>Place first performed:</em>
-                ${work.firstPerformancePlace || "—"}<br>
-
-                <em>Date first performed:</em>
-                ${work.firstPerformanceDate || "—"}
-            </p>
-
-            <p>
-                <em>Period:</em>
-                ${work.period}
-            </p>
-
-            ${
-                work.notes
-                ? `<p><em>Notes:</em> ${work.notes}</p>`
-                : ""
-            }
-
-            <p>
-                <em>Most recent listen:</em>
-                ${
-                    recentListen
-                        ? formatListenDate(recentListen)
-                        : "—"
-                }
-            </p>
-
-            <p>
-                <em>Listening history:</em><br>
-                ${listeningHistory}
-            </p>
-
-        `;
-
-        marker.bindPopup(popupHTML);
-        marker.on("click", () => {
-            if(window.matchMedia("(max-width:700px)").matches){
-                marker.closePopup();
-                mobileDiaryContent.innerHTML = popupHTML;
-                if(!mobileDiaryDialog.open) mobileDiaryDialog.showModal();
-            }
-        });
-
-        marker.addTo(markerLayer);
-
-        bounds.push([
-            work.lat,
-            work.lng
-        ]);
-
-    });
-
-    if(bounds.length){
-
-        map.fitBounds(
-            bounds,
-            {
-                padding:[40,40],
-                maxZoom:5
-            }
-        );
-
-    }else{
-
-        map.setView(
-            [25,10],
-            2
-        );
-
-    }
-
-    if(tableView.style.display !== "none"){
-
-        renderTable();
-
-    }
-
-}
-
-
-/* --------------------------------------------------
-   Render sortable table
--------------------------------------------------- */
-
-function renderTable(){
-
-    let visible =
-        filteredWorks();
-
-    visible.sort((a,b) => {
-
-        let aValue;
-        let bValue;
-
-        if(tableSortField === "listens"){
-
-            aValue =
-                mostRecentListen(a) || "";
-
-            bValue =
-                mostRecentListen(b) || "";
-
-        }else{
-
-            aValue =
-                a[tableSortField];
-
-            bValue =
-                b[tableSortField];
-
-        }
-
-        if(aValue == null){
-
-            aValue = "";
-
-        }
-
-        if(bValue == null){
-
-            bValue = "";
-
-        }
-
-        if(
-            typeof aValue === "number" &&
-            typeof bValue === "number"
-        ){
-
-            return tableSortDirection === "asc"
-                ? aValue - bValue
-                : bValue - aValue;
-
-        }
-
-        return tableSortDirection === "asc"
-            ? String(aValue)
-                .localeCompare(String(bValue))
-            : String(bValue)
-                .localeCompare(String(aValue));
-
-    });
-
-    tableBody.innerHTML =
-        visible.map(work => {
-
-            const performance =
-                work.firstPerformancePlace ||
-                "—";
-
-            const performanceDate =
-                work.firstPerformanceDate
-
-                    ? `<br><small>${work.firstPerformanceDate}</small>`
-
-                    : "";
-
-            const listeningHistory =
-                work.listens &&
-                Array.isArray(work.listens) &&
-                work.listens.length
-
-                    ? [...work.listens]
-                        .sort()
-                        .map(listen =>
-                            formatListenDate(listen)
-                        )
-                        .join(", ")
-
-                    : "—";
-
-            return `
-
-                <tr>
-
-                    <td>
-                        ${work.composer}
-                    </td>
-
-                    <td>
-                        ${work.title}
-                    </td>
-
-                    <td>
-                        ${work.year}
-                    </td>
-
-                    <td>
-                        ${work.composedPlace}
-                    </td>
-
-                    <td>
-                        ${performance}
-                        ${performanceDate}
-                    </td>
-
-                    <td class="period-cell">
-                        ${work.period}
-                    </td>
-
-                    <td>
-                        ${listeningHistory}
-                    </td>
-
-                </tr>
-
-            `;
-
-        }).join("");
-
-    document
-        .querySelectorAll(".works-table th")
-        .forEach(th => {
-
-            th.classList.remove(
-                "sort-asc",
-                "sort-desc"
-            );
-
-            if(
-                th.dataset.sort ===
-                tableSortField
-            ){
-
-                th.classList.add(
-                    tableSortDirection === "asc"
-                        ? "sort-asc"
-                        : "sort-desc"
-                );
-
-            }
-
-        });
-
-}
-
-
-/* --------------------------------------------------
-   Map / Table tabs
--------------------------------------------------- */
-
-tabs.forEach(tab => {
-
-    tab.addEventListener("click", () => {
-
-        tabs.forEach(t => {
-
-            t.classList.remove("active");
-
-        });
-
-        tab.classList.add("active");
-
-        const view =
-            tab.dataset.view;
-
-        if(view === "map-view"){
-
-            mapView.style.display =
-                "block";
-
-            tableView.style.display =
-                "none";
-
-            setTimeout(() => {
-
-                map.invalidateSize();
-
-            },50);
-
-        }else{
-
-            mapView.style.display =
-                "none";
-
-            tableView.style.display =
-                "block";
-
-            renderTable();
-
-        }
-
-    });
-
-});
-
-
-/* --------------------------------------------------
-   Table sorting
--------------------------------------------------- */
-
-document
-    .querySelectorAll(".works-table th")
-    .forEach(th => {
-
-        th.addEventListener("click", () => {
-
-            const field =
-                th.dataset.sort;
-
-            if(tableSortField === field){
-
-                tableSortDirection =
-                    tableSortDirection === "asc"
-                        ? "desc"
-                        : "asc";
-
-            }else{
-
-                tableSortField =
-                    field;
-
-                tableSortDirection =
-                    "asc";
-
-            }
-
-            renderTable();
-
-        });
-
-    });
-
-
-/* --------------------------------------------------
-   Composition year filters
--------------------------------------------------- */
-
-minSlider.addEventListener(
-    "input",
-    () => draw(minSlider)
-);
-
-maxSlider.addEventListener(
-    "input",
-    () => draw(maxSlider)
-);
-
-
-/* --------------------------------------------------
-   Listening dropdown filters
--------------------------------------------------- */
-
-minListenSelect.addEventListener(
-    "change",
-    () => draw(minListenSelect)
-);
-
-maxListenSelect.addEventListener(
-    "change",
-    () => draw(maxListenSelect)
-);
-
-
-/* --------------------------------------------------
-   Search filter
--------------------------------------------------- */
-
-searchFilter.addEventListener(
-    "input",
-    () => draw()
-);
-
-
-/* --------------------------------------------------
-   Initial draw
--------------------------------------------------- */
-
-draw();
-
+yearMin.addEventListener('input',()=>update(yearMin));
+yearMax.addEventListener('input',()=>update(yearMax));
+search.addEventListener('input',()=>update());
+document.querySelectorAll('.preset-years [data-start]').forEach(b=>b.addEventListener('click',()=>setRange(Number(b.dataset.start),Number(b.dataset.end))));
+document.getElementById('allYears').addEventListener('click',()=>setRange(1600,2026));
+document.querySelectorAll('.works-table th').forEach(th=>th.addEventListener('click',()=>{
+  if(sortField===th.dataset.sort)sortDirection=sortDirection==='asc'?'desc':'asc';
+  else{sortField=th.dataset.sort;sortDirection='asc';}
+  renderTable();
+}));
+document.querySelectorAll('.view-tab').forEach(tab=>tab.addEventListener('click',()=>{
+  document.querySelectorAll('.view-tab').forEach(t=>t.classList.toggle('active',t===tab));
+  const showMap=tab.dataset.view==='map-view';
+  mapEl.style.display=showMap?'block':'none';tableEl.style.display=showMap?'none':'block';
+  if(showMap)setTimeout(()=>map.invalidateSize(),50);
+  else renderTable();
+}));
+update();
 </script>
 
 </body>
