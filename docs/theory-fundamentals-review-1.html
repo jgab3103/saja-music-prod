@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="SAJA Music Theory Fundamentals Review Module. Flash cards, note-reading practice, scale diagrams and revision exercises." />
+<meta name="author" content="SAJA Music" />
+<title>Theory Fundamentals Review | SAJA Music</title>
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,500,600,700,800,900" rel="stylesheet" />
+<link href="css/styles.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/vexflow@4.2.2/build/cjs/vexflow.js" defer></script>
+<style>
+:root{--accent:#8B2E3C;--paper:#FAFAFA;--panel:#F4F1EB;--ink:#111;--muted:#666;--line:rgba(0,0,0,.10)}
+html{scroll-behavior:smooth;background:var(--paper)}
+body{margin:0;font-family:'Nunito',sans-serif;background:var(--paper);color:var(--ink);line-height:1.75;font-size:16.5px;padding-top:80px}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(139,46,60,.35)}
+a:hover{color:#111;border-bottom-color:rgba(139,46,60,.75)}
+#mainNav,#mainNav.navbar-shrink{background:var(--paper)!important;border-bottom:1px solid rgba(0,0,0,.05);min-height:80px}
+#mainNav a{color:#111!important;text-decoration:none!important;border:none!important}
+.nav-links{display:flex;gap:2.5rem;align-items:center}
+.article{max-width:780px;margin:0 auto;padding:60px 24px 120px}
+.eyebrow{font-size:.8rem;letter-spacing:.075em;text-transform:uppercase;color:#777;font-weight:800;margin:0 0 12px}
+h1,h2,h3{font-family:'Varela Round',sans-serif;font-weight:500;line-height:1.4}
+h1{font-size:1.95rem;margin:0 0 10px}
+h2{font-size:1.34rem;margin:56px 0 16px}
+h3{font-size:1.05rem;margin:0 0 10px}
+.meta{color:rgba(0,0,0,.55);font-size:.9rem;margin-bottom:34px}
+.lead{font-size:1.08rem}
+p{max-width:68ch;margin:0 0 22px}
+.learning-note,.interactive,.exercise,.summary-grid,.flashcard-shell{background:var(--panel);padding:24px;border-radius:4px;margin:26px 0}
+.exercise{background:#fff;border:1px solid var(--line)}
+.learning-note{border-left:3px solid var(--accent)}
+.small{font-size:.9rem;color:var(--muted)}
+.controls{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:14px 0 18px}
+label{font-size:.93rem;font-weight:800}
+select{font:inherit;padding:8px 14px;background:white;color:var(--ink);border:1px solid #bbb;border-radius:3px}
+button{font:inherit;cursor:pointer}
+button.action{color:white;background:var(--accent);padding:9px 15px;font-size:.93rem;font-weight:800;border:1px solid var(--accent);border-radius:3px}
+button.action.secondary{background:white;color:var(--accent)}
+button.action:hover{filter:brightness(.94)}
+button:focus-visible,select:focus-visible{outline:3px solid #4e86cd;outline-offset:2px}
+.notation{background:white;border:1px solid var(--line);border-radius:4px;overflow-x:auto;padding:6px;min-height:145px}
+.notation svg{display:block}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid-4{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.card{background:white;border:1px solid var(--line);border-radius:4px;padding:16px}
+.card h3{margin-bottom:8px}
+.scale-diagram{background:#fff;border:1px solid var(--line);border-radius:4px;padding:18px 16px;margin:18px 0}
+.diagram-title{font-weight:800;color:var(--accent);margin-bottom:9px}
+.diagram-host{overflow-x:auto}
+.flashcard{background:white;border:1px solid var(--line);border-radius:4px;padding:24px;min-height:180px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.flashcard .term{font-family:'Varela Round',sans-serif;font-size:1.4rem;line-height:1.35;margin-bottom:8px}
+.flashcard .category{font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:#777;font-weight:800;margin-bottom:10px}
+.flashcard .definition{max-width:42ch}
+.flash-status{font-size:.9rem;color:#666}
+.choice-row{display:flex;flex-wrap:wrap;gap:9px;margin:12px 0}
+.choice{padding:8px 12px;border-radius:3px;border:1px solid #aaa;background:#fff;font-weight:700}
+.choice.selected{background:#f1e0e4;border-color:var(--accent)}
+.feedback{min-height:26px;margin:12px 0 0;font-weight:800;font-size:.93rem}
+.feedback.ok{color:#28673f}.feedback.no{color:var(--accent)}
+.note-bank{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.note-bank button{padding:8px 11px;border:1px solid #b6b6b6;border-radius:4px;background:white;font-weight:800}
+.note-bank button.selected{background:#f2e4e7;border-color:#ca9da6;color:var(--accent)}
+.tiny{font-size:.82rem;color:#777}
+.next{border-top:1px solid var(--line);padding-top:28px;margin-top:55px}
+.footer{background:var(--paper);border-top:1px solid rgba(0,0,0,.06);padding:80px 30px;text-align:center;color:rgba(0,0,0,.7)}
+@media(max-width:700px){.nav-links{gap:1.2rem;font-size:.9rem}.article{padding:36px 20px 80px}h1{font-size:1.58rem}h2{font-size:1.18rem}.grid-2,.grid-4{grid-template-columns:1fr}.learning-note,.interactive,.exercise,.summary-grid,.flashcard-shell{padding:18px}}
+@media(max-width:380px){.nav-links{gap:.75rem;font-size:.8rem}#mainNav .container{padding-left:14px!important;padding-right:14px!important}.navbar-brand{font-size:.92rem}}
+</style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container px-4 px-lg-5">
+    <a class="navbar-brand" href="./index.html">SAJA MUSIC</a>
+    <div class="nav-links">
+      <a href="./teaching.html">Discover</a>
+      <a href="./pathways.html">Learn</a>
+      <a href="./about.html">About</a>
+    </div>
+  </div>
+</nav>
+
+<main class="article">
+  <p class="eyebrow">Theory Fundamentals · Review Module</p>
+  <h1>Review &amp; Study Module</h1>
+  <div class="meta">Parts 1–4 · Notes · Scales · Intervals · Key signatures</div>
+
+  <p class="lead">This page brings together everything from the first part of the course: the twelve notes, tones and semitones, major and minor scales, intervals on the treble staff, and key signatures. Think of this as a <strong>study module</strong>: a place to revise, test yourself, and make sure the ideas really connect.</p>
+
+  <div class="learning-note">
+    <p><strong>How to use this page:</strong> start with the flash cards, then review the scale patterns, then use the notation-only exercises. We are not using the keyboard visualisation here. Instead, the focus is on seeing and understanding <strong>notes, intervals and patterns</strong> directly.</p>
+  </div>
+
+  <h2>1. Quick review flash cards</h2>
+  <p>Use these cards to review the core terms from the course so far. Try to answer the question or define the term <em>before</em> turning the card.</p>
+  <div class="flashcard-shell">
+    <div id="flashcard" class="flashcard" aria-live="polite">
+      <div id="flashCategory" class="category"></div>
+      <div id="flashTerm" class="term"></div>
+      <div id="flashBody" class="definition"></div>
+    </div>
+    <div class="controls">
+      <button id="flashReveal" class="action">Reveal / Hide answer</button>
+      <button id="flashPrev" class="action secondary">Previous</button>
+      <button id="flashNext" class="action secondary">Next</button>
+    </div>
+    <p id="flashStatus" class="flash-status"></p>
+  </div>
+
+  <h2>2. The scale patterns we have learned</h2>
+  <p>These diagrams summarise the scales introduced so far. The numbered circles show the scale degrees. The curved arrows show the distance between consecutive degrees. Notice how the <strong>pattern</strong> changes from one scale type to another.</p>
+  <div class="summary-grid grid-4" id="patternGallery"></div>
+
+  <h2>3. Scale reference: notes, degrees and notation</h2>
+  <p>Choose a tonic and a scale type. The page will show the scale degrees, the interval pattern, and the scale written on a treble staff. We are writing accidentals beside the notes here, not using key signatures, so you can clearly see the note names.</p>
+  <div class="interactive">
+    <div class="controls">
+      <label for="scaleTonic">Starting note</label>
+      <select id="scaleTonic"></select>
+      <label for="scaleType">Scale</label>
+      <select id="scaleType">
+        <option value="major">Major</option>
+        <option value="naturalMinor">Natural minor</option>
+        <option value="harmonicMinor">Harmonic minor</option>
+        <option value="melodicMinor">Melodic minor (ascending)</option>
+      </select>
+    </div>
+    <div id="scalePatternHost" class="scale-diagram"></div>
+    <div id="scaleStaff" class="notation" aria-label="Chosen scale on treble staff"></div>
+    <p id="scaleSummary" class="small"></p>
+  </div>
+
+  <h2>4. Treble clef note-reading practice</h2>
+  <p>Read the note on the staff and choose its name. These exercises focus on the note names themselves, not on the keyboard.</p>
+  <div class="exercise">
+    <p class="eyebrow">Practice 1 · Name the note</p>
+    <div id="noteReadingStaff" class="notation" aria-label="Single note on treble staff"></div>
+    <div id="noteChoices" class="choice-row" role="group" aria-label="Answer choices for note reading"></div>
+    <div id="noteFeedback" class="feedback" aria-live="polite"></div>
+    <div class="controls">
+      <button id="newNoteQuestion" class="action">New note</button>
+      <button id="noteHint" class="action secondary">Hint</button>
+    </div>
+    <p id="noteHintText" class="small"></p>
+  </div>
+
+  <div class="exercise">
+    <p class="eyebrow">Practice 2 · Find scale degrees</p>
+    <p id="degreePrompt"><strong>Question loading…</strong></p>
+    <div id="degreeChoices" class="choice-row" role="group" aria-label="Scale degree choices"></div>
+    <div id="degreeFeedback" class="feedback" aria-live="polite"></div>
+    <div class="controls">
+      <button id="newDegreeQuestion" class="action">New question</button>
+    </div>
+  </div>
+
+  <h2>5. Key signature review</h2>
+  <p>Look at the key signature on the treble staff and identify the major key. Use the pattern you learned in the cycle if you need it.</p>
+  <div class="exercise">
+    <p class="eyebrow">Practice 3 · Which major key is this?</p>
+    <div id="keySigStaff" class="notation" aria-label="Key signature on treble staff"></div>
+    <div id="keySigChoices" class="choice-row" role="group" aria-label="Answer choices for key signature quiz"></div>
+    <div id="keySigFeedback" class="feedback" aria-live="polite"></div>
+    <div class="controls">
+      <button id="newKeySigQuestion" class="action">New key signature</button>
+      <button id="keySigHint" class="action secondary">Hint</button>
+    </div>
+    <p id="keySigHintText" class="small"></p>
+  </div>
+
+  <h2>6. Mixed review challenge</h2>
+  <p>This final section mixes together note names, scale patterns and key signatures. Use it as a final check that the ideas from the first four lessons really make sense.</p>
+  <div class="exercise">
+    <p class="eyebrow">Final challenge</p>
+    <div id="mixedQuestion"><strong>Question loading…</strong></div>
+    <div id="mixedVisual"></div>
+    <div id="mixedChoices" class="choice-row" role="group" aria-label="Choices for mixed review"></div>
+    <div id="mixedFeedback" class="feedback" aria-live="polite"></div>
+    <div class="controls">
+      <button id="newMixedQuestion" class="action">Next question</button>
+    </div>
+    <p id="mixedScore" class="small">Score: 0 / 0</p>
+  </div>
+
+  <h2>7. Why do we use scales? Create a melody</h2>
+  <p><strong>Scales give us a collection of notes to work with.</strong> By choosing a smaller group from the twelve possible notes in an octave, we can begin to make interesting melodies. A scale does not tell us which notes to play, in what order, or for how long. Those choices are where the composing begins.</p>
+  <p>Listen to the way composers shape melodies. <em>Mozart’s Eine kleine Nachtmusik</em> begins in G major; the <em>Minuet in G major</em> in the Anna Magdalena Bach notebook (composed by Christian Petzold) is another familiar melody to explore. They use notes from a key in recognisable patterns, but it is the movement, repetition and rhythm that bring those notes to life. Music can also use notes outside the scale — for now, we are starting with a deliberately limited collection.</p>
+  <div class="learning-note">
+    <p><strong>Try composing with just one scale.</strong> Begin on degree 1, move by step or leap to other degrees, repeat a note if you like, and find a way back to 1. Listen to what happens when you change only one or two notes. You do not need harmony to make a satisfying melody.</p>
+  </div>
+  <div class="interactive">
+    <h3>Compose a scale melody</h3>
+    <p class="small">Choose a starting note and scale, then click the numbered notes to add them to your melody. Each click adds one note to the treble staff. You can use up to twelve notes, listen to the result, undo, or begin again. For now, all notes sound for the same length: we will explore rhythm in more detail elsewhere.</p>
+    <div class="controls">
+      <label for="melodyTonic">Starting note</label><select id="melodyTonic"></select>
+      <label for="melodyScale">Scale</label>
+      <select id="melodyScale">
+        <option value="major">Major</option>
+        <option value="naturalMinor">Natural minor</option>
+        <option value="harmonicMinor">Harmonic minor</option>
+        <option value="melodicMinor">Melodic minor (ascending)</option>
+      </select>
+    </div>
+    <div class="scale-diagram" id="melodyDegrees"></div>
+    <p class="small" style="margin-bottom:8px"><strong>Choose a note to add:</strong></p>
+    <div id="melodyNoteButtons" class="note-bank" role="group" aria-label="Add scale degrees to melody"></div>
+    <div id="melodyStaff" class="notation" aria-label="Melody composed on treble clef staff"></div>
+    <p id="melodySequence" class="small" aria-live="polite">Your melody is empty. Try choosing 1 to begin.</p>
+    <div class="controls">
+      <button class="action" id="melodyPlay">Play melody</button>
+      <button class="action secondary" id="melodyStop">Stop</button>
+      <button class="action secondary" id="melodyUndo">Undo last note</button>
+      <button class="action secondary" id="melodyClear">Clear</button>
+      <button class="action secondary" id="melodyExample">Try an example</button>
+    </div>
+    <p id="melodyStatus" class="small" aria-live="polite">Start with a few notes. Can you create a melody that feels finished?</p>
+  </div>
+  <div class="exercise">
+    <p class="eyebrow">Composition exercise</p>
+    <h3>Make two melodies with the same scale</h3>
+    <p>Create one melody that mostly moves by step (to neighbouring scale degrees) and another with larger leaps. Play them and compare. Try ending on degree 1, and then try ending somewhere else. <strong>What makes one feel more complete?</strong> You can write your favourite melody on the manuscript paper in the next section.</p>
+  </div>
+
+  <h2>8. Put it on paper</h2>
+  <p>Writing music by hand is an excellent way to check that you really understand the patterns. Print some blank manuscript paper and write out the <strong>major, natural minor, harmonic minor and ascending melodic minor scales</strong> you have learned. Then practise writing key signatures, beginning with C major and adding one sharp or flat at a time.</p>
+  <div class="exercise">
+    <p class="eyebrow">Written revision exercise</p>
+    <h3>Write scales and key signatures</h3>
+    <p>Choose several starting notes. Write each scale on the treble staff, using the correct note names and accidentals. Then write the major key signatures in sharp order and flat order. Check your work against the scale explorer and key signature exercises above. Finally, write out one or two melodies you composed in Section 7 — notate each note on the treble staff, and try changing the order of the notes to create a new musical phrase.</p>
+    <a class="action" href="./assets/pdf-files/manuscript-paper.pdf" target="_blank" rel="noopener" style="display:inline-block;color:#fff;background:var(--accent);padding:9px 15px;font-size:.93rem;font-weight:800;border:1px solid var(--accent);border-radius:3px;text-decoration:none">Open printable manuscript paper (PDF)</a>
+    <p class="small" style="margin-top:13px;margin-bottom:0">Two A4 pages of blank five-line staves, suitable for printing.</p>
+  </div>
+
+  <div class="next">
+    <h3>Coming next: Triads</h3>
+    <p>Once these ideas are secure, the next step is to combine notes into chords. We will start with 1–3–5 structures and learn how major, minor, diminished and augmented triads are built.</p>
+  </div>
+</main>
+
+<footer class="footer"><div>SAJA MUSIC</div></footer>
+
+<script>
+(function(){'use strict';
+const VFReady=()=>window.Vex&&window.Vex.Flow;
+const LETTERS=['C','D','E','F','G','A','B'];
+const NATURAL_PC={C:0,D:2,E:4,F:5,G:7,A:9,B:11};
+const TONICS=['C','G','D','A','E','B','F♯','C♯','F','B♭','E♭','A♭'];
+const SCALE_TYPES={
+  major:{label:'Major',steps:[2,2,1,2,2,2,1]},
+  naturalMinor:{label:'Natural minor',steps:[2,1,2,2,1,2,2]},
+  harmonicMinor:{label:'Harmonic minor',steps:[2,1,2,2,1,3,1]},
+  melodicMinor:{label:'Melodic minor (ascending)',steps:[2,1,2,2,2,2,1]}
+};
+const FLASHCARDS=[
+  {category:'Notes',term:'Octave',answer:'An octave is the distance from one note to the next note with the same name. From C to the next C is an octave.'},
+  {category:'Intervals',term:'Semitone',answer:'A semitone is the distance between two neighbouring notes. On the keyboard, it is the smallest step.'},
+  {category:'Intervals',term:'Tone',answer:'A tone is two semitones. It is a distance of two steps, with one note in between.'},
+  {category:'Scales',term:'Major scale pattern',answer:'The major scale follows the pattern Tone – Tone – Semitone – Tone – Tone – Tone – Semitone.'},
+  {category:'Scales',term:'Natural minor pattern',answer:'The natural minor scale follows the pattern Tone – Semitone – Tone – Tone – Semitone – Tone – Tone.'},
+  {category:'Scales',term:'Harmonic minor',answer:'Harmonic minor raises the 7th degree of the natural minor scale, creating a 3-semitone gap between 6 and 7.'},
+  {category:'Scales',term:'Melodic minor',answer:'Ascending melodic minor raises the 6th and 7th degrees of natural minor. Descending, it usually returns to natural minor.'},
+  {category:'Notation',term:'Treble clef',answer:'The treble clef is the staff used for higher notes. In beginner theory, it is often the first clef students learn to read.'},
+  {category:'Notation',term:'Key signature',answer:'A key signature is a simpler way of writing repeated sharps or flats. It appears at the beginning of the staff.'},
+  {category:'Patterns',term:'Cycle of fourths',answer:'When key signatures are written one by one using flats, the tonics move by fourths: C, F, B♭, E♭, A♭, and so on.'},
+  {category:'Patterns',term:'Cycle of fifths',answer:'When sharp key signatures are written one by one, the tonics move by fifths: C, G, D, A, E, B, F♯, C♯.'},
+  {category:'Scales',term:'Scale degree',answer:'A scale degree is the numbered position of a note in the scale: 1, 2, 3, 4, 5, 6, 7, 8.'}
+];
+const KEY_SIGS=[
+  {name:'C',kind:'none',n:0},{name:'G',kind:'sharp',n:1},{name:'D',kind:'sharp',n:2},{name:'A',kind:'sharp',n:3},{name:'E',kind:'sharp',n:4},{name:'B',kind:'sharp',n:5},{name:'F♯',kind:'sharp',n:6},{name:'C♯',kind:'sharp',n:7},
+  {name:'F',kind:'flat',n:1},{name:'B♭',kind:'flat',n:2},{name:'E♭',kind:'flat',n:3},{name:'A♭',kind:'flat',n:4}
+];
+const SHARP_ORDER=['F♯','C♯','G♯','D♯','A♯','E♯','B♯'];
+const FLAT_ORDER=['B♭','E♭','A♭','D♭','G♭','C♭','F♭'];
+const NOTE_POOL=[
+  {letter:'E',acc:'',oct:4,label:'E'},
+  {letter:'F',acc:'',oct:4,label:'F'},
+  {letter:'G',acc:'',oct:4,label:'G'},
+  {letter:'A',acc:'',oct:4,label:'A'},
+  {letter:'B',acc:'',oct:4,label:'B'},
+  {letter:'C',acc:'',oct:5,label:'C'},
+  {letter:'D',acc:'',oct:5,label:'D'},
+  {letter:'E',acc:'',oct:5,label:'E'},
+  {letter:'F',acc:'',oct:5,label:'F'},
+  {letter:'G',acc:'',oct:5,label:'G'},
+  {letter:'A',acc:'',oct:5,label:'A'},
+  {letter:'B',acc:'',oct:5,label:'B'},
+  {letter:'C',acc:'',oct:6,label:'C'}
+];
+let flashIndex=0,flashRevealed=false,mixedScore=0,mixedAttempts=0;
+function parseName(name){const letter=name[0];const rest=name.slice(1).replace(/♯/g,'#').replace(/♭/g,'b');let offset=0;for(const ch of rest){if(ch==='#')offset++;if(ch==='b')offset--;}return {letter,offset,name};}
+function mod(n,m){return ((n%m)+m)%m}
+function diffToAcc(diff){if(diff===0)return {text:'',vf:''}; if(diff===1)return {text:'♯',vf:'#'}; if(diff===-1)return {text:'♭',vf:'b'}; if(diff===2)return {text:'𝄪',vf:'##'}; if(diff===-2)return {text:'♭♭',vf:'bb'}; return {text:'',vf:''};}
+function buildScale(tonicName,type){const tonic=parseName(tonicName);const steps=SCALE_TYPES[type].steps;const startIdx=LETTERS.indexOf(tonic.letter);const tonicPc=mod(NATURAL_PC[tonic.letter]+tonic.offset,12);const cum=[0];for(let i=0;i<steps.length;i++)cum.push(cum[i]+steps[i]);const notes=[];for(let i=0;i<8;i++){const letter=LETTERS[(startIdx+i)%7];const expectedPc=mod(NATURAL_PC[letter],12);const targetPc=mod(tonicPc+cum[i],12);let diff=mod(targetPc-expectedPc,12);if(diff>6)diff-=12;const acc=diffToAcc(diff);notes.push({degree:i+1,letter,acc:acc.text,vfAcc:acc.vf,name:letter+acc.text});}
+  return {tonic:tonicName,type,pattern:steps,notes};
+}
+function labelInterval(step){if(step===1)return 'Semitone'; if(step===2)return 'Tone'; return step+' semitones';}
+function svgPattern(scale,title){const steps=scale.pattern; const notes=scale.notes; const width=660, height=160; const xs=[44,128,212,296,380,464,548,632];
+  let svg=['<div class="diagram-title">'+title+'</div><div class="diagram-host"><svg viewBox="0 0 '+width+' '+height+'" width="100%" role="img" aria-label="'+title+' pattern diagram">'];
+  for(let i=0;i<7;i++){
+    const x1=xs[i], x2=xs[i+1], xm=(x1+x2)/2;
+    svg.push('<path d="M '+(x1+22)+' 58 Q '+xm+' 18 '+(x2-22)+' 58" fill="none" stroke="#8B2E3C" stroke-width="2" />');
+    svg.push('<text x="'+xm+'" y="24" text-anchor="middle" font-size="13" fill="#8B2E3C" font-weight="700">'+labelInterval(steps[i])+'</text>');
+  }
+  for(let i=0;i<8;i++){
+    svg.push('<circle cx="'+xs[i]+'" cy="76" r="19" fill="#fff" stroke="#8B2E3C" stroke-width="2"></circle>');
+    svg.push('<text x="'+xs[i]+'" y="81" text-anchor="middle" font-size="15" fill="#8B2E3C" font-weight="800">'+(i+1)+'</text>');
+    svg.push('<text x="'+xs[i]+'" y="113" text-anchor="middle" font-size="14" fill="#111" font-weight="700">'+notes[i].name+'</text>');
+  }
+  svg.push('</svg></div>'); return svg.join('');
+}
+function renderStaff(hostId, noteObjs, keySig=null, single=false){const host=document.getElementById(hostId); if(!host)return; host.replaceChildren(); if(!VFReady()){host.textContent='The treble staff could not load. Please check your internet connection and reload.'; return;}
+  try{const VF=Vex.Flow; const w=single?380:700; const h=145; const wrap=document.createElement('div'); host.appendChild(wrap); const renderer=new VF.Renderer(wrap,VF.Renderer.Backends.SVG); renderer.resize(w,h); const ctx=renderer.getContext(); const stave=new VF.Stave(14,30,w-28); stave.addClef('treble'); if(keySig)stave.addKeySignature(keySig); stave.setContext(ctx).draw(); const notes=noteObjs.map(n=>{const st=new VF.StaveNote({clef:'treble',keys:[n.letter.toLowerCase()+'/'+n.oct],duration:'q'}); if(n.vfAcc)st.addModifier(new VF.Accidental(n.vfAcc),0); return st;}); if(notes.length){VF.Formatter.FormatAndDraw(ctx,stave,notes,{autoBeam:false});}}catch(err){host.textContent='Unable to show notation: '+err.message; console.error(err);} }
+function updateFlashcard(){const card=FLASHCARDS[flashIndex]; document.getElementById('flashCategory').textContent=card.category; document.getElementById('flashTerm').textContent=card.term; document.getElementById('flashBody').textContent=flashRevealed?card.answer:'Think of your answer first, then reveal it.'; document.getElementById('flashStatus').textContent='Card '+(flashIndex+1)+' of '+FLASHCARDS.length;}
+function fillTonics(){const sel=document.getElementById('scaleTonic'); TONICS.forEach(t=>{const opt=document.createElement('option'); opt.value=t; opt.textContent=t; sel.appendChild(opt);}); sel.value='C';}
+function updateScaleReference(){const tonic=document.getElementById('scaleTonic').value, type=document.getElementById('scaleType').value; const scale=buildScale(tonic,type); document.getElementById('scalePatternHost').innerHTML=svgPattern(scale, tonic+' '+SCALE_TYPES[type].label); const staffNotes=scale.notes.map((n,i)=>({letter:n.letter,vfAcc:n.vfAcc,oct:(i<3?4:5)+(i===7&&scale.notes[0].letter==='B'?1:0)}));
+  // better octave logic
+  let octave=4, prevIdx=LETTERS.indexOf(scale.notes[0].letter); const proper=[]; scale.notes.forEach((n,idx)=>{const li=LETTERS.indexOf(n.letter); if(idx===0){octave=(['A','B'].includes(n.letter)?4:4);} else if(li<=prevIdx){octave++;} proper.push({letter:n.letter,vfAcc:n.vfAcc,oct:octave}); prevIdx=li;});
+  renderStaff('scaleStaff',proper,null,false); document.getElementById('scaleSummary').textContent=tonic+' '+SCALE_TYPES[type].label+': '+scale.notes.map(n=>n.name).join(' – ')+'.'; }
+function initPatterns(){const host=document.getElementById('patternGallery'); const examples=[['C','major'],['A','naturalMinor'],['A','harmonicMinor'],['A','melodicMinor']]; host.innerHTML=''; examples.forEach(([tonic,type])=>{const div=document.createElement('div'); div.className='card'; const scale=buildScale(tonic,type); div.innerHTML=svgPattern(scale, tonic+' '+SCALE_TYPES[type].label); host.appendChild(div);});}
+function shuffle(arr){return [...arr].sort(()=>Math.random()-.5)}
+let noteQuestion=null; function newNoteReading(){noteQuestion=NOTE_POOL[Math.floor(Math.random()*NOTE_POOL.length)]; renderStaff('noteReadingStaff',[{letter:noteQuestion.letter,vfAcc:'',oct:noteQuestion.oct}],null,true); const choices=shuffle(['C','D','E','F','G','A','B']).slice(0,3); if(!choices.includes(noteQuestion.label))choices[Math.floor(Math.random()*choices.length)]=noteQuestion.label; const finalChoices=shuffle([...new Set(choices)]); const box=document.getElementById('noteChoices'); box.replaceChildren(); finalChoices.forEach(ch=>{const b=document.createElement('button'); b.type='button'; b.className='choice'; b.textContent=ch; b.addEventListener('click',()=>{box.querySelectorAll('button').forEach(x=>x.classList.toggle('selected',x===b)); const ok=ch===noteQuestion.label; const fb=document.getElementById('noteFeedback'); fb.className='feedback '+(ok?'ok':'no'); fb.textContent=ok?'Correct. That note is '+noteQuestion.label+'.':'Not quite. That note is '+noteQuestion.label+'.';}); box.appendChild(b);}); document.getElementById('noteFeedback').textContent=''; document.getElementById('noteHintText').textContent=''; }
+let degreeQuestion=null; function newDegreePractice(){const tonic=TONICS[Math.floor(Math.random()*TONICS.length)], types=['major','naturalMinor','harmonicMinor','melodicMinor']; const type=types[Math.floor(Math.random()*types.length)]; const scale=buildScale(tonic,type); const degree=2+Math.floor(Math.random()*6); degreeQuestion={tonic,type,scale,degree,answer:scale.notes[degree-1].name}; document.getElementById('degreePrompt').innerHTML='<strong>In '+tonic+' '+SCALE_TYPES[type].label+', what is scale degree '+degree+'?</strong>'; const pool=shuffle(scale.notes.map(n=>n.name)).slice(0,4); if(!pool.includes(degreeQuestion.answer))pool[Math.floor(Math.random()*pool.length)]=degreeQuestion.answer; const box=document.getElementById('degreeChoices'); box.replaceChildren(); shuffle([...new Set(pool)]).forEach(ch=>{const b=document.createElement('button'); b.type='button'; b.className='choice'; b.textContent=ch; b.addEventListener('click',()=>{box.querySelectorAll('button').forEach(x=>x.classList.toggle('selected',x===b)); const ok=ch===degreeQuestion.answer; const fb=document.getElementById('degreeFeedback'); fb.className='feedback '+(ok?'ok':'no'); fb.textContent=ok?'Yes. Degree '+degree+' is '+degreeQuestion.answer+'.':'Not quite. Degree '+degree+' is '+degreeQuestion.answer+'.';}); box.appendChild(b);}); document.getElementById('degreeFeedback').textContent=''; }
+function keySigToVF(sig){if(sig.kind==='sharp')return ['C','G','D','A','E','B','F#','C#'][sig.n]; if(sig.kind==='flat')return ['C','F','Bb','Eb','Ab'][sig.n]; return 'C';}
+let keySigQuestion=null; function newKeySigPractice(){keySigQuestion=KEY_SIGS[Math.floor(Math.random()*KEY_SIGS.length)]; renderStaff('keySigStaff',[],keySigQuestion.kind==='none'?null:keySigToVF(keySigQuestion),true); const wrong=shuffle(KEY_SIGS.filter(k=>k.name!==keySigQuestion.name)).slice(0,3).map(k=>k.name); const options=shuffle([keySigQuestion.name,...wrong]); const box=document.getElementById('keySigChoices'); box.replaceChildren(); options.forEach(name=>{const b=document.createElement('button'); b.type='button'; b.className='choice'; b.textContent=name+' major'; b.addEventListener('click',()=>{box.querySelectorAll('button').forEach(x=>x.classList.toggle('selected',x===b)); const ok=name===keySigQuestion.name; const fb=document.getElementById('keySigFeedback'); fb.className='feedback '+(ok?'ok':'no'); fb.textContent=ok?'Correct. This is '+keySigQuestion.name+' major.':'Not quite. This is '+keySigQuestion.name+' major.';}); box.appendChild(b);}); document.getElementById('keySigFeedback').textContent=''; document.getElementById('keySigHintText').textContent=''; }
+let mixedQuestion=null; function newMixed(){const mode=['interval','note','keysig'][Math.floor(Math.random()*3)]; mixedQuestion={mode}; const choicesBox=document.getElementById('mixedChoices'); const visual=document.getElementById('mixedVisual'); const q=document.getElementById('mixedQuestion'); choicesBox.replaceChildren(); visual.innerHTML=''; document.getElementById('mixedFeedback').textContent='';
+  if(mode==='interval'){
+    const types=['major','naturalMinor','harmonicMinor','melodicMinor']; const type=types[Math.floor(Math.random()*types.length)]; const scale=buildScale(['C','A'][Math.floor(Math.random()*2)],type); const idx=Math.floor(Math.random()*7); mixedQuestion.answer=labelInterval(scale.pattern[idx]); q.innerHTML='<strong>What is the distance between degrees '+(idx+1)+' and '+(idx+2)+' in the '+SCALE_TYPES[type].label+' scale?</strong>'; visual.innerHTML=svgPattern(scale, scale.tonic+' '+SCALE_TYPES[type].label); const options=shuffle(['Tone','Semitone','3 semitones',mixedQuestion.answer]).slice(0,4);
+    [...new Set(options)].forEach(opt=>addMixedChoice(opt,opt===mixedQuestion.answer));
+  } else if(mode==='note'){
+    const nq=NOTE_POOL[Math.floor(Math.random()*NOTE_POOL.length)]; mixedQuestion.answer=nq.label; q.innerHTML='<strong>Name this note on the treble staff.</strong>'; visual.innerHTML='<div id="mixedStaffHolder" class="notation" aria-label="Single note on treble staff"></div>'; setTimeout(()=>renderStaff('mixedStaffHolder',[{letter:nq.letter,vfAcc:'',oct:nq.oct}],null,true),0); shuffle(['C','D','E','F','G','A','B']).slice(0,4).concat([nq.label]); shuffle([...new Set(['C','D','E','F','G','A','B'])]).slice(0,4).concat([nq.label]); const options=shuffle([...new Set([nq.label,...shuffle(['C','D','E','F','G','A','B']).slice(0,3)])]); options.forEach(opt=>addMixedChoice(opt,opt===mixedQuestion.answer));
+  } else {
+    const ks=KEY_SIGS[Math.floor(Math.random()*KEY_SIGS.length)]; mixedQuestion.answer=ks.name+' major'; q.innerHTML='<strong>Which major key matches this key signature?</strong>'; visual.innerHTML='<div id="mixedKeySigHolder" class="notation" aria-label="Key signature on treble staff"></div>'; setTimeout(()=>renderStaff('mixedKeySigHolder',[],ks.kind==='none'?null:keySigToVF(ks),true),0); const options=shuffle([ks.name+' major',...shuffle(KEY_SIGS.filter(k=>k.name!==ks.name)).slice(0,3).map(k=>k.name+' major')]); options.forEach(opt=>addMixedChoice(opt,opt===mixedQuestion.answer));
+  }
+}
+function addMixedChoice(label,isCorrect){const box=document.getElementById('mixedChoices'); const b=document.createElement('button'); b.type='button'; b.className='choice'; b.textContent=label; b.addEventListener('click',()=>{box.querySelectorAll('button').forEach(x=>x.classList.toggle('selected',x===b)); mixedAttempts++; const ok=isCorrect; if(ok)mixedScore++; const fb=document.getElementById('mixedFeedback'); fb.className='feedback '+(ok?'ok':'no'); fb.textContent=ok?'Correct.':'Not quite. The correct answer is '+mixedQuestion.answer+'.'; document.getElementById('mixedScore').textContent='Score: '+mixedScore+' / '+mixedAttempts;}); box.appendChild(b);}
+// Melody composition workshop: notes and notation only (no keyboard display).
+let melodyNotes=[], melodyAudio=null, melodyRun=0;
+function melodyScale(){return buildScale(document.getElementById('melodyTonic').value, document.getElementById('melodyScale').value);}
+function melodyOctaves(scale){let octave=4, prev=LETTERS.indexOf(scale.notes[0].letter);
+  return scale.notes.map((n,i)=>{const idx=LETTERS.indexOf(n.letter);if(i>0&&idx<=prev)octave++;prev=idx;return {...n,oct:octave};});
+}
+function melodyFrequency(note){const pitch=12*(note.oct+1)+NATURAL_PC[note.letter]+(note.vfAcc==='##'?2:note.vfAcc==='#'?1:note.vfAcc==='b'?-1:note.vfAcc==='bb'?-2:0);return 440*Math.pow(2,(pitch-69)/12);}
+function stopMelody(){melodyRun++;if(melodyAudio){try{melodyAudio.close();}catch(e){}melodyAudio=null;}document.querySelectorAll('#melodyNoteButtons button').forEach(b=>b.classList.remove('selected'));}
+function drawMelody(){const scale=melodyScale(), notes=melodyOctaves(scale);
+  document.getElementById('melodyDegrees').innerHTML=svgPattern(scale,scale.tonic+' '+SCALE_TYPES[scale.type].label);
+  const bank=document.getElementById('melodyNoteButtons');bank.replaceChildren();
+  notes.forEach((n,i)=>{const b=document.createElement('button');b.type='button';b.innerHTML='<span>'+n.degree+'</span> · '+n.name;b.title='Add degree '+n.degree+', '+n.name;b.disabled=melodyNotes.length>=12;b.addEventListener('click',()=>{if(melodyNotes.length>=12)return;melodyNotes.push(i);drawMelody();});bank.appendChild(b);});
+  const chosen=melodyNotes.map(i=>notes[i]);
+  if(chosen.length){renderStaff('melodyStaff',chosen.map(n=>({letter:n.letter,vfAcc:n.vfAcc,oct:n.oct})),null,false);}
+  else {const host=document.getElementById('melodyStaff');host.replaceChildren();host.textContent='Your melody will appear on the treble staff as you add notes.';}
+  document.getElementById('melodySequence').textContent=chosen.length?'Scale degrees: '+chosen.map(n=>n.degree).join(' – ')+'  |  Notes: '+chosen.map(n=>n.name).join(' – '):'Your melody is empty. Try choosing 1 to begin.';
+  document.getElementById('melodyPlay').disabled=!chosen.length;
+  document.getElementById('melodyUndo').disabled=!chosen.length;
+  document.getElementById('melodyClear').disabled=!chosen.length;
+}
+function resetMelody(){stopMelody();melodyNotes=[];drawMelody();document.getElementById('melodyStatus').textContent='Try a short phrase, then listen and revise it.';}
+function playMelody(){if(!melodyNotes.length)return;stopMelody();const Context=window.AudioContext||window.webkitAudioContext;if(!Context){document.getElementById('melodyStatus').textContent='Audio is not supported in this browser.';return;}
+  const ctx=new Context();melodyAudio=ctx;const run=melodyRun;
+  const all=melodyOctaves(melodyScale());const chosen=melodyNotes.map(i=>all[i]);const start=ctx.currentTime+.08;
+  chosen.forEach((note,i)=>{const t=start+i*.44;const osc=ctx.createOscillator();const gain=ctx.createGain();osc.type='sine';osc.frequency.setValueAtTime(melodyFrequency(note),t);gain.gain.setValueAtTime(0.0001,t);gain.gain.exponentialRampToValueAtTime(.16,t+.025);gain.gain.setValueAtTime(.13,t+.29);gain.gain.exponentialRampToValueAtTime(.0001,t+.41);osc.connect(gain);gain.connect(ctx.destination);osc.start(t);osc.stop(t+.43);});
+  document.getElementById('melodyStatus').textContent='Playing your melody…';
+  chosen.forEach((n,i)=>setTimeout(()=>{if(run!==melodyRun)return;const b=document.querySelectorAll('#melodyNoteButtons button')[melodyNotes[i]];document.querySelectorAll('#melodyNoteButtons button').forEach(x=>x.classList.remove('selected'));if(b)b.classList.add('selected');},80+i*440));
+  setTimeout(()=>{if(run!==melodyRun)return;document.getElementById('melodyStatus').textContent='Finished. Try changing a few notes and listening again.';document.querySelectorAll('#melodyNoteButtons button').forEach(b=>b.classList.remove('selected'));ctx.close().catch(()=>{});if(melodyAudio===ctx)melodyAudio=null;},Math.ceil(chosen.length*440+200));
+}
+function initMelody(){const tonic=document.getElementById('melodyTonic');TONICS.forEach(t=>{let option=document.createElement('option');option.value=t;option.textContent=t;tonic.appendChild(option);});tonic.value='C';drawMelody();
+  ['melodyTonic','melodyScale'].forEach(id=>document.getElementById(id).addEventListener('change',resetMelody));
+  document.getElementById('melodyPlay').addEventListener('click',playMelody);
+  document.getElementById('melodyStop').addEventListener('click',()=>{stopMelody();document.getElementById('melodyStatus').textContent='Playback stopped.';});
+  document.getElementById('melodyUndo').addEventListener('click',()=>{stopMelody();melodyNotes.pop();drawMelody();});
+  document.getElementById('melodyClear').addEventListener('click',resetMelody);
+  document.getElementById('melodyExample').addEventListener('click',()=>{stopMelody();melodyNotes=[0,1,2,4,3,2,1,0];drawMelody();document.getElementById('melodyStatus').textContent='An original eight-note example using this scale. Press Play melody to hear it.';});
+}
+
+function init(){fillTonics(); initMelody(); initPatterns(); updateScaleReference(); updateFlashcard(); newNoteReading(); newDegreePractice(); newKeySigPractice(); newMixed();
+  document.getElementById('scaleTonic').addEventListener('change',updateScaleReference); document.getElementById('scaleType').addEventListener('change',updateScaleReference);
+  document.getElementById('flashReveal').addEventListener('click',()=>{flashRevealed=!flashRevealed; updateFlashcard();}); document.getElementById('flashPrev').addEventListener('click',()=>{flashIndex=(flashIndex-1+FLASHCARDS.length)%FLASHCARDS.length; flashRevealed=false; updateFlashcard();}); document.getElementById('flashNext').addEventListener('click',()=>{flashIndex=(flashIndex+1)%FLASHCARDS.length; flashRevealed=false; updateFlashcard();});
+  document.getElementById('newNoteQuestion').addEventListener('click',newNoteReading); document.getElementById('noteHint').addEventListener('click',()=>{document.getElementById('noteHintText').textContent='Remember the treble clef lines: E–G–B–D–F, and the spaces: F–A–C–E.';});
+  document.getElementById('newDegreeQuestion').addEventListener('click',newDegreePractice); document.getElementById('newKeySigQuestion').addEventListener('click',newKeySigPractice); document.getElementById('keySigHint').addEventListener('click',()=>{document.getElementById('keySigHintText').textContent='Sharps build through C, G, D, A, E, B, F♯, C♯. Flats build through C, F, B♭, E♭, A♭.';}); document.getElementById('newMixedQuestion').addEventListener('click',newMixed);
+}
+if(document.readyState==='complete')init(); else window.addEventListener('load',init);
+})();
+</script>
+</body>
+</html>

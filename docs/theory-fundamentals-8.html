@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="SAJA Music Theory Fundamentals Part 8: Beyond Major and Minor — new scales, seventh chords and interactive construction exercises.">
+<meta name="author" content="SAJA Music">
+<title>Theory Fundamentals 8: Beyond Major and Minor | SAJA Music</title>
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,500,600,700,800,900" rel="stylesheet">
+<link href="css/styles.css" rel="stylesheet">
+<script defer src="https://cdn.jsdelivr.net/npm/vexflow@4.2.2/build/cjs/vexflow.js"></script>
+<style>
+:root{--accent:#8B2E3C;--paper:#FAFAFA;--panel:#F4F1EB;--line:rgba(0,0,0,.11)}
+html{background:var(--paper);scroll-behavior:smooth}
+body{margin:0;padding-top:80px;background:var(--paper);color:#111;font:16.5px/1.75 'Nunito',sans-serif}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(139,46,60,.35)}
+a:hover{color:#111;border-bottom-color:var(--accent)}
+#mainNav,#mainNav.navbar-shrink{background:var(--paper)!important;min-height:80px;border-bottom:1px solid rgba(0,0,0,.05)}
+#mainNav a{color:#111!important;border:none!important;text-decoration:none!important}
+.nav-links{display:flex;gap:2.5rem;align-items:center}
+.article{max-width:790px;margin:auto;padding:60px 24px 115px}
+h1,h2,h3{font-family:'Varela Round',sans-serif;font-weight:500;line-height:1.4}
+h1{font-size:1.9rem;margin:0 0 10px}h2{font-size:1.34rem;margin:54px 0 15px}h3{font-size:1.04rem;margin:0 0 12px}
+p{max-width:69ch;margin:0 0 22px}
+.meta,.small{color:#666;font-size:.9rem}.meta{margin:0 0 38px}.lead{font-size:1.09rem}
+.eyebrow{color:#777;font-weight:800;letter-spacing:.075em;text-transform:uppercase;font-size:.8rem;margin-bottom:10px}
+.panel,.exercise,.note{background:var(--panel);border-radius:4px;padding:24px;margin:26px 0}
+.exercise{background:#fff;border:1px solid var(--line)}
+.note{border-left:3px solid var(--accent)}
+.note p:last-child{margin-bottom:0}
+.controls{display:flex;gap:11px;flex-wrap:wrap;align-items:center;margin:14px 0}
+label{font-size:.91rem;font-weight:800}
+select{font:inherit;padding:8px 12px;color:#111;background:white;border:1px solid #bbb;border-radius:4px;max-width:100%}
+button{font:inherit;cursor:pointer}
+button.action,.choice{padding:9px 14px;border:1px solid var(--accent);border-radius:4px;font-weight:800;font-size:.91rem}
+button.action{background:var(--accent);color:white}
+button.secondary,.choice{background:white;color:var(--accent)}
+button.active,.choice.active{background:#f0dfe3;border-color:var(--accent);color:#8B2E3C}
+button:focus-visible,select:focus-visible{outline:3px solid #4e86cd;outline-offset:2px}
+button:disabled{opacity:.55;cursor:default}
+.chips,.choices{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.chip{padding:6px 11px;border:1px solid #cbaab1;background:white;border-radius:90px;color:var(--accent);font-weight:800}
+.chip.emphasis{background:var(--accent);color:white}
+.staff{background:white;border:1px solid var(--line);border-radius:4px;overflow-x:auto;padding:4px;min-height:152px}
+.staff svg{display:block}
+.diagram{overflow-x:auto;background:white;border:1px solid var(--line);border-radius:4px;padding:12px;margin:15px 0}
+.diagram svg{display:block;min-width:650px;width:100%;height:auto}
+.details{font-size:.91rem;color:#444;margin:12px 0}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:16px 0}
+.mini{border:1px solid var(--line);border-radius:4px;background:white;padding:15px;min-width:0}
+.mini .staff{min-height:145px}
+.mini p{font-size:.88rem;margin:8px 0 14px}
+.atlas-wrap{max-width:100%;overflow-x:auto;background:white;border:1px solid var(--line);border-radius:4px;padding:5px}
+.atlas-wrap svg{display:block}
+.atlas-actions{display:grid;grid-template-columns:repeat(7,minmax(118px,1fr));gap:8px;margin-top:12px;min-width:870px}
+.atlas-actions button{white-space:normal;min-height:70px;padding:8px 4px;font-size:.82rem}
+.atlas-actions small{display:block;color:#555;font-weight:500;font-size:.78rem}
+.chord-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.chord-list .chord-item{background:#fff;border:1px solid var(--line);border-radius:4px;padding:12px}
+.chord-list strong{display:block;color:var(--accent)}
+.chord-list .small{display:block}
+.melody-staff{margin:14px 0}
+@media(max-width:700px){.chord-list{grid-template-columns:1fr}}
+.feedback{min-height:27px;margin:12px 0 0;font-size:.93rem;font-weight:800}
+.feedback.good{color:#28663b}.feedback.bad{color:var(--accent)}
+.legend{font-size:.82rem;color:#666}
+.footer{padding:80px 30px;text-align:center;color:#666;border-top:1px solid var(--line)}
+.next{margin-top:54px;padding-top:29px;border-top:1px solid var(--line)}
+@media(max-width:700px){.article{padding:38px 20px 90px}.nav-links{gap:1.2rem;font-size:.9rem}h1{font-size:1.55rem}h2{font-size:1.19rem}.panel,.exercise,.note{padding:18px}.grid{grid-template-columns:1fr}}
+@media(max-width:380px){.nav-links{gap:.7rem;font-size:.8rem}#mainNav .container{padding-left:14px!important;padding-right:14px!important}.navbar-brand{font-size:.92rem}}
+</style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav"><div class="container px-4 px-lg-5"><a class="navbar-brand" href="./index.html">SAJA MUSIC</a><div class="nav-links"><a href="./teaching.html">Discover</a><a href="./pathways.html">Learn</a><a href="./about.html">About</a></div></div></nav>
+<main class="article">
+<p class="eyebrow">Theory Fundamentals · Part 8</p>
+<h1>Beyond Major and Minor: More Scales, More Chords</h1>
+<p class="meta">New scale patterns · Unusual sounds · Seventh-chord construction · Listening</p>
+<p class="lead">We have built seventh chords using major and minor scales. But the collection of notes we choose affects the chords we can make. What happens if we change the notes of the scale?</p>
+<p>There are many other scales. Some contain seven notes, just like major and minor; others contain six or eight notes. They give us new colours for melody and harmony. Let's explore them, and use them to discover more seventh chords.</p>
+<div class="note"><p><strong>A scale is a set of pitch choices, not a rule about which chords you must play.</strong> You can stack alternate scale notes to make chords, or select particular notes from the scale to make other structures. These are related approaches, but they are not the same thing.</p></div>
+
+<h2>1. A small change creates a new scale</h2>
+<p>Earlier, we compared major, natural minor and harmonic minor. Now try <strong>harmonic major</strong>: a major scale with a lowered sixth. That one change creates a different interval pattern and different seventh chords.</p>
+<div class="panel"><h3>Compare C major and C harmonic major</h3><div id="comparisonOne" class="diagram"></div><div id="comparisonTwo" class="diagram"></div><div class="controls"><button class="action" id="comparePlayOne">Hear C major</button><button class="action secondary" id="comparePlayTwo">Hear C harmonic major</button></div><p class="small">C major: C–D–E–F–G–A–B. C harmonic major: C–D–E–F–G–A♭–B. Only degree 6 changes, but the distances around it change too.</p></div>
+
+<h2>2. Explore unfamiliar scales</h2>
+<p>Choose a starting note and one of the scales below. The numbered circles and curved arrows show the notes and intervals. Listen to the scale, then hear a short melody constructed only from its notes.</p>
+<div class="panel">
+<h3>Interactive scale explorer</h3>
+<div class="controls"><label for="scaleRoot">Starting note</label><select id="scaleRoot"></select><label for="scaleType">Scale</label><select id="scaleType"></select></div>
+<p class="small" id="scaleExplanation"></p>
+<div id="scaleDiagram" class="diagram"></div>
+<div id="scaleStaff" class="staff" aria-label="Selected scale in treble clef"></div>
+<div class="controls"><button class="action" id="playScale">Play scale</button><button class="action secondary" id="melodyButton">Generate melody</button><button class="action secondary" id="playMelody">Play melody</button></div>
+<p id="scaleNames" class="details" aria-live="polite"></p>
+<p id="melodyNames" class="small" aria-live="polite"></p>
+</div>
+<div class="note"><p><strong>Notice:</strong> some scales have six notes (whole tone), others eight (diminished). We still label consecutive notes with their scale positions, but we cannot assume every scale contains exactly seven distinct degrees. For conventional seven-note scales, taking degrees 1–3–5–7 is a familiar way to stack thirds. Some altered scale spellings need special care: alternate scale notes are not always literally a stack of notated thirds.</p></div>
+
+<h2>3. Find seventh chords within a scale</h2>
+<p>Now let's use seven-note scales the way we did previously: start on a scale degree, then take every other note to construct a four-note chord. <strong>All seven chords appear together on one treble staff</strong>, so you can compare their shapes at a glance. Select a degree underneath to hear its chord.</p>
+<div class="panel">
+<h3>Build all seven scale-degree chords</h3>
+<div class="controls"><label for="atlasRoot">Tonic</label><select id="atlasRoot"></select><label for="atlasType">Seven-note scale</label><select id="atlasType"></select></div>
+<div class="controls"><button class="action secondary" id="toggleNames">Hide chord names to practise</button></div>
+<div class="atlas-wrap" aria-label="Seven seventh chords shown together on one treble staff"><div id="chordAtlas" class="staff"></div><div id="atlasActions" class="atlas-actions" role="group" aria-label="Play each scale degree chord"></div></div>
+<p class="legend">These are the alternating-degree four-note structures of the selected seven-note collection. Where the unusual spelling of a mode prevents a conventional stack of thirds, the result is labelled as such. Six- and eight-note scales are explored separately below.</p>
+</div>
+
+<h2>4. Construct seventh chords by changing their intervals</h2>
+<p>There is another way to think about chord construction. Choose a <strong>third</strong>, a <strong>fifth</strong> and a <strong>seventh</strong> above the root. Changing any one of these notes gives you a different four-note sound.</p>
+<p>For example, C–E–G–B♭ is C7. Lower its fifth from G to G♭ and it becomes <strong>C7♭5</strong>. Or start with C–E♭–G♭–B♭, a half-diminished seventh, and lower the seventh again to B𝄫 (the same sounding pitch as A): now it is <strong>C°7</strong>.</p>
+<div class="panel"><h3>Seventh-chord construction laboratory</h3>
+<div class="controls"><label for="chordRoot">Root</label><select id="chordRoot"></select></div>
+<div class="controls"><label for="thirdChoice">Third</label><select id="thirdChoice"><option value="3">Minor third (♭3)</option><option value="4" selected>Major third (3)</option></select>
+<label for="fifthChoice">Fifth</label><select id="fifthChoice"><option value="6">Diminished fifth (♭5)</option><option value="7" selected>Perfect fifth (5)</option><option value="8">Augmented fifth (♯5)</option></select>
+<label for="seventhChoice">Seventh</label><select id="seventhChoice"><option value="9">Diminished seventh (𝄫7)</option><option value="10" selected>Minor seventh (♭7)</option><option value="11">Major seventh (7)</option></select></div>
+<div id="constructedStaff" class="staff" aria-label="Constructed seventh chord on treble staff"></div>
+<p id="constructedDescription" class="details" aria-live="polite"></p>
+<div class="controls"><button class="action" id="playConstructed">Play together</button><button class="action secondary" id="arpConstructed">Play the notes separately</button></div>
+<div class="chips" id="chordPresets"></div>
+<p class="small">Preset buttons load common chord types. The controls also allow less familiar combinations: hear them first, and decide how you might describe them.</p>
+</div>
+
+<h2>5. Where can we find those sounds?</h2>
+<p>A scale may contain every note needed for a chord even if those chord tones do not appear at positions 1–3–5–7 in that scale. That is particularly useful for dominant chords with altered fifths.</p>
+<div class="grid" id="connections"></div>
+<div class="note"><p><strong>Spelling matters.</strong> C–E–G♭–B♭ is a dominant seventh with a lowered fifth (C7♭5). The same sounding pitch as G♭ can be called F♯, but its <em>role in the chord</em> is different. We will keep the chord notation aligned with the interval being described.</p></div>
+
+<h2>6. Aural and notation challenges</h2>
+<p>Test yourself on the interval structure of unfamiliar scales, then construct the requested seventh chord without seeing the answer first.</p>
+<div class="exercise"><p class="eyebrow">Exercise A · Identify the interval</p><p id="intervalPrompt"></p><div class="choices" id="intervalChoices"></div><p id="intervalFeedback" class="feedback" aria-live="polite"></p><div class="controls"><button id="newInterval" class="action">New question</button></div></div>
+<div class="exercise"><p class="eyebrow">Exercise B · Chord detective</p><p id="chordPrompt"></p><div class="controls"><button class="action secondary" id="challengeListen">Play chord</button></div><div id="challengeStaff" class="staff" aria-label="Unlabelled chord on treble staff"></div><div id="challengeChoices" class="choices"></div><p class="feedback" id="challengeFeedback" aria-live="polite"></p><div class="controls"><button class="action" id="newChord">New chord</button></div><p class="small" id="score">Score: 0 / 0</p></div>
+<h2>7. What seventh chords have we discovered?</h2>
+<p>We have met <strong>ten useful seventh-chord qualities</strong> in these lessons. The first eight below include the ones you may already recognise; the last two extend the collection. These examples all use C as the root so you can compare the notes.</p>
+<div id="seventhSummary" class="chord-list"></div>
+<p class="small">This is a complete list of the ten chord qualities covered here, not every possible four-note chord. Other arrangements, suspensions, altered thirds, omitted notes and added tones give us many more possibilities. Names can vary between jazz and classical theory.</p>
+<h2>8. Why do we construct scales and chords?</h2>
+<p><strong>We construct scales by choosing patterns of tones and semitones within an octave.</strong> Change the pattern, and you change the collection of notes available to you. Some scales have five or six notes, others seven or eight.</p>
+<p><strong>We construct familiar seventh chords by stacking thirds:</strong> the root, third, fifth and seventh. We can also alter those chord tones to create new qualities. Different scales reveal different combinations of notes, and each one offers possibilities for melodies and harmony.</p>
+<p>The possibilities are enormous — but the goal is not to memorise every possible combination. It is to understand the relationships between notes and, most importantly, to <em>hear</em> what you create.</p>
+<div class="exercise">
+<p class="eyebrow">Final creative challenge</p>
+<h3>Make melodies with these scales</h3>
+<p>Select a scale, then compose your own melody by choosing its numbered notes. You can use repetitions, steps and leaps. Listen to your result, change it, and try another scale. There is no single correct answer.</p>
+<div class="controls"><label for="composeRoot">Starting note</label><select id="composeRoot"></select><label for="composeScale">Scale</label><select id="composeScale"></select></div>
+<div id="composeDegrees" class="chips" role="group" aria-label="Choose notes to add to your melody"></div>
+<div id="composeStaff" class="staff melody-staff" aria-label="Your melody on a treble staff"></div>
+<p id="composeNotes" class="details" aria-live="polite">Select a degree to begin.</p>
+<div class="controls"><button class="action" id="composePlay">Play melody</button><button class="action secondary" id="composeUndo">Undo note</button><button class="action secondary" id="composeClear">Clear</button></div>
+<p class="small"><strong>Try these three things:</strong> compose two different eight-note melodies using the same scale; use a contrasting scale to make a third melody; then write your favourite on manuscript paper. Ask yourself how the different interval patterns change the musical character.</p>
+</div>
+<div class="next"><h3>Coming next: Seventh-chord inversions</h3><p>We have now met a wider family of four-note chords. The next question is what happens when we move their lowest notes up an octave — just as we did with triads.</p></div>
+</main>
+<footer class="footer"><div>SAJA MUSIC</div></footer>
+<script>
+(function(){'use strict';
+const $=id=>document.getElementById(id);
+const letters=['C','D','E','F','G','A','B'],nat={C:0,D:2,E:4,F:5,G:7,A:9,B:11};
+const roots=['C','D','E','F','G','A','B','F♯','B♭','E♭','A♭','D♭'];
+const scales=[
+{id:'major',name:'Major',steps:[2,2,1,2,2,2,1],formula:['1','2','3','4','5','6','7'],text:'The familiar major scale. Seven notes, with tones and semitones arranged T–T–S–T–T–T–S.'},
+{id:'natural',name:'Natural minor',steps:[2,1,2,2,1,2,2],formula:['1','2','♭3','4','5','♭6','♭7'],text:'Our original minor scale: lowered 3rd, 6th and 7th compared with major.'},
+{id:'harmonic',name:'Harmonic minor',steps:[2,1,2,2,1,3,1],formula:['1','2','♭3','4','5','♭6','7'],text:'A raised seventh creates a three-semitone gap between degrees 6 and 7.'},
+{id:'melodic',name:'Melodic minor (ascending)',steps:[2,1,2,2,2,2,1],formula:['1','2','♭3','4','5','6','7'],text:'Ascending melodic minor. We are using its ascending form; classical descending melodic minor normally uses natural minor.'},
+{id:'harmonicmajor',name:'Harmonic major',steps:[2,2,1,2,1,3,1],formula:['1','2','3','4','5','♭6','7'],text:'Major with a lowered sixth. It shares a wide interval between ♭6 and 7 with harmonic minor.'},
+{id:'doubleharmonic',name:'Double harmonic major',steps:[1,3,1,2,1,3,1],formula:['1','♭2','3','4','5','♭6','7'],text:'Two three-semitone gaps give this seven-note scale a distinctive sound.'},
+{id:'phrygiandom',name:'Phrygian dominant',steps:[1,3,1,2,1,2,2],formula:['1','♭2','3','4','5','♭6','♭7'],text:'The fifth mode of harmonic minor: a lowered second alongside a major third and minor seventh.'},
+{id:'lydiandom',name:'Lydian dominant',steps:[2,2,2,1,2,1,2],formula:['1','2','3','♯4','5','6','♭7'],text:'The fourth mode of ascending melodic minor: a raised fourth and a minor seventh.'},
+{id:'altered',name:'Altered (super-Locrian)',steps:[1,2,1,2,2,2,2],formula:['1','♭2','♯2','3','♭5','♯5','♭7'],text:'The seventh mode of ascending melodic minor. Its spelling emphasises altered dominant chord tones; ♯2 sounds like ♭3.'},
+{id:'whole',name:'Whole tone',steps:[2,2,2,2,2,2],formula:['1','2','3','♯4','♯5','♭7'],text:'Six notes, all separated by a whole tone. Very useful for hearing augmented-fifth dominant colours.'},
+{id:'halfwhole',name:'Half–whole diminished',steps:[1,2,1,2,1,2,1,2],formula:['1','♭2','♯2','3','♯4','5','6','♭7'],text:'Eight notes alternating semitone and tone. It contains rich dominant alterations and a diminished-seventh structure.'}
+];
+const sevenScales=scales.filter(s=>s.steps.length===7);
+const qa=[
+{id:'maj7',title:'Major seventh',suffix:'maj7',i:[4,7,11]},
+{id:'dom7',title:'Dominant seventh',suffix:'7',i:[4,7,10]},
+{id:'min7',title:'Minor seventh',suffix:'m7',i:[3,7,10]},
+{id:'half',title:'Half-diminished seventh',suffix:'m7♭5',i:[3,6,10]},
+{id:'dim7',title:'Diminished seventh',suffix:'°7',i:[3,6,9]},
+{id:'minmaj',title:'Minor-major seventh',suffix:'m(maj7)',i:[3,7,11]},
+{id:'augmaj',title:'Augmented-major seventh',suffix:'maj7♯5',i:[4,8,11]},
+{id:'domflat5',title:'Dominant seventh flat five',suffix:'7♭5',i:[4,6,10]},
+{id:'domaug',title:'Dominant seventh sharp five',suffix:'7♯5',i:[4,8,10]},
+{id:'majflat5',title:'Major seventh flat five',suffix:'maj7♭5',i:[4,6,11]}
+];
+let audioCtx=null;
+function audio(){const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return null;if(!audioCtx)audioCtx=new AC();if(audioCtx.state==='suspended')audioCtx.resume();return audioCtx;}
+function sound(midi,delay=0,dur=.65){const a=audio();if(!a)return;const t=a.currentTime+delay,o=a.createOscillator(),g=a.createGain();o.type='triangle';o.frequency.value=440*Math.pow(2,(midi-69)/12);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.07,t+.03);g.gain.exponentialRampToValueAtTime(.0001,t+dur);o.connect(g);g.connect(a.destination);o.start(t);o.stop(t+dur+.04);}
+function play(notes,together=false){notes.forEach((n,i)=>sound(n.midi,together?0:i*.29,together?1.3:.5));}
+function mod(n,k){return((n%k)+k)%k;}
+function parse(t){let alt=0;for(const x of t.slice(1)){if(x==='♯'||x==='#')alt++;else if(x==='♭'||x==='b')alt--;}return {letter:t[0],alt};}
+function sym(a){return a===1?'♯':a===-1?'♭':a===2?'𝄪':a===-2?'𝄫':'';}
+function vex(a){return a===1?'#':a===-1?'b':a===2?'##':a===-2?'bb':'';}
+function midi(letter,alt,oct){return 12*(oct+1)+nat[letter]+alt;}
+function root(t){const a=parse(t);return {letter:a.letter,alt:a.alt,oct:4,midi:midi(a.letter,a.alt,4),name:a.letter+sym(a.alt)};}
+function role(r,degree,offset){const idx=letters.indexOf(r.letter)+degree-1,letter=letters[mod(idx,7)],oct=r.oct+Math.floor(idx/7),target=r.midi+offset,alt=target-midi(letter,0,oct);if(Math.abs(alt)>2)throw Error('Unsupported accidental spelling for '+r.name);return {letter,alt,oct,midi:target,name:letter+sym(alt)};}
+function tokenOffset(t){const di=Number(t.match(/\d/)[0]),pref=t.replace(/\d/g,''),base=[0,2,4,5,7,9,11][di-1];return base+([...pref].filter(c=>c==='♯').length)-([...pref].filter(c=>c==='♭').length);}
+function scale(r,s){let elapsed=0;const notes=[];for(let i=0;i<s.steps.length;i++){const tok=s.formula[i],off=tokenOffset(tok);const di=Number(tok.match(/\d/)[0]);const n=role(r,di,off);notes.push({...n,degree:i+1,formula:tok,offset:elapsed});elapsed+=s.steps[i];}return notes;}
+function octave(n){return {...n,oct:n.oct+1,midi:n.midi+12};}
+function seventhsFromScale(ns,index){const out=[];for(const shift of [0,2,4,6]){const j=index+shift,k=Math.floor(j/7);out.push({...ns[j%7],oct:ns[j%7].oct+k,midi:ns[j%7].midi+12*k});}return out;}
+function chord(r,intervals){return [r,role(r,3,intervals[0]),role(r,5,intervals[1]),role(r,7,intervals[2])];}
+function chordName(notes){const offsets=notes.slice(1).map(n=>n.midi-notes[0].midi);const match=qa.find(q=>q.i.every((x,i)=>x===offsets[i]));if(!match)return 'Unusual seventh structure';const rootIndex=letters.indexOf(notes[0].letter);const tertian=notes.every((n,i)=>letters[(rootIndex+2*i)%7]===n.letter);return tertian?notes[0].name+match.suffix:'Pitch-equivalent to '+notes[0].name+match.suffix+' (non-tertian spelling)';}
+function notesText(a){return a.map(n=>n.name).join(' – ');}
+function staff(id,notes,width=680){const host=$(id);host.replaceChildren();if(!window.Vex||!Vex.Flow){host.textContent='VexFlow could not load. An internet connection is required for notation.';return;}
+try{const VF=Vex.Flow,wrap=document.createElement('div');host.appendChild(wrap);const r=new VF.Renderer(wrap,VF.Renderer.Backends.SVG);r.resize(width,165);const ctx=r.getContext(),s=new VF.Stave(14,33,width-28);s.addClef('treble');s.setContext(ctx).draw();if(!notes.length)return;
+const isChord=notes.length===4&&notes.every((n,i)=>i===0||n.midi>notes[i-1].midi)&&id!=='scaleStaff'&&id!=='composeStaff'&&id!=='challengeStaffNone';
+if(isChord){const vn=new VF.StaveNote({clef:'treble',keys:notes.map(n=>n.letter.toLowerCase()+'/'+n.oct),duration:'w'});notes.forEach((n,i)=>{if(n.alt)vn.addModifier(new VF.Accidental(vex(n.alt)),i);});VF.Formatter.FormatAndDraw(ctx,s,[vn]);}
+else{const rendered=notes.map(n=>{const st=new VF.StaveNote({clef:'treble',keys:[n.letter.toLowerCase()+'/'+n.oct],duration:'8'});if(n.alt)st.addModifier(new VF.Accidental(vex(n.alt)),0);return st;});VF.Formatter.FormatAndDraw(ctx,s,rendered,{autoBeam:false});}
+}catch(err){host.textContent='Notation could not render: '+err.message;console.error(err);}}
+function diagram(host,ns,steps){const w=Math.max(670,ns.length*96),spacing=(w-76)/(ns.length),xs=ns.map((_,i)=>38+i*spacing);const xlast=38+ns.length*spacing;let parts=['<svg viewBox="0 0 '+w+' 155" role="img" aria-label="Scale degrees and the distance between each note">'];
+ns.forEach((n,i)=>{const x=xs[i],next=i===ns.length-1?xlast:xs[i+1],mid=(x+next)/2;parts.push('<path d="M '+(x+17)+' 59 Q '+mid+' 21 '+(next-17)+' 59" stroke="#8B2E3C" stroke-width="2" fill="none"/>');
+const step=steps[i];parts.push('<text text-anchor="middle" x="'+mid+'" y="24" font-size="12" fill="#8B2E3C" font-weight="800">'+(step===1?'Semitone':step===2?'Tone':step+' semitones')+'</text>');
+parts.push('<circle cx="'+x+'" cy="79" r="19" fill="#fff" stroke="#8B2E3C" stroke-width="2"/>');
+parts.push('<text x="'+x+'" y="84" text-anchor="middle" font-weight="800" font-size="14" fill="#8B2E3C">'+(i+1)+'</text>');
+parts.push('<text x="'+x+'" y="117" text-anchor="middle" font-weight="800" font-size="14">'+n.name+'</text>');});
+parts.push('<circle cx="'+xlast+'" cy="79" r="19" fill="#f2e4e7" stroke="#8B2E3C" stroke-width="2"/><text x="'+xlast+'" y="84" text-anchor="middle" font-size="14" font-weight="800" fill="#8B2E3C">'+(ns.length+1)+'</text><text x="'+xlast+'" y="117" text-anchor="middle" font-weight="800" font-size="14">'+ns[0].name+'</text></svg>');$(host).innerHTML=parts.join('');}
+function fill(id,arr){const sel=$(id);arr.forEach(x=>{const o=document.createElement('option');o.value=typeof x==='string'?x:x.id;o.textContent=typeof x==='string'?x:x.name;sel.appendChild(o);});}
+function find(id){return scales.find(s=>s.id===id);}
+let currentScale=[],melody=[],namesHidden=false;
+function refreshScale(){const r=root($('scaleRoot').value),s=find($('scaleType').value);currentScale=scale(r,s);$('scaleExplanation').textContent=s.text+' Formula: '+s.formula.join(' – ')+'.';diagram('scaleDiagram',currentScale,s.steps);staff('scaleStaff',[...currentScale,{...currentScale[0],oct:5,midi:currentScale[0].midi+12}],680);$('scaleNames').textContent=s.name+' in '+r.name+': '+notesText(currentScale)+' – '+r.name+'.';melody=[];$('melodyNames').textContent='Generate a melody to hear a short sequence using these notes.';}
+function makeMelody(){if(!currentScale.length)return;melody=[currentScale[0]];for(let i=0;i<7;i++)melody.push(currentScale[Math.floor(Math.random()*currentScale.length)]);melody.push(octave(currentScale[0]));$('melodyNames').textContent='Nine-note melody: '+notesText(melody)+'.';}
+function comparison(){const r=root('C'),a=find('major'),b=find('harmonicmajor');diagram('comparisonOne',scale(r,a),a.steps);diagram('comparisonTwo',scale(r,b),b.steps);}
+function mode7s(){return sevenScales;}
+function renderAtlas(){
+const r=root($('atlasRoot').value),s=find($('atlasType').value),ns=scale(r,s);
+const all=Array.from({length:7},(_,i)=>seventhsFromScale(ns,i));
+const host=$('chordAtlas');host.replaceChildren();
+const actions=$('atlasActions');actions.replaceChildren();
+if(!window.Vex||!Vex.Flow){host.textContent='VexFlow could not load. Check your internet connection.';return;}
+try{
+const VF=Vex.Flow,w=1230,h=230,wrap=document.createElement('div');host.appendChild(wrap);
+const renderer=new VF.Renderer(wrap,VF.Renderer.Backends.SVG);renderer.resize(w,h);
+const ctx=renderer.getContext(),stave=new VF.Stave(18,45,w-36);stave.addClef('treble');stave.setContext(ctx).draw();
+const chords=all.map(notes=>{const vn=new VF.StaveNote({clef:'treble',keys:notes.map(n=>n.letter.toLowerCase()+'/'+n.oct),duration:'w'});notes.forEach((n,j)=>{if(n.alt)vn.addModifier(new VF.Accidental(vex(n.alt)),j);});return vn;});
+const voice=new VF.Voice({num_beats:28,beat_value:4}).setStrict(false);voice.addTickables(chords);
+const formatter=new VF.Formatter();formatter.joinVoices([voice]).format([voice],w-210);
+voice.draw(ctx,stave);
+}catch(err){host.textContent='Unable to draw seven chords together: '+err.message;console.error(err);}
+all.forEach((notes,i)=>{const b=document.createElement('button');b.className='choice';const title=document.createElement('span');title.textContent='Degree '+(i+1);b.appendChild(title);const detail=document.createElement('small');detail.textContent=namesHidden?'Identify the chord':chordName(notes);b.appendChild(detail);b.title=namesHidden?'Play degree '+(i+1):notesText(notes);b.addEventListener('click',()=>play(notes,true));actions.appendChild(b);});
+}
+let currentChord=[];
+function refreshChord(){const r=root($('chordRoot').value),intervals=[$('thirdChoice'),$('fifthChoice'),$('seventhChoice')].map(e=>Number(e.value));currentChord=chord(r,intervals);staff('constructedStaff',currentChord);$('constructedDescription').textContent=chordName(currentChord)+' · '+notesText(currentChord)+' · intervals above the root: '+intervals.join(', ')+' semitones.';}
+function presetButtons(){const host=$('chordPresets');qa.forEach(q=>{const b=document.createElement('button');b.className='choice';b.textContent='C'+q.suffix;b.addEventListener('click',()=>{$('chordRoot').value='C';$('thirdChoice').value=q.i[0];$('fifthChoice').value=q.i[1];$('seventhChoice').value=q.i[2];refreshChord();});host.appendChild(b);});}
+function connections(){const items=[
+['Dominant 7♭5','C–E–G♭–B♭','Altered scale', 'The altered scale includes C, E, G♭ and B♭. They are selected as chord tones; they are not all at consecutive alternate positions in the scale.', 'altered',[4,6,10]],
+['Diminished seventh','C–E♭–G♭–B𝄫','Half–whole diminished', 'The half–whole diminished collection includes C, E♭, G♭ and A. A sounds like B𝄫, the correctly spelled diminished seventh.', 'halfwhole',[3,6,9]],
+['Dominant 7♯5','C–E–G♯–B♭','Whole tone', 'The whole-tone scale contains C, E, G♯ and B♭. The fifth is raised, while the seventh is minor.', 'whole',[4,8,10]],
+['Major 7♯5','C–E–G♯–B','A harmonic minor', 'Cmaj7♯5 appears as the seventh chord on degree 3 of A harmonic minor.', 'harmonic',[4,8,11]]
+];const host=$('connections');items.forEach((x,i)=>{const card=document.createElement('div');card.className='mini';card.innerHTML='<h3></h3><p></p><div class="staff" id="connStaff'+i+'"></div><p class="small"></p><button class="action secondary">Play chord</button>';card.querySelector('h3').textContent=x[0];card.querySelectorAll('p')[0].textContent=x[1]+' · '+x[2];card.querySelectorAll('p')[1].textContent=x[3];host.appendChild(card);const notes=chord(root('C'),x[5]);staff('connStaff'+i,notes,320);card.querySelector('button').addEventListener('click',()=>play(notes,true));});}
+let intervalQuestion=null;
+function newInterval(){const s=scales[Math.floor(Math.random()*scales.length)],i=Math.floor(Math.random()*s.steps.length);intervalQuestion={s,i,answer:s.steps[i]};$('intervalPrompt').textContent='In '+s.name+', what is the distance between scale notes '+(i+1)+' and '+(i+2)+'? (The final interval returns to the octave.)';const host=$('intervalChoices');host.replaceChildren();[['1','Semitone'],['2','Tone'],['3','3 semitones']].forEach(([v,label])=>{const b=document.createElement('button');b.className='choice';b.textContent=label;b.addEventListener('click',()=>{const ok=Number(v)===intervalQuestion.answer;const f=$('intervalFeedback');f.className='feedback '+(ok?'good':'bad');f.textContent=ok?'Exactly. '+s.name+' has '+label.toLowerCase()+' here.':'Not quite. The correct distance is '+(intervalQuestion.answer===1?'a semitone':intervalQuestion.answer===2?'a tone':intervalQuestion.answer+' semitones')+'.';});host.appendChild(b);});$('intervalFeedback').textContent='';}
+let challenge=null,score=0,tries=0,answered=false;
+function shuffle(a){return [...a].sort(()=>Math.random()-.5);}
+function newChord(){answered=false;const opts=qa,chosen=opts[Math.floor(Math.random()*opts.length)],r=root(roots[Math.floor(Math.random()*roots.length)]);challenge={chosen,r,notes:chord(r,chosen.i)};staff('challengeStaff',challenge.notes);const wrong=shuffle(opts.filter(q=>q.id!==chosen.id)).slice(0,3);const answers=shuffle([chosen,...wrong]),host=$('challengeChoices');host.replaceChildren();answers.forEach(q=>{const b=document.createElement('button');b.className='choice';b.textContent=q.title;b.addEventListener('click',()=>{if(answered)return;answered=true;tries++;const ok=q.id===challenge.chosen.id;if(ok)score++;const f=$('challengeFeedback');f.className='feedback '+(ok?'good':'bad');f.textContent=(ok?'Correct! ':'Not quite. ')+'This is '+challenge.r.name+challenge.chosen.suffix+': '+notesText(challenge.notes)+'.';$('score').textContent='Score: '+score+' / '+tries;host.querySelectorAll('button').forEach(x=>x.disabled=true);});host.appendChild(b);});$('chordPrompt').textContent='Identify the seventh-chord quality shown on the staff. Root: '+r.name+'.';$('challengeFeedback').textContent='';$('challengeFeedback').className='feedback';}
+function renderSeventhSummary(){const host=$('seventhSummary');host.replaceChildren();qa.forEach(q=>{const ns=chord(root('C'),q.i),div=document.createElement('div');div.className='chord-item';const strong=document.createElement('strong');strong.textContent='C'+q.suffix+' — '+q.title;const line=document.createElement('span');line.className='small';line.textContent=notesText(ns)+'  ·  1, '+q.i.map(v=>v===3?'♭3':v===4?'3':v===6?'♭5':v===7?'5':v===8?'♯5':v===9?'𝄫7':v===10?'♭7':'7').join(', ');const b=document.createElement('button');b.className='action secondary';b.textContent='Hear chord';b.style.marginTop='9px';b.addEventListener('click',()=>play(ns,true));div.append(strong,line,b);host.appendChild(div);});}
+let composition=[];
+function refreshComposer(){const r=root($('composeRoot').value),s=find($('composeScale').value),ns=scale(r,s);composition=[];const box=$('composeDegrees');box.replaceChildren();ns.forEach((n,i)=>{const b=document.createElement('button');b.className='choice';b.textContent=(i+1)+' · '+n.name;b.addEventListener('click',()=>{if(composition.length>=12)return;composition.push({...n});drawComposition();sound(n.midi,0,.4);});box.appendChild(b);});drawComposition();}
+function drawComposition(){const box=$('composeStaff');if(composition.length){staff('composeStaff',composition);$('composeNotes').textContent=composition.length+' / 12 notes: '+notesText(composition);}else{box.replaceChildren();box.textContent='Your melody will appear here as you add notes.';$('composeNotes').textContent='Choose up to 12 notes from the scale.';}}
+function init(){for(const id of ['scaleRoot','atlasRoot','chordRoot'])fill(id,roots);fill('scaleType',scales);fill('atlasType',mode7s());$('scaleRoot').value='C';$('atlasRoot').value='C';$('chordRoot').value='C';fill('composeRoot',roots);fill('composeScale',scales);$('composeRoot').value='C';$('composeScale').value='harmonicmajor';$('scaleType').value='harmonicmajor';$('atlasType').value='harmonicmajor';comparison();refreshScale();renderAtlas();refreshChord();presetButtons();connections();newInterval();newChord();renderSeventhSummary();refreshComposer();
+$('comparePlayOne').addEventListener('click',()=>{const ns=scale(root('C'),find('major'));play([...ns,octave(ns[0])]);});
+$('comparePlayTwo').addEventListener('click',()=>{const ns=scale(root('C'),find('harmonicmajor'));play([...ns,octave(ns[0])]);});
+for(const id of ['scaleRoot','scaleType'])$(id).addEventListener('change',refreshScale);
+$('playScale').addEventListener('click',()=>play([...currentScale,octave(currentScale[0])]));
+$('melodyButton').addEventListener('click',makeMelody);$('playMelody').addEventListener('click',()=>{if(!melody.length)makeMelody();play(melody);});
+for(const id of ['atlasRoot','atlasType'])$(id).addEventListener('change',renderAtlas);
+$('toggleNames').addEventListener('click',()=>{namesHidden=!namesHidden;$('toggleNames').textContent=namesHidden?'Show chord names':'Hide chord names to practise';renderAtlas();});
+for(const id of ['chordRoot','thirdChoice','fifthChoice','seventhChoice'])$(id).addEventListener('change',refreshChord);
+$('playConstructed').addEventListener('click',()=>play(currentChord,true));$('arpConstructed').addEventListener('click',()=>play(currentChord));
+for(const id of ['composeRoot','composeScale'])$(id).addEventListener('change',refreshComposer);$('composePlay').addEventListener('click',()=>play(composition));$('composeUndo').addEventListener('click',()=>{composition.pop();drawComposition();});$('composeClear').addEventListener('click',()=>{composition=[];drawComposition();});$('newInterval').addEventListener('click',newInterval);$('newChord').addEventListener('click',newChord);$('challengeListen').addEventListener('click',()=>play(challenge.notes,true));}
+if(document.readyState==='complete')init();else window.addEventListener('load',init);
+})();
+</script>
+</body>
+</html>

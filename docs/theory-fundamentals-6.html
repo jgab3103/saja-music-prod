@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="SAJA Music Theory Fundamentals Part 6: Triad Inversions. Interactive treble-clef notation, listening, and chord practice.">
+<meta name="author" content="SAJA Music">
+<title>Theory Fundamentals 6: Triad Inversions | SAJA Music</title>
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,500,600,700,800,900" rel="stylesheet">
+<link href="css/styles.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/vexflow@4.2.2/build/cjs/vexflow.js" defer></script>
+<style>
+:root{--accent:#8B2E3C;--paper:#FAFAFA;--panel:#F4F1EB;--ink:#111;--muted:#656565;--line:rgba(0,0,0,.11)}
+html{scroll-behavior:smooth;background:var(--paper)}
+body{margin:0;font-family:'Nunito',sans-serif;background:var(--paper);color:var(--ink);line-height:1.75;font-size:16.5px;padding-top:80px}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(139,46,60,.35)}a:hover{color:#111;border-bottom-color:var(--accent)}
+#mainNav,#mainNav.navbar-shrink{background:var(--paper)!important;border-bottom:1px solid rgba(0,0,0,.05);min-height:80px}
+#mainNav a{color:#111!important;text-decoration:none!important;border:none!important}
+.nav-links{display:flex;gap:2.5rem;align-items:center}
+.article{max-width:790px;margin:0 auto;padding:60px 24px 110px}
+h1,h2,h3{font-family:'Varela Round',sans-serif;font-weight:500;line-height:1.4}
+h1{font-size:1.9rem;margin:0 0 10px}h2{font-size:1.34rem;margin:54px 0 15px}h3{font-size:1.05rem;margin:0 0 10px}
+.meta{color:#777;font-size:.9rem;margin-bottom:35px}p{max-width:69ch;margin:0 0 22px}.lead{font-size:1.1rem}
+.eyebrow{font-size:.8rem;letter-spacing:.075em;text-transform:uppercase;color:#777;font-weight:800;margin:0 0 12px}
+.learning-note,.interactive,.exercise{background:var(--panel);padding:24px;border-radius:4px;margin:26px 0}
+.learning-note{border-left:3px solid var(--accent)}.exercise{background:#fff;border:1px solid var(--line)}
+.learning-note p:last-child{margin-bottom:0}
+.controls{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:14px 0 18px}
+label{font-size:.92rem;font-weight:800}
+select{font:inherit;padding:8px 14px;background:white;color:var(--ink);border:1px solid #aaa;border-radius:3px}
+button{font:inherit;cursor:pointer}
+button.action{color:white;background:var(--accent);padding:9px 15px;font-size:.91rem;font-weight:800;border:1px solid var(--accent);border-radius:3px}
+button.action.secondary{background:white;color:var(--accent)}
+button.action:disabled,button.choice:disabled{opacity:.6;cursor:default}
+button.action:hover:not(:disabled){filter:brightness(.93)}
+button:focus-visible,select:focus-visible{outline:3px solid #4e86cd;outline-offset:2px}
+.small{font-size:.88rem;color:#666}
+.notation{background:white;border:1px solid var(--line);border-radius:4px;overflow-x:auto;padding:5px;min-height:145px}
+.notation svg{display:block}
+.legend{font-size:.93rem;color:#555;margin:13px 0}
+.button-grid{display:flex;flex-wrap:wrap;gap:8px;margin:13px 0}
+.choice{background:white;border:1px solid #d3c4c7;border-radius:4px;padding:9px 12px;color:#111;font-weight:800}
+.choice:hover:not(:disabled){border-color:var(--accent)}
+.choice.active{background:#f2e4e7;border-color:var(--accent);color:var(--accent)}
+.feedback{min-height:25px;margin:10px 0 0;font-weight:800;font-size:.92rem}
+.feedback.ok{color:#28673f}.feedback.no{color:var(--accent)}
+.three-up{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:20px 0}
+.small-card{background:#fff;border:1px solid var(--line);padding:14px;border-radius:4px;min-width:0}
+.small-card h3{font-size:.98rem}.small-card .notation{min-height:136px}
+.small-card p{margin:9px 0;font-size:.88rem}
+.note-row{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:16px 0}
+.note-pill{border:2px solid var(--accent);border-radius:100px;min-width:55px;padding:8px 13px;background:white;color:var(--accent);text-align:center;font-weight:900}
+.note-pill.bass{background:var(--accent);color:#fff}
+.two-up{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.muted{color:#666}.next{border-top:1px solid var(--line);padding-top:28px;margin-top:55px}
+.footer{background:var(--paper);border-top:1px solid rgba(0,0,0,.06);padding:80px 30px;text-align:center;color:#777}
+@media(max-width:700px){.article{padding:36px 20px 80px}h1{font-size:1.55rem}h2{font-size:1.2rem}.nav-links{gap:1.2rem;font-size:.88rem}.learning-note,.interactive,.exercise{padding:18px}.three-up,.two-up{grid-template-columns:1fr}}
+@media(max-width:380px){.nav-links{gap:.7rem;font-size:.78rem}#mainNav .container{padding-left:14px!important;padding-right:14px!important}.navbar-brand{font-size:.91rem}}
+</style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav"><div class="container px-4 px-lg-5"><a class="navbar-brand" href="./index.html">SAJA MUSIC</a><div class="nav-links"><a href="./teaching.html">Discover</a><a href="./pathways.html">Learn</a><a href="./about.html">About</a></div></div></nav>
+<main class="article">
+<p class="eyebrow">Theory Fundamentals · Part 6</p>
+<h1>Triad Inversions</h1>
+<div class="meta">Listening · Rearranging notes · Treble-clef notation · Interactive practice</div>
+<p class="lead">A C major triad contains <strong>C, E and G</strong>. But does C always have to be the lowest note? What happens if we put E at the bottom, or G? Let's move the notes around and listen.</p>
+
+<h2>1. The same chord, three arrangements</h2>
+<p>There are three ways to arrange a triad so that each of its notes takes a turn as the lowest note. These are called <strong>root position</strong>, <strong>first inversion</strong> and <strong>second inversion</strong>.</p>
+<div id="introCards" class="three-up"></div>
+<p>All three examples contain C, E and G. Their order changes, and so does the lowest note, or <strong>bass note</strong>. The chord is still C major.</p>
+<div class="learning-note"><p><strong>An inversion is determined by the lowest sounding note.</strong> Root position has the root at the bottom. First inversion has the third at the bottom. Second inversion has the fifth at the bottom. The bass is not necessarily the lowest note in a single hand or on a single staff: it is the lowest note sounding in the entire musical texture.</p></div>
+
+<div class="exercise"><p class="eyebrow">Quick check 1</p><h3>Which note is in the bass?</h3><p>A C major chord is written E–G–C, from lowest to highest. Which inversion is it?</p><div class="button-grid" id="quickOne"></div><p id="quickOneFeedback" class="feedback" aria-live="polite"></p></div>
+
+<h2>2. Move the lowest note up an octave</h2>
+<p>Starting with a root-position triad, move the bottom note up an octave. You have made first inversion. Move the new bottom note up an octave again, and you have second inversion. One more move returns to root position an octave higher.</p>
+<div class="interactive">
+<h3>Interactive inversion builder</h3>
+<div class="controls"><label for="builderRoot">Chord root</label><select id="builderRoot"></select><label for="builderQuality">Triad type</label><select id="builderQuality"></select></div>
+<div class="note-row" id="builderPills" aria-label="Chord notes from lowest to highest"></div>
+<div id="builderStaff" class="notation" aria-label="Current chord in treble clef"></div>
+<p class="legend" id="builderCaption" aria-live="polite"></p>
+<div class="controls"><button class="action" id="moveBottom">Move bottom note up an octave</button><button class="action secondary" id="builderReset">Return to root position</button></div>
+<div class="controls"><button class="action" id="builderPlay">Play together</button><button class="action secondary" id="builderArp">Play bottom to top</button></div>
+</div>
+
+<h2>3. Compare all three inversions</h2>
+<p>Choose any major, minor, diminished or augmented triad. Each position is written on the treble staff. Listen to them one at a time. Notice that each version contains the same <strong>three pitch classes</strong>, even though some notes move to another octave.</p>
+<div class="interactive"><h3>Inversion comparison</h3><div class="controls"><label for="compareRoot">Root</label><select id="compareRoot"></select><label for="compareQuality">Type</label><select id="compareQuality"></select></div><div id="compareCards" class="three-up"></div><div class="controls"><button class="action" id="compareSequence">Hear all three positions</button></div></div>
+
+<h2>4. Recognising inversions</h2>
+<p>You do not need to memorise dozens of individual chord shapes. Instead, find the chord's three notes, determine its root, and then check which note is lowest.</p>
+<div class="two-up">
+<div class="learning-note"><h3>Root position</h3><p>The <strong>root</strong> is the bass. In a close-position triad, the notes form a stack of two thirds on the staff.</p></div>
+<div class="learning-note"><h3>First inversion</h3><p>The <strong>third</strong> is the bass. In a close-position triad, there is a third above the bass, then a fourth.</p></div>
+<div class="learning-note"><h3>Second inversion</h3><p>The <strong>fifth</strong> is the bass. In a close-position triad, there is a fourth above the bass, then a third.</p></div>
+<div class="learning-note"><h3>Remember</h3><p>Inversion depends on the bass note, not simply on the spacing between notes. Open voicings can still be in any inversion.</p></div>
+</div>
+
+<div class="exercise"><p class="eyebrow">Quick check 2</p><p><strong>For an A minor triad (A–C–E), which note must be lowest in second inversion?</strong></p><div class="button-grid" id="quickTwo"></div><p class="feedback" id="quickTwoFeedback" aria-live="polite"></p></div>
+
+<h2>5. Inversions in major and minor scales</h2>
+<p>In the previous lesson we built a triad on every degree of the scale. Each of those triads can also appear in three positions. Choose a scale and degree, then explore its inversions. We are still studying <em>individual chords</em>, not chord progressions.</p>
+<div class="interactive">
+<h3>Triads from the scale</h3>
+<div class="controls"><label for="scaleRoot">Scale tonic</label><select id="scaleRoot"></select><label for="scaleType">Scale</label><select id="scaleType"><option value="major">Major</option><option value="natural">Natural minor</option><option value="harmonic">Harmonic minor</option></select></div>
+<div id="degreeButtons" class="button-grid" role="group" aria-label="Select degree 1 through 7"></div>
+<p id="scaleCaption" class="legend"></p>
+<div id="scaleCards" class="three-up"></div>
+</div>
+
+<h2>6. Chord detective</h2>
+<p>Look at the three notes written on the treble staff. Work out the triad's root and quality, then identify its inversion. You can listen to the chord, but try reading it first.</p>
+<div class="exercise"><p class="eyebrow">Final challenge · Random chord</p><h3 id="detectivePrompt">What chord is this?</h3><div id="detectiveStaff" class="notation" aria-label="Random inverted triad"></div><div class="controls"><button class="action secondary" id="detectiveListen">Play chord</button><button class="action secondary" id="detectiveArp">Play notes separately</button></div><p class="small">First choose the chord name:</p><div id="detectiveChordChoices" class="button-grid" role="group" aria-label="Chord name choices"></div><p class="small">Then choose its position:</p><div id="detectiveInversionChoices" class="button-grid" role="group" aria-label="Inversion choices"></div><div class="controls"><button id="detectiveCheck" class="action">Check answers</button><button id="detectiveNew" class="action secondary">New chord</button><button id="detectiveHint" class="action secondary">Hint</button></div><p id="detectiveHintText" class="small"></p><p class="feedback" id="detectiveFeedback" aria-live="polite"></p><p id="detectiveScore" class="small">Score: 0 / 0</p></div>
+
+<div class="learning-note"><p><strong>Try this away from the screen:</strong> choose C major, G major, A minor and D minor. Write each triad in all three positions on manuscript paper. Mark the bass note in each example, then sing the three notes from bottom to top.</p></div>
+<div class="next"><h3>Coming next: Seventh chords</h3><p>We know how to construct a triad and change its inversion. Next, we can add another third above the fifth to create four-note chords.</p></div>
+</main><footer class="footer"><div>SAJA MUSIC</div></footer>
+<script>
+(function(){'use strict';
+const $=id=>document.getElementById(id);
+const LETTERS=['C','D','E','F','G','A','B'];
+const NAT={C:0,D:2,E:4,F:5,G:7,A:9,B:11};
+const ROOTS=['C','D','E','F','G','A','B','F♯','B♭','E♭','A♭','D♭','G♭'];
+const QUALITIES=[
+  {id:'major',name:'Major',third:4,fifth:7,symbol:''},
+  {id:'minor',name:'Minor',third:3,fifth:7,symbol:'m'},
+  {id:'dim',name:'Diminished',third:3,fifth:6,symbol:'°'},
+  {id:'aug',name:'Augmented',third:4,fifth:8,symbol:'+'}
+];
+const SCALES={major:{label:'major',steps:[2,2,1,2,2,2,1]},natural:{label:'natural minor',steps:[2,1,2,2,1,2,2]},harmonic:{label:'harmonic minor',steps:[2,1,2,2,1,3,1]}};
+const INV=['Root position','First inversion','Second inversion'];
+let audioCtx=null;
+function audio(){let AC=window.AudioContext||window.webkitAudioContext;if(!AC)return null;if(!audioCtx)audioCtx=new AC();if(audioCtx.state==='suspended')audioCtx.resume();return audioCtx;}
+function sound(midi,delay=0,length=1.0){const c=audio();if(!c)return;const t=c.currentTime+delay;const o=c.createOscillator(),g=c.createGain();o.type='sine';o.frequency.value=440*Math.pow(2,(midi-69)/12);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.095,t+.03);g.gain.exponentialRampToValueAtTime(.0001,t+length);o.connect(g);g.connect(c.destination);o.start(t);o.stop(t+length+.05);}
+function play(notes,arpeggio=false,delay=0){notes.forEach((n,i)=>sound(n.midi,delay+(arpeggio?i*.32:0),arpeggio?.65:1.25));}
+function mod(x,n){return ((x%n)+n)%n;}
+function parseName(name){const letter=name[0];let alt=0;for(const x of name.slice(1)){if(x==='♯'||x==='#')alt++;else if(x==='♭'||x==='b')alt--;}return {letter,alt};}
+function accText(a){return a===1?'♯':a===-1?'♭':a===2?'𝄪':a===-2?'♭♭':'';}
+function accVex(a){return a===1?'#':a===-1?'b':a===2?'##':a===-2?'bb':'';}
+function pitch(letter,alt,oct){return (oct+1)*12+NAT[letter]+alt;}
+function base(name){const n=parseName(name),oct=4;return {letter:n.letter,alt:n.alt,oct,midi:pitch(n.letter,n.alt,oct),name:n.letter+accText(n.alt)};}
+function relative(root,diatonic,semi){const idx=LETTERS.indexOf(root.letter)+diatonic;const letter=LETTERS[mod(idx,7)],oct=root.oct+Math.floor(idx/7),midi=root.midi+semi;const alt=midi-pitch(letter,0,oct);if(Math.abs(alt)>2)throw new Error('Unsupported note spelling');return {letter,alt,oct,midi,name:letter+accText(alt)};}
+function triad(root,quality){return [root,relative(root,2,quality.third),relative(root,4,quality.fifth)];}
+function upOct(n){return {...n,oct:n.oct+1,midi:n.midi+12};}
+function inverted(notes,n){let x=notes.map(z=>({...z}));for(let i=0;i<n;i++){x.push(upOct(x.shift()));}return x;}
+function labelNotes(ns){return ns.map(n=>n.name).join('–');}
+function staff(id,notes,width=370){const host=$(id);host.replaceChildren();if(!window.Vex||!Vex.Flow){host.textContent='Treble notation requires VexFlow to load. Check your internet connection.';return;}try{const VF=Vex.Flow,wrap=document.createElement('div');host.appendChild(wrap);const r=new VF.Renderer(wrap,VF.Renderer.Backends.SVG);r.resize(width,158);const ctx=r.getContext(),st=new VF.Stave(14,32,width-28);st.addClef('treble').setContext(ctx).draw();const ns=[...notes].sort((a,b)=>a.midi-b.midi);const item=new VF.StaveNote({clef:'treble',keys:ns.map(n=>n.letter.toLowerCase()+'/'+n.oct),duration:'w'});ns.forEach((n,i)=>{if(n.alt)item.addModifier(new VF.Accidental(accVex(n.alt)),i);});VF.Formatter.FormatAndDraw(ctx,st,[item]);}catch(e){host.textContent='Notation error: '+e.message;console.error(e);}}
+function fill(id,items,initial){const sel=$(id);items.forEach(v=>{const op=document.createElement('option');op.value=v.id||v;op.textContent=v.name||v;sel.appendChild(op);});sel.value=initial||items[0].id||items[0];}
+function quality(id){return QUALITIES.find(q=>q.id===id);}
+function chordLabel(root,q){return root.name+q.symbol+' ('+q.name.toLowerCase()+')';}
+function pills(host,notes){host.replaceChildren();notes.forEach((n,i)=>{const s=document.createElement('span');s.className='note-pill'+(i===0?' bass':'');s.textContent=n.name;host.appendChild(s);});}
+function chordCard(host,name,notes,id,caption){const card=document.createElement('div');card.className='small-card';card.innerHTML='<h3></h3><div class="notation" id="'+id+'"></div><p class="small"></p><button class="action secondary" type="button">Play chord</button>';card.querySelector('h3').textContent=name;card.querySelector('p').textContent=caption||labelNotes(notes);host.appendChild(card);staff(id,notes,300);card.querySelector('button').addEventListener('click',()=>play(notes));}
+function intro(){const root=base('C'),q=quality('major'),ns=triad(root,q),host=$('introCards');for(let i=0;i<3;i++){const current=inverted(ns,i);chordCard(host,INV[i],current,'introStaff'+i,labelNotes(current)+' · Bass: '+current[0].name);}}
+let builderInv=0;
+function renderBuilder(){const root=base($('builderRoot').value),q=quality($('builderQuality').value),ns=inverted(triad(root,q),builderInv);pills($('builderPills'),ns);staff('builderStaff',ns,670);$('builderCaption').textContent=chordLabel(root,q)+' · '+INV[builderInv]+' · '+labelNotes(ns)+' · Bass: '+ns[0].name+'.';}
+function currentBuilder(){return inverted(triad(base($('builderRoot').value),quality($('builderQuality').value)),builderInv);}
+function compare(){const root=base($('compareRoot').value),q=quality($('compareQuality').value),ns=triad(root,q),host=$('compareCards');host.replaceChildren();for(let i=0;i<3;i++){const x=inverted(ns,i);chordCard(host,INV[i],x,'compareStaff'+i,labelNotes(x)+' · Bass: '+x[0].name);}}
+function quick(id,opts,correct,feedback){const box=$(id);opts.forEach(v=>{const b=document.createElement('button');b.className='choice';b.textContent=v;b.addEventListener('click',()=>{box.querySelectorAll('button').forEach(x=>x.classList.toggle('active',x===b));const ok=v===correct,f=$(feedback);f.className='feedback '+(ok?'ok':'no');f.textContent=ok?'Correct. '+correct+' is the answer.':'Not quite. The correct answer is '+correct+'.';});box.appendChild(b);});}
+let degree=0,scaleChords=[];
+function scaleNotes(root,type){const out=[root],steps=SCALES[type].steps;let sum=0;for(let i=0;i<6;i++){sum+=steps[i];out.push(relative(root,i+1,sum));}return out;}
+function chordFromScale(scale,i){const ns=[];for(const add of [0,2,4]){const ix=i+add;ns.push(ix<7?scale[ix]:upOct(scale[ix-7]));}return ns;}
+function detectQuality(ns){const a=ns[1].midi-ns[0].midi,b=ns[2].midi-ns[0].midi;return QUALITIES.find(q=>q.third===a&&q.fifth===b);}
+function refreshScale(){const root=base($('scaleRoot').value),type=$('scaleType').value,scale=scaleNotes(root,type);scaleChords=Array.from({length:7},(_,i)=>{const ns=chordFromScale(scale,i);return {notes:ns,q:detectQuality(ns)};});const buttons=$('degreeButtons');buttons.replaceChildren();scaleChords.forEach((c,i)=>{const b=document.createElement('button');b.className='choice'+(i===degree?' active':'');b.textContent='Degree '+(i+1);b.addEventListener('click',()=>{degree=i;refreshScale();});buttons.appendChild(b);});const current=scaleChords[degree],host=$('scaleCards');host.replaceChildren();$('scaleCaption').textContent='Scale: '+scale.map(n=>n.name).join('–')+' · Degree '+(degree+1)+': '+chordLabel(current.notes[0],current.q)+'.';for(let i=0;i<3;i++){const ns=inverted(current.notes,i);chordCard(host,INV[i],ns,'scaleStaff'+i,labelNotes(ns)+' · Bass: '+ns[0].name);}}
+let game=null,chosenChord=null,chosenInv=null,correct=0,attempts=0,answered=false;
+function shuffle(a){return [...a].sort(()=>Math.random()-.5);}
+function newGame(){answered=false;chosenChord=null;chosenInv=null;const rootName=ROOTS[Math.floor(Math.random()*ROOTS.length)],q=QUALITIES[Math.floor(Math.random()*QUALITIES.length)],inv=Math.floor(Math.random()*3),root=base(rootName);game={root,q,inv,notes:inverted(triad(root,q),inv)};staff('detectiveStaff',game.notes,670);$('detectiveFeedback').textContent='';$('detectiveFeedback').className='feedback';$('detectiveHintText').textContent='';const answer=chordLabel(root,q);const wrong=shuffle(ROOTS.filter(r=>r!==rootName)).slice(0,2).map(n=>chordLabel(base(n),q));const different=QUALITIES.find(x=>x.id!==q.id);wrong.push(chordLabel(root,different));const box=$('detectiveChordChoices');box.replaceChildren();shuffle([answer,...wrong]).forEach(t=>{const b=document.createElement('button');b.className='choice';b.textContent=t;b.addEventListener('click',()=>{if(answered)return;chosenChord=t;box.querySelectorAll('button').forEach(x=>x.classList.toggle('active',x===b));});box.appendChild(b);});const invBox=$('detectiveInversionChoices');invBox.replaceChildren();INV.forEach((v,i)=>{const b=document.createElement('button');b.className='choice';b.textContent=v;b.addEventListener('click',()=>{if(answered)return;chosenInv=i;invBox.querySelectorAll('button').forEach(x=>x.classList.toggle('active',x===b));});invBox.appendChild(b);});$('detectiveCheck').disabled=false;}
+function checkGame(){if(answered)return;const f=$('detectiveFeedback');if(chosenChord===null||chosenInv===null){f.className='feedback no';f.textContent='Choose both the chord name and its inversion before checking.';return;}answered=true;attempts++;const rootCorrect=chosenChord===chordLabel(game.root,game.q),invCorrect=chosenInv===game.inv,ok=rootCorrect&&invCorrect;if(ok)correct++;f.className='feedback '+(ok?'ok':'no');f.textContent=(ok?'Exactly! ':'Not quite. ')+chordLabel(game.root,game.q)+' in '+INV[game.inv].toLowerCase()+' has '+labelNotes(game.notes)+' from bottom to top.';$('detectiveScore').textContent='Score: '+correct+' / '+attempts;$('detectiveCheck').disabled=true;}
+function init(){for(const id of ['builderRoot','compareRoot','scaleRoot'])fill(id,ROOTS,id==='scaleRoot'?'C':'C');for(const id of ['builderQuality','compareQuality'])fill(id,QUALITIES,'major');intro();renderBuilder();compare();refreshScale();newGame();
+for(const id of ['builderRoot','builderQuality'])$(id).addEventListener('change',()=>{builderInv=0;renderBuilder();});
+$('moveBottom').addEventListener('click',()=>{builderInv=(builderInv+1)%3;renderBuilder();});
+$('builderReset').addEventListener('click',()=>{builderInv=0;renderBuilder();});
+$('builderPlay').addEventListener('click',()=>play(currentBuilder()));
+$('builderArp').addEventListener('click',()=>play(currentBuilder(),true));
+for(const id of ['compareRoot','compareQuality'])$(id).addEventListener('change',compare);
+$('compareSequence').addEventListener('click',()=>{const ns=triad(base($('compareRoot').value),quality($('compareQuality').value));for(let i=0;i<3;i++)play(inverted(ns,i),false,i*1.5);});
+quick('quickOne',['Root position','First inversion','Second inversion'],'First inversion','quickOneFeedback');
+quick('quickTwo',['A','C','E'],'E','quickTwoFeedback');
+for(const id of ['scaleRoot','scaleType'])$(id).addEventListener('change',()=>{degree=0;refreshScale();});
+$('detectiveListen').addEventListener('click',()=>play(game.notes));
+$('detectiveArp').addEventListener('click',()=>play(game.notes,true));
+$('detectiveNew').addEventListener('click',newGame);
+$('detectiveCheck').addEventListener('click',checkGame);
+$('detectiveHint').addEventListener('click',()=>{$('detectiveHintText').textContent='Find the chord’s three letter names. Put them in a stack of thirds to identify the root; then see whether the root, third or fifth is lowest.';});
+}
+if(document.readyState==='complete')init();else window.addEventListener('load',init);
+})();
+</script>
+</body>
+</html>

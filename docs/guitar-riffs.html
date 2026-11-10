@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Guitar Riffs – a growing collection of playable guitar tablature at SAJA Music." />
+<meta name="author" content="SAJA Music" />
+<title>Guitar Riffs | SAJA MUSIC</title>
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,500,600,700,800,900" rel="stylesheet" />
+<link href="css/styles.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/vexflow@4.2.3/build/cjs/vexflow.js"></script>
+<style>
+:root{--accent:#8B2E3C;--paper:#FAFAFA;--panel:#F4F1EB;--ink:#161616;--muted:#666;}
+*{box-sizing:border-box}html{scroll-behavior:smooth;background:var(--paper)}body{margin:0;font-family:'Nunito',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;font-size:16.5px;padding-top:80px}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(139,46,60,.35)}a:hover{color:#111;border-bottom-color:var(--accent)}
+#mainNav,#mainNav.navbar-shrink{background:var(--paper)!important;border-bottom:1px solid rgba(0,0,0,.07);min-height:80px}#mainNav a{color:#111!important;text-decoration:none!important;border:none!important}.nav-links{display:flex;gap:2.5rem;align-items:center}.nav-links a{border-bottom:none}
+.article{max-width:950px;margin:auto;padding:55px 24px 115px}.back-link{display:inline-block;font-size:.95rem;margin-bottom:24px}h1,h2,h3{font-family:'Varela Round',sans-serif;font-weight:500;line-height:1.35}h1{font-size:2rem;margin:0 0 10px}h2{font-size:1.35rem;margin:0 0 12px}h3{font-size:1rem;margin:0 0 10px}.intro{max-width:67ch}.meta{font-size:.88rem;color:var(--muted);margin:0 0 32px}p{margin:0 0 18px}.section-rule{border:0;border-top:1px solid #ddd;margin:48px 0 32px}
+.riff{margin:32px 0 50px}.riff-heading{display:flex;justify-content:space-between;gap:14px;align-items:start;flex-wrap:wrap}.riff-heading p{font-size:.93rem;color:var(--muted);margin:6px 0 18px}.tag{display:inline-block;font-size:.76rem;letter-spacing:.04em;text-transform:uppercase;background:var(--panel);padding:5px 9px;border-radius:3px;color:#56514d}.controls{display:flex;align-items:center;flex-wrap:wrap;gap:12px;background:var(--panel);border-radius:5px;padding:17px 19px;margin:17px 0 13px}.btn{font:inherit;font-weight:700;cursor:pointer;border:1px solid var(--accent);border-radius:4px;padding:8px 16px;background:var(--accent);color:#fff;min-width:110px}.btn.secondary{background:transparent;color:var(--accent);min-width:auto}.btn:hover{filter:brightness(.91)}.btn:disabled{opacity:.45;cursor:not-allowed}label{font-size:.9rem}input[type=range]{accent-color:var(--accent);width:155px;vertical-align:middle}select{font:inherit;border:1px solid #d0cac2;padding:7px;border-radius:3px;background:white;color:#222}.tempo-output{font-weight:700;font-variant-numeric:tabular-nums;min-width:67px;display:inline-block}.tick-box{display:flex;gap:8px;align-items:center}.tick-box input{accent-color:var(--accent)}
+.selector-panel{background:var(--panel);padding:18px 20px;border-radius:5px;margin:25px 0 16px}.selector-panel label{display:block;font-weight:800;margin-bottom:6px}.selector-panel select{width:100%;max-width:430px;padding:10px}.tab-panel{background:#fff;border:1px solid #e7e2dd;border-radius:5px;padding:14px 12px 18px}.tab-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 4px}.measure{min-width:0;position:relative}.bar-num{position:absolute;top:4px;left:10px;color:#777;font-size:.72rem}.tab-canvas{width:100%;height:136px;overflow:hidden}.tab-canvas svg{display:block;width:100%;height:100%}.tab-canvas .vf-tabnote.current path,.tab-canvas .vf-tabnote.current text{fill:var(--accent)!important;stroke:var(--accent)!important}.measure.active{background:#fff8f6;border-radius:3px}.legend{font-size:.83rem;color:var(--muted);margin-top:6px}.status{color:var(--muted);font-size:.9rem;min-height:1.6em;margin:9px 0 0}.note{margin-top:20px;max-width:70ch}.note strong{font-weight:800}.lesson-box{background:var(--panel);padding:21px 24px;border-radius:4px;margin:25px 0}.lesson-box p:last-child{margin-bottom:0}.source{font-size:.88rem;color:#666}.more{border:1px dashed #cfc5bd;padding:22px 24px;border-radius:4px;color:#666;margin-top:35px}.footer{background:var(--paper);border-top:1px solid rgba(0,0,0,.06);padding:65px 30px;text-align:center;font-size:.95rem;color:rgba(0,0,0,.7)}
+@media(max-width:700px){.nav-links{gap:1.15rem;font-size:.88rem}.article{padding:38px 15px 85px}h1{font-size:1.6rem}.tab-grid{grid-template-columns:1fr}.tab-canvas{height:137px}.controls{padding:14px}.tab-panel{padding:10px 5px}.tick-box{width:100%}}
+@page{size:A4 portrait;margin:17mm 18mm}
+@media print{
+ html,body{background:#fff!important;color:#111!important;padding:0!important;margin:0!important;font-size:12pt!important;line-height:1.5!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ #mainNav,.footer{display:none!important}
+ .article{max-width:none!important;margin:0!important;padding:0!important}
+ .article > :not(#riff-library){display:none!important}
+ #riff-library{margin:0!important;padding:0!important}
+ #riff-library > :not(h2):not(.tab-panel):not(.lesson-box){display:none!important}
+ #riff-library > h2{font-family:'Varela Round',sans-serif;font-size:21pt;margin:0 0 18mm!important;font-weight:500}
+ .tab-panel{padding:0!important;border:0!important;border-radius:0!important;background:#fff!important;break-inside:avoid}
+ .tab-grid{grid-template-columns:1fr!important;gap:6mm!important}
+ .measure{break-inside:avoid!important}
+ .bar-num{top:0!important;left:10px!important;color:#555}
+ .tab-canvas{height:155px!important;overflow:visible!important}
+ .tab-canvas svg{max-width:100%!important}
+ .legend{display:none!important}
+ .lesson-box{border:0!important;background:#fff!important;padding:0!important;margin:16mm 0 0!important;break-inside:avoid}
+ .lesson-box h3{font-size:14pt;margin:0 0 3mm!important}
+ .lesson-box p{font-size:11.5pt;margin:0!important;max-width:none!important}
+ .tab-canvas .vf-tabnote.current path,.tab-canvas .vf-tabnote.current text{fill:#111!important;stroke:#111!important}
+}
+</style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav"><div class="container px-4 px-lg-5"><a class="navbar-brand" href="./index.html">SAJA MUSIC</a><div class="nav-links"><a href="./teaching.html">Discover</a><a href="./pathways.html">Learn</a><a href="./about.html">About</a></div></div></nav>
+<main class="article">
+<a class="back-link" href="./teaching.html">← Discover more resources</a>
+<h1>Guitar Riffs</h1>
+<p class="meta">SAJA Music · Interactive guitar lessons · A growing collection</p>
+<p class="intro">Some guitar riffs are instantly recognisable. This collection is for getting them into your fingers, listening carefully to the rhythm, and experimenting with the musical ideas behind them. Read the TAB, slow the playback down, then play along.</p>
+<div class="selector-panel"><label for="riff-select">Choose a riff</label><select id="riff-select" aria-label="Choose a guitar riff"></select></div>
+<div class="controls" aria-label="Riff playback controls">
+  <button id="play" type="button" class="btn">▶ Play</button>
+  <label for="tempo">Tempo</label><input id="tempo" type="range" min="40" max="200" step="1" value="112" />
+  <span id="tempo-value" class="tempo-output">112 BPM</span>
+  <label class="tick-box"><input id="loop" type="checkbox" /> Loop</label>
+  <button id="print-riff" type="button" class="btn secondary">↧ Print selected riff</button>
+</div>
+<p id="status" class="status" role="status" aria-live="polite">Ready to play.</p>
+<section id="riff-library" class="riff" aria-label="Selected guitar riff"></section>
+<div class="more"><h3>More riffs coming</h3><p>This is a living compendium. Choose a riff from the menu above. New riffs can be added to the collection without changing the player.</p></div>
+</main>
+<footer class="footer">SAJA MUSIC</footer>
+<script>
+'use strict';
+/* ADD A RIFF: append a data object to RIFFS. Strings are numbered
+   1=high E, 2=B, 3=G, 4=D, 5=A, 6=low E.
+   d: '8'=eighth, 'q'=quarter, 'h'=half, 'w'=whole.
+   A group of three quarter notes marked triplet:true takes 2 quarter beats. */
+const P=(s,f,d,triplet=false)=>({s,f,d,triplet});
+const RIFFS=[{
+  id:'tokyo-drift',
+  title:'Tokyo Drift',
+  subtitle:'The Fast and the Furious — guitar riff',
+  bpm:112,
+  beatsPerBar:4,
+  bars:[[P(3,3,'q'),P(3,3,'q'),P(3,3,'q',true),P(3,4,'q',true),P(2,4,'q',true)]],
+  intro:'One bar in 4/4: two B♭ quarter notes, followed by a three-note triplet (B♭–B–D♯) across the final two beats.',
+  lesson:'Beats 1 and 2: play B♭ (G string, fret 3) as two quarter notes, each lasting one beat. Beats 3–4: play B♭ (G3), B (G4), and D♯ (B4) as a quarter-note triplet. Each triplet note lasts ⅔ of a beat, so the three notes together take exactly two beats. Count “1, 2, tri-po-let” with the triplet spread evenly over beats 3 and 4.',
+  credit:'TAB based on your corrected pitch and rhythm description. The three-note figure is notated as a quarter-note triplet (3 in the time of 2), rather than a half-note triplet, to make the full bar exactly 4/4.'
+}];
+const DUR={'8':.5,q:1,h:2,w:4};
+const noteBeats=ev=>DUR[ev.d]*(ev.triplet?2/3:1);
+const VF=window.Vex?.Flow||window.Vex;
+const $=id=>document.getElementById(id);
+let audioCtx=null,voices=[],playing=false,timers=[],token=0,activeNote=null;
+let selected=RIFFS[0];
+function make(tag,cls,content){const e=document.createElement(tag);if(cls)e.className=cls;if(content!==undefined)e.textContent=content;return e;}
+function setup(){
+  const select=$('riff-select');
+  RIFFS.forEach(r=>{const o=document.createElement('option');o.value=r.id;o.textContent=r.title;select.append(o);});
+  select.addEventListener('change',()=>{stop();selected=RIFFS.find(r=>r.id===select.value)||RIFFS[0];$('tempo').value=selected.bpm;updateTempo();render();$('status').textContent='Ready to play.';});
+  $('tempo').addEventListener('input',updateTempo);
+  $('play').addEventListener('click',()=>playing?stop():start());
+  $('print-riff').addEventListener('click',()=>window.print());
+  updateTempo();render();
+}
+function updateTempo(){$('tempo-value').textContent=$('tempo').value+' BPM';}
+function render(){
+  const r=selected,host=$('riff-library');host.replaceChildren();
+  host.append(make('h2','',r.title),make('p','meta',r.subtitle),make('p','intro',r.intro));
+  const panel=make('div','tab-panel');const grid=make('div','tab-grid');
+  grid.style.gridTemplateColumns='1fr';panel.append(grid);host.append(panel);
+  r.noteElements=[];
+  r.bars.forEach((bar,bi)=>{
+    const wrap=make('div','measure');grid.append(wrap);
+    wrap.append(make('span','bar-num','Bar '+(bi+1)+' · '+r.beatsPerBar+'/4'));
+    const canvas=make('div','tab-canvas');canvas.style.height='155px';wrap.append(canvas);
+    if(!VF){canvas.textContent='VexFlow could not load. Check your internet connection.';return;}
+    try {
+      const w=850,h=155;
+      const renderer=new VF.Renderer(canvas,VF.Renderer.Backends.SVG);renderer.resize(w,h);
+      const ctx=renderer.getContext();
+      const stave=new VF.TabStave(12,35,w-25);stave.addClef('tab');stave.setContext(ctx).draw();
+      const notes=bar.map(ev=>new VF.TabNote({positions:[{str:ev.s,fret:ev.f}],duration:ev.d}));
+      // Tuplet construction changes the tick durations. Do this BEFORE
+      // adding the notes to a strict 4/4 Voice, or VexFlow reports Too many ticks.
+      const tuplets=[];let ix=0;while(ix<bar.length){if(bar[ix].triplet){let end=ix;while(end<bar.length&&bar[end].triplet)end++;tuplets.push(new VF.Tuplet(notes.slice(ix,end),{num_notes:3,notes_occupied:2}));ix=end;}else ix++;}
+      const voice=new VF.Voice({num_beats:r.beatsPerBar,beat_value:4});voice.addTickables(notes);
+      new VF.Formatter().joinVoices([voice]).format([voice],w-115);
+      voice.draw(ctx,stave);
+      tuplets.forEach(t=>{t.setContext(ctx).draw();});
+      r.noteElements[bi]=notes.map((n,i)=>{
+        const node=n.getSVGElement?.()||null;
+        if(node){node.classList.add('vf-tabnote');node.style.cursor='pointer';node.addEventListener('click',()=>playNote(bar[i]));}
+        return node;
+      });
+    } catch(err){canvas.textContent='Unable to draw the tablature: '+err.message;}
+  });
+  panel.append(make('p','legend','4/4 · Quarter = 1 beat · Triplet quarter = ⅔ beat · Total = 4 beats. Standard tuning (E A D G B E). Click a fret number to hear it.'));
+  const lesson=make('div','lesson-box');lesson.append(make('h3','','How to practise'),make('p','',r.lesson));host.append(lesson,make('p','source',r.credit));
+}
+function getAudio(){const AC=window.AudioContext||window.webkitAudioContext;if(!AC)throw Error('Audio is not supported in this browser.');if(!audioCtx)audioCtx=new AC();if(audioCtx.state==='suspended')audioCtx.resume();return audioCtx;}
+function freq(s,f){const openMidi=[64,59,55,50,45,40][s-1];return 440*Math.pow(2,(openMidi+f-69)/12);}
+function pluck(event,at,duration){
+  const ac=getAudio(),root=freq(event.s,event.f),env=ac.createGain();
+  env.gain.setValueAtTime(.0001,at);env.gain.exponentialRampToValueAtTime(.19,at+.009);
+  env.gain.exponentialRampToValueAtTime(.0001,at+Math.max(.16,duration*.9));env.connect(ac.destination);
+  const filter=ac.createBiquadFilter();filter.type='lowpass';filter.frequency.value=Math.min(6000,root*12);filter.connect(env);
+  const osc=[];
+  [1,2,3].forEach((ratio,i)=>{const o=ac.createOscillator(),g=ac.createGain();o.type=i===0?'triangle':'sine';o.frequency.value=root*ratio;g.gain.value=[.8,.16,.06][i];o.connect(g);g.connect(filter);o.start(at);o.stop(at+Math.max(.2,duration*.92));osc.push(o);});
+  voices.push({osc,env});
+}
+function playNote(event){try{const ac=getAudio();pluck(event,ac.currentTime+.02,.45);}catch(err){$('status').textContent=err.message;}}
+function clearHighlight(){if(activeNote){activeNote.classList.remove('current');activeNote=null;}}
+function highlight(bi,ni){clearHighlight();const node=selected.noteElements?.[bi]?.[ni];if(node){node.classList.add('current');activeNote=node;}}
+function clearAudio(){voices.forEach(({osc,env})=>{try{env.gain.cancelScheduledValues(0);env.gain.setValueAtTime(.0001,audioCtx.currentTime+.01);osc.forEach(o=>o.stop(audioCtx.currentTime+.02));}catch(_){}});voices=[];}
+function stop(){token++;timers.forEach(clearTimeout);timers=[];playing=false;$('play').textContent='▶ Play';clearHighlight();if(audioCtx)clearAudio();$('status').textContent='Playback stopped.';}
+function start(){
+  try{getAudio();}catch(err){$('status').textContent=err.message;return;}
+  playing=true;$('play').textContent='■ Stop';const mine=++token;
+  const cycle=()=>{
+    if(mine!==token)return;
+    const bpm=Number($('tempo').value),msPerBeat=60000/bpm,ac=getAudio(),startAt=ac.currentTime+.1;
+    let beats=0;const r=selected;
+    r.bars.forEach((bar,bi)=>bar.forEach((event,ni)=>{
+      const offset=beats*msPerBeat;
+      pluck(event,startAt+offset/1000,noteBeats(event)*msPerBeat/1000*.9);
+      timers.push(setTimeout(()=>{if(mine===token){highlight(bi,ni);$('status').textContent='Playing '+r.title+' · '+bpm+' BPM';}},offset+100));
+      beats+=noteBeats(event);
+    }));
+    timers.push(setTimeout(()=>{
+      if(mine!==token)return;
+      if($('loop').checked){timers=[];cycle();}
+      else{stop();$('status').textContent='Finished.';}
+    },beats*msPerBeat+110));
+  };
+  cycle();
+}
+setup();
+</script>
+</body>
+</html>

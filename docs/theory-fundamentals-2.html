@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="Theory Fundamentals Part 2: build and hear natural, harmonic and melodic minor scales on the piano. Free interactive music theory lessons from SAJA Music." />
+<meta name="author" content="SAJA Music" />
+<title>Theory Fundamentals 2: Minor Scales | SAJA Music</title>
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,500,600,700,800,900" rel="stylesheet" />
+<link href="css/styles.css" rel="stylesheet" />
+<style>
+:root{--accent:#8B2E3C;--paper:#FAFAFA;--panel:#F4F1EB;--ink:#111;--muted:#666;--line:rgba(0,0,0,.1)}
+html{scroll-behavior:smooth;background:var(--paper)}
+body{margin:0;font-family:'Nunito',sans-serif;background:var(--paper);color:var(--ink);line-height:1.75;font-size:16.5px;padding-top:80px}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(139,46,60,.35);transition:.2s}a:hover{color:#111;border-bottom-color:rgba(139,46,60,.75)}
+#mainNav,#mainNav.navbar-shrink{background:var(--paper)!important;border-bottom:1px solid rgba(0,0,0,.05);min-height:80px}
+#mainNav a{color:#111!important;text-decoration:none!important;border:none!important}
+.nav-links{display:flex;gap:2.5rem;align-items:center}.nav-links a{border-bottom:none}
+.article{max-width:760px;margin:0 auto;padding:60px 24px 110px}
+.back-link{display:inline-block;margin-bottom:24px;font-size:.95rem}
+h1,h2,h3{font-family:'Varela Round',sans-serif;font-weight:500;line-height:1.4}
+h1{font-size:1.9rem;margin:0 0 10px}h2{font-size:1.32rem;margin:54px 0 16px}h3{font-size:1.05rem;margin:0 0 12px}
+.meta{color:rgba(0,0,0,.55);font-size:.9rem;margin-bottom:35px}p{max-width:66ch;margin:0 0 22px}
+.lead{font-size:1.09rem}.learning-note,.exercise,.interactive{background:var(--panel);border-radius:4px;padding:24px;margin:28px 0}
+.learning-note{border-left:3px solid var(--accent)}.learning-note p:last-child,.exercise p:last-child{margin-bottom:0}
+.rule{height:1px;background:var(--line);margin:40px 0}.eyebrow{font-size:.79rem;letter-spacing:.075em;text-transform:uppercase;color:var(--muted);font-weight:800;margin:0 0 12px}
+.formula{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:18px 0}.formula span{display:inline-flex;justify-content:center;align-items:center;min-width:40px;height:42px;padding:0 10px;background:white;border:1px solid #ddd;border-radius:3px;font-weight:800}.formula .short{background:#f0e2e5;border-color:#d7b5bc;color:var(--accent)}
+.small{font-size:.9rem;color:var(--muted)}.controls{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:14px 0 20px}
+label{font-weight:800;font-size:.93rem}select{font:inherit;font-size:.96rem;padding:8px 34px 8px 12px;border:1px solid #bbb;border-radius:3px;background:white;color:var(--ink)}
+.key-scroll{overflow-x:auto;padding:5px 0 16px}.piano{display:flex;position:relative;width:100%;min-width:550px;height:172px;isolation:isolate;user-select:none}
+.key{position:relative;flex:1;min-width:0;height:168px;background:#fff;border:1px solid #999;border-right:0;border-radius:0 0 4px 4px;display:flex;align-items:flex-end;justify-content:center;padding:0 0 10px;font-family:inherit;font-size:.77rem;color:#444;cursor:pointer;transition:background .12s}
+.key:last-of-type{border-right:1px solid #999}.key:focus-visible,.black-key:focus-visible{outline:3px solid #4e86cd;outline-offset:2px;z-index:10}
+.key.active{background:#eedbde;color:#661e2c}.key.tonic{background:#d4a1aa;color:#4e1320}
+.black-key{position:absolute;top:0;height:103px;width:calc(100% / 14 * .61);background:#222;border:1px solid #111;border-radius:0 0 3px 3px;color:#fff;display:flex;align-items:flex-end;justify-content:center;padding-bottom:9px;font-size:.69rem;font-family:inherit;z-index:2;cursor:pointer;transform:translateX(-50%)}
+.black-key.active{background:#98515c}.black-key.tonic{background:var(--accent)}
+/* Display both enharmonic names on every black key, across all keyboards. */
+.black-key .enharmonic-label{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:1px;line-height:1.05;white-space:nowrap;font-size:.64rem;font-weight:700}
+.black-key .enharmonic-label span{display:block}
+.two-octave .black-key .enharmonic-label{font-size:.61rem}
+.note-collection{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0}.note-chip{font-size:.97rem;background:white;border:1px solid #ddd;padding:7px 11px;min-width:39px;text-align:center;border-radius:3px}.note-chip.tonic{background:var(--accent);color:#fff;border-color:var(--accent)}
+.step-collection{display:flex;gap:5px;flex-wrap:wrap;margin:16px 0 7px}.step{background:white;border:1px solid #ddd;padding:8px 10px;font-size:.88rem;border-radius:3px;min-width:56px;text-align:center}.step small{display:block;color:#666;font-size:.75rem}.step.half{background:#f0e2e5;border-color:#d7b5bc;color:var(--accent)}
+.exercise{background:#fff;border:1px solid var(--line)}button.action{font-family:inherit;font-size:.94rem;font-weight:800;color:#fff;background:var(--accent);border:1px solid var(--accent);border-radius:3px;padding:9px 16px;cursor:pointer}button.action:hover{background:#702431}button.secondary{background:white;color:var(--accent)}button.secondary:hover{background:#f7ebee}
+.feedback{min-height:30px;margin:15px 0 0;font-size:.94rem;font-weight:700}.feedback.ok{color:#28673f}.feedback.no{color:#8B2E3C}.choice-row{display:flex;flex-wrap:wrap;gap:9px;margin:15px 0}.choice{font:inherit;background:white;border:1px solid #aaa;padding:6px 13px;border-radius:3px;cursor:pointer}.choice.selected{background:#f0e2e5;border-color:var(--accent);color:var(--accent)}
+.next{border-top:1px solid var(--line);padding-top:28px;margin-top:55px}.footer{background:var(--paper);border-top:1px solid rgba(0,0,0,.06);padding:80px 30px;text-align:center;font-size:.95rem;color:rgba(0,0,0,.7)}
+@media(max-width:700px){.nav-links{gap:1.1rem;font-size:.85rem}.article{padding:36px 20px 80px}h1{font-size:1.55rem}h2{font-size:1.2rem}.learning-note,.exercise,.interactive{padding:19px}.formula{gap:5px}.formula span{min-width:33px;height:36px;padding:0 7px}}
+@media(max-width:380px){.nav-links{gap:.7rem;font-size:.78rem}#mainNav .container{padding-left:14px!important;padding-right:14px!important}.navbar-brand{font-size:.91rem}}
+
+/* Course diagrams and notation */
+.diagram{background:white;border:1px solid var(--line);border-radius:4px;padding:20px;margin:22px 0}
+.diagram-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.diagram-title{font-weight:800;font-size:.95rem;margin-bottom:10px}
+.interval-track{display:flex;align-items:center;gap:7px;margin:10px 0}.interval-node{border:1px solid #c7b4b8;background:#f5ecee;color:var(--accent);font-weight:800;border-radius:3px;padding:8px 12px;min-width:34px;text-align:center}.interval-arrow{flex:1;min-width:22px;border-top:2px solid var(--accent);height:0;position:relative}.interval-arrow:after{content:"";position:absolute;right:-1px;top:-5px;width:7px;height:7px;border-right:2px solid var(--accent);border-top:2px solid var(--accent);transform:rotate(45deg)}
+.interval-arrow label{position:absolute;font-size:.74rem;font-weight:700;left:50%;transform:translate(-50%,-115%);white-space:nowrap;color:#555}
+.notation{overflow-x:auto;min-height:160px;background:white;border-radius:3px}.notation svg{max-width:none;display:block}.notation-status{font-size:.85rem;color:var(--muted);min-height:1.4em}
+.key-scroll .piano.two-octave{min-width:690px;height:183px}.two-octave .key{height:172px;font-size:.75rem}.two-octave .black-key{height:105px;font-size:.65rem}
+.key .octave-label{font-size:.73rem}.legend{display:flex;gap:17px;align-items:center;flex-wrap:wrap;font-size:.84rem;color:#555;margin:10px 0}.swatch{display:inline-block;width:13px;height:13px;border:1px solid #b2a3a6;vertical-align:-2px;margin-right:5px}.swatch.root{background:#d4a1aa}.swatch.member{background:#eedbde}
+.quiz-number{font-size:.78rem;font-weight:800;color:var(--accent);letter-spacing:.06em;text-transform:uppercase;margin:0 0 8px}
+.quiz-prompt{font-weight:800}.feedback{min-height:25px}.small-caption{font-size:.9rem;color:var(--muted)}
+@media(max-width:600px){.diagram-grid{grid-template-columns:1fr}.diagram{padding:16px}.notation{min-height:140px}}
+
+/* Final hands-on scale construction challenge */
+.scale-challenge{border:1px solid rgba(139,46,60,.2);background:var(--panel);border-radius:4px;padding:24px;margin:32px 0}
+.scale-challenge .challenge-target{font-family:'Varela Round',sans-serif;font-size:1.12rem;margin:9px 0 6px}
+.challenge-step{font-weight:800;color:var(--accent);margin:14px 0 6px}
+.challenge-progress{display:flex;gap:7px;flex-wrap:wrap;margin:15px 0}
+.challenge-progress .note-chip{min-width:46px}
+.challenge-progress .note-chip.pending{background:transparent;color:#777;border-style:dashed}
+.challenge-progress .note-chip.tonic{background:var(--accent);color:white}
+.challenge-progress .note-chip.filled{background:#fff;border-color:#bd858e}
+.challenge-success{color:#28673f;font-weight:800}
+@media(max-width:700px){.scale-challenge{padding:19px}}
+
+.compare-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:20px 0}
+.compare-item{padding:16px;background:#fff;border:1px solid var(--line);border-radius:4px}
+.compare-item strong{display:block;font-size:.93rem;margin-bottom:7px}.compare-item p{font-size:.87rem;margin:0;color:#555}
+.badge-soft{display:inline-block;padding:2px 9px;color:var(--accent);background:#f0e2e5;border-radius:3px;font-weight:800;font-size:.84rem}
+.pattern-title{font-weight:800;font-size:.93rem;margin:18px 0 8px}
+.option-note{font-size:.84rem;color:#666}
+@media(max-width:650px){.compare-grid{grid-template-columns:1fr}}
+
+/* Scale degrees: numbered circles and curved, labelled interval arrows */
+.degree-chart{margin:15px 0 20px;overflow-x:auto;scrollbar-width:thin}
+.degree-chart svg{display:block;width:100%;min-width:685px;height:auto;overflow:visible}
+.degree-chart .degree-circle{fill:#f6edef;stroke:#b77b86;stroke-width:1.5}
+.degree-chart .degree-circle.tonic{fill:var(--accent);stroke:var(--accent)}
+.degree-chart .degree-number{fill:var(--accent);font:800 15px Nunito,sans-serif;text-anchor:middle;dominant-baseline:middle}
+.degree-chart .degree-number.tonic{fill:#fff}
+.degree-chart .degree-note{fill:#333;font:700 15px Nunito,sans-serif;text-anchor:middle}
+.degree-chart .degree-curve{fill:none;stroke:#a65d6a;stroke-width:1.6;stroke-linecap:round}
+.degree-chart .degree-label{fill:#6a3c45;font:800 11px Nunito,sans-serif;text-anchor:middle}
+.degree-chart .degree-label.semitone{fill:var(--accent)}
+.degree-explainer{font-size:.89rem;color:#555;margin:5px 0 9px}
+</style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav"><div class="container px-4 px-lg-5"><a class="navbar-brand" href="./index.html">SAJA MUSIC</a><div class="nav-links"><a href="./teaching.html">Discover</a><a href="./pathways.html">Learn</a><a href="./about.html">About</a></div></div></nav>
+<main class="article">
+<div class="eyebrow">Theory Fundamentals · Part 2</div>
+<h1>Minor Scales</h1>
+<div class="meta">Music theory · Beginner · Interactive lesson</div>
+<p class="lead">In <a href="./theory-fundamentals-1.html">Part 1</a>, we learnt that the <strong>pattern of tones and semitones</strong> determines a scale. The major scale uses one pattern. Minor scales use different patterns — and they sound different too.</p>
+<div class="learning-note"><h3>Two skills to practise alongside this lesson</h3><p>Keep learning to recognise notes on the <strong>piano keyboard</strong> using <a href="./find-piano-key.html">Find the Piano Key</a>, and start practising notes on the <strong>treble clef</strong> with <a href="./find-note.html">Find That Note!</a>. We will introduce staff notation gradually. For now, we can understand minor scales entirely on the piano.</p></div>
+
+<h2>1. A different pattern makes a different scale</h2>
+<p><strong>There are twelve notes in an octave.</strong> Moving to the next key — black or white — is one <strong>semitone (S)</strong>. Moving two keys, with exactly one key between them, is one <strong>tone (T)</strong>.</p>
+<p>A scale is made by starting on a note and following a particular pattern of these distances. The major scale has one pattern; the <strong>natural minor scale</strong> has another.</p>
+<div class="diagram"><div class="diagram-title">Compare the patterns</div><p class="degree-explainer">We number scale notes <strong>1 to 7</strong>. The next note is <strong>8</strong> — the tonic again, one octave higher. The curved arrows show the distance from one note to the next.</p><div class="pattern-title">Major: T – T – S – T – T – T – S</div><div class="formula" aria-label="Major interval pattern"><span>T</span><span>T</span><span class="short">S</span><span>T</span><span>T</span><span>T</span><span class="short">S</span></div><div class="degree-chart" id="majorDegreeChart"></div><div class="pattern-title">Natural minor: T – S – T – T – S – T – T</div><div class="formula" aria-label="Natural minor interval pattern"><span>T</span><span class="short">S</span><span>T</span><span>T</span><span class="short">S</span><span>T</span><span>T</span></div><div class="degree-chart" id="naturalPatternChart"></div><p class="small" style="margin:0">Both patterns add up to twelve semitones — one octave. The semitones occur in different places.</p></div>
+<div class="exercise"><div class="quiz-number">Quick check 1</div><p class="quiz-prompt">In a natural minor scale, where are the two semitones?</p><div class="choice-row"><button class="choice" data-quiz="q1" data-value="right">Between notes 2–3 and 5–6</button><button class="choice" data-quiz="q1" data-value="wrong1">Between notes 3–4 and 7–8</button><button class="choice" data-quiz="q1" data-value="wrong2">Between notes 1–2 and 4–5</button></div><p class="feedback" id="q1-feedback" aria-live="polite"></p></div>
+
+<h2>2. Build a natural minor scale</h2>
+<p>Start on A. Move up a tone to B, then a semitone to C. Keep following <strong>T–S–T–T–S–T–T</strong> and you will reach A again, one octave higher.</p>
+<div class="diagram"><div class="diagram-title">A natural minor, note by note</div><p class="degree-explainer">Every note has a <strong>scale degree</strong>. The numbers remain the same when you change the starting note — it is the distances between them that make this a minor scale.</p><div class="degree-chart" id="aNaturalDegreeChart"></div><div class="note-collection"><span class="note-chip tonic">A</span><span class="note-chip">B</span><span class="note-chip">C</span><span class="note-chip">D</span><span class="note-chip">E</span><span class="note-chip">F</span><span class="note-chip">G</span><span class="note-chip tonic">A</span></div><div class="step-collection" id="naturalSteps"></div><p class="small-caption" style="margin:12px 0 0">Notice the two semitones: B–C and E–F. The other steps are tones.</p></div>
+<p>Now listen to two scales beginning on the <em>same</em> note. C major and C natural minor share the same tonic, but their different interval patterns give them different characters.</p>
+<div class="interactive"><h3>Listen: C major and C natural minor</h3><div class="controls"><button class="action" type="button" id="listenMajor">▶ C major</button><button class="action" type="button" id="listenMinor">▶ C natural minor</button><button class="action secondary" type="button" id="stopCompare">■ Stop</button></div><p class="small" id="compareFeedback" aria-live="polite">Listen for the third note: E in C major, E♭ in C minor.</p></div>
+<div class="exercise"><div class="quiz-number">Quick check 2</div><p class="quiz-prompt">Starting on A, what is the third note of A natural minor?</p><div class="choice-row"><button class="choice" data-quiz="q2" data-value="wrong1">C♯</button><button class="choice" data-quiz="q2" data-value="right">C</button><button class="choice" data-quiz="q2" data-value="wrong2">D</button></div><p class="feedback" id="q2-feedback" aria-live="polite"></p></div>
+
+<h2>3. Build minor scales from any starting note</h2>
+<p>Choose a tonic below. The <strong>continuous two-octave piano keyboard (C4–C6)</strong> shows the scale from its starting note to the tonic one octave higher. The black keys show both enharmonic names, such as C♯ / D♭.</p>
+<div class="interactive"><h3>Minor scale explorer</h3><div class="controls"><label for="tonic">Starting note</label><select id="tonic"><option value="C">C</option><option value="Cs">C♯</option><option value="D">D</option><option value="Eb">E♭</option><option value="E">E</option><option value="F">F</option><option value="Fs">F♯</option><option value="G">G</option><option value="Ab">A♭</option><option value="A" selected>A</option><option value="Bb">B♭</option><option value="B">B</option></select><label for="scaleType">Minor scale</label><select id="scaleType"><option value="natural">Natural minor</option><option value="harmonic">Harmonic minor</option><option value="melodic">Melodic minor (classical)</option></select></div><div class="legend"><span><span class="swatch root"></span>Tonic</span><span><span class="swatch member"></span>Other scale notes</span></div><div class="key-scroll"><div class="piano two-octave" id="scalePiano" aria-label="Playable two-octave keyboard with highlighted minor scale"></div></div><p class="small">Click any key to hear its note, or Play to hear the complete scale. For classical melodic minor, the descending pattern changes.</p><div class="note-collection" id="scaleNotes" aria-live="polite"></div><div class="degree-chart" id="explorerDegreeChart" aria-label="Scale degrees and intervals for the selected minor scale"></div><div class="step-collection" id="scaleSteps"></div><div class="controls"><button class="action" type="button" id="playScale">▶ Play ascending</button><button class="action secondary" type="button" id="playDown">▶ Play descending</button><button class="action secondary" type="button" id="stopAudio">■ Stop</button></div><p class="small" id="scaleFeedback" aria-live="polite"></p><p class="small" id="scaleExplanation"></p></div>
+<p><strong>Enharmonic equivalence:</strong> two note names can refer to the same piano key. For example, G♯ and A♭ sound the same on this keyboard, but they have different roles in written scales. The named scale notes below use the correct spelling wherever possible, including notes such as E♯ and C♭.</p>
+<div class="exercise"><div class="quiz-number">Quick check 3</div><p class="quiz-prompt">Which note changes when you turn C major into C natural minor <em>at scale degree 3</em>?</p><div class="choice-row"><button class="choice" data-quiz="q3" data-value="right">E becomes E♭</button><button class="choice" data-quiz="q3" data-value="wrong1">E becomes F</button><button class="choice" data-quiz="q3" data-value="wrong2">E stays E</button></div><p class="feedback" id="q3-feedback" aria-live="polite"></p></div>
+
+<h2>4. Natural, harmonic and melodic minor</h2>
+<p>We often use <strong>three forms of the minor scale</strong>. They share the same tonic and the same first five notes. What happens to the sixth and seventh notes makes a difference to their sound.</p>
+<div class="compare-grid"><div class="compare-item"><strong>Natural minor</strong><p>No raised notes beyond those required by the key's natural minor scale. Pattern: T–S–T–T–S–T–T.</p></div><div class="compare-item"><strong>Harmonic minor</strong><p>Raise degree 7 of natural minor by one semitone. This produces a striking three-semitone gap between degrees 6 and 7.</p></div><div class="compare-item"><strong>Melodic minor</strong><p>In classical usage, raise degrees 6 and 7 on the way up. On the way down, return to natural minor.</p></div></div>
+<p>For example, A natural minor has G. <strong>A harmonic minor raises G to G♯.</strong> In ascending A melodic minor, F becomes F♯ and G becomes G♯. Listen to all three with the explorer above — then try changing the tonic.</p>
+<div class="diagram"><div class="diagram-title">A minor: three forms</div><div class="pattern-title">Natural minor</div><div class="note-collection"><span class="note-chip tonic">A</span><span class="note-chip">B</span><span class="note-chip">C</span><span class="note-chip">D</span><span class="note-chip">E</span><span class="note-chip">F</span><span class="note-chip">G</span><span class="note-chip tonic">A</span></div><div class="degree-chart" id="minorNaturalFormChart"></div><div class="pattern-title">Harmonic minor</div><div class="note-collection"><span class="note-chip tonic">A</span><span class="note-chip">B</span><span class="note-chip">C</span><span class="note-chip">D</span><span class="note-chip">E</span><span class="note-chip">F</span><span class="note-chip">G♯</span><span class="note-chip tonic">A</span></div><div class="degree-chart" id="minorHarmonicFormChart"></div><div class="pattern-title">Melodic minor (ascending)</div><div class="note-collection"><span class="note-chip tonic">A</span><span class="note-chip">B</span><span class="note-chip">C</span><span class="note-chip">D</span><span class="note-chip">E</span><span class="note-chip">F♯</span><span class="note-chip">G♯</span><span class="note-chip tonic">A</span></div><div class="degree-chart" id="minorMelodicFormChart"></div></div>
+<div class="exercise"><div class="quiz-number">Quick check 4</div><p class="quiz-prompt">What changes between A natural minor and A harmonic minor?</p><div class="choice-row"><button class="choice" data-quiz="q4" data-value="wrong1">F becomes F♯</button><button class="choice" data-quiz="q4" data-value="right">G becomes G♯</button><button class="choice" data-quiz="q4" data-value="wrong2">C becomes C♯</button></div><p class="feedback" id="q4-feedback" aria-live="polite"></p></div>
+<div class="exercise"><div class="quiz-number">Quick check 5</div><p class="quiz-prompt">In classical melodic minor, which version is normally used when descending?</p><div class="choice-row"><button class="choice" data-quiz="q5" data-value="right">Natural minor</button><button class="choice" data-quiz="q5" data-value="wrong1">Harmonic minor</button><button class="choice" data-quiz="q5" data-value="wrong2">Major</button></div><p class="feedback" id="q5-feedback" aria-live="polite"></p></div>
+
+<h2>5. Make a melody in minor</h2>
+<p>Minor scales give us notes for making melodies. Choose a starting note and scale type in the explorer above. Generate a <strong>nine-note melody</strong>: it begins on the tonic, uses seven randomly selected scale notes, and finishes on the tonic an octave higher.</p>
+<div class="interactive"><h3>Random minor-scale melody</h3><div class="controls"><button class="action secondary" type="button" id="newMelody">↻ Generate new melody</button><button class="action" type="button" id="playMelody">▶ Play melody</button></div><div class="note-collection" id="melodyNotes" aria-live="polite"></div><p class="small" id="melodyFeedback" aria-live="polite"></p></div>
+<div class="exercise"><div class="quiz-number">Quick check 6</div><p class="quiz-prompt">In A natural minor, which of these notes belongs to the scale?</p><div class="choice-row"><button class="choice" data-quiz="q6" data-value="wrong1">F♯</button><button class="choice" data-quiz="q6" data-value="right">F</button><button class="choice" data-quiz="q6" data-value="wrong2">G♯</button></div><p class="feedback" id="q6-feedback" aria-live="polite"></p></div>
+
+<section class="scale-challenge" aria-labelledby="challengeTitle"><div class="eyebrow">Final challenge · Put it all together</div><h2 id="challengeTitle" style="margin:0 0 14px">Build a minor scale yourself</h2><p>We will give you a random tonic. Choose <strong>natural</strong>, <strong>harmonic</strong> or <strong>melodic (ascending)</strong> minor, and select all eight notes in order on the keyboard. Use the interval pattern to guide you.</p><div class="controls"><label for="challengeType">Scale to build</label><select id="challengeType"><option value="natural">Natural minor</option><option value="harmonic">Harmonic minor</option><option value="melodic">Melodic minor (ascending)</option></select></div><div class="formula" id="challengeFormula" aria-live="polite"></div><div class="controls"><button class="action secondary" id="newChallenge" type="button">↻ Generate another starting note</button><button class="action secondary" id="resetChallenge" type="button">Start this scale again</button></div><p class="challenge-target" id="challengeTarget"></p><p class="small" id="challengeInstruction">Start by selecting the tonic.</p><div class="key-scroll"><div class="piano two-octave" id="challengePiano" aria-label="Interactive keyboard for constructing a minor scale"></div></div><div class="challenge-step" id="challengeStep"></div><div class="challenge-progress" id="challengeProgress" aria-live="polite"></div><p class="feedback" id="challengeFeedback" aria-live="polite"></p></section>
+<div class="next"><div class="eyebrow">Coming next</div><h3>Intervals — measuring the distance between two notes</h3><p>We have used tones and semitones to build scales. Next we will give more precise names to the distances between notes, then use that understanding to construct triads and chords. Keep practising <a href="./find-note.html">treble-clef reading</a> and <a href="./find-piano-key.html">finding piano keys</a>.</p></div>
+</main><footer class="footer"><div>SAJA MUSIC</div></footer>
+<script>
+(function(){
+'use strict';
+const PITCH_CLASSES={C:0,Cs:1,D:2,Eb:3,E:4,F:5,Fs:6,G:7,Ab:8,A:9,Bb:10,B:11};
+const ROOT_LABELS={C:'C',Cs:'C♯',D:'D',Eb:'E♭',E:'E',F:'F',Fs:'F♯',G:'G',Ab:'A♭',A:'A',Bb:'B♭',B:'B'};
+const LETTERS=['C','D','E','F','G','A','B'], NATURAL_PCS={C:0,D:2,E:4,F:5,G:7,A:9,B:11};
+const PATTERNS={natural:[2,1,2,2,1,2,2],harmonic:[2,1,2,2,1,3,1],melodic:[2,1,2,2,2,2,1]};
+const TYPE_LABELS={natural:'natural minor',harmonic:'harmonic minor',melodic:'melodic minor (ascending)'};
+const SHARP=['C♯','D♯','F♯','G♯','A♯'],FLAT=['D♭','E♭','G♭','A♭','B♭'];
+const WHITE_PCS=[0,2,4,5,7,9,11],BLACK_PCS=[1,3,6,8,10];
+function offsets(type){let n=0;return [0,...PATTERNS[type].map(x=>(n+=x))];}
+function mod(n,m){return ((n%m)+m)%m;}
+function spellNote(letter,pc){const diff=mod(pc-NATURAL_PCS[letter]+6,12)-6;if(diff===0)return letter;if(diff===1)return letter+'♯';if(diff===-1)return letter+'♭';if(diff===2)return letter+'𝄪';if(diff===-2)return letter+'𝄫';return letter;}
+function namesFor(rootKey,type){const rootPc=PITCH_CLASSES[rootKey],first=ROOT_LABELS[rootKey][0],letterStart=LETTERS.indexOf(first),offs=offsets(type);return offs.map((v,i)=>spellNote(LETTERS[(letterStart+i)%7],mod(rootPc+v,12)));}
+function getScale(rootKey,type){const pc=PITCH_CLASSES[rootKey];return {notes:offsets(type).map(x=>pc+x),names:namesFor(rootKey,type),steps:PATTERNS[type]};}
+function piano(element,callback){const whiteCount=15,all=[];element.replaceChildren();for(let i=0;i<whiteCount;i++){const pc=WHITE_PCS[i%7],oct=4+Math.floor(i/7),midi=12*Math.floor(i/7)+pc;const b=document.createElement('button');b.type='button';b.className='key';b.textContent=LETTERS[i%7]+oct;b.dataset.midi=midi;b.setAttribute('aria-label',b.textContent);b.addEventListener('click',()=>callback(midi));element.appendChild(b);all.push(b);}for(let oct=0;oct<2;oct++){BLACK_PCS.forEach((pc,j)=>{const after=[0,1,3,4,5][j],midi=oct*12+pc,b=document.createElement('button');b.type='button';b.className='black-key';b.dataset.midi=midi;b.style.left=(100*(oct*7+after+1)/whiteCount)+'%';b.style.width=(61/whiteCount)+'%';b.setAttribute('aria-label',SHARP[j]+' or '+FLAT[j]+', octave '+(4+oct));const label=document.createElement('span');label.className='enharmonic-label';const s1=document.createElement('span'),s2=document.createElement('span');s1.textContent=SHARP[j]+'/';s2.textContent=FLAT[j];label.append(s1,s2);b.appendChild(label);b.addEventListener('click',()=>callback(midi));element.appendChild(b);all.push(b);});}return (selected=[],tonics=[])=>{for(const b of all){const n=+b.dataset.midi;b.classList.toggle('tonic',tonics.includes(n));b.classList.toggle('active',selected.includes(n)&&!tonics.includes(n));b.setAttribute('aria-pressed',String(selected.includes(n)));}};}
+let ctx=null,voices=[],timers=[],token=0;async function initAudio(){ctx=ctx||new (window.AudioContext||window.webkitAudioContext)();await ctx.resume();}
+function clearAudio(){token++;timers.forEach(clearTimeout);timers=[];if(ctx){for(const {osc,gain} of voices){try{gain.gain.cancelScheduledValues(ctx.currentTime);gain.gain.setTargetAtTime(0,ctx.currentTime,.015);osc.stop(ctx.currentTime+.1);}catch(e){}}}voices=[];}
+function sound(n,duration=.34){if(!ctx)return;const t=ctx.currentTime,f=261.625565*Math.pow(2,n/12);for(const [harmonic,amp] of [[1,.19],[2,.055],[3,.018]]){const osc=ctx.createOscillator(),gain=ctx.createGain();osc.type='sine';osc.frequency.value=f*harmonic;gain.gain.setValueAtTime(.0001,t);gain.gain.linearRampToValueAtTime(amp,t+.013);gain.gain.exponentialRampToValueAtTime(.0001,t+duration+.09);osc.connect(gain).connect(ctx.destination);osc.start(t);osc.stop(t+duration+.1);voices.push({osc,gain});}}
+async function single(n){try{await initAudio();sound(n,.45);}catch(e){/* no sound; visual interaction still works */}}
+async function sequence(pitches,feedback,callback){clearAudio();try{await initAudio();}catch(e){feedback.textContent='Audio is unavailable in this browser.';return;}const run=token;const delay=455;pitches.forEach((n,i)=>{timers.push(setTimeout(()=>{if(run!==token)return;sound(n);if(callback)callback(n,i);feedback.textContent='Playing note '+(i+1)+' of '+pitches.length+'.';},i*delay));});timers.push(setTimeout(()=>{if(run!==token)return;if(callback)callback(null);feedback.textContent='Finished. Try listening again, then compare the scale types.';},pitches.length*delay+90));}
+function renderSteps(id,steps,names){const el=document.getElementById(id);el.replaceChildren();steps.forEach((s,i)=>{const span=document.createElement('span');span.className='step'+(s===1?' half':'');span.textContent=s===1?'Semitone':s===2?'Tone':'3 semitones';if(names){const small=document.createElement('small');small.textContent=names[i]+' → '+names[i+1];span.appendChild(small);}el.appendChild(span);});}
+
+// Clear scale-degree diagrams, using curved SVG arrows between numbered notes.
+function renderDegreeChart(id,names,steps){
+ const el=document.getElementById(id);if(!el)return;
+ const ns='http://www.w3.org/2000/svg';
+ const svg=document.createElementNS(ns,'svg');svg.setAttribute('viewBox','0 0 850 151');svg.setAttribute('role','img');
+ svg.setAttribute('aria-label',names.map((n,i)=>'degree '+(i+1)+': '+n).join(', ')+'. Intervals: '+steps.map(s=>s===1?'semitone':s===2?'tone':'three semitones').join(', '));
+ const create=(tag,attrs,text)=>{const n=document.createElementNS(ns,tag);Object.entries(attrs).forEach(([k,v])=>n.setAttribute(k,String(v)));if(text!==undefined)n.textContent=text;svg.appendChild(n);return n;};
+ const start=53,gap=106,y=94;
+ for(let i=0;i<7;i++){
+   const x=start+i*gap,x2=x+gap;
+   create('path',{d:`M ${x+19} ${y-13} Q ${(x+x2)/2} 30 ${x2-19} ${y-13}`,class:'degree-curve'});
+   // An arrowhead at the arrival circle.
+   create('path',{d:`M ${x2-25} ${y-24} L ${x2-19} ${y-13} L ${x2-30} ${y-13}`,class:'degree-curve'});
+   const step=steps[i],lab=step===1?'Semitone':step===2?'Tone':'3 semitones';
+   create('text',{x:(x+x2)/2,y:27,class:'degree-label'+(step===1?' semitone':'')},lab);
+ }
+ names.forEach((note,i)=>{
+   const x=start+i*gap,tonic=i===0||i===7;
+   create('circle',{cx:x,cy:y,r:20,class:'degree-circle'+(tonic?' tonic':'')});
+   create('text',{x,y:y+1,class:'degree-number'+(tonic?' tonic':'')},String(i+1));
+   create('text',{x,y:y+44,class:'degree-note'},note);
+ });
+ el.replaceChildren(svg);
+}
+const MAJOR_PATTERN=[2,2,1,2,2,2,1];
+renderDegreeChart('majorDegreeChart',['C','D','E','F','G','A','B','C'],MAJOR_PATTERN);
+renderDegreeChart('naturalPatternChart',['A','B','C','D','E','F','G','A'],PATTERNS.natural);
+renderDegreeChart('aNaturalDegreeChart',['A','B','C','D','E','F','G','A'],PATTERNS.natural);
+renderDegreeChart('minorNaturalFormChart',['A','B','C','D','E','F','G','A'],PATTERNS.natural);
+renderDegreeChart('minorHarmonicFormChart',['A','B','C','D','E','F','G♯','A'],PATTERNS.harmonic);
+renderDegreeChart('minorMelodicFormChart',['A','B','C','D','E','F♯','G♯','A'],PATTERNS.melodic);
+
+renderSteps('naturalSteps',PATTERNS.natural,['A','B','C','D','E','F','G','A']);
+const selectRoot=document.getElementById('tonic'),selectType=document.getElementById('scaleType');
+const showScale=piano(document.getElementById('scalePiano'),n=>{single(n);document.getElementById('scaleFeedback').textContent='You played the piano key '+(n===24?'C6':(['C','C♯ / D♭','D','D♯ / E♭','E','F','F♯ / G♭','G','G♯ / A♭','A','A♯ / B♭','B'][n%12]))+'.';});
+function current(){return getScale(selectRoot.value,selectType.value);}
+function drawScale(){clearAudio();const {notes,names,steps}=current();showScale(notes,[notes[0],notes[7]]);const chips=document.getElementById('scaleNotes');chips.replaceChildren();names.forEach((name,i)=>{const s=document.createElement('span');s.className='note-chip'+(i===0||i===7?' tonic':'');s.textContent=name;chips.appendChild(s);});renderSteps('scaleSteps',steps,names);renderDegreeChart('explorerDegreeChart',names,steps);document.getElementById('scaleExplanation').textContent=TYPE_LABELS[selectType.value][0].toUpperCase()+TYPE_LABELS[selectType.value].slice(1)+' in '+ROOT_LABELS[selectRoot.value]+': '+names.join(' – ')+'.'+(selectType.value==='melodic'?' Descending, classical melodic minor uses the natural minor notes.':'');document.getElementById('scaleFeedback').textContent='Select Play to hear the '+TYPE_LABELS[selectType.value]+' scale.';newMelody();}
+selectRoot.addEventListener('change',drawScale);selectType.addEventListener('change',drawScale);
+document.getElementById('playScale').addEventListener('click',()=>sequence(current().notes,document.getElementById('scaleFeedback'),n=>showScale(n===null?current().notes:[n],n===null?[current().notes[0],current().notes[7]]:[n])));
+document.getElementById('playDown').addEventListener('click',()=>{const scale=selectType.value==='melodic'?getScale(selectRoot.value,'natural'):current();sequence([...scale.notes].reverse(),document.getElementById('scaleFeedback'),n=>showScale(n===null?current().notes:[n],n===null?[current().notes[0],current().notes[7]]:[n]));});
+document.getElementById('stopAudio').addEventListener('click',()=>{clearAudio();showScale(current().notes,[current().notes[0],current().notes[7]]);document.getElementById('scaleFeedback').textContent='Stopped.';});
+document.getElementById('listenMajor').addEventListener('click',()=>sequence([0,2,4,5,7,9,11,12],document.getElementById('compareFeedback')));
+document.getElementById('listenMinor').addEventListener('click',()=>sequence([0,2,3,5,7,8,10,12],document.getElementById('compareFeedback')));
+document.getElementById('stopCompare').addEventListener('click',()=>{clearAudio();document.getElementById('compareFeedback').textContent='Stopped.';});
+let melody=[];function newMelody(){const s=current();melody=[0];for(let i=0;i<7;i++)melody.push(Math.floor(Math.random()*8));melody.push(7);const el=document.getElementById('melodyNotes');el.replaceChildren();melody.forEach((index,i)=>{const c=document.createElement('span');c.className='note-chip'+(i===0||i===8?' tonic':'');c.textContent=s.names[index];el.appendChild(c);});document.getElementById('melodyFeedback').textContent='Nine notes in '+ROOT_LABELS[selectRoot.value]+' '+TYPE_LABELS[selectType.value]+', starting and ending on the tonic.';}
+document.getElementById('newMelody').addEventListener('click',()=>{clearAudio();newMelody();});document.getElementById('playMelody').addEventListener('click',()=>sequence(melody.map(index=>current().notes[index]),document.getElementById('melodyFeedback')));
+const ANSWERS={q1:['right','Yes. Natural minor has semitones between degrees 2–3 and 5–6.','Follow T–S–T–T–S–T–T and locate the two S steps.'],q2:['right','Yes. A → B is a tone; B → C is a semitone.','The first two steps of natural minor are T then S.'],q3:['right','Yes. C natural minor lowers degree 3 from E to E♭.','Natural minor has a minor third: three semitones above its tonic.'],q4:['right','Yes. Raising the seventh degree changes G to G♯.','Harmonic minor raises only degree 7 of natural minor.'],q5:['right','Yes. In classical melodic minor, descending notes return to the natural minor form.','Classical melodic minor changes its sixth and seventh degrees on the way up, not on the way down.'],q6:['right','Yes. A natural minor uses F natural.','A natural minor contains A, B, C, D, E, F and G.']};
+document.querySelectorAll('[data-quiz]').forEach(b=>b.addEventListener('click',()=>{const q=b.dataset.quiz;document.querySelectorAll('[data-quiz="'+q+'"]').forEach(c=>c.classList.toggle('selected',c===b));const ok=b.dataset.value===ANSWERS[q][0],el=document.getElementById(q+'-feedback');el.className='feedback '+(ok?'ok':'no');el.textContent=ANSWERS[q][ok?1:2];}));
+const allRoots=Object.keys(PITCH_CLASSES);let challengeRoot='D',challengePos=0;
+const showChallenge=piano(document.getElementById('challengePiano'),n=>{single(n);const type=document.getElementById('challengeType').value,scale=getScale(challengeRoot,type),expected=scale.notes[challengePos],fb=document.getElementById('challengeFeedback');if(challengePos>=8)return;if(n!==expected){fb.className='feedback no';fb.textContent=challengePos===0?'Find '+scale.names[0]+' on the piano and try again.':'Not quite. Count '+(scale.steps[challengePos-1]===1?'one piano key (S)':scale.steps[challengePos-1]===2?'two piano keys (T)':'three piano keys (3 semitones)')+' to the right from the previous note.';return;}challengePos++;showChallenge(scale.notes.slice(0,challengePos),[scale.notes[0]]);drawProgress();if(challengePos===8){document.getElementById('challengeStep').textContent='Scale complete!';document.getElementById('challengeInstruction').textContent='You reached the tonic one octave higher.';fb.className='feedback challenge-success';fb.textContent='Well done! '+scale.names.join(' – ')+'. Try another tonic or another type of minor scale.';}else{const step=scale.steps[challengePos-1];document.getElementById('challengeStep').textContent='Next: '+(step===1?'one semitone (S)':step===2?'one tone (T)':'three semitones')+' above '+scale.names[challengePos-1]+'.';document.getElementById('challengeInstruction').textContent='Choose note '+(challengePos+1)+' of 8.';fb.className='feedback ok';fb.textContent='Yes — '+scale.names[challengePos-1]+'. Keep going!';}});
+function drawProgress(){const scale=getScale(challengeRoot,document.getElementById('challengeType').value),el=document.getElementById('challengeProgress');el.replaceChildren();for(let i=0;i<8;i++){const c=document.createElement('span');c.className='note-chip '+(i>=challengePos?'pending':(i===0||i===7?'tonic':'filled'));c.textContent=i<challengePos?scale.names[i]:'?';el.appendChild(c);}}
+function startChallenge(root){challengeRoot=root;challengePos=0;showChallenge();drawProgress();const type=document.getElementById('challengeType').value;document.getElementById('challengeTarget').textContent='Construct '+ROOT_LABELS[root]+' '+TYPE_LABELS[type];document.getElementById('challengeInstruction').textContent='First, find the tonic '+ROOT_LABELS[root]+' on the keyboard.';document.getElementById('challengeStep').textContent='Choose note 1 of 8.';const fb=document.getElementById('challengeFeedback');fb.className='feedback';fb.textContent='Follow the pattern, one note at a time.';const pattern=document.getElementById('challengeFormula');pattern.replaceChildren();PATTERNS[type].forEach(step=>{const s=document.createElement('span');s.className=step===1?'short':'';s.textContent=step===1?'S':step===2?'T':'3S';pattern.appendChild(s);});}
+document.getElementById('newChallenge').addEventListener('click',()=>{const keys=allRoots.filter(r=>r!==challengeRoot);startChallenge(keys[Math.floor(Math.random()*keys.length)]);});document.getElementById('resetChallenge').addEventListener('click',()=>startChallenge(challengeRoot));document.getElementById('challengeType').addEventListener('change',()=>startChallenge(challengeRoot));
+drawScale();startChallenge('D');
+})();
+</script>
+</body></html>
