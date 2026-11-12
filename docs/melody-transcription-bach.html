@@ -51,7 +51,11 @@ html body nav#mainNav a,html body nav#mainNav a:link,html body nav#mainNav a:vis
 <p class="small" id="summary">Loading music…</p><div class="divider-lite"></div>
 <h3>Listen</h3><p class="hint">Tick the voices you want to hear. Untick a voice to mute it; leave only one ticked to listen to that part in isolation. The complete score remains visible independently of playback.</p><div class="voicecheck" id="voices"></div>
 <div class="controls" style="margin-top:18px"><label class="field">Tempo <span id="bpmValue">76 BPM</span><div class="tempo-line"><input id="tempo" max="160" min="35" step="1" type="range" value="76"/></div></label></div>
-</section><section class="panel score-panel"><h2>2. Transcribe and check</h2><p class="hint">Copy the passage onto manuscript paper. Each voice has its own labelled staff (V1, V2, etc.) and colour; only notes in the opening quarter-note beat are revealed at first. Remaining notation stays concealed until you check your work.</p>
+</section><section class="panel score-panel"><h2>2. Transcribe and check</h2>
+
+	<!-- <p class="hint">Copy the passage onto manuscript paper. Each voice has its own labelled staff (V1, V2, etc.) and colour; only notes in the opening quarter-note beat are revealed at first. Remaining notation stays concealed until you check your work.</p> -->
+
+	
 <div class="voice-legend" id="voiceLegend"></div><label class="guide-toggle"><input checked="" id="showGuide" type="checkbox"/> Show the opening beat</label><div class="score-playback"><div class="listenbar"><button class="btn" disabled="" id="play">▶ Play</button><button class="btn secondary" disabled="" id="stop">■ Stop</button><button aria-pressed="true" class="btn secondary armed" id="loop">↻ Loop on</button></div><audio id="nativePlayer" preload="auto"></audio><p aria-live="polite" class="small playback-status" id="audioStatus">Preparing audio automatically…</p></div><div aria-label="VexFlow notation with a separate clef and staff for every voice" id="score"></div><div class="answer-controls"><button class="btn" id="reveal">Reveal full score</button><button class="btn secondary" id="hide">Hide answer</button></div><p class="status" id="feedback">Listen, transcribe onto paper, then reveal the score to check your work.</p></section></div>
 
 <p class="small">Notation is engraved with VexFlow from the MusicXML-derived repertoire data. Audio is prepared automatically in your browser. No account or upload required.</p></main><script src="https://cdn.jsdelivr.net/npm/vexflow@4.2.3/build/cjs/vexflow.js"></script><script>
