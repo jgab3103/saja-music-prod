@@ -23,7 +23,7 @@ html body nav#mainNav a,html body nav#mainNav a:link,html body nav#mainNav a:vis
 
 .listenbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:14px 0}.listenbar .btn{padding:13px 23px;font-size:16px}.btn.armed{background:#f2e8e8;color:var(--accent)}.tempo-line{display:flex;align-items:center;gap:14px;flex-wrap:wrap}.tempo-line input[type=range]{min-width:190px;accent-color:var(--accent)}.scoreline{margin:18px 0 24px}.scorelabel{font-weight:800;color:#5e5249;font-size:13px;margin-bottom:7px}.score-row{display:flex;align-items:stretch;overflow-x:auto;gap:0;max-width:100%;border:1px solid #e8e1d7;background:#fff;border-radius:9px;padding:12px 8px}.score-segment{position:relative;flex:0 0 auto;min-width:90px}.score-segment > div{display:block}.score-segment.concealed .notation{filter:blur(11px);opacity:.55;user-select:none;pointer-events:none}.score-segment.concealed:after{content:'';position:absolute;inset:8px 0 10px;background:linear-gradient(90deg,rgba(250,250,250,.15),rgba(244,241,235,.54) 50%,rgba(250,250,250,.18));pointer-events:none}.score-segment.concealed .notation{overflow:hidden}.score-segment svg{display:block}.score-row{align-items:flex-start}.grand-segment{min-width:0}.grand-segment .notation{height:278px}.grand-segment .score-tip{height:23px}.grand-segment.concealed:after{inset:15px 0 30px}.score-tip{font-size:12px;color:#796c61}.answer-controls{display:flex;gap:10px;flex-wrap:wrap}.playback-status{min-height:24px}.loading{color:#75685c}.duration-choice{min-width:115px}#nativePlayer{display:none}.form-muted{color:#6b625c}.control-pack{display:flex;gap:15px;flex-wrap:wrap;align-items:end;margin-top:16px}.answer-hint{margin:5px 0 0}.score-segment .notation{transition:filter .25s ease,opacity .25s ease}@media(max-width:600px){.listenbar .btn{flex:1}.tempo-line input[type=range]{min-width:150px}}
 
-.divider-lite{height:1px;background:#ece6de;margin:22px 0 13px}.voice-legend{display:flex;flex-wrap:wrap;gap:12px;margin:10px 0 14px}.legend-voice{display:inline-flex;align-items:center;gap:7px;font-size:13px;color:#554b43}.legend-swatch{width:13px;height:13px;border-radius:3px;display:inline-block}.guide-toggle{display:inline-flex;align-items:center;gap:8px;font-size:14px;margin-bottom:12px}.grand-measure{flex:0 0 auto;position:relative}.grand-measure .notation{height:280px}.grand-measure .notation svg{display:block}.score-row{overflow-x:auto;gap:0;align-items:flex-start}.grand-measure .measure-label{font-size:12px;color:#7e7269;padding:0 0 8px 8px}.score-cover{position:absolute;top:13px;bottom:28px;right:0;backdrop-filter:blur(11px);-webkit-backdrop-filter:blur(11px);background:linear-gradient(90deg,rgba(255,255,255,.4),rgba(249,247,245,.34));pointer-events:none}.score-cover::after{content:' ';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.09))}.voicecheck label{border:1px solid #e8e1d9;border-radius:7px;padding:7px 12px;background:#fff}.voicecheck input{accent-color:#8B2E3C}.panel h3{margin:4px 0 10px}</style></head><body><nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav"><div class="site-nav-inner"><a class="navbar-brand" href="./index.html">SAJA MUSIC</a><div class="nav-links"><a aria-current="page" href="./teaching.html">Discover</a><a href="./pathways.html">Learn</a><a href="./about.html">About</a></div></div></nav>
+.divider-lite{height:1px;background:#ece6de;margin:22px 0 13px}.voice-legend{display:flex;flex-wrap:wrap;gap:12px;margin:10px 0 14px}.legend-voice{display:inline-flex;align-items:center;gap:7px;font-size:13px;color:#554b43}.legend-swatch{width:13px;height:13px;border-radius:3px;display:inline-block}.guide-toggle{display:inline-flex;align-items:center;gap:8px;font-size:14px;margin-bottom:12px}.grand-measure{flex:0 0 auto;position:relative}.grand-measure .notation{height:auto}.grand-measure .notation svg{display:block}.score-row{overflow-x:auto;gap:0;align-items:flex-start}.grand-measure .measure-label{font-size:12px;color:#7e7269;padding:0 0 8px 8px}.score-cover{position:absolute;top:13px;bottom:28px;right:0;backdrop-filter:blur(11px);-webkit-backdrop-filter:blur(11px);background:linear-gradient(90deg,rgba(255,255,255,.4),rgba(249,247,245,.34));pointer-events:none}.score-cover::after{content:' ';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.09))}.voicecheck label{border:1px solid #e8e1d9;border-radius:7px;padding:7px 12px;background:#fff}.voicecheck input{accent-color:#8B2E3C}.panel h3{margin:4px 0 10px}</style></head><body><nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav"><div class="site-nav-inner"><a class="navbar-brand" href="./index.html">SAJA MUSIC</a><div class="nav-links"><a aria-current="page" href="./teaching.html">Discover</a><a href="./pathways.html">Learn</a><a href="./about.html">About</a></div></div></nav>
 <main><div class="eyebrow">SAJA Music · Aural skills</div><h1>Baroque Melodic Dictation Lab</h1><p class="intro">Choose a passage, listen to individual contrapuntal parts or the complete texture, and write your transcription on manuscript paper. The opening beat is provided; reveal the score when you are ready to check.</p>
 <section class="panel"><h2>1. Choose and listen</h2>
 <div class="controls"><label class="field">Work<select id="workSelect"><option>Loading repertoire…</option></select></label><span id="workInfo" class="small"></span></div>
@@ -32,8 +32,8 @@ html body nav#mainNav a,html body nav#mainNav a:link,html body nav#mainNav a:vis
 <h3>Listen</h3><p class="hint">Tick the voices you want to hear. Untick a voice to mute it; leave only one ticked to listen to that part in isolation. The complete score remains visible independently of playback.</p><div id="voices" class="voicecheck"></div>
 <div class="controls" style="margin-top:18px"><label class="field">Tempo <span id="bpmValue">76 BPM</span><div class="tempo-line"><input id="tempo" type="range" min="35" max="160" step="1" value="76"></div></label></div>
 <div class="listenbar"><button class="btn" id="play" disabled>▶ Play</button><button class="btn secondary" id="stop" disabled>■ Stop</button><button class="btn secondary armed" id="loop" aria-pressed="true">↻ Loop on</button></div><audio id="nativePlayer" preload="auto"></audio><p class="small playback-status" aria-live="polite" id="audioStatus">Preparing audio automatically…</p></section>
-<section class="panel"><h2>2. Transcribe and check</h2><p class="hint">Copy the passage onto manuscript paper. Each voice has its own colour on the same grand staff; only notes in the opening quarter-note beat are revealed at first. Remaining notation stays concealed until you check your work.</p>
-<div id="voiceLegend" class="voice-legend"></div><label class="guide-toggle"><input id="showGuide" type="checkbox" checked> Show the opening beat</label><div id="score" aria-label="VexFlow grand-staff notation for the selected passage"></div><div class="answer-controls"><button class="btn" id="reveal">Reveal full score</button><button class="btn secondary" id="hide">Hide answer</button></div><p id="feedback" class="status">Listen, transcribe onto paper, then reveal the score to check your work.</p></section>
+<section class="panel"><h2>2. Transcribe and check</h2><p class="hint">Copy the passage onto manuscript paper. Each voice has its own labelled staff (V1, V2, etc.) and colour; only notes in the opening quarter-note beat are revealed at first. Remaining notation stays concealed until you check your work.</p>
+<div id="voiceLegend" class="voice-legend"></div><label class="guide-toggle"><input id="showGuide" type="checkbox" checked> Show the opening beat</label><div id="score" aria-label="VexFlow notation with a separate clef and staff for every voice"></div><div class="answer-controls"><button class="btn" id="reveal">Reveal full score</button><button class="btn secondary" id="hide">Hide answer</button></div><p id="feedback" class="status">Listen, transcribe onto paper, then reveal the score to check your work.</p></section>
 <p class="small">Notation is engraved with VexFlow from the MusicXML-derived repertoire data. Audio is prepared automatically in your browser. No account or upload required.</p></main><script src="https://cdn.jsdelivr.net/npm/vexflow@4.2.3/build/cjs/vexflow.js"></script><script>
 'use strict';
 const $=id=>document.getElementById(id);
@@ -44,7 +44,7 @@ function esc(v){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;',
 function noteName(m){return ['C','C#','D','Eb','E','F','F#','G','Ab','A','Bb','B'][m%12]+(Math.floor(m/12)-1)}
 const VOICE_COLORS=['#8B2E3C','#287F8A','#5B58A6','#BA8128','#32714A','#B04D83','#5B6B79','#AB573F'];
 function setupVoices(){
- voiceNames=Object.fromEntries(work.voices.map((v,i)=>[v,'Voice '+v]));targets=[...work.voices];
+ voiceNames=Object.fromEntries(work.voices.map((v,i)=>[v,'V'+(i+1)]));targets=[...work.voices];
  $('voices').innerHTML=work.voices.map((v,i)=>`<label><input type="checkbox" value="${esc(v)}" checked><span style="color:${VOICE_COLORS[i%VOICE_COLORS.length]};font-weight:800">●</span> ${esc(voiceNames[v])}</label>`).join('');
  $('voiceLegend').innerHTML=work.voices.map((v,i)=>`<span class="legend-voice"><span class="legend-swatch" style="background:${VOICE_COLORS[i%VOICE_COLORS.length]}"></span>${esc(voiceNames[v])}</span>`).join('');
  $('voices').querySelectorAll('input').forEach(el=>el.onchange=()=>{targets=[...$('voices').querySelectorAll('input:checked')].map(e=>e.value);updateSummary();scheduleAudio();});
@@ -111,51 +111,75 @@ function measureParts(){
  for(const m of work.measures){const a=Math.max(windowStart,m.start),b=Math.min(end,m.start+m.length);if(b>a+.001)result.push({measure:m,a,b,start:a-windowStart,length:b-a,endsMeasure:Math.abs(b-(m.start+m.length))<.001});}
  return result;
 }
+function clefForVoice(v,sourceEvents){
+ // Keep a consistent clef throughout an excerpt, respecting MusicXML staff
+ // assignments where unambiguous; otherwise choose a readable register.
+ const ns=sourceEvents.filter(n=>n.v===v);
+ if(!ns.length)return 'treble';
+ const numbered=ns.filter(n=>n.staff!=null);
+ if(numbered.length){
+  const bass=numbered.filter(n=>String(n.staff)==='2').length;
+  const treble=numbered.filter(n=>String(n.staff)==='1').length;
+  if(bass>treble)return 'bass';
+  if(treble>bass)return 'treble';
+ }
+ const sorted=ns.map(n=>n.m).sort((a,b)=>a-b);
+ return sorted[Math.floor(sorted.length/2)]<60?'bass':'treble';
+}
 function drawScore(){
  const host=$('score');host.replaceChildren();if(!work)return;
- const VF=window.Vex?.Flow||window.VexFlow;if(!VF){host.textContent='VexFlow has not loaded. Check the notation library connection.';return;}
+ const VF=window.Vex?.Flow||window.VexFlow;
+ if(!VF){host.textContent='VexFlow has not loaded. Check the notation library connection.';return;}
  const wrap=document.createElement('div');wrap.className='scoreline';
  const row=document.createElement('div');row.className='score-row';wrap.append(row);host.append(wrap);
- const ev=events(),segments=measureParts(),timeSignature=notationTimeSignature();let coverActive=false;
+ const ev=events(),segments=measureParts(),timeSignature=notationTimeSignature();
+ const all=[...work.voices],clefs=Object.fromEntries(all.map(v=>[v,clefForVoice(v,ev)]));
+ // A fixed vertical position for each voice across every measure ensures
+ // the independent lines remain readable even when others are muted.
+ const staffGap=112,top=36,height=top+staffGap*all.length+22;
  for(let j=0;j<segments.length;j++){
-  const seg=segments[j],first=j===0,last=j===segments.length-1;
-  const div=document.createElement('div');div.className='grand-measure';const art=document.createElement('div');art.className='notation';div.append(art);row.append(div);
-  const width=Math.max(185,Math.ceil(seg.length*120)+(first?120:18)),height=280;art.style.width=width+'px';
+  const seg=segments[j],first=j===0;
+  const div=document.createElement('div');div.className='grand-measure';
+  const art=document.createElement('div');art.className='notation';div.append(art);row.append(div);
+  const width=Math.max(195,Math.ceil(seg.length*120)+(first?135:24));
+  art.style.width=width+'px';art.style.height=height+'px';
   try{
-   const r=new VF.Renderer(art,VF.Renderer.Backends.SVG);r.resize(width,height);const ctx=r.getContext();
-   const tx=first?12:0,treble=new VF.Stave(tx,32,width-tx),bass=new VF.Stave(tx,150,width-tx);
-   if(first){treble.addClef('treble').addTimeSignature(timeSignature);bass.addClef('bass').addTimeSignature(timeSignature);}
-   if(!first){treble.setBegBarType(VF.Barline.type.NONE);bass.setBegBarType(VF.Barline.type.NONE)}
-   if(!seg.endsMeasure){treble.setEndBarType(VF.Barline.type.NONE);bass.setEndBarType(VF.Barline.type.NONE)}
-   treble.setContext(ctx).draw();bass.setContext(ctx).draw();
-   if(first){new VF.StaveConnector(treble,bass).setType(VF.StaveConnector.type.BRACE).setContext(ctx).draw();new VF.StaveConnector(treble,bass).setType(VF.StaveConnector.type.SINGLE_LEFT).setContext(ctx).draw();}
-   const byStaff={treble:[],bass:[]};const all=[...work.voices];
-   for(const v of all){for(const staff of ['treble','bass']){
-    const notes=ev.filter(n=>n.v===v&&staffFor(n)===staff&&n.t<seg.start+seg.length-.001&&n.t+n.d>seg.start+.001)
-      .map(n=>({...n,t:Math.max(0,n.t-seg.start),d:Math.min(n.t+n.d,seg.start+seg.length)-Math.max(n.t,seg.start)}));
+   const r=new VF.Renderer(art,VF.Renderer.Backends.SVG);r.resize(width,height);
+   const ctx=r.getContext(),staves=[];
+   for(let i=0;i<all.length;i++){
+    const v=all[i],clef=clefs[v];
+    const stave=new VF.Stave(first?35:0,top+i*staffGap,width-(first?35:0));
+    if(first)stave.addClef(clef).addTimeSignature(timeSignature);
+    else stave.setBegBarType(VF.Barline.type.NONE);
+    if(!seg.endsMeasure)stave.setEndBarType(VF.Barline.type.NONE);
+    stave.setContext(ctx).draw();staves.push(stave);
+    if(first){
+     // Voice labels stay separate from the clef and share the note colour.
+     ctx.save();ctx.setFont('Nunito',12,'bold');
+     ctx.setFillStyle(VOICE_COLORS[i%VOICE_COLORS.length]);
+     ctx.fillText('V'+(i+1),3,top+i*staffGap+43);ctx.restore();
+    }
+    const notes=ev.filter(n=>n.v===v&&n.t<seg.start+seg.length-.001&&n.t+n.d>seg.start+.001)
+     .map(n=>({...n,t:Math.max(0,n.t-seg.start),d:Math.min(n.t+n.d,seg.start+seg.length)-Math.max(n.t,seg.start)}));
     if(!notes.length)continue;
-    const result=createVexNotes(v,notes,staff,seg.length,VOICE_COLORS[all.indexOf(v)%VOICE_COLORS.length]);byStaff[staff].push(result);
-   }}
-   const baseWidth=Math.max(60,width-(first?115:32));
-   for(const staff of ['treble','bass']){
-    const entries=byStaff[staff];if(!entries.length)continue;
-    const voices=entries.map(x=>x.voice),stave=staff==='treble'?treble:bass;
-    // Format all independent rhythmic lines together, retaining simultaneous note alignment.
-    new VF.Formatter().joinVoices(voices).formatToStave(voices,stave,{align_rests:true});
-    for(const entry of entries){entry.voice.draw(ctx,stave);for(const beam of entry.beams){beam.setContext(ctx).draw();}}
+    const entry=createVexNotes(v,notes,clef,seg.length,VOICE_COLORS[i%VOICE_COLORS.length]);
+    new VF.Formatter().formatToStave([entry.voice],stave,{align_rests:true});
+    entry.voice.draw(ctx,stave);
+    for(const beam of entry.beams)beam.setContext(ctx).draw();
    }
-   // Conceal everything after the opening beat. The score's barlines stay intact underneath.
-   if(!showAnswer){let visibleEnd=windowStart+($('showGuide').checked?1:0);
+   // Measure separators align vertically across all staves. VexFlow is
+   // responsible for the actual barlines, clefs and automatic beams.
+   if(!showAnswer){
+    const visibleEnd=windowStart+($('showGuide').checked?1:0);
     if(seg.b>visibleEnd+.001){
      let coverLeft=0;
      if(seg.a<visibleEnd-.001){
-      // Position the reveal boundary relative to engraved beat positions.
-      // Leave the note heads beginning on beat one fully unobstructed.
       const ratio=(visibleEnd-seg.a)/seg.length;
-      const staveStart=first?treble.getNoteStartX():treble.getX()+12;
+      const staveStart=staves[0].getNoteStartX();
       coverLeft=Math.min(width,staveStart+(width-staveStart-18)*ratio+5);
      }
-     const cover=document.createElement('div');cover.className='score-cover';cover.style.left=coverLeft+'px';div.append(cover);
+     const cover=document.createElement('div');cover.className='score-cover';
+     cover.style.left=coverLeft+'px';cover.style.bottom='28px';div.append(cover);
     }
    }
   }catch(e){console.error('VexFlow engraving error',e);art.textContent='Notation rendering error: '+e.message;}
