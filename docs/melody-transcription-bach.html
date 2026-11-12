@@ -43,6 +43,11 @@ html body nav#mainNav a,html body nav#mainNav a:link,html body nav#mainNav a:vis
 .score-panel #score{min-width:0}
 @media(max-width:850px){.dictation-layout{grid-template-columns:1fr}.setup-panel .control-pack{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media(max-width:560px){.setup-panel .control-pack{grid-template-columns:repeat(2,minmax(0,1fr))}.score-panel .score-playback .listenbar .btn{flex:1;padding:11px 12px}}
+/* Compact transport and answer buttons; preserve existing responsive layout. */
+.score-panel .score-playback .listenbar{gap:7px}
+.score-panel .score-playback .listenbar .btn{padding:7px 11px;font-size:12px;line-height:1.35;min-height:32px}
+.score-panel .score-playback .listenbar .answer-action{font-size:12px}
+@media(max-width:560px){.score-panel .score-playback .listenbar .btn{flex:0 1 auto;padding:7px 10px}}
 </style></head><body><nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav"><div class="site-nav-inner"><a class="navbar-brand" href="./index.html">SAJA MUSIC</a><div class="nav-links"><a aria-current="page" href="./teaching.html">Discover</a><a href="./pathways.html">Learn</a><a href="./about.html">About</a></div></div></nav>
 <main><div class="eyebrow">SAJA Music · Aural skills</div><h1>Baroque Melodic Dictation Lab</h1><p class="intro">Choose a passage, listen to individual contrapuntal parts or the complete texture, and write your transcription on manuscript paper. The opening beat is provided; reveal the score when you are ready to check.</p>
 <div class="dictation-layout"><section class="panel setup-panel"><h2>1. Choose and listen</h2>
@@ -53,16 +58,15 @@ html body nav#mainNav a,html body nav#mainNav a:link,html body nav#mainNav a:vis
 <div class="controls" style="margin-top:18px"><label class="field">Tempo <span id="bpmValue">76 BPM</span><div class="tempo-line"><input id="tempo" max="160" min="35" step="1" type="range" value="76"/></div></label></div>
 </section><section class="panel score-panel"><h2>2. Transcribe and check</h2>
 
-	<!-- <p class="hint">Copy the passage onto manuscript paper. Each voice has its own labelled staff (V1, V2, etc.) and colour; only notes in the opening quarter-note beat are revealed at first. Remaining notation stays concealed until you check your work.</p> -->
 
-	
-<div class="voice-legend" id="voiceLegend"></div><label class="guide-toggle"><input checked="" id="showGuide" type="checkbox"/> Show the opening beat</label><div class="score-playback"><div class="listenbar"><button class="btn" disabled="" id="play">▶ Play</button><button class="btn secondary" disabled="" id="stop">■ Stop</button><button aria-pressed="true" class="btn secondary armed" id="loop">↻ Loop on</button></div><audio id="nativePlayer" preload="auto"></audio><p aria-live="polite" class="small playback-status" id="audioStatus">Preparing audio automatically…</p></div><div aria-label="VexFlow notation with a separate clef and staff for every voice" id="score"></div><div class="answer-controls"><button class="btn" id="reveal">Reveal full score</button><button class="btn secondary" id="hide">Hide answer</button></div><p class="status" id="feedback">Listen, transcribe onto paper, then reveal the score to check your work.</p></section></div>
+
+<div class="voice-legend" id="voiceLegend"></div><label class="guide-toggle"><input checked="" id="showGuide" type="checkbox"/> Show the opening beat</label><div class="score-playback"><div class="listenbar"><button class="btn" disabled="" id="play">▶ Play</button><button class="btn secondary" disabled="" id="stop">■ Stop</button><button aria-pressed="true" class="btn secondary armed" id="loop">↻ Loop on</button><button class="btn secondary answer-action" id="nextBeat">Reveal next beat</button><button class="btn secondary answer-action" id="reveal">Reveal full score</button><button class="btn secondary answer-action" id="hide">Hide answer</button></div><audio id="nativePlayer" preload="auto"></audio><p aria-live="polite" class="small playback-status" id="audioStatus">Preparing audio automatically…</p></div><div aria-label="VexFlow notation with a separate clef and staff for every voice" id="score"></div><p class="status" id="feedback">Listen, transcribe onto paper, then reveal the score to check your work.</p></section></div>
 
 <p class="small">Notation is engraved with VexFlow from the MusicXML-derived repertoire data. Audio is prepared automatically in your browser. No account or upload required.</p></main><script src="https://cdn.jsdelivr.net/npm/vexflow@4.2.3/build/cjs/vexflow.js"></script><script>
 'use strict';
 const $=id=>document.getElementById(id);
 const BUILTIN_REPERTOIRE=[{"id":"BWV_0868","title":"Prelude in B major, BWV 868","composer":"J. S. Bach","collection":"The Well-Tempered Clavier, Book I","file":"./music-data/bwv-0868.json","measures":53,"voices":4},{"id":"BWV_0869_PRELUDE","title":"Prelude in B minor, BWV 869","composer":"J. S. Bach","collection":"The Well-Tempered Clavier, Book I","file":"./music-data/bwv-0869-prelude.json","measures":47,"voices":4},{"id":"BWV_0869_FUGUE","title":"Fugue in B minor, BWV 869","composer":"J. S. Bach","collection":"The Well-Tempered Clavier, Book I","file":"./music-data/bwv-0869-fugue.json","measures":76,"voices":4}];
-let work=null,targets=[],windowStart=0,windowEnd=4,showAnswer=false,blobURL=null,renderToken=0,loadToken=0,voiceNames={};
+let work=null,targets=[],windowStart=0,windowEnd=4,showAnswer=false,revealedBeats=1,blobURL=null,renderToken=0,loadToken=0,voiceNames={};
 const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
 function esc(v){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function noteName(m){return ['C','C#','D','Eb','E','F','F#','G','Ab','A','Bb','B'][m%12]+(Math.floor(m/12)-1)}
@@ -88,7 +92,7 @@ function applySelection(changed){
  $('startBeat').value=st;$('endBeat').value=en;
  const start=a.start+st-1,finish=b.start+en-1;
  if(finish<=start+0.0001){$('summary').textContent='The end position must follow the start position. (End beat is exclusive.)';setReady(false);return;}
- windowStart=start;windowEnd=finish-start;showAnswer=false;updateSummary();drawScore();scheduleAudio();
+ windowStart=start;windowEnd=finish-start;showAnswer=false;revealedBeats=$('showGuide').checked?1:0;updateSummary();drawScore();scheduleAudio();
 }
 function musicalKey(p){let names=['c','c#','d','eb','e','f','f#','g','ab','a','bb','b'];return names[p%12]+'/'+(Math.floor(p/12)-1)}
 function notationTimeSignature(){
@@ -194,7 +198,7 @@ function drawScore(){
    // Measure separators align vertically across all staves. VexFlow is
    // responsible for the actual barlines, clefs and automatic beams.
    if(!showAnswer){
-    const visibleEnd=windowStart+($('showGuide').checked?1:0);
+    const visibleEnd=windowStart+Math.min(windowEnd,revealedBeats);
     if(seg.b>visibleEnd+.001){
      let coverLeft=0;
      if(seg.a<visibleEnd-.001){
@@ -209,7 +213,8 @@ function drawScore(){
   }catch(e){console.error('VexFlow engraving error',e);art.textContent='Notation rendering error: '+e.message;}
   const label=document.createElement('div');label.className='measure-label';label.textContent=`m. ${seg.measure.number}`;div.append(label);
  }
- $('feedback').textContent=showAnswer?'Full score revealed. Compare the rhythms, pitches and voices with your transcription.':'Only the first beat is shown. Listen, write on manuscript paper, then reveal the answer.';
+ $('nextBeat').disabled=showAnswer||revealedBeats>=windowEnd-0.001;
+  $('feedback').textContent=showAnswer?'Full score revealed. Compare the rhythms, pitches and voices with your transcription.':revealedBeats>=windowEnd-0.001?'All beats revealed. Compare with your manuscript transcription.':`${Math.min(revealedBeats,windowEnd)} beat(s) revealed. Listen, transcribe, then reveal the next beat when ready.`;
 }
 function pcmWav(events,bpm){const sr=22050,beatSec=60/bpm,total=Math.ceil((windowEnd*beatSec)*sr),pcm=new Float32Array(total);const byVoice={};for(const n of events){(byVoice[n.v]??=[]).push({...n})}let merged=[];for(const [v,ns] of Object.entries(byVoice)){ns.sort((a,b)=>a.t-b.t||a.m-b.m);const active=new Map();for(const n of ns){const key=n.m;const prev=active.get(key);if(n.tieStop&&prev&&Math.abs(prev.t+prev.d-n.t)<.01){prev.d+=n.d;if(!n.tieStart)active.delete(key);continue;}const x={...n};merged.push(x);if(n.tieStart)active.set(key,x);else active.delete(key);}}
 const gain=.30/Math.sqrt(Math.max(1,Object.keys(byVoice).length));for(const n of merged){const hz=n.hz||440*Math.pow(2,(n.m-69)/12),start=Math.round(n.t*beatSec*sr),count=Math.min(total-start,Math.round(n.d*beatSec*sr));if(start<0||count<=0)continue;for(let i=0;i<count;i++){const t=i/sr,attack=Math.min(1,i/(sr*.014)),release=Math.min(1,(count-i)/(sr*.055)),env=attack*release*Math.exp(-t*.35);const val=(Math.sin(2*Math.PI*hz*t)+.26*Math.sin(2*Math.PI*hz*2*t)+.12*Math.sin(2*Math.PI*hz*3*t))*env*gain;pcm[start+i]+=val;}}
@@ -225,7 +230,7 @@ $('play').onclick=async()=>{if(!player.src)return;if(!player.paused){player.paus
 $('stop').onclick=()=>{player.pause();player.currentTime=0;$('play').textContent='▶ Play'};
 $('loop').onclick=()=>{const on=$('loop').getAttribute('aria-pressed')!=='true';$('loop').setAttribute('aria-pressed',String(on));$('loop').textContent=on?'↻ Loop on':'↻ Loop off';$('loop').classList.toggle('armed',on);player.loop=on};
 player.onended=()=>{$('play').textContent='▶ Play'};
-$('reveal').onclick=()=>{showAnswer=true;drawScore()};$('hide').onclick=()=>{showAnswer=false;drawScore()};$('showGuide').onchange=drawScore;
+$('reveal').onclick=()=>{showAnswer=true;drawScore()};$('hide').onclick=()=>{showAnswer=false;revealedBeats=$('showGuide').checked?1:0;drawScore()};$('nextBeat').onclick=()=>{if(!work)return;showAnswer=false;revealedBeats=Math.min(windowEnd,revealedBeats+1);drawScore()};$('showGuide').onchange=()=>{if(!showAnswer){revealedBeats=$('showGuide').checked?Math.max(1,revealedBeats):0;}drawScore()};
 for(const id of ['from','to','startBeat','endBeat'])$(id).onchange=()=>applySelection(id);
 $('tempo').oninput=()=>{$('bpmValue').textContent=$('tempo').value+' BPM'};$('tempo').onchange=scheduleAudio;
 function installData(d){if(!d||!Array.isArray(d.measures)||!Array.isArray(d.voices)||!d.measures.length)throw Error('Unexpected repertoire JSON structure');work=d;for(const id of ['from','to'])$(id).max=work.measures.length;$('from').value=1;$('to').value=Math.min(2,work.measures.length);$('startBeat').value=1;$('endBeat').value=1;$('tempo').value=clamp(d.tempoDefault||76,35,160);$('bpmValue').textContent=$('tempo').value+' BPM';setupVoices();applySelection();}
