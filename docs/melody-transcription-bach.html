@@ -48,6 +48,12 @@ html body nav#mainNav a,html body nav#mainNav a:link,html body nav#mainNav a:vis
 .score-panel .score-playback .listenbar .btn{padding:7px 11px;font-size:12px;line-height:1.35;min-height:32px}
 .score-panel .score-playback .listenbar .answer-action{font-size:12px}
 @media(max-width:560px){.score-panel .score-playback .listenbar .btn{flex:0 1 auto;padding:7px 10px}}
+
+/* Enharmonic spelling affects notation only, not playback or excerpt selection. */
+.notation-options{display:flex;align-items:center;gap:14px 22px;flex-wrap:wrap;margin-bottom:12px}
+.notation-options .guide-toggle{margin-bottom:0}
+.enharmonic-control{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:#554d47}
+.enharmonic-control select{font:inherit;color:var(--ink);background:#fff;border:1px solid #cfc6bc;border-radius:6px;padding:5px 8px;min-height:32px}
 </style></head><body><nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav"><div class="site-nav-inner"><a class="navbar-brand" href="./index.html">SAJA MUSIC</a><div class="nav-links"><a aria-current="page" href="./teaching.html">Discover</a><a href="./pathways.html">Learn</a><a href="./about.html">About</a></div></div></nav>
 <main><div class="eyebrow">SAJA Music · Aural skills</div><h1>Baroque Melodic Dictation Lab</h1><p class="intro">Choose a passage, listen to individual contrapuntal parts or the complete texture, and write your transcription on manuscript paper. The opening beat is provided; reveal the score when you are ready to check.</p>
 <div class="dictation-layout"><section class="panel setup-panel"><h2>1. Choose and listen</h2>
@@ -60,7 +66,7 @@ html body nav#mainNav a,html body nav#mainNav a:link,html body nav#mainNav a:vis
 
 
 
-<div class="voice-legend" id="voiceLegend"></div><label class="guide-toggle"><input checked="" id="showGuide" type="checkbox"/> Show the opening beat</label><div class="score-playback"><div class="listenbar"><button class="btn" disabled="" id="play">▶ Play</button><button class="btn secondary" disabled="" id="stop">■ Stop</button><button aria-pressed="true" class="btn secondary armed" id="loop">↻ Loop on</button><button class="btn secondary answer-action" id="nextBeat">Reveal next beat</button><button class="btn secondary answer-action" id="reveal">Reveal full score</button><button class="btn secondary answer-action" id="hide">Hide answer</button></div><audio id="nativePlayer" preload="auto"></audio><p aria-live="polite" class="small playback-status" id="audioStatus">Preparing audio automatically…</p></div><div aria-label="VexFlow notation with a separate clef and staff for every voice" id="score"></div><p class="status" id="feedback">Listen, transcribe onto paper, then reveal the score to check your work.</p></section></div>
+<div class="voice-legend" id="voiceLegend"></div><div class="notation-options"><label class="guide-toggle"><input checked="" id="showGuide" type="checkbox"/> Show the opening beat</label><label class="enharmonic-control" for="enharmonic">Enharmonic spelling <select id="enharmonic" aria-label="Enharmonic spelling"><option value="flats" selected>Flats (♭)</option><option value="sharps">Sharps (♯)</option></select></label></div><div class="score-playback"><div class="listenbar"><button class="btn" disabled="" id="play">▶ Play</button><button aria-pressed="true" class="btn secondary armed" id="loop">↻ Loop on</button><button class="btn secondary answer-action" id="nextBeat">Reveal next beat</button><button class="btn secondary answer-action" id="reveal">Reveal full score</button><button class="btn secondary answer-action" id="hide">Hide answer</button></div><audio id="nativePlayer" preload="auto"></audio><p aria-live="polite" class="small playback-status" id="audioStatus">Preparing audio automatically…</p></div><div aria-label="VexFlow notation with a separate clef and staff for every voice" id="score"></div><p class="status" id="feedback">Listen, transcribe onto paper, then reveal the score to check your work.</p></section></div>
 
 <p class="small">Notation is engraved with VexFlow from the MusicXML-derived repertoire data. Audio is prepared automatically in your browser. No account or upload required.</p></main><script src="https://cdn.jsdelivr.net/npm/vexflow@4.2.3/build/cjs/vexflow.js"></script><script>
 'use strict';
@@ -94,7 +100,7 @@ function applySelection(changed){
  if(finish<=start+0.0001){$('summary').textContent='The end position must follow the start position. (End beat is exclusive.)';setReady(false);return;}
  windowStart=start;windowEnd=finish-start;showAnswer=false;revealedBeats=$('showGuide').checked?1:0;updateSummary();drawScore();scheduleAudio();
 }
-function musicalKey(p){let names=['c','c#','d','eb','e','f','f#','g','ab','a','bb','b'];return names[p%12]+'/'+(Math.floor(p/12)-1)}
+function musicalKey(p){const names=$('enharmonic').value==='sharps'?['c','c#','d','d#','e','f','f#','g','g#','a','a#','b']:['c','db','d','eb','e','f','gb','g','ab','a','bb','b'];return names[p%12]+'/'+(Math.floor(p/12)-1)}
 function notationTimeSignature(){
  const m=work.measures[0]||{};let raw=m.timeSignature||m.time_signature||work.timeSignature||work.time_signature||work.meter||'';
  if(typeof raw==='object'){raw=`${raw.beats||raw.numerator||raw.num||4}/${raw.beatType||raw.denominator||raw.den||4}`;}
@@ -221,16 +227,15 @@ const gain=.30/Math.sqrt(Math.max(1,Object.keys(byVoice).length));for(const n of
 const out=new ArrayBuffer(44+total*2),dv=new DataView(out);function str(pos,s){for(let i=0;i<s.length;i++)dv.setUint8(pos+i,s.charCodeAt(i))}str(0,'RIFF');dv.setUint32(4,36+total*2,true);str(8,'WAVE');str(12,'fmt ');dv.setUint32(16,16,true);dv.setUint16(20,1,true);dv.setUint16(22,1,true);dv.setUint32(24,sr,true);dv.setUint32(28,sr*2,true);dv.setUint16(32,2,true);dv.setUint16(34,16,true);str(36,'data');dv.setUint32(40,total*2,true);for(let i=0;i<total;i++)dv.setInt16(44+i*2,Math.round(clamp(pcm[i],-1,1)*32767),true);return new Blob([out],{type:'audio/wav'});}
 
 const player=$('nativePlayer');let preparing=false;
-function setReady(yes){$('play').disabled=!yes;$('stop').disabled=!yes}
+function setReady(yes){$('play').disabled=!yes}
 function scheduleAudio(){const token=++renderToken;setReady(false);player.pause();player.removeAttribute('src');player.load();$('play').textContent='▶ Play';$('audioStatus').textContent='Preparing audio…';if(blobURL){URL.revokeObjectURL(blobURL);blobURL=null}if(!work)return;
  // Yield to the browser so updated controls and notation paint before WAV generation.
  setTimeout(()=>{if(token!==renderToken)return;let ns=events().filter(n=>targets.includes(n.v));if(!ns.length){$('audioStatus').textContent='No notes for this listening mode; choose another voice setting.';return}const bpm=clamp(+$('tempo').value||76,35,160),duration=windowEnd*60/bpm;if(duration>210){$('audioStatus').textContent='Passage is too long for browser WAV preparation. Choose a shorter excerpt.';return}try{const wav=pcmWav(ns,bpm);if(token!==renderToken)return;blobURL=URL.createObjectURL(wav);player.src=blobURL;player.loop=$('loop').getAttribute('aria-pressed')==='true';player.load();setReady(true);$('audioStatus').textContent=`Ready · ${duration.toFixed(1)} seconds · ${bpm} BPM${player.loop?' · looping':''}`;}catch(e){$('audioStatus').textContent='Audio error: '+e.message}},25)
 }
-$('play').onclick=async()=>{if(!player.src)return;if(!player.paused){player.pause();$('play').textContent='▶ Play';return}try{await player.play();$('play').textContent='Ⅱ Pause'}catch(e){$('audioStatus').textContent='Playback error: '+e.message}};
-$('stop').onclick=()=>{player.pause();player.currentTime=0;$('play').textContent='▶ Play'};
+$('play').onclick=async()=>{if(!player.src)return;if(!player.paused){player.pause();player.currentTime=0;$('play').textContent='▶ Play';return}player.currentTime=0;try{await player.play();if(!player.paused)$('play').textContent='■ Stop'}catch(e){$('audioStatus').textContent='Playback error: '+e.message}};
 $('loop').onclick=()=>{const on=$('loop').getAttribute('aria-pressed')!=='true';$('loop').setAttribute('aria-pressed',String(on));$('loop').textContent=on?'↻ Loop on':'↻ Loop off';$('loop').classList.toggle('armed',on);player.loop=on};
 player.onended=()=>{$('play').textContent='▶ Play'};
-$('reveal').onclick=()=>{showAnswer=true;drawScore()};$('hide').onclick=()=>{showAnswer=false;revealedBeats=$('showGuide').checked?1:0;drawScore()};$('nextBeat').onclick=()=>{if(!work)return;showAnswer=false;revealedBeats=Math.min(windowEnd,revealedBeats+1);drawScore()};$('showGuide').onchange=()=>{if(!showAnswer){revealedBeats=$('showGuide').checked?Math.max(1,revealedBeats):0;}drawScore()};
+$('reveal').onclick=()=>{showAnswer=true;drawScore()};$('hide').onclick=()=>{showAnswer=false;revealedBeats=$('showGuide').checked?1:0;drawScore()};$('nextBeat').onclick=()=>{if(!work)return;showAnswer=false;revealedBeats=Math.min(windowEnd,revealedBeats+1);drawScore()};$('showGuide').onchange=()=>{if(!showAnswer){revealedBeats=$('showGuide').checked?Math.max(1,revealedBeats):0;}drawScore()};$('enharmonic').onchange=drawScore;
 for(const id of ['from','to','startBeat','endBeat'])$(id).onchange=()=>applySelection(id);
 $('tempo').oninput=()=>{$('bpmValue').textContent=$('tempo').value+' BPM'};$('tempo').onchange=scheduleAudio;
 function installData(d){if(!d||!Array.isArray(d.measures)||!Array.isArray(d.voices)||!d.measures.length)throw Error('Unexpected repertoire JSON structure');work=d;for(const id of ['from','to'])$(id).max=work.measures.length;$('from').value=1;$('to').value=Math.min(2,work.measures.length);$('startBeat').value=1;$('endBeat').value=1;$('tempo').value=clamp(d.tempoDefault||76,35,160);$('bpmValue').textContent=$('tempo').value+' BPM';setupVoices();applySelection();}
