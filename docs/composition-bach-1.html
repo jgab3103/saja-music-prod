@@ -74,9 +74,33 @@ a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(139,46,6
 <label for="moment"><strong id="momentLabel">Choose a moment</strong></label><input class="full-slider" type="range" min="0" max="0" step="1" value="0" id="moment"><div class="pitch-grid" id="pitches"></div>
 <p class="small">Click anywhere on the score to move the cursor. With the score focused, use ← / → to step through the sounding notes and Space to hear the chord. Chord playback respects the selected voices.</p></section></div>
 <p class="source">Musical data: Bach chorales, Humdrum editions by Craig Stuart Sapp. <a href="https://github.com/craigsapp/bach-370-chorales">Original corpus</a>. Colour and playback are learning aids.</p>
-<div class="exercise"><span class="tag">Exercise 1</span><h2 style="margin-top:12px">Identify the voice by ear</h2><p>Listen to an unknown voice from a randomly selected chorale. Is it soprano, alto, tenor or bass? Listen for register and melodic movement. The exercise is independent of the score above.</p><div class="controls"><button class="btn-saja" id="newQuiz">▶ Play new question</button><button class="btn-saja secondary" id="replayQuiz" disabled>Hear again</button><button class="btn-saja secondary" id="quizStop">Stop</button></div><div class="quiz-options" id="quizAnswers"></div><div class="feedback" id="quizFeedback" aria-live="polite"></div><div class="small" id="quizCount">0 correct / 0 answered</div></div>
-<div class="ideas"><h2>2. Composition experiments</h2><p>Choose two or three measures of a chorale. Use manuscript paper or a piano to explore alternative versions of Bach’s music.</p><ul><li>Mute the bass and compose a new bass line beneath the soprano.</li><li>Keep the outer voices and invent a new alto or tenor line.</li><li>Keep the bass and compose an alternative soprano melody.</li><li>Try a version using mostly stepwise movement, then another with larger leaps. Listen to how the character changes.</li></ul><p>These are preliminary experiments: there is no need to follow a formal set of harmony rules yet.</p></div>
-<h2>Next: Understanding Harmony</h2><p>In Part 2, we will investigate the vertical dimension in more detail: triads, inversions and harmonic progressions in Bach’s own music.</p><a href="./pathways.html">Return to learning pathways</a>
+<div class="exercise"><h2 style="margin-top:12px">1. Can you identify the voice?</h2><p>Listen to an unknown voice from a randomly selected chorale. Is it soprano, alto, tenor or bass? Listen for register and melodic movement. The exercise is independent of the score above.</p><div class="controls"><button class="btn-saja" id="newQuiz">▶ Play new question</button><button class="btn-saja secondary" id="replayQuiz" disabled>Hear again</button><button class="btn-saja secondary" id="quizStop">Stop</button></div><div class="quiz-options" id="quizAnswers"></div><div class="feedback" id="quizFeedback" aria-live="polite"></div><div class="small" id="quizCount">0 correct / 0 answered</div></div>
+
+
+
+
+<div class="ideas">
+    <h2>2. Composition exercises</h2>
+
+    <p>Choose two or three measures of a chorale. Use manuscript paper or a piano to explore alternative versions of Bach’s music and different ways of representing four-part harmony.</p>
+
+    <ul>
+        <li>Reduce all four voices from four individual staves onto a grand staff, as though arranging the chorale for piano.</li>
+        <li>Take a chorale presented on a grand staff and rewrite it on four separate staves, using the appropriate clefs for each voice.</li>
+        <li>Mute the bass and compose a new bass line beneath the soprano.</li>
+        <li>Keep the outer voices and invent a new alto or tenor line.</li>
+        <li>Keep the bass and compose an alternative soprano melody.</li>
+        <li>Try a version using mostly stepwise movement, then another with larger leaps. Listen to how the character changes.</li>
+    </ul>
+
+    <p>These are preliminary experiments in notation, arrangement and composition. There is no need to follow a formal set of harmony rules yet. Focus on listening, exploring the independence of each voice and discovering how different melodic lines work together.</p>
+</div>
+
+
+<h2>Next: Understanding Harmony</h2><p>In Part 2, we will investigate the vertical dimension in more detail: triads, inversions and harmonic progressions in Bach’s own music.</p>
+
+
+
 </main><footer class="footer"><div>SAJA MUSIC</div></footer>
 <script>
 (()=>{'use strict';
