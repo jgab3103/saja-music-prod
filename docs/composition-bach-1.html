@@ -26,6 +26,19 @@ a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(139,46,6
 .article{max-width:1440px}.article>p{max-width:85ch}.workspace{display:grid;grid-template-columns:245px minmax(0,1fr);gap:18px;align-items:start;margin:20px 0}.sidebar{margin:0;padding:18px}.sidebar .voice-grid{grid-template-columns:1fr}.sidebar select{width:100%;min-width:0}.sidebar .range-row select{max-width:none}.sidebar .controls{gap:6px}.score-main{min-width:0;background:#fff;border:1px solid #e0d9d4;border-radius:4px;padding:15px}.score-scroll{overflow-x:auto;overflow-y:hidden;border:1px solid #e0d9d4;outline-offset:3px;position:relative;scroll-behavior:auto}.score-scroll:focus-visible{outline:2px solid var(--accent)}.score{display:flex!important;gap:0;width:max-content;margin:0;position:relative;align-items:start}.measure{flex:none;border:0;border-radius:0;overflow:visible;position:relative;cursor:crosshair}.measure.active{box-shadow:none;background:#fff}.measure-label{height:28px}.notation svg{width:auto;height:auto;display:block}.cursor{position:absolute;top:28px;bottom:0;width:2px;background:var(--accent);pointer-events:none;z-index:3;box-shadow:0 0 0 2px #8b2e3c18}.staff-controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.pitch-grid{margin:10px 0}.pitch-cell{background:var(--panel)}.exercise{max-width:850px}.ideas{max-width:850px}.ideas li{margin:8px 0}.score-main h3{margin:0 0 4px}.sidebar .small{line-height:1.5}.sidebar label{font-size:.85rem}.score-main .small{margin:8px 0}.score-main .controls{margin:10px 0}.score-scroll .measure-label{white-space:nowrap}.sidebar #piece{font-size:.85rem}.score-main .pitch-cell strong{font-size:1.1rem}
 @media(max-width:850px){.workspace{grid-template-columns:1fr}.sidebar .voice-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.score-main{padding:10px}.article{padding-left:14px;padding-right:14px}}
 .playback-toolbar{display:flex;align-items:center;flex-wrap:wrap;gap:12px;background:var(--panel);padding:12px 14px;border-radius:4px;margin:12px 0 4px;font-size:.85rem}.playback-toolbar #play{min-width:88px}.tempo-control{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.tempo-control input{width:110px}.playback-range{display:flex;align-items:center;gap:7px;flex-wrap:wrap}.playback-range select{padding:5px 7px;font-size:.85rem;max-width:120px}.loop-control{white-space:nowrap}.playback-info{display:flex;justify-content:space-between;gap:6px 14px;flex-wrap:wrap;margin-bottom:8px}.playback-info .small{margin:0}.playback-info .status{min-height:0}@media(max-width:600px){.playback-toolbar{gap:9px;padding:10px}.tempo-control input{width:95px}}
+
+/* Compact introduction and comfortable workspace margins. */
+@media screen{
+.article{max-width:1360px;padding:30px clamp(32px,5vw,72px) 100px}
+.article>.back-link{margin-bottom:12px}
+.article>h1{margin-bottom:4px}
+.article>.meta{margin-bottom:14px}
+.article>p{max-width:110ch;margin:0 0 10px;line-height:1.6}
+.article>h2{margin:22px 0 8px}
+.workspace{margin-top:14px}
+}
+@media screen and (max-width:850px){.article{padding:24px 24px 80px}}
+@media screen and (max-width:500px){.article{padding:20px 17px 70px}}
 </style>
 </head>
 <body>
