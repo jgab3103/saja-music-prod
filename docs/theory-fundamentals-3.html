@@ -177,4 +177,6 @@ let challengeRoot='D',pos=0;const keys=Object.keys(ROOTS);function drawChallenge
 function restart(root){stop();challengeRoot=root;pos=0;drawChallenge();const f=document.getElementById('challengeFeedback');f.className='feedback';f.textContent='Choose the first note on the keyboard.'}document.getElementById('challengeKind').addEventListener('change',()=>restart(challengeRoot));document.getElementById('resetChallenge').addEventListener('click',()=>restart(challengeRoot));document.getElementById('newChallenge').addEventListener('click',()=>{const other=keys.filter(k=>k!==challengeRoot);restart(other[Math.floor(Math.random()*other.length)])});
 function init(){renderBasics();updateScale();nextInterval();restart('D')}if(document.readyState==='complete')init();else window.addEventListener('load',init);
 })();
-</script></body></html>
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "512542db92cb42eeaa2cff3cd517f10f"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

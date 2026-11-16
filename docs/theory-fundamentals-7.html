@@ -189,4 +189,7 @@ function atlasInit(){setOptions('atlasTonic',ROOTS,'C');$('atlasTonic').addEvent
 function init(){compareIntro();check('checkOne','checkOneFeedback',['C','E','F','G'],'C','D–F–A–C is D minor seventh: the new note is C.');check('checkTwo','checkTwoFeedback',['C–E–G–B','C–E♭–G–B♭','C–E–G–B♭','C–E♭–G♭–B♭'],'C–E–G–B♭','C7 is a major triad with a minor seventh: C–E–G–B♭.');for(const id of ['qualityRoot','labRoot','scaleTonic'])setOptions(id,ROOTS,id==='scaleTonic'?'C':'C');setOptions('qualityType',TYPES,'maj7');$('qualityRoot').addEventListener('change',qualitySelection);$('qualityType').addEventListener('change',qualitySelection);qualitySelection();for(const id of ['labRoot','labThird','labFifth','labSeventh'])$(id).addEventListener('change',labSelection);labSelection();$('labReset').onclick=()=>{$('labRoot').value='C';$('labThird').value='4';$('labFifth').value='7';$('labSeventh').value='11';labSelection()};$('scaleTonic').addEventListener('change',renderScale);$('scaleForm').addEventListener('change',renderScale);renderScale();atlasInit();$('buildNew').onclick=newBuild;$('buildPlay').onclick=()=>play(challenge.chosen);$('buildReveal').onclick=revealBuild;newBuild();$('quizNext').onclick=newQuiz;newQuiz()}
 if(document.readyState==='complete')init();else window.addEventListener('load',init);
 })();
-</script></body></html>
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "512542db92cb42eeaa2cff3cd517f10f"}'></script><!-- End Cloudflare Web Analytics -->
+
+</body></html>

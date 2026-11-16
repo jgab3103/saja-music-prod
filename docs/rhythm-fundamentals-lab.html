@@ -36,4 +36,7 @@ function tick(){if(!running)return;const sec=60/+tempo.value;while(nextTime<audi
 async function start(){if(running)return;try{audio=audio||new (window.AudioContext||window.webkitAudioContext)();await audio.resume();}catch(e){status.textContent='Audio could not start on this device.';return;}reset();playback=patterns.map(b=>b.slice());running=true;play.disabled=true;stop.disabled=false;epoch++;rowIndex=beatIndex=subIndex=0;nextTime=audio.currentTime+.14;timer=setInterval(tick,20);tick();}
 play.addEventListener('click',start);stop.addEventListener('click',halt);fresh.addEventListener('click',reset);meter.addEventListener('change',reset);tempo.addEventListener('input',()=>{tempoOut.value=tempo.value;});$('selectAll').addEventListener('click',()=>{choices.querySelectorAll('input').forEach(c=>c.checked=true);reset();});$('simple').addEventListener('click',()=>{choices.querySelectorAll('input').forEach(c=>c.checked=+c.value<=3);reset();});document.addEventListener('visibilitychange',()=>{if(document.hidden&&running)halt();});try{reset();}catch(e){console.error(e);status.textContent='Notation error: '+e.message;}
 })();
-</script></body></html>
+</script>
+
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "512542db92cb42eeaa2cff3cd517f10f"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

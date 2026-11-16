@@ -155,4 +155,7 @@ const pitchNum=k=>{const [p,o]=k.split('/');const step=p[0].toUpperCase();return
 const pitchLabel=k=>k.replace('/','').toUpperCase();partMode(true);voiceMode(true);
 document.getElementById('addScoreRow').addEventListener('click',()=>{const body=document.getElementById('scoreGridBody'),r=body.rows.length+1,headers=['Part','Instrument(s)','General range','Excerpt range','Voice / layer','Descriptive patch name'];const row=body.insertRow();headers.forEach(h=>{const cell=row.insertCell();const field=document.createElement('textarea');field.rows=3;field.setAttribute('aria-label',`Row ${r}, ${h}`);cell.appendChild(field)});});
 document.getElementById('printScoreWorksheet').addEventListener('click',()=>window.print());
-</script></body></html>
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "512542db92cb42eeaa2cff3cd517f10f"}'></script><!-- End Cloudflare Web Analytics -->
+
+</body></html>

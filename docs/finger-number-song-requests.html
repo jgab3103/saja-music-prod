@@ -147,4 +147,7 @@ $('printSong').addEventListener('click',()=>window.print());
 tempo.addEventListener('input',()=>{$('bpm').textContent=tempo.value+' BPM'});tempo.addEventListener('change',()=>{if(song)generate(song.sections.map((_,i)=>i))});window.addEventListener('pagehide',()=>{stop();clearAudio()});
 fetch('./music-data/finger-number-songs.json').then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.json()}).then(data=>{songs=data.songs;if(!Array.isArray(songs)||!songs.length)throw Error('No songs found');songs.forEach(s=>{const option=document.createElement('option');option.value=s.id;option.textContent=s.title;picker.appendChild(option)});picker.addEventListener('change',()=>setSong(picker.value));setSong(new URLSearchParams(location.search).get('song')||songs[0].id)}).catch(e=>{status.textContent='Could not load finger-number-songs.json. Upload both files together to your website. ('+e.message+')'});
 })();
-</script></body></html>
+</script>
+
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "512542db92cb42eeaa2cff3cd517f10f"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

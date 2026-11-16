@@ -103,4 +103,5 @@ document.getElementById('range').onchange=newQuestion;
 document.addEventListener('keydown',e=>{if(e.altKey||e.ctrlKey||e.metaKey||['INPUT','SELECT','TEXTAREA'].includes(document.activeElement.tagName))return;const k=e.key.toUpperCase();if(k.length===1&&'ABCDEFG'.includes(k))choose(k);if(e.key==='Enter'&&locked)newQuestion();});
 newQuestion();
 </script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "512542db92cb42eeaa2cff3cd517f10f"}'></script><!-- End Cloudflare Web Analytics -->
 </body></html>

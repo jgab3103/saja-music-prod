@@ -79,4 +79,7 @@ function tick(){if(!running||!audio)return;let seconds=60/+tempo.value;
 async function start(){if(running)return;try{audio=audio||new (window.AudioContext||window.webkitAudioContext)();await audio.resume();}catch(e){status.textContent='Audio could not start on this device.';return;}resetPatterns();playbackBars=patterns.map(bar=>bar.slice());running=true;play.disabled=true;stop.disabled=false;epoch++;nextTime=audio.currentTime+.12;barIndex=beatIndex=subIndex=0;timer=setInterval(tick,20);tick();}
 play.addEventListener('click',start);stop.addEventListener('click',halt);fresh.addEventListener('click',resetPatterns);tempo.addEventListener('input',()=>{tempoOut.value=tempo.value;});document.addEventListener('visibilitychange',()=>{if(document.hidden&&running)halt();});try{examples();resetPatterns();}catch(err){console.error('VexFlow notation error:',err);status.textContent='Notation error: '+err.message;}
 })();
-</script></body></html>
+</script>
+
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "512542db92cb42eeaa2cff3cd517f10f"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

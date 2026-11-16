@@ -95,4 +95,7 @@ let start=pitch(0,0),end=pitch(bars.length-1,0);if(start!==null&&!perfect(abs(st
 if(!issues.length&&missing.length===0)add('No issues detected by the introductory fifth-species checks. Listen for shape, rhythmic variety and independence.',true);
 $('results').replaceChildren();for(const it of issues){let d=document.createElement('div');d.className='issue'+(it.good?' good':'');d.textContent=it.s;$('results').append(d)}}
 $('check').onclick=check;window.addEventListener('pagehide',()=>{if(audioURL)URL.revokeObjectURL(audioURL)});init();
-})();</script></body></html>
+})();</script>
+
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "512542db92cb42eeaa2cff3cd517f10f"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

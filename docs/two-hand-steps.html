@@ -63,4 +63,8 @@ document.getElementById('reset').addEventListener('click',stop);
 document.getElementById('tempo').addEventListener('input',e=>{document.getElementById('tempoValue').textContent=e.target.value+' BPM';prepareAudio();});
 window.addEventListener('pagehide',()=>{stop();if(objectURL)URL.revokeObjectURL(objectURL);});
 render();prepareAudio();
-</script></body></html>
+</script>
+
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "512542db92cb42eeaa2cff3cd517f10f"}'></script><!-- End Cloudflare Web Analytics -->
+
+</body></html>

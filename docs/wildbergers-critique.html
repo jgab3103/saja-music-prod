@@ -153,5 +153,6 @@ ul{padding-left:23px;margin:0 0 22px}li{margin-bottom:7px}.resources{background:
  const svg=document.getElementById('additive-svg');const NS='http://www.w3.org/2000/svg';function path(points,color,width){let p=document.createElementNS(NS,'path');p.setAttribute('d',points);p.setAttribute('fill','none');p.setAttribute('stroke',color);p.setAttribute('stroke-width',width);svg.appendChild(p)}for(let k=1;k<=4;k++){let d='';for(let j=0;j<=190;j++){let xx=10+j*1.2,yy=25+(k-1)*55-13*Math.sin(j/190*2*Math.PI*k);d+=(j?' L':'M')+xx.toFixed(2)+' '+yy.toFixed(2)}path(d,['#8B2E3C','#527d78','#9a7945','#7777a5'][k-1],2)}path('M 255 115 L 290 115 M 282 108 L 290 115 L 282 122','#555',2);let d='';for(let j=0;j<=210;j++){let xx=310+j*1.25,t=j/210*2*Math.PI,yy=115;for(let k=1;k<=4;k++)yy-=([24,13,8,5][k-1])*Math.sin(k*t);d+=(j?' L':'M')+xx.toFixed(2)+' '+yy.toFixed(2)}path(d,'#8B2E3C',3);
 })();
 </script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "512542db92cb42eeaa2cff3cd517f10f"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>

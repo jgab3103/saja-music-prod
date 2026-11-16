@@ -78,4 +78,7 @@ play.addEventListener('click',start);stop.addEventListener('click',()=>{halt();s
 document.querySelectorAll('#play,.play-exercise,.stop-exercise').forEach(b=>b.addEventListener('click',()=>{if(running){halt();status.textContent='Stopped.'}}));
 document.addEventListener('visibilitychange',()=>{if(document.hidden)halt()});window.addEventListener('pagehide',halt);
 patterns=[randomPattern(),randomPattern()];rows.forEach((_,i)=>render(i));
-})();</script></body></html>
+})();</script>
+
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "512542db92cb42eeaa2cff3cd517f10f"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

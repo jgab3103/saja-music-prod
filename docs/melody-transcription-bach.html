@@ -241,4 +241,7 @@ $('tempo').oninput=()=>{$('bpmValue').textContent=$('tempo').value+' BPM'};$('te
 function installData(d){if(!d||!Array.isArray(d.measures)||!Array.isArray(d.voices)||!d.measures.length)throw Error('Unexpected repertoire JSON structure');work=d;for(const id of ['from','to'])$(id).max=work.measures.length;$('from').value=1;$('to').value=Math.min(2,work.measures.length);$('startBeat').value=1;$('endBeat').value=1;$('tempo').value=clamp(d.tempoDefault||76,35,160);$('bpmValue').textContent=$('tempo').value+' BPM';setupVoices();applySelection();}
 async function loadWork(item){let token=++loadToken;setReady(false);$('summary').textContent='Loading '+item.title+'…';$('workInfo').textContent=item.collection||'';try{const result=await fetch(new URL(item.file,document.baseURI),{cache:'no-store'});if(!result.ok)throw Error('HTTP '+result.status);const json=await result.json();if(token!==loadToken)return;installData(json)}catch(e){if(token!==loadToken)return;$('summary').textContent='Unable to load repertoire: '+e.message;$('audioStatus').textContent='Check that the music-data JSON files are available next to this page.';console.error(e)}}
 $('workSelect').innerHTML=BUILTIN_REPERTOIRE.map(w=>`<option value="${esc(w.id)}">${esc(w.composer)} — ${esc(w.title)}</option>`).join('');$('workSelect').onchange=()=>{let w=BUILTIN_REPERTOIRE.find(w=>w.id===$('workSelect').value);if(w)loadWork(w)};loadWork(BUILTIN_REPERTOIRE[0]);
-</script></body></html>
+</script>
+
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "512542db92cb42eeaa2cff3cd517f10f"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

@@ -135,5 +135,7 @@ function wave(fc,fm,I){let s='',m='';for(let i=0;i<=720;i+=2){let t=i/720*0.018;
 ['carrier','modulator','index'].forEach(id=>$(id).addEventListener('input',spectrum));document.querySelectorAll('[data-preset]').forEach(button=>button.addEventListener('click',()=>{const presets={simple:[440,110,.5],harmonic:[440,110,5],metal:[440,310,5]};let v=presets[button.dataset.preset];$('carrier').value=v[0];$('modulator').value=v[1];$('index').value=v[2];spectrum();}));spectrum();
 })();
 </script>
+
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "512542db92cb42eeaa2cff3cd517f10f"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>

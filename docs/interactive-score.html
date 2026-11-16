@@ -121,4 +121,8 @@ $('grand').addEventListener('click',e=>{let svg=$('grand'),r=svg.getBoundingClie
 $('checkReduction').onclick=()=>{let want=expected(),ok=normalised(placed)===normalised(want);record(ok);showFeedback(ok?'<strong>Correct reduction.</strong> Your pitch collection matches.':`<strong>Not yet.</strong> Your reduction contains ${placed.map(noteName).join(', ')||'no notes'}. Compare the registers and try again.`)};
 $('revealReduction').onclick=()=>{placed=expected();drawGrand();reveal()};$('clearReduction').onclick=()=>{placed=[];drawGrand()};$('check').onclick=checkText;$('show').onclick=reveal;$('answerInput').addEventListener('keydown',e=>{if(e.key==='Enter')checkText()});$('next').onclick=nextQuestion;$('newScore').onclick=generate;$('mode').onchange=nextQuestion;$('pitchMode').onchange=()=>{if(selected.length)selectNotes(selected)};$('preset').onchange=applyPreset;
 const add=$('addInstrument');definitions.forEach(d=>add.add(new Option(d[0],d[0])));$('addStaff').onclick=()=>{let d=byName[add.value];orchestra.push({name:d[0],clef:d[1],transpose:d[2],count:d[3]});renderConfig();generate()};applyPreset();
-</script></body></html>
+</script>
+
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "512542db92cb42eeaa2cff3cd517f10f"}'></script><!-- End Cloudflare Web Analytics -->
+
+</body></html>

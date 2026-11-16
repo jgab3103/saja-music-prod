@@ -126,4 +126,7 @@ function answer(n){if(answered||!question)return;answered=true;attempts++;if(n==
  $('selectAll').addEventListener('click',()=>setChecks(intervals.map(i=>i[1])));$('selectBasic').addEventListener('click',()=>setChecks(basic));$('selectNone').addEventListener('click',()=>setChecks([]));$('direction').addEventListener('change',newQuestion);$('speed').addEventListener('change',prepareAudio);player.addEventListener('error',()=>{$('feedback').textContent='Audio failed to load. Try Next interval.';});$('next').addEventListener('click',newQuestion);renderChecks();newQuestion();
 })();
 </script>
-</body></html>
+</body>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "512542db92cb42eeaa2cff3cd517f10f"}'></script><!-- End Cloudflare Web Analytics -->
+
+</html>
