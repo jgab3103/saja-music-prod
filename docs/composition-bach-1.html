@@ -55,6 +55,13 @@ a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(139,46,6
  #printScoreSheet .notation svg{display:block;width:100%;height:auto;overflow:visible}
  #printScoreSheet .print-credit{font-size:8pt;color:#444;margin-top:8px}
 }
+
+/* A small historical aside, without narrowing the score explorer. */
+.corpus-intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,300px);gap:clamp(24px,4vw,56px);align-items:start;margin:22px 0 28px}
+.corpus-intro-copy h2{margin:0 0 12px}.corpus-intro-copy p{max-width:85ch;margin:0 0 14px;line-height:1.65}.corpus-intro-copy p:last-child{margin-bottom:0}
+.key-signature-note{margin:0;padding:18px 20px;background:var(--panel);border-left:3px solid var(--accent);border-radius:4px;font-size:.9rem;line-height:1.65}.key-signature-note h3{font-size:1rem;margin:0 0 10px}.key-signature-note p{margin:0 0 12px}.key-signature-note p:last-child{margin-bottom:0}
+@media(max-width:850px){.corpus-intro{grid-template-columns:1fr;gap:18px}}
+
 </style>
 </head>
 <body>
@@ -127,6 +134,8 @@ a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(139,46,6
 </p>
 
 
+<div class="corpus-intro">
+<div class="corpus-intro-copy">
 <h2>Start by Exploring the Corpus</h2>
 
 <p>
@@ -158,7 +167,16 @@ a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(139,46,6
     four-part writing. Explore as many chorales as you like, and begin 
     to notice the musical patterns that emerge across the corpus.
 </p>
-
+</div>
+<aside class="key-signature-note" aria-labelledby="key-signature-heading">
+    <div class="eyebrow">A historical note</div>
+    <h3 id="key-signature-heading">Key Signatures in Baroque Music</h3>
+    <p>As you explore the chorales, you may notice that some key signatures are not quite what you would expect from the major and minor scales you have learnt.</p>
+    <p>In Bach's time, older conventions associated with the church modes were still in use. A chorale in G minor, for example, might have just one flat instead of two. This is known as a Dorian key signature.</p>
+    <p>This does not necessarily mean that the whole piece is in the Dorian mode. Bach often combines these older conventions with major and minor tonal harmony. Listen to where the music comes to rest, as well as noticing the written key signature.</p>
+   
+</aside>
+</div>
 
 <h2>Chorale Explorer</h2>
 
