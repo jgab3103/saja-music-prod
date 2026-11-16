@@ -39,6 +39,22 @@ a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(139,46,6
 }
 @media screen and (max-width:850px){.article{padding:24px 24px 80px}}
 @media screen and (max-width:500px){.article{padding:20px 17px 70px}}
+/* Separate, black-and-white score for printing; the interactive score stays unchanged. */
+#printScoreSheet{display:none}
+@page{size:A4 landscape;margin:12mm}
+@media print{
+ html,body{background:#fff!important;color:#000!important;margin:0!important;padding:0!important}
+ body.printing-chorale> :not(#printScoreSheet){display:none!important}
+ body.printing-chorale #printScoreSheet{display:block!important;font-family:Arial,sans-serif;width:100%;color:#000}
+ #printScoreSheet .print-heading{margin:0 0 12px;text-align:center;break-after:avoid;page-break-after:avoid}
+ #printScoreSheet h1{font-family:Arial,sans-serif;font-size:19pt;font-weight:600;margin:0 0 4px;line-height:1.2}
+ #printScoreSheet .print-meta{font-size:10pt;line-height:1.35}
+ #printScoreSheet .print-system{display:flex;align-items:flex-start;width:100%;margin:0 0 12px;break-inside:avoid;page-break-inside:avoid}
+ #printScoreSheet .measure{flex:none;border:0!important;box-shadow:none!important;background:white!important;overflow:visible;cursor:default}
+ #printScoreSheet .measure-label{height:20px;padding:0 3px;font:9pt/20px Arial,sans-serif;color:#333}
+ #printScoreSheet .notation svg{display:block;width:100%;height:auto;overflow:visible}
+ #printScoreSheet .print-credit{font-size:8pt;color:#444;margin-top:8px}
+}
 </style>
 </head>
 <body>
@@ -63,7 +79,7 @@ a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(139,46,6
 </aside>
 <section class="score-main"><h3 id="pieceTitle">Loading score…</h3><div class="small" id="pieceMeta"></div>
 <div class="playback-toolbar" aria-label="Score playback controls">
-<button class="btn-saja" id="play" disabled>▶ Play</button>
+<button class="btn-saja" id="play" disabled>▶ Play</button><button type="button" class="btn-saja secondary" id="printScore" disabled>Print / Save PDF</button>
 <div class="tempo-control"><label for="tempo">Tempo <output id="tempoOut">60 BPM</output></label><input type="range" id="tempo" min="45" max="150" value="60" step="5"></div>
 <div class="playback-range"><label for="start">From</label><select id="start"></select><label for="end">To</label><select id="end"></select></div>
 <button id="whole" class="btn-saja secondary">Whole score</button><label class="loop-control"><input type="checkbox" id="loop"> Loop</label>
@@ -82,7 +98,7 @@ a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(139,46,6
 <div class="ideas">
     <h2>2. Composition exercises</h2>
 
-    <p>Choose two or three measures of a chorale. Use manuscript paper or a piano to explore alternative versions of Bach’s music and different ways of representing four-part harmony.</p>
+    <p>Choose two or three measures of a chorale. Use <a href = "./assets/pdf-files/manuscript-paper.pdf">manuscript paper</a> or a piano to explore alternative versions of Bach’s music and different ways of representing four-part harmony.</p>
 
     <ul>
         <li>Reduce all four voices from four individual staves onto a grand staff, as though arranging the chorale for piano.</li>
@@ -102,6 +118,7 @@ a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(139,46,6
 
 
 </main><footer class="footer"><div>SAJA MUSIC</div></footer>
+<section id="printScoreSheet" aria-label="Printable chorale"></section>
 <script>
 (()=>{'use strict';
 const $=id=>document.getElementById(id), names=['soprano','alto','tenor','bass'], cap=v=>v[0].toUpperCase()+v.slice(1), colors={soprano:'#9a3446',alto:'#67559b',tenor:'#216d63',bass:'#345e91'}, eps=1e-7;
@@ -118,25 +135,32 @@ function markMeasure(i){document.querySelectorAll('.measure').forEach(el=>el.cla
 function setupRange(){for(const id of ['start','end']){$(id).replaceChildren();piece.measures.forEach((m,i)=>$(id).add(new Option(label(m),i)));} $('end').value=piece.measures.length-1;}
 let positions=[];const cache=new Map();
 const durations={0.25:'16',0.5:'8',0.75:'8',1:'q',1.5:'q',2:'h',3:'h',4:'w'};
-function renderScore(){if(!piece)return;const root=$('score');root.replaceChildren();positions=[];const VF=window.Vex?.Flow;if(!VF){root.textContent='Notation library unavailable. Check your connection; playback and exercises still work.';return;}
+function renderScore(printRoot=null){if(!piece)return;const printing=!!printRoot,root=printRoot||$('score');root.replaceChildren();if(!printing)positions=[];const VF=window.Vex?.Flow;if(!VF){root.textContent='Notation library unavailable. Check your connection; playback and exercises still work.';return;}
 const sigMap={0:'C',1:'G',2:'D',3:'A',4:'E',5:'B',6:'F#',7:'C#','-1':'F','-2':'Bb','-3':'Eb','-4':'Ab','-5':'Db','-6':'Gb','-7':'Cb'};const key=sigMap[(piece.keySignature||[]).reduce((a,p)=>a+(p.includes('#')?1:-1),0)]||'C';
+let system=null,systemWidth=0;const printWidth=990;
 for(const [i,m] of piece.measures.entries()){
- const card=document.createElement('div');card.className='measure';card.dataset.index=i;const title=document.createElement('div');title.className='measure-label';title.textContent=label(m);const host=document.createElement('div');host.className='notation';card.append(title,host);root.append(card);
+ const localMoments=moments.filter(t=>t>=m.onset-eps&&t<m.onset+m.duration-eps);
+ const ordinaryWidth=Math.max(250,localMoments.length*42+45);
+ const systemStart=i===0||(printing&&(!system||systemWidth+ordinaryWidth>printWidth));
+ const W=Math.max(250,localMoments.length*42+(systemStart?110:45));
+ if(printing&&systemStart){system=document.createElement('div');system.className='print-system';root.append(system);systemWidth=0;}
+ if(printing)systemWidth+=W;
+ const card=document.createElement('div');card.className='measure';card.dataset.index=i;const title=document.createElement('div');title.className='measure-label';title.textContent=label(m);const host=document.createElement('div');host.className='notation';card.append(title,host);(printing?system:root).append(card);
  try{
  const four=$('layout').value==='four', groups=four?names.map(v=>[v]):[['soprano','alto'],['tenor','bass']], clefs=four?['treble','alto','tenor','bass']:['treble','bass'];
- const localMoments=moments.filter(t=>t>=m.onset-eps&&t<m.onset+m.duration-eps);const W=Math.max(250,localMoments.length*42+(i===0?110:45)),H=four?492:260;card.style.width=W+'px';const renderer=new VF.Renderer(host,VF.Renderer.Backends.SVG);renderer.resize(W,H);const c=renderer.getContext();const staves=groups.map((g,j)=>new VF.Stave(i===0?12:0,10+j*120,W-(i===0?12:0)));const staveFor=v=>staves[groups.findIndex(g=>g.includes(v))],clefFor=v=>clefs[groups.findIndex(g=>g.includes(v))];
- for(let j=0;j<staves.length;j++){const st=staves[j];if(i===0)st.addClef(clefs[j]).addKeySignature(key).addTimeSignature(piece.timeSignature);if(m.endBarline?.includes(':|'))st.setEndBarType(VF.Barline.type.REPEAT_END);else if(i===piece.measures.length-1)st.setEndBarType(VF.Barline.type.END);st.setContext(c).draw();}
- if(i===0){if(!four)new VF.StaveConnector(staves[0],staves.at(-1)).setType(VF.StaveConnector.type.BRACE).setContext(c).draw();new VF.StaveConnector(staves[0],staves.at(-1)).setType(VF.StaveConnector.type.SINGLE_LEFT).setContext(c).draw();}
- const noteGroups={}, voiceObjs={};for(const v of names){const isTop=v==='soprano'||v==='alto',stave=staveFor(v),clef=clefFor(v);const events=piece.voices[v].filter(n=>n.measureIndex===m.index);const entries=[];for(const n of events){const rest=n.type==='rest',match=/^([A-G])([#b]*)(-?\d+)$/.exec(n.pitch||''),pitch=rest?(isTop?'b/4':'d/3'):match?`${match[1].toLowerCase()}${match[2]}/${match[3]}`:null;if(!pitch)throw Error('Invalid pitch '+n.pitch);const dur=durations[n.duration];if(!dur)throw Error('Unsupported duration '+n.duration);const sn=new VF.StaveNote({clef,keys:[pitch],duration:dur+([.75,1.5,3].includes(n.duration)?'d':'')+(rest?'r':''),stem_direction:four?1:(v==='soprano'||v==='tenor'?1:-1),auto_stem:four});if([.75,1.5,3].includes(n.duration))VF.Dot.buildAndAttach([sn],{all:true});if(n.fermata)sn.addModifier(new VF.Articulation(v==='alto'||v==='bass'?'a@u':'a@a').setPosition(v==='alto'||v==='bass'?VF.Modifier.Position.BELOW:VF.Modifier.Position.ABOVE),0);const ink=active.has(v)?($('color').checked?colors[v]:'#171717'):'#c6c6c6';sn.setStyle({fillStyle:ink,strokeStyle:ink});entries.push({n,sn,ink});}const [beats,unit]=piece.timeSignature.split('/').map(Number);const vo=new VF.Voice({num_beats:beats,beat_value:unit}).setStrict(false).addTickables(entries.map(e=>e.sn));vo.setStave(stave);voiceObjs[v]=vo;noteGroups[v]=entries;}
+ const H=four?492:260;card.style.width=W+'px';const renderer=new VF.Renderer(host,VF.Renderer.Backends.SVG);renderer.resize(W,H);const c=renderer.getContext();const staves=groups.map((g,j)=>new VF.Stave(systemStart?12:0,10+j*120,W-(systemStart?12:0)));const staveFor=v=>staves[groups.findIndex(g=>g.includes(v))],clefFor=v=>clefs[groups.findIndex(g=>g.includes(v))];
+ for(let j=0;j<staves.length;j++){const st=staves[j];if(systemStart){st.addClef(clefs[j]).addKeySignature(key);if(i===0)st.addTimeSignature(piece.timeSignature);}if(m.endBarline?.includes(':|'))st.setEndBarType(VF.Barline.type.REPEAT_END);else if(i===piece.measures.length-1)st.setEndBarType(VF.Barline.type.END);st.setContext(c).draw();}
+ if(systemStart){if(!four)new VF.StaveConnector(staves[0],staves.at(-1)).setType(VF.StaveConnector.type.BRACE).setContext(c).draw();new VF.StaveConnector(staves[0],staves.at(-1)).setType(VF.StaveConnector.type.SINGLE_LEFT).setContext(c).draw();}
+ const noteGroups={}, voiceObjs={};for(const v of names){const isTop=v==='soprano'||v==='alto',stave=staveFor(v),clef=clefFor(v);const events=piece.voices[v].filter(n=>n.measureIndex===m.index);const entries=[];for(const n of events){const rest=n.type==='rest',match=/^([A-G])([#b]*)(-?\d+)$/.exec(n.pitch||''),pitch=rest?(isTop?'b/4':'d/3'):match?`${match[1].toLowerCase()}${match[2]}/${match[3]}`:null;if(!pitch)throw Error('Invalid pitch '+n.pitch);const dur=durations[n.duration];if(!dur)throw Error('Unsupported duration '+n.duration);const sn=new VF.StaveNote({clef,keys:[pitch],duration:dur+([.75,1.5,3].includes(n.duration)?'d':'')+(rest?'r':''),stem_direction:four?1:(v==='soprano'||v==='tenor'?1:-1),auto_stem:four});if([.75,1.5,3].includes(n.duration))VF.Dot.buildAndAttach([sn],{all:true});if(n.fermata)sn.addModifier(new VF.Articulation(v==='alto'||v==='bass'?'a@u':'a@a').setPosition(v==='alto'||v==='bass'?VF.Modifier.Position.BELOW:VF.Modifier.Position.ABOVE),0);const ink=printing?'#000':active.has(v)?($('color').checked?colors[v]:'#171717'):'#c6c6c6';sn.setStyle({fillStyle:ink,strokeStyle:ink});entries.push({n,sn,ink});}const [beats,unit]=piece.timeSignature.split('/').map(Number);const vo=new VF.Voice({num_beats:beats,beat_value:unit}).setStrict(false).addTickables(entries.map(e=>e.sn));vo.setStave(stave);voiceObjs[v]=vo;noteGroups[v]=entries;}
  const beams=[];for(const v of names){const entries=noteGroups[v];let group=[];const drawBeam=()=>{if(group.length>1){try{const b=new VF.Beam(group.map(e=>e.sn),four);b.setStyle?.({fillStyle:group[0].ink,strokeStyle:group[0].ink});beams.push(b);}catch(e){console.warn(e);}}group=[];};for(const e of entries){if(e.n.beam?.L){if(!group.length)group=[e];else group.push(e);}else if(group.length)group.push(e);if(e.n.beam?.J)drawBeam();}drawBeam();}
  for(const g of groups)VF.Accidental.applyAccidentals(g.map(v=>voiceObjs[v]),key);
  const fmt=new VF.Formatter();for(const g of groups)fmt.joinVoices(g.map(v=>voiceObjs[v]));const x=Math.max(...staves.map(st=>st.getNoteStartX()));staves.forEach(st=>st.setNoteStartX(x));fmt.format(Object.values(voiceObjs),W-x-20);for(const v of names)voiceObjs[v].draw(c,staveFor(v));
- for(const t of localMoments){const entries=Object.values(noteGroups).flat().filter(e=>Math.abs(e.n.onset-t)<eps);const xs=entries.map(e=>e.sn.getAbsoluteX()).filter(Number.isFinite);if(xs.length)positions.push({t,card,x:xs[0]});}
+ if(!printing)for(const t of localMoments){const entries=Object.values(noteGroups).flat().filter(e=>Math.abs(e.n.onset-t)<eps);const xs=entries.map(e=>e.sn.getAbsoluteX()).filter(Number.isFinite);if(xs.length)positions.push({t,card,x:xs[0]});}
  for(const b of beams)b.setContext(c).draw();
  for(const v of names){const entries=noteGroups[v];for(let j=0;j<entries.length;j++){const e=entries[j];if(e.n.tie==='start'||e.n.tie==='continue'){const next=entries[j+1];if(next&&next.n.pitch===e.n.pitch){new VF.StaveTie({first_note:e.sn,last_note:next.sn,first_indices:[0],last_indices:[0]}).setContext(c).draw();}else if(!next){new VF.StaveTie({first_note:e.sn,last_note:null,first_indices:[0],last_indices:[0]}).setContext(c).draw();}}if(j===0&&(e.n.tie==='stop'||e.n.tie==='continue'))new VF.StaveTie({first_note:null,last_note:e.sn,first_indices:[0],last_indices:[0]}).setContext(c).draw();}}
  const svg=host.querySelector('svg');if(svg){svg.setAttribute('viewBox',`0 0 ${W} ${H}`);svg.setAttribute('width',W);svg.setAttribute('height',H);}
  }catch(e){console.error(e);host.textContent='Notation could not be rendered: '+e.message;host.classList.add('score-error');}
-}const cursor=document.createElement('div');cursor.className='cursor';cursor.id='scoreCursor';root.append(cursor);showMoment(false);}
+}if(printing)return;const cursor=document.createElement('div');cursor.className='cursor';cursor.id='scoreCursor';root.append(cursor);showMoment(false);}
 function stop(){run++;playing=false;cancelAnimationFrame(frame);for(const o of nodes){try{o.stop();}catch(e){}}nodes=[];if(bus){try{bus.disconnect();}catch(e){}bus=null;}text('play','▶ Play');}
 async function audio(){const C=window.AudioContext||window.webkitAudioContext;if(!C)throw Error('Web Audio not supported');if(!ctx)ctx=new C();if(ctx.state==='suspended')await ctx.resume();return ctx;}
 function tone(midi,start,dur,amp,output){const g=ctx.createGain();g.gain.setValueAtTime(0,start);g.gain.linearRampToValueAtTime(amp,start+.018);g.gain.setValueAtTime(amp*.7,start+Math.min(.09,dur*.5));g.gain.setValueAtTime(amp*.55,start+Math.max(.02,dur));g.gain.linearRampToValueAtTime(0,start+dur+.055);g.connect(output);for(const [ratio,level] of [[1,1],[2,.19],[3,.055]]){const o=ctx.createOscillator(),h=ctx.createGain();o.type='sine';o.frequency.value=440*2**((midi-69)/12)*ratio;h.gain.value=level;o.connect(h);h.connect(g);o.start(start);o.stop(start+dur+.07);nodes.push(o);}}
@@ -149,7 +173,7 @@ async function hearMoments(ts){if(!piece)return;stop();const token=run;try{await
 async function getData(id){if(cache.has(id))return cache.get(id);const r=await fetch('./music-data/bach/chorals/json/'+id+'.json');if(!r.ok)throw Error('HTTP '+r.status);const d=await r.json();if(!d.measures?.length||!names.every(v=>Array.isArray(d.voices?.[v])))throw Error('Unexpected score format');cache.set(id,d);return d;}
 async function newQuiz(){stop();const token=run;$('newQuiz').disabled=true;$('replayQuiz').disabled=true;quiz=null;text('quizFeedback','Loading a mystery voice…');try{const ids=[...$('piece').options].map(o=>o.value),data=await getData(ids[Math.floor(Math.random()*ids.length)]);if(token!==run)return;const v=names[Math.floor(Math.random()*4)],ms=data.measures,i=Math.floor(Math.random()*ms.length),end=ms[Math.min(i+2,ms.length-1)];quiz={v,data,bounds:[ms[i].onset,end.onset+end.duration],done:false};$('replayQuiz').disabled=false;text('quizFeedback','Listen, then choose a voice.');play([v],quiz.bounds,true,data);}catch(e){text('quizFeedback','Could not load mystery voice: '+e.message);}finally{$('newQuiz').disabled=false;}}
 function answerQuiz(v){if(!quiz||quiz.done){text('quizFeedback','Choose New question first.');return;}quiz.done=true;answered++;if(v===quiz.v){correct++;text('quizFeedback','Correct! That is the '+cap(v)+'.');}else text('quizFeedback','That was the '+cap(quiz.v)+'. Listen again and compare its register.');$('quizFeedback').textContent+=' — '+quiz.data.title+' ('+quiz.data.bwv+').';text('quizCount',`${correct} correct / ${answered} answered`);}
-async function load(){const id=++loadId;stop();piece=null;$('play').disabled=true;$('hearChord').disabled=true;text('status','Loading chorale…');$('score').replaceChildren();try{const data=await getData($('piece').value);if(id!==loadId)return;piece=data;active=new Set(names);names.forEach(v=>$('voice-'+v).checked=true);text('pieceTitle',piece.title);text('pieceMeta',`${piece.bwv} · ${piece.key} · ${piece.timeSignature} · ${piece.measures.length} written measures`);$('tempo').value=60;text('tempoOut',$('tempo').value+' BPM');setupRange();moments=[...new Set(names.flatMap(v=>piece.voices[v].map(n=>n.onset)))].sort((a,b)=>a-b);$('moment').max=moments.length-1;$('moment').value=0;renderScore();$('scoreScroll').scrollLeft=0;showMoment();$('play').disabled=false;$('hearChord').disabled=false;text('status','Ready to listen.');}catch(e){if(id===loadId){text('pieceTitle','Score unavailable');text('pieceMeta','');text('status','Could not load JSON: '+e.message+'. Check the file path and serve this page through your website.');}}}
+async function load(){const id=++loadId;stop();piece=null;$('printScore').disabled=true;$('play').disabled=true;$('hearChord').disabled=true;text('status','Loading chorale…');$('score').replaceChildren();try{const data=await getData($('piece').value);if(id!==loadId)return;piece=data;active=new Set(names);names.forEach(v=>$('voice-'+v).checked=true);text('pieceTitle',piece.title);text('pieceMeta',`${piece.bwv} · ${piece.key} · ${piece.timeSignature} · ${piece.measures.length} written measures`);$('tempo').value=60;text('tempoOut',$('tempo').value+' BPM');setupRange();moments=[...new Set(names.flatMap(v=>piece.voices[v].map(n=>n.onset)))].sort((a,b)=>a-b);$('moment').max=moments.length-1;$('moment').value=0;renderScore();$('scoreScroll').scrollLeft=0;showMoment();$('play').disabled=false;$('hearChord').disabled=false;$('printScore').disabled=false;text('status','Ready to listen.');}catch(e){if(id===loadId){text('pieceTitle','Score unavailable');text('pieceMeta','');text('status','Could not load JSON: '+e.message+'. Check the file path and serve this page through your website.');}}}
 function momentIndex(t){let j=0;while(j+1<moments.length&&moments[j+1]<=t+eps)j++;return j;}
 function jumpToMeasure(i){if(!piece)return;setMoment(momentIndex(piece.measures[i].onset),false);}
 function setMoment(j,sound=false){if(!piece)return;stop();$('moment').value=Math.max(0,Math.min(moments.length-1,j));showMoment();if(sound)hearMoments([moments[+$('moment').value]]);}
@@ -158,6 +182,19 @@ $('newQuiz').addEventListener('click',newQuiz);$('replayQuiz').addEventListener(
 $('moment').addEventListener('input',()=>setMoment(+$('moment').value,false));for(const [id,d] of [['prevMoment',-1],['nextMoment',1]])$(id).addEventListener('click',()=>setMoment(+$('moment').value+d,$('stepSound').checked));$('hearChord').addEventListener('click',()=>piece&&hearMoments([moments[+$('moment').value]]));
 $('scoreScroll').addEventListener('keydown',e=>{if(!piece)return;if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();setMoment(+$('moment').value+(e.key==='ArrowLeft'?-1:1),$('stepSound').checked);}else if(e.code==='Space'){e.preventDefault();hearMoments([moments[+$('moment').value]]);}});
 $('score').addEventListener('click',e=>{if(!positions.length)return;const card=e.target.closest('.measure');if(!card)return;const rect=card.getBoundingClientRect(),x=e.clientX-rect.left;const p=positions.filter(p=>p.card===card).sort((a,b)=>Math.abs(a.x-x)-Math.abs(b.x-x))[0];if(p){setMoment(momentIndex(p.t),$('stepSound').checked);$('scoreScroll').focus({preventScroll:true});}});
+function printChorale(){
+ if(!piece)return;
+ if(!window.Vex?.Flow){text('status','Notation library unavailable. Cannot print the score.');return;}
+ const sheet=$('printScoreSheet'),heading=document.createElement('header'),title=document.createElement('h1'),meta=document.createElement('div'),body=document.createElement('div'),credit=document.createElement('div');
+ heading.className='print-heading';title.textContent=piece.title;meta.className='print-meta';meta.textContent='Johann Sebastian Bach · '+piece.bwv+' · '+piece.key+' · '+($('layout').value==='four'?'Four-part score (SATB)':'Grand staff');heading.append(title,meta);credit.className='print-credit';credit.textContent='SAJA MUSIC · Source: Bach chorales, Humdrum editions by Craig Stuart Sapp.';
+ sheet.replaceChildren(heading,body,credit);
+ // Render independently so printing never alters the cursor, playback range or voice selection.
+ renderScore(body);
+ if(body.querySelector('.score-error')||!body.querySelector('svg')){sheet.replaceChildren();text('status','Could not render the complete printable score.');return;}
+ document.body.classList.add('printing-chorale');
+ try{window.print();}finally{document.body.classList.remove('printing-chorale');sheet.replaceChildren();}
+}
+$('printScore').addEventListener('click',printChorale);
 window.addEventListener('pagehide',stop);load();
 })();
 </script>
