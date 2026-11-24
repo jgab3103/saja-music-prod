@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Explore the seven modes of the major scale, their history, tonal character and use in improvisation.">
+<meta name="author" content="Jamie Gabriel"><title>Understanding the Modes of the Major Scale | SAJA Music</title>
+<link rel="icon" href="assets/favicon.ico"><script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,500,600,700,800,900" rel="stylesheet"><link href="css/styles.css" rel="stylesheet">
+
+<style>
+:root{--accent:#8B2E3C;--paper:#FAFAFA;--panel:#F4F1EB;--muted:#666;--root:#9B3042;--third:#2878B8;--fifth:#278457;--seventh:#B57918}
+*{box-sizing:border-box}html{scroll-behavior:smooth;background:var(--paper)}body{margin:0;padding-top:80px;font-family:'Nunito',sans-serif;background:var(--paper);color:#111;line-height:1.7;font-size:16px}a{color:var(--accent);text-decoration:none;border-bottom:1px solid #8b2e3c55}a:hover{color:#111}#mainNav,#mainNav.navbar-shrink{background:var(--paper)!important;border-bottom:1px solid #0001;min-height:80px}#mainNav a{color:#111!important;text-decoration:none!important;border:none!important}.nav-links{display:flex;gap:2.5rem;align-items:center}.article{max-width:1120px;margin:0 auto;padding:55px 24px 100px}.back-link{display:inline-block;margin-bottom:20px;font-size:.92rem}h1,h2,h3{font-family:'Varela Round',sans-serif;font-weight:500}h1{font-size:1.9rem;line-height:1.3;margin:0 0 12px}h2{font-size:1.24rem;margin:0 0 12px}h3{font-size:1.03rem;margin:8px 0}.meta{color:#777;font-size:.9rem;margin-bottom:25px}.intro{max-width:78ch}.panel{background:var(--panel);border-radius:5px;padding:22px 24px;margin:24px 0}.controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.field label{display:block;font-weight:700;font-size:.82rem;margin-bottom:5px}.field select{width:100%;background:white;border:1px solid #d6d1cb;border-radius:4px;padding:10px 11px;font:inherit;color:#222}.actions{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin-top:16px}button{font:inherit;border:1px solid #c6bdb8;background:white;border-radius:4px;padding:8px 14px;cursor:pointer}button.primary{background:var(--accent);border-color:var(--accent);color:white}button.active{background:var(--accent);border-color:var(--accent);color:white}button:hover{filter:brightness(.95)}.legend{display:flex;flex-wrap:wrap;gap:16px;margin:14px 0}.key{display:flex;align-items:center;gap:6px;font-size:.84rem}.dot{height:12px;width:12px;border-radius:50%;display:inline-block}.box{border:1px solid #e4dfda;border-radius:5px;background:white;padding:18px;min-width:0;margin:18px 0}.muted,.help{color:#666;font-size:.9rem}.fret-scroll{width:100%;overflow-x:auto}.fret-svg{display:block;width:100%;min-width:700px;height:auto}.tab-wrap{overflow-x:auto}.tab-wrap>div{width:max-content;min-width:590px}.tab-wrap svg{display:block;max-width:none!important}.detail-row{display:flex;flex-wrap:wrap;gap:10px 22px}.pill{display:inline-block;border-radius:4px;background:#eee8e0;padding:3px 9px;font-size:.86rem}.modes{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;margin-top:10px}.mode-button{padding:10px 5px;font-size:.79rem;line-height:1.3;min-height:61px}.mode-button small{display:block;font-size:.74rem;opacity:.8;margin-top:4px}.exercise-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}.note-line{font-weight:700;color:#333;letter-spacing:.025em}.info-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.info-grid .box{margin:0}.info-grid p{margin-bottom:0}.status{color:#666;font-size:.87rem}.footer{background:var(--paper);border-top:1px solid #0001;padding:80px 30px;text-align:center;font-size:.95rem;color:#000b}#mainNav{position:fixed;top:0;left:0;right:0;z-index:1030;width:100%}#mainNav .site-nav-inner{width:100%;max-width:1320px;margin:0 auto;padding:0 24px;min-height:80px;display:flex;align-items:center;justify-content:space-between;gap:20px}#mainNav .navbar-brand{font-family:'Varela Round',sans-serif;font-weight:700;white-space:nowrap;margin:0}#mainNav .nav-links{display:flex;align-items:center;gap:2.5rem}
+@media(max-width:850px){.modes{grid-template-columns:repeat(4,1fr)}.info-grid{grid-template-columns:1fr}}@media(max-width:600px){#mainNav .site-nav-inner{padding:0 14px;gap:10px}#mainNav .navbar-brand{font-size:.95rem}#mainNav .nav-links{gap:.7rem;font-size:.78rem}.controls{grid-template-columns:1fr}.modes{grid-template-columns:repeat(2,1fr)}.article{padding:32px 16px 70px}.panel{padding:16px}h1{font-size:1.55rem}}@media print{nav,.back-link,.footer,.actions{display:none!important}body{padding:0}.article{padding:10px}.panel{background:white}button{color:#111!important}#tab svg{max-width:100%}}
+
+/* The revised study shows one compact, strictly fretted position at a time. */
+.controls{grid-template-columns:repeat(2,minmax(0,1fr))}.fret-svg{min-width:580px}.modes{grid-template-columns:repeat(7,minmax(0,1fr))}.mode-button{min-height:72px}.intro{max-width:90ch}.explanation{max-width:86ch}.explanation p{margin:9px 0}.fret-summary{margin-top:12px}.exercise-tabs{margin:12px 0}.position-caption{font-size:.9rem;color:#555;margin:8px 0}.box{margin:20px 0}.info-grid{grid-template-columns:1fr 1fr}@media(max-width:850px){.modes{grid-template-columns:repeat(4,1fr)}}@media(max-width:600px){.controls{grid-template-columns:1fr}.modes{grid-template-columns:repeat(2,1fr)}.info-grid{grid-template-columns:1fr}}
+.position-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:16px 0}.position-card{display:block;width:100%;text-align:left;border:1px solid #dfd8d0;border-radius:5px;background:#fff;padding:13px 12px;cursor:pointer;color:#111}.position-card:hover{border-color:#8B2E3C}.position-card.selected{border:2px solid #8B2E3C;padding:12px 11px;background:#fdfaf8}.position-card h3{font-size:1rem;margin:0 0 5px}.position-card svg{width:100%;height:auto;display:block;overflow:visible}.position-card .position-caption{margin:7px 0 0}.position-card .position-caption small{color:#666;font-size:.78rem}.position-card:focus-visible{outline:3px solid #2878B8;outline-offset:2px}@media(max-width:760px){.position-grid{grid-template-columns:1fr}}@media print{.position-grid{grid-template-columns:repeat(2,1fr)}.position-card{break-inside:avoid}.position-card.selected{border:1px solid #ccc;padding:13px 12px}}
+
+/* Optional modal improvisation play-along: existing study styles remain intact. */
+.backing-controls{display:flex;gap:12px;flex-wrap:wrap;align-items:end;margin:14px 0}
+.backing-controls .field{min-width:125px;max-width:165px}
+.backing-controls input[type="number"],.backing-controls input[type="range"]{font:inherit;accent-color:var(--accent)}
+.backing-controls input[type="number"]{padding:9px;border:1px solid #d6d1cb;border-radius:4px;width:100%;background:#fff}
+.backing-meta{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
+.backing-hint{max-width:85ch}.backing-play{min-width:168px}
+.backing-steps{display:flex;align-items:center;flex-wrap:wrap;gap:7px;margin:12px 0}
+.backing-steps span{font-size:.81rem;padding:5px 10px;background:#fff;border:1px solid #ded7d0;border-radius:4px}
+.backing-status{font-size:.9rem;color:#555;min-height:1.6em}
+@media print{#backingPlay,#backingStop,.backing-controls{display:none!important}}
+
+.lesson-section{margin:36px 0;padding:26px 28px;background:white;border:1px solid #e4dfda;border-radius:6px;scroll-margin-top:100px}.lesson-section h2{color:var(--accent);font-size:1.4rem}.lesson-section p{max-width:86ch}.lesson-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:20px 0}.lesson-card{background:var(--panel);padding:18px;border-radius:5px;min-width:0}.lesson-card h3{margin-top:0;color:var(--accent)}.lesson-card p:last-child{margin-bottom:0}.mode-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:18px 0}.mode-grid strong{display:block;color:var(--accent)}.timeline{border-left:2px solid #d7c4c4;padding-left:22px;margin:22px 0}.era{position:relative;padding:0 0 12px}.era:before{content:'';position:absolute;left:-29px;top:7px;width:12px;height:12px;border-radius:50%;background:var(--accent)}.era h3{color:var(--accent)}.callout{background:#f4f1eb;border-left:3px solid var(--accent);padding:15px 18px;margin:18px 0}.toc{display:grid;grid-template-columns:1fr 1fr;gap:8px 20px}.toc a{border:0}.lesson-section table{width:100%;border-collapse:collapse;min-width:480px}.lesson-section th,.lesson-section td{padding:10px 12px;text-align:left;border-bottom:1px solid #e4dfda}.lesson-section th{background:var(--panel)}.lesson-section tbody tr:nth-child(even){background:#faf8f5}.resource-links{display:flex;flex-wrap:wrap;gap:12px 24px}.lesson-section h3{line-height:1.4}@media(max-width:700px){.lesson-grid,.mode-grid,.toc{grid-template-columns:1fr}.lesson-section{padding:18px 16px}}@media print{.lesson-section{border:0;padding:10px 0}.lesson-card,.era{break-inside:avoid}.toc{display:none}}
+</style></head><body><nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav"><div class="site-nav-inner"><a class="navbar-brand" href="./index.html">SAJA MUSIC</a><div class="nav-links"><a href="./teaching.html">Discover</a><a href="./pathways.html">Learn</a><a href="./about.html">About</a></div></div></nav>
+<main class="article">
+<h1>Understanding the Modes of the Major Scale</h1><div class="meta">Harmony and Counterpoint · Scales · Modal history · Improvisation</div><p class="intro">Discover how the same collection of notes can create seven different musical worlds, how modes developed through history, and how musicians use them to shape melodies and improvise.</p><div class="panel"><h2>In this lesson</h2><div class="toc"><a href="#section-1">1. What is a scale?</a><a href="#section-2">2. What is a mode?</a><a href="#section-3">3. A brief history of modes</a><a href="#section-4">4. Understanding the character of each mode</a><a href="#section-5">5. The interval structure of the seven modes</a><a href="#section-6">6. Modes as a vehicle for improvisation</a><a href="#section-7">7. Choosing a mode to play over a chord</a><a href="#section-8">8. Chord tones and melodic colour</a></div></div><section class="lesson-section" id="section-1"><h2>1. What is a scale?</h2>
+
+<p>In Western music, we generally work with twelve different 
+pitches within an octave. A <strong>scale</strong> is a selection 
+of notes from these twelve pitches, organised in relation to 
+a central note known as the <strong>tonic</strong>.</p>
+
+<p>Different selections of notes create different musical 
+characters. A scale is therefore much more than a sequence of 
+notes to practise on an instrument. It provides a collection 
+of musical materials from which melodies, harmonies and 
+improvisations can be constructed.</p>
+
+<p>One of the most familiar examples is the major scale. 
+C major is made up of seven notes: 
+<strong>C–D–E–F–G–A–B</strong>. Its interval pattern is 
+whole–whole–half–whole–whole–whole–half.</p>
+
+<p>Students unfamiliar with the construction of major scales 
+should first explore 
+<a href="./theory-fundamentals-1.html">Theory Fundamentals – 
+The Major Scale</a>.</p>
+
+<p>To explore how different selections of notes create 
+different musical characters, visit the 
+<a href="./sound-of-scales.html">Sound of Scales Lab</a>. 
+This resource allows students to listen to melodies constructed 
+from different scales against a consistent tonal centre.</p></section><section class="lesson-section" id="section-2"><h2>2. What is a mode?</h2>
+
+<p>One of the interesting things about a collection of notes 
+is that its musical character depends on which note is 
+experienced as the tonic — the note of rest, resolution, 
+or musical "home".</p>
+
+<p>Consider the seven notes of C major:</p>
+
+<p><strong>C–D–E–F–G–A–B</strong></p>
+
+<p>When C is established as the tonal centre, the relationships 
+between C and the remaining notes give us the familiar sound 
+of the C major scale, also known as <strong>C Ionian</strong>.</p>
+
+<p>However, if D is established as the tonal centre, the same 
+collection of notes produces a different musical character:</p>
+
+<p><strong>D–E–F–G–A–B–C</strong></p>
+
+<p>This is known as <strong>D Dorian</strong>. Although it 
+contains exactly the same notes as C major, the relationships 
+between the tonic and the other notes have changed. D now 
+has a minor third above it (F), a perfect fifth (A), a major 
+sixth (B) and a minor seventh (C).</p>
+
+<p>Similarly, if A is established as the tonal centre, the 
+same collection of notes produces <strong>A Aeolian</strong>, 
+otherwise known as the A natural minor scale:</p>
+
+<p><strong>A–B–C–D–E–F–G</strong></p>
+
+<p>Importantly, playing a scale from a different starting note 
+does not, by itself, establish a mode. The musical accompaniment, 
+bass notes, melodic emphasis and points of resolution all 
+contribute to establishing which note is experienced as the 
+tonal centre.</p>
+
+<p>The seven modes derived from the notes of C major are:</p>
+
+<div class="mode-grid">
+    <div class="lesson-card"><strong>C Ionian:</strong> C–D–E–F–G–A–B</div>
+    <div class="lesson-card"><strong>D Dorian:</strong> D–E–F–G–A–B–C</div>
+    <div class="lesson-card"><strong>E Phrygian:</strong> E–F–G–A–B–C–D</div>
+    <div class="lesson-card"><strong>F Lydian:</strong> F–G–A–B–C–D–E</div>
+    <div class="lesson-card"><strong>G Mixolydian:</strong> G–A–B–C–D–E–F</div>
+    <div class="lesson-card"><strong>A Aeolian:</strong> A–B–C–D–E–F–G</div>
+    <div class="lesson-card"><strong>B Locrian:</strong> B–C–D–E–F–G–A</div>
+</div>
+
+<p>These are often referred to as <strong>relative modes</strong> 
+because they share the same collection of notes but have 
+different tonal centres.</p><div class="callout"><strong>Try listening:</strong> Play the same white notes on a piano over a sustained C, then over a sustained D. Notice how the sense of home changes. <a href="./sound-of-scales.html">Explore the Sound of Scales Lab</a>.</div></section><section class="lesson-section" id="section-3"><h2>3. A brief history of modes</h2><div class="timeline"><div class="era"><h3>Ancient Greek terminology</h3><p>Although the names of the modes have origins in ancient 
+Greek musical theory, their meanings have changed considerably 
+throughout history. The modes used by contemporary musicians 
+are not identical to those used in ancient Greek or Medieval 
+music.</p></div><div class="era"><h3>Medieval and Renaissance</h3><p>Modes have a long history in Western music, predating 
+the widespread adoption of the major and minor tonal system. 
+During the Medieval and Renaissance periods, modal systems 
+provided an important framework for organising melodies 
+and composing music, particularly in the traditions of 
+Gregorian chant and sacred polyphony.</p></div><div class="era"><h3>17th–18th centuries</h3><p>During the seventeenth and eighteenth centuries, the major 
+and minor tonal system gradually became the dominant framework 
+for Western classical composition. Nevertheless, traces of 
+earlier modal practices remained.</p></div><div class="era"><h3>Bach and the Baroque</h3><p>Even in the music of J. S. Bach, we encounter older modal 
+traditions and conventions. His Toccata and Fugue in D minor 
+(BWV 538), for example, is commonly known as the "Dorian" 
+Toccata and Fugue because of its use of a Dorian-style key 
+signature, although the work itself largely operates within 
+the tonal framework of D minor.</p></div><div class="era"><h3>20th century and modal jazz</h3><p>In the twentieth century, modes became particularly 
+important again in jazz, alongside their extensive use 
+in folk music, rock, film music and contemporary composition. 
+The development of modal jazz, particularly through recordings 
+such as Miles Davis's <em>Kind of Blue</em> (1959), demonstrated 
+how musicians could create rich and sophisticated improvisations 
+without relying on rapidly changing chord progressions.</p></div><div class="era"><h3>Contemporary practice</h3><p>In contemporary improvisation, it is often useful to think 
+of a scale or mode simply as a selection of notes from the 
+twelve available pitches, organised around a tonal centre 
+and providing a particular musical character.</p></div></div></section><section class="lesson-section" id="section-4"><h2>4. Understanding the character of each mode</h2>
+
+<p>While deriving the seven modes from a single major scale 
+is a useful way of understanding their construction, it is 
+not necessarily the most useful way of understanding their 
+individual sounds.</p>
+
+<p>For improvisation, it is often more helpful to compare 
+different modes using the <strong>same tonic</strong>. 
+These are known as <strong>parallel modes</strong>.</p>
+
+<div class="lesson-grid"><div class="lesson-card"><h3>Dorian and natural minor (Aeolian)</h3>
+
+<p>Compare the following two scales:</p>
+
+<p>
+    <strong>D Aeolian:</strong> D–E–F–G–A–B&#9837;–C<br>
+    <strong>D Dorian:</strong> D–E–F–G–A–B–C
+</p>
+
+<p>Both scales contain a minor third, a perfect fifth and 
+a minor seventh. The only difference is the sixth degree 
+of the scale. Dorian has a natural sixth, whereas Aeolian 
+has a flattened sixth.</p>
+
+<p>This seemingly small difference can have a significant 
+effect on the character of a melody. The natural sixth 
+of Dorian can provide a more open or lifted quality, while 
+the flattened sixth of Aeolian can produce a darker or 
+more sombre character.</p>
+
+<p>Both scales can be used to construct melodies over a 
+D minor chord, but each offers a different musical colour.</p>
+
+</div><div class="lesson-card"><h3>Ionian and Lydian</h3>
+
+<p>
+    <strong>C Ionian:</strong> C–D–E–F–G–A–B<br>
+    <strong>C Lydian:</strong> C–D–E–F&#9839;–G–A–B
+</p>
+
+<p>Lydian differs from the ordinary major scale by having 
+a raised fourth degree. In this example, F becomes F sharp.</p>
+
+<p>Both scales have a major third and a major seventh, 
+but the raised fourth of Lydian creates a distinctive 
+colour that is often experienced as spacious, floating 
+or expansive. This sound is particularly common in film 
+music, contemporary jazz and ambient music.</p>
+
+</div><div class="lesson-card"><h3>Ionian and Mixolydian</h3>
+
+<p>
+    <strong>C Ionian:</strong> C–D–E–F–G–A–B<br>
+    <strong>C Mixolydian:</strong> C–D–E–F–G–A–B&#9837;
+</p>
+
+<p>Mixolydian differs from the major scale by having a 
+flattened seventh degree. It retains the major third but 
+does not have the strong leading note of the ordinary 
+major scale.</p>
+
+<p>This gives Mixolydian a different sense of movement and 
+resolution. It is particularly common in blues, rock, 
+folk music, funk and jazz.</p>
+
+</div><div class="lesson-card"><h3>Phrygian and natural minor</h3>
+
+<p>
+    <strong>E Aeolian:</strong> E–F&#9839;–G–A–B–C–D<br>
+    <strong>E Phrygian:</strong> E–F–G–A–B–C–D
+</p>
+
+<p>Phrygian differs from the natural minor scale by having 
+a flattened second degree. The close proximity of this 
+note to the tonic creates a distinctive tension, providing 
+another melodic colour that can be explored over minor 
+harmony.</p>
+
+</div><div class="lesson-card"><h3>Locrian</h3>
+
+<p>
+    <strong>B Locrian:</strong> B–C–D–E–F–G–A
+</p>
+
+<p>Locrian is distinctive because it contains both a flattened 
+second and a flattened fifth. Unlike the other six modes, 
+its tonic triad is diminished rather than major or minor. 
+This makes it considerably more challenging to establish 
+as a stable tonal centre, but it offers interesting 
+possibilities for improvisation over diminished and 
+half-diminished harmony.</p>
+
+</div></div><p class="muted">Descriptions such as bright, dark, spacious or tense are 
+not fixed emotional properties of a scale. They are useful 
+starting points for listening. Rhythm, articulation, tempo, 
+harmony and musical context also contribute enormously to 
+how a scale is experienced.</p></section><section class="lesson-section" id="section-5"><h2>5. The interval structure of the seven modes</h2>
+
+<p>Each mode can be described in terms of its intervals 
+relative to the major scale built on the same tonic. 
+The following table provides a useful reference for 
+understanding what gives each mode its distinctive 
+musical character.</p>
+
+<div style="overflow-x:auto;">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Mode</th>
+                <th>Interval structure</th>
+                <th>Distinguishing features</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Ionian</td>
+                <td>1 2 3 4 5 6 7</td>
+                <td>Major scale</td>
+            </tr>
+            <tr>
+                <td>Dorian</td>
+                <td>1 2 &#9837;3 4 5 6 &#9837;7</td>
+                <td>Minor with a natural sixth</td>
+            </tr>
+            <tr>
+                <td>Phrygian</td>
+                <td>1 &#9837;2 &#9837;3 4 5 &#9837;6 &#9837;7</td>
+                <td>Minor with a flattened second</td>
+            </tr>
+            <tr>
+                <td>Lydian</td>
+                <td>1 2 3 &#9839;4 5 6 7</td>
+                <td>Major with a raised fourth</td>
+            </tr>
+            <tr>
+                <td>Mixolydian</td>
+                <td>1 2 3 4 5 6 &#9837;7</td>
+                <td>Major with a flattened seventh</td>
+            </tr>
+            <tr>
+                <td>Aeolian</td>
+                <td>1 2 &#9837;3 4 5 &#9837;6 &#9837;7</td>
+                <td>Natural minor scale</td>
+            </tr>
+            <tr>
+                <td>Locrian</td>
+                <td>1 &#9837;2 &#9837;3 4 &#9837;5 &#9837;6 &#9837;7</td>
+                <td>Minor with a flattened second and fifth</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p>Rather than simply memorising these interval structures, 
+students should spend time listening to the characteristic 
+notes of each mode and discovering how they influence the 
+sound of a melody.</p></section><section class="lesson-section" id="section-6"><h2>6. Modes as a vehicle for improvisation</h2>
+
+<p>One of the most effective ways to begin improvising is 
+to establish a single chord as the harmonic centre of the 
+music and explore the melodic possibilities of a particular 
+scale or mode over that chord.</p>
+
+<p>Unlike music that moves through a series of chord 
+progressions, this approach allows the improviser to remain 
+within a consistent harmonic environment. The underlying 
+harmony may remain unchanged for many bars, or even for 
+an entire piece of music.</p>
+
+<p>In this context, we can think of the underlying chord 
+as the <strong>tonic chord</strong> — the chord built on 
+the first degree of the mode. It provides a harmonic 
+point of rest around which the improvisation develops.</p>
+
+<p>The tonic chord does not necessarily have to be major. 
+Depending on the mode, it may be major, minor, dominant 
+seventh or diminished in quality.</p>
+
+<div style="overflow-x:auto;">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Mode</th>
+                <th>Tonic triad</th>
+                <th>Tonic seventh chord</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>C Ionian</td>
+                <td>C major</td>
+                <td>Cmaj7</td>
+            </tr>
+            <tr>
+                <td>D Dorian</td>
+                <td>D minor</td>
+                <td>Dm7</td>
+            </tr>
+            <tr>
+                <td>E Phrygian</td>
+                <td>E minor</td>
+                <td>Em7</td>
+            </tr>
+            <tr>
+                <td>F Lydian</td>
+                <td>F major</td>
+                <td>Fmaj7</td>
+            </tr>
+            <tr>
+                <td>G Mixolydian</td>
+                <td>G major</td>
+                <td>G7</td>
+            </tr>
+            <tr>
+                <td>A Aeolian</td>
+                <td>A minor</td>
+                <td>Am7</td>
+            </tr>
+            <tr>
+                <td>B Locrian</td>
+                <td>B diminished</td>
+                <td>Bm7&#9837;5</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p>Notice that all seven chords are constructed from the 
+same seven notes, yet each can serve as the harmonic centre 
+of a different modal environment, although Locrian is 
+particularly unstable.</p>
+
+<p>Consider G Mixolydian, for example. Its tonic seventh 
+chord is G7. In conventional tonal harmony, G7 would 
+frequently function as the dominant chord of C major 
+and create an expectation of resolution to C.</p>
+
+<p class="callout">In modal improvisation, however, G7 can itself be the 
+point of rest. There is no requirement for it to resolve 
+to C major. Although it has the structure of a dominant 
+seventh chord, it is functioning as the tonic of the 
+modal environment.</p>
+
+<p>This distinction between <strong>chord quality</strong> 
+and <strong>harmonic function</strong> is an important one. 
+A dominant seventh chord does not always have to function 
+as a dominant, just as a minor chord does not necessarily 
+have to function as the second or sixth chord of a major key.</p>
+
+<p>In each of these examples, the underlying chord is 
+built on scale degree one. In Roman numeral analysis, 
+we distinguish their qualities using symbols such as 
+Imaj7, i7, I7 and i&#248;7, rather than labelling them 
+all with an uppercase I.</p></section><section class="lesson-section" id="section-7"><h2>7. Choosing a mode to play over a chord</h2>
+
+<p>In contemporary jazz and other improvisational traditions, 
+musicians often approach scales and modes from the perspective 
+of the underlying chord.</p>
+
+<p>Rather than asking which major scale a particular mode 
+belongs to, the improviser might ask: 
+<strong>What collection of notes can I use over this chord, 
+and what musical character will those notes create?</strong></p>
+
+<p>A single chord can often accommodate several different 
+scales or modes. Each contains the basic notes of the chord 
+but offers different additional melodic possibilities.</p>
+
+<div class="lesson-grid"><div class="lesson-card"><h3>Improvising over a major seventh chord</h3>
+
+<p>Consider a Cmaj7 chord, which contains the notes:</p>
+
+<p><strong>C–E–G–B</strong></p>
+
+<p>Both C Ionian and C Lydian contain all four of these 
+notes:</p>
+
+<ul>
+    <li><strong>C Ionian:</strong> C–D–E–F–G–A–B</li>
+    <li><strong>C Lydian:</strong> C–D–E–F&#9839;–G–A–B</li>
+</ul>
+
+<p>Both modes are compatible with the basic structure 
+of the chord. However, the natural fourth in Ionian 
+and the raised fourth in Lydian provide different 
+melodic possibilities.</p>
+
+<p>When sustained against the E of the Cmaj7 chord, the 
+natural fourth (F) can create a pronounced dissonance. 
+The raised fourth of Lydian (F sharp), often described 
+harmonically as a sharp eleventh, provides a different 
+kind of tension and is frequently used as a colour 
+in contemporary jazz harmony.</p>
+
+</div><div class="lesson-card"><h3>Improvising over a minor seventh chord</h3>
+
+<p>Consider a Dm7 chord, which contains the notes:</p>
+
+<p><strong>D–F–A–C</strong></p>
+
+<p>There are three modes derived from the major scale 
+that contain all four of these chord tones:</p>
+
+<ul>
+    <li><strong>D Dorian:</strong> D–E–F–G–A–B–C</li>
+    <li><strong>D Aeolian:</strong> D–E–F–G–A–B&#9837;–C</li>
+    <li><strong>D Phrygian:</strong> 
+        D–E&#9837;–F–G–A–B&#9837;–C</li>
+</ul>
+
+<p>All three modes share the tonic, minor third, perfect 
+fifth and minor seventh of the underlying chord. Their 
+differences lie in the remaining notes available to 
+the improviser.</p>
+
+<p>Dorian offers a natural sixth, Aeolian offers a 
+flattened sixth, and Phrygian offers both a flattened 
+second and a flattened sixth.</p>
+
+<p>Imagine improvising over a sustained Dm7 chord for 
+several minutes. By moving between these three collections 
+of notes, the improviser can explore quite different 
+musical environments without changing the underlying 
+chord at all.</p>
+
+</div><div class="lesson-card"><h3>Improvising over a dominant seventh chord</h3>
+
+<p>Consider a G7 chord:</p>
+
+<p><strong>G–B–D–F</strong></p>
+
+<p>G Mixolydian contains all four chord tones and provides 
+a useful starting point for improvisation:</p>
+
+<p><strong>G–A–B–C–D–E–F</strong></p>
+
+<p>More advanced approaches to improvisation may also 
+draw on other scales, including Lydian dominant, 
+the altered scale, diminished scales and whole-tone 
+scales. Each provides different tensions and melodic 
+possibilities.</p>
+
+</div><div class="lesson-card"><h3>Improvising over a half-diminished chord</h3>
+
+<p>Consider a Bm7&#9837;5 chord:</p>
+
+<p><strong>B–D–F–A</strong></p>
+
+<p>B Locrian contains all four of these notes:</p>
+
+<p><strong>B–C–D–E–F–G–A</strong></p>
+
+<p>Locrian therefore provides a useful starting point for 
+exploring half-diminished harmony. A fully diminished 
+seventh chord has a different interval structure and 
+requires other considerations.</p></div></div></section><section class="lesson-section" id="section-8"><h2>8. Chord tones and melodic colour</h2>
+
+<p>One useful way of thinking about improvisation is to 
+distinguish between the notes that form the underlying 
+chord and the additional notes that provide melodic colour.</p>
+
+<p>For example, when improvising using D Dorian over Dm7:</p>
+
+<ul>
+    <li><strong>Chord tones:</strong> D, F, A, C</li>
+    <li><strong>Additional scale tones:</strong> E, G, B</li>
+</ul>
+
+<p>The chord tones establish a clear relationship with 
+the underlying harmony. The remaining notes provide 
+additional possibilities for movement, tension, colour 
+and expression.</p>
+
+<p>If the improviser changes from D Dorian to D Aeolian, 
+the underlying chord tones remain exactly the same. 
+Only one of the additional scale tones changes: B 
+becomes B flat.</p>
+
+<p>This is one of the most interesting aspects of modal 
+improvisation. A musician can change the character of 
+the music considerably by altering just one or two 
+notes in the available collection.</p>
+
+<p>Of course, not every note in a compatible scale will 
+sound equally settled at every moment. The voicing of 
+the accompanying chord, any extensions it contains, 
+the surrounding harmony and the way notes are approached 
+and resolved all influence their effectiveness.</p>
+
+<p>These relationships should be understood as possibilities 
+for musical exploration, rather than rigid rules about 
+which notes are permitted over particular chords.</p></section><section class="panel"><h2>Continue exploring</h2><p>Listen to the character of different modes or apply these ideas directly to the guitar.</p><div class="resource-links"><a href="./sound-of-scales.html">Sound of Scales Lab</a><a href="./guitar-major-modes.html">Modes across the guitar fretboard</a><a href="./theory-fundamentals-1.html">Major scale fundamentals</a></div></section></main><footer class="footer"><div>SAJA MUSIC</div></footer></body></html>

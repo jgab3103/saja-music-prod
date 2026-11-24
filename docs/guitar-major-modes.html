@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Learn the notes of C major in seven compact, closed guitar positions; explore its seven modes and practise diatonic intervals with guitar tablature.">
+<meta name="author" content="Jamie Gabriel"><title>C Major Across the Guitar Fretboard | SAJA Music</title>
+<link rel="icon" href="assets/favicon.ico"><script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,500,600,700,800,900" rel="stylesheet"><link href="css/styles.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/vexflow@4.2.3/build/cjs/vexflow.js"></script>
+<style>
+:root{--accent:#8B2E3C;--paper:#FAFAFA;--panel:#F4F1EB;--muted:#666;--root:#9B3042;--third:#2878B8;--fifth:#278457;--seventh:#B57918}
+*{box-sizing:border-box}html{scroll-behavior:smooth;background:var(--paper)}body{margin:0;padding-top:80px;font-family:'Nunito',sans-serif;background:var(--paper);color:#111;line-height:1.7;font-size:16px}a{color:var(--accent);text-decoration:none;border-bottom:1px solid #8b2e3c55}a:hover{color:#111}#mainNav,#mainNav.navbar-shrink{background:var(--paper)!important;border-bottom:1px solid #0001;min-height:80px}#mainNav a{color:#111!important;text-decoration:none!important;border:none!important}.nav-links{display:flex;gap:2.5rem;align-items:center}.article{max-width:1120px;margin:0 auto;padding:55px 24px 100px}.back-link{display:inline-block;margin-bottom:20px;font-size:.92rem}h1,h2,h3{font-family:'Varela Round',sans-serif;font-weight:500}h1{font-size:1.9rem;line-height:1.3;margin:0 0 12px}h2{font-size:1.24rem;margin:0 0 12px}h3{font-size:1.03rem;margin:8px 0}.meta{color:#777;font-size:.9rem;margin-bottom:25px}.intro{max-width:78ch}.panel{background:var(--panel);border-radius:5px;padding:22px 24px;margin:24px 0}.controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.field label{display:block;font-weight:700;font-size:.82rem;margin-bottom:5px}.field select{width:100%;background:white;border:1px solid #d6d1cb;border-radius:4px;padding:10px 11px;font:inherit;color:#222}.actions{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin-top:16px}button{font:inherit;border:1px solid #c6bdb8;background:white;border-radius:4px;padding:8px 14px;cursor:pointer}button.primary{background:var(--accent);border-color:var(--accent);color:white}button.active{background:var(--accent);border-color:var(--accent);color:white}button:hover{filter:brightness(.95)}.legend{display:flex;flex-wrap:wrap;gap:16px;margin:14px 0}.key{display:flex;align-items:center;gap:6px;font-size:.84rem}.dot{height:12px;width:12px;border-radius:50%;display:inline-block}.box{border:1px solid #e4dfda;border-radius:5px;background:white;padding:18px;min-width:0;margin:18px 0}.muted,.help{color:#666;font-size:.9rem}.fret-scroll{width:100%;overflow-x:auto}.fret-svg{display:block;width:100%;min-width:700px;height:auto}.tab-wrap{overflow-x:auto}.tab-wrap>div{width:max-content;min-width:590px}.tab-wrap svg{display:block;max-width:none!important}.detail-row{display:flex;flex-wrap:wrap;gap:10px 22px}.pill{display:inline-block;border-radius:4px;background:#eee8e0;padding:3px 9px;font-size:.86rem}.modes{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;margin-top:10px}.mode-button{padding:10px 5px;font-size:.79rem;line-height:1.3;min-height:61px}.mode-button small{display:block;font-size:.74rem;opacity:.8;margin-top:4px}.exercise-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}.note-line{font-weight:700;color:#333;letter-spacing:.025em}.info-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.info-grid .box{margin:0}.info-grid p{margin-bottom:0}.status{color:#666;font-size:.87rem}.footer{background:var(--paper);border-top:1px solid #0001;padding:80px 30px;text-align:center;font-size:.95rem;color:#000b}#mainNav{position:fixed;top:0;left:0;right:0;z-index:1030;width:100%}#mainNav .site-nav-inner{width:100%;max-width:1320px;margin:0 auto;padding:0 24px;min-height:80px;display:flex;align-items:center;justify-content:space-between;gap:20px}#mainNav .navbar-brand{font-family:'Varela Round',sans-serif;font-weight:700;white-space:nowrap;margin:0}#mainNav .nav-links{display:flex;align-items:center;gap:2.5rem}
+@media(max-width:850px){.modes{grid-template-columns:repeat(4,1fr)}.info-grid{grid-template-columns:1fr}}@media(max-width:600px){#mainNav .site-nav-inner{padding:0 14px;gap:10px}#mainNav .navbar-brand{font-size:.95rem}#mainNav .nav-links{gap:.7rem;font-size:.78rem}.controls{grid-template-columns:1fr}.modes{grid-template-columns:repeat(2,1fr)}.article{padding:32px 16px 70px}.panel{padding:16px}h1{font-size:1.55rem}}@media print{nav,.back-link,.footer,.actions{display:none!important}body{padding:0}.article{padding:10px}.panel{background:white}button{color:#111!important}#tab svg{max-width:100%}}
+
+/* The revised study shows one compact, strictly fretted position at a time. */
+.controls{grid-template-columns:repeat(2,minmax(0,1fr))}.fret-svg{min-width:580px}.modes{grid-template-columns:repeat(7,minmax(0,1fr))}.mode-button{min-height:72px}.intro{max-width:90ch}.explanation{max-width:86ch}.explanation p{margin:9px 0}.fret-summary{margin-top:12px}.exercise-tabs{margin:12px 0}.position-caption{font-size:.9rem;color:#555;margin:8px 0}.box{margin:20px 0}.info-grid{grid-template-columns:1fr 1fr}@media(max-width:850px){.modes{grid-template-columns:repeat(4,1fr)}}@media(max-width:600px){.controls{grid-template-columns:1fr}.modes{grid-template-columns:repeat(2,1fr)}.info-grid{grid-template-columns:1fr}}
+.position-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:16px 0}.position-card{display:block;width:100%;text-align:left;border:1px solid #dfd8d0;border-radius:5px;background:#fff;padding:13px 12px;cursor:pointer;color:#111}.position-card:hover{border-color:#8B2E3C}.position-card.selected{border:2px solid #8B2E3C;padding:12px 11px;background:#fdfaf8}.position-card h3{font-size:1rem;margin:0 0 5px}.position-card svg{width:100%;height:auto;display:block;overflow:visible}.position-card .position-caption{margin:7px 0 0}.position-card .position-caption small{color:#666;font-size:.78rem}.position-card:focus-visible{outline:3px solid #2878B8;outline-offset:2px}@media(max-width:760px){.position-grid{grid-template-columns:1fr}}@media print{.position-grid{grid-template-columns:repeat(2,1fr)}.position-card{break-inside:avoid}.position-card.selected{border:1px solid #ccc;padding:13px 12px}}
+
+/* Optional modal improvisation play-along: existing study styles remain intact. */
+.backing-controls{display:flex;gap:12px;flex-wrap:wrap;align-items:end;margin:14px 0}
+.backing-controls .field{min-width:125px;max-width:165px}
+.backing-controls input[type="number"],.backing-controls input[type="range"]{font:inherit;accent-color:var(--accent)}
+.backing-controls input[type="number"]{padding:9px;border:1px solid #d6d1cb;border-radius:4px;width:100%;background:#fff}
+.backing-meta{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
+.backing-hint{max-width:85ch}.backing-play{min-width:168px}
+.backing-steps{display:flex;align-items:center;flex-wrap:wrap;gap:7px;margin:12px 0}
+.backing-steps span{font-size:.81rem;padding:5px 10px;background:#fff;border:1px solid #ded7d0;border-radius:4px}
+.backing-status{font-size:.9rem;color:#555;min-height:1.6em}
+@media print{#backingPlay,#backingStop,.backing-controls{display:none!important}}
+</style></head><body>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav"><div class="site-nav-inner"><a class="navbar-brand" href="./index.html">SAJA MUSIC</a><div class="nav-links"><a href="./teaching.html">Discover</a><a href="./pathways.html">Learn</a><a href="./about.html">About</a></div></div></nav>
+<main class="article">
+<h1>C Major — Across the Guitar Fretboard</h1><div class="meta">Guitar · Major scale and modes · Fretboard positions · Interactive tablature</div>
+<p class="intro">Learn where the seven notes of <strong>C major (C, D, E, F, G, A and B)</strong> sit on the guitar. Explore all seven compact positions together, then practise the same notes as the seven modes of the major scale and in sequences of thirds, fourths, fifths, sixths and sevenths.</p>
+<div class="panel explanation"><h2>1. Getting started</h2>
+<p>All seven modes in this study use the notes C–D–E–F–G–A–B. Changing the mode changes the tonal centre and accompanying harmony, not the available notes on the guitar. For an introduction to modes, their history and their use in improvisation, see <a href="./major-modes.html">Understanding the Modes of the Major Scale</a>.</p>
+<p>Explore the seven closed positions below. Each spans four semitones at most, uses no open strings and retains the lower-fret fingering when the same sounding pitch occurs twice. Aim to move freely between positions rather than memorising isolated shapes.</p></div>
+<div class="panel"><h2>2. Explore the seven modes</h2>
+<p>These are the same C-major notes in every mode. Selecting a mode changes <strong>only the highlighted tonal centre</strong> (burgundy dots), not which notes or positions are available.</p>
+<div class="field" style="max-width:340px"><label for="mode">Mode / tonal centre</label><select id="mode"></select></div>
+<div id="modes" class="modes" aria-label="Major scale modes"></div>
+<div class="actions"><button id="print">Print study</button></div></div>
+<section class="box"><h2>3. The seven C-major positions</h2>
+<p>All seven closed positions are shown below. Each spans at most a major third (four semitones) and uses no open strings. A pitch is shown only once <em>within each position</em>, at its lower-fret fingering. Select any position to see its interval exercise underneath.</p>
+<div class="legend"><span class="key"><i class="dot" style="background:var(--root)"></i>Selected mode's tonal centre</span><span class="key"><i class="dot" style="background:var(--third)"></i>Other C major notes</span></div>
+<div id="positionGrid" class="position-grid" aria-label="Seven C-major fretboard positions"></div>
+<p class="help">Standard tuning: E–A–D–G–B–E (low to high). The same pitch may occur in a different position; only duplicate fingerings of the <em>same sounding pitch within a position</em> are removed. The position highlighted with a border controls the tablature exercise.</p></section>
+<section class="box"><h2>4. Practise in intervals</h2>
+<p>First, play the notes in the selected position up and down. Then choose an interval below. The tablature shows <strong>every ascending and descending pair available in the position</strong>, beginning on the lowest note of the lower strings. Scroll horizontally to follow the complete exercise, all the way up and back down in one continuous tab. An interval of a third means playing one scale degree and then the note two degrees above it; fourths, fifths, sixths and sevenths follow the same principle.</p>
+<div class="detail-row"><span class="pill" id="exercisePosition"></span><span class="pill" id="exerciseMode"></span></div><div class="exercise-tabs" id="intervals"></div><p class="pill" id="pattern"></p><p class="note-line" id="noteSequence"></p><div class="tab-wrap" tabindex="0" aria-label="Scroll horizontally through the complete guitar tablature"><div id="tab" aria-label="VexFlow guitar tablature"></div></div><p id="exerciseStatus" class="status" aria-live="polite"></p>
+<p class="help">These are <em>diatonic</em> intervals, so their semitone sizes vary according to the starting note. The tablature is a playable ascending and descending example, not a prescribed fingering. Changing mode only changes the root highlights; the interval pattern and tablature do not change. Listen for the new centre over an appropriate drone or harmony.</p></section>
+<section class="panel" id="playalong"><h2>5. Improvise with a play-along</h2>
+<p class="backing-hint">Select a mode above, then start the accompaniment and improvise using <strong>any of the seven C-major positions</strong>. The fretboard notes remain exactly the same; the bass and chord change to establish the mode’s own tonal centre. Listen for the distinctive character of each mode rather than simply beginning the scale on a different note.</p>
+<p class="backing-hint">The accompaniment stays on <strong>one home chord</strong>, with a soft bass pulse and slowly shifting, spacious voicings. Some bars add a seventh or ninth (and occasionally a characteristic modal colour). There are no chord changes to chase: you can focus on hearing the mode.</p>
+
+<p class="backing-hint" id="backingDescription">A sustained home harmony lets you hear each mode clearly.</p>
+<div class="backing-meta"><span class="pill" id="backingMode">C Ionian</span><span class="pill" id="backingChord">C major / Cmaj7 / Cmaj9</span></div>
+<div class="backing-controls"><div class="field"><label for="backingTempo">Tempo (BPM)</label><input type="number" id="backingTempo" min="45" max="160" step="1" value="72"></div>
+<div class="field"><label for="backingVolume">Backing volume</label><input type="range" id="backingVolume" min="0" max="100" value="65" aria-label="Backing track volume" style="display:block;width:100%;margin:13px 0"></div>
+<button class="primary backing-play" id="backingPlay" type="button">▶ Play accompaniment</button><button id="backingStop" type="button" disabled>■ Stop</button></div>
+<div class="backing-steps" id="backingSteps" aria-label="Musical texture"><span>Steady root bass</span><span>Soft fifth / colour tone</span><span>Ambient chord voicings</span><span>Occasional 7ths &amp; 9ths</span><span>Four beats per bar</span></div>
+<p class="backing-status" id="backingStatus" role="status" aria-live="polite">Ready to play. Sound is generated in your browser; no audio file is needed.</p>
+<p class="help" id="backingAdvice">Try resolving phrases to C. Notice the major third E and the leading tone B.</p>
+</section>
+<div class="panel"><h2>6. Developing your practice</h2><p>Learn the names of the notes before worrying about speed. Identify each note on every string within the position, then play slowly in both directions while saying or singing its name. Practise thirds, fourths, fifths, sixths and sevenths, first ascending and then descending. Move into the next position without using open strings. Because the exercise begins from the lowest note of each closed position, the pattern is easy to compare across the neck.</p><p>Finally, explore each mode against a sustained note or chord that establishes its tonal centre — for example, D for Dorian or F for Lydian. This helps make the character of the mode audible, rather than simply playing C major from a different starting note.</p></div>
+</main><footer class="footer"><div>SAJA MUSIC</div></footer>
+<script> 'use strict';
+const $=id=>document.getElementById(id);
+const TUNING=[40,45,50,55,59,64], STRINGS=['E','A','D','G','B','e'];
+const SCALE=[0,2,4,5,7,9,11], PITCHES=['C','D','E','F','G','A','B'];
+const MODES=[
+ {name:'Ionian',root:'C',character:'Major scale'},
+ {name:'Dorian',root:'D',character:'Minor with natural 6'},
+ {name:'Phrygian',root:'E',character:'Minor with flat 2'},
+ {name:'Lydian',root:'F',character:'Major with sharp 4'},
+ {name:'Mixolydian',root:'G',character:'Major with flat 7'},
+ {name:'Aeolian',root:'A',character:'Natural minor'},
+ {name:'Locrian',root:'B',character:'Minor with flat 2 and flat 5'}
+];
+// Seven consecutive five-fret closed positions, anchored to C-major pitch
+// classes on the low E string. A five-fret window spans four semitones.
+const POSITIONS=[1,3,5,7,8,10,12];
+const mod=(x,n)=>((x%n)+n)%n;
+let selectedMode=0,selectedPosition=0,interval=3;
+function positionNotes(index){
+ const first=POSITIONS[index],notes=[];
+ for(let string=0;string<6;string++)for(let fret=first;fret<=first+4;fret++){
+  const midi=TUNING[string]+fret,degree=SCALE.indexOf(mod(midi,12));
+  if(degree>=0)notes.push({string,fret,midi,degree,name:PITCHES[degree]});
+ }
+ // The G/B pair is sometimes a unison across this four-semitone span.
+ // Remove duplicates of the same MIDI note, favouring the lower fret.
+ const byMidi=new Map();
+ for(const note of notes){const previous=byMidi.get(note.midi);
+  if(!previous||note.fret<previous.fret||(note.fret===previous.fret&&note.string<previous.string))byMidi.set(note.midi,note);
+ }
+ return [...byMidi.values()].sort((a,b)=>a.midi-b.midi||a.fret-b.fret);
+}
+function fretboardSVG(notes,index){
+ const first=POSITIONS[index],x0=70,dx=84,y0=48,dy=28;
+ let out=`<svg viewBox="0 0 470 240" role="img" aria-label="Position ${index+1}, frets ${first} to ${first+4}, C major notes">`;
+ out+=`<rect x="35" y="31" width="408" height="169" rx="4" fill="#f8f5ef"/>`;
+ for(let string=5;string>=0;string--){const y=y0+(5-string)*dy;
+  out+=`<line x1="40" y1="${y}" x2="440" y2="${y}" stroke="#91857a" stroke-width="${1.5+(5-string)*.25}"/>`;
+  out+=`<text x="19" y="${y+4}" font-family="Nunito,sans-serif" font-size="12" text-anchor="middle" fill="#555">${STRINGS[string]}</text>`;
+ }
+ for(let j=0;j<=5;j++){const x=x0+(j-.5)*dx;
+  out+=`<line x1="${x}" y1="34" x2="${x}" y2="192" stroke="#b9afa7" stroke-width="1.2"/>`;
+  if(j<5)out+=`<text x="${x0+j*dx}" y="24" font-family="Nunito,sans-serif" font-size="13" text-anchor="middle" fill="#555">${first+j}</text>`;
+ }
+ for(const n of notes){const x=x0+(n.fret-first)*dx,y=y0+(5-n.string)*dy;
+  out+=`<circle cx="${x}" cy="${y}" r="13.4" fill="${n.degree===selectedMode?'#9B3042':'#2878B8'}" stroke="#fff" stroke-width="1.3"/>`;
+  out+=`<text x="${x}" y="${y+4.3}" font-family="Nunito,sans-serif" font-size="12" font-weight="700" text-anchor="middle" fill="#fff">${n.name}</text>`;
+ }
+ out+=`<text x="235" y="225" text-anchor="middle" fill="#666" font-size="12" font-family="Nunito,sans-serif">Frets ${first}–${first+4} · no open strings</text></svg>`;
+ return out;
+}
+function renderPositions(){
+ $('positionGrid').innerHTML=POSITIONS.map((first,i)=>{
+  const notes=positionNotes(i),selected=i===selectedPosition;
+  return `<button type="button" class="position-card ${selected?'selected':''}" data-position="${i}" aria-pressed="${selected}"><h3>Position ${i+1} <span class="muted">· frets ${first}–${first+4}</span></h3>${fretboardSVG(notes,i)}<div class="position-caption"><small>${notes.length} distinct pitches · click to practise</small></div></button>`;
+ }).join('');
+ $('positionGrid').querySelectorAll('[data-position]').forEach(b=>b.addEventListener('click',()=>{selectedPosition=Number(b.dataset.position);renderPositions();drawTab();}));
+}
+function renderModes(){
+ $('mode').innerHTML=MODES.map((m,i)=>`<option value="${i}">${m.root} ${m.name}</option>`).join('');
+ $('mode').value=String(selectedMode);
+ $('modes').innerHTML=MODES.map((m,i)=>`<button type="button" class="mode-button ${i===selectedMode?'active':''}" data-mode="${i}" aria-pressed="${i===selectedMode}"><strong>${m.root} ${m.name}</strong><small>${m.character}</small></button>`).join('');
+ $('modes').querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click',()=>{selectedMode=Number(b.dataset.mode);refreshMode();}));
+}
+function refreshMode(){renderModes();renderPositions();if(typeof updateBackingInfo==='function')updateBackingInfo();$('exerciseMode').textContent=`Tonal centre: ${MODES[selectedMode].root} ${MODES[selectedMode].name} (same exercise)`;}
+// Ascend through distinct sounding pitches from low E upward, removing unisons.
+// Diatonic interval n: successive scale-step pairs (1,n), (2,n+1)...
+// Using consecutive scale notes in this fretted pitch range means the
+// opening is always on the lowest available note, irrespective of mode.
+function intervalPairs(notes){
+ const sorted=[...notes].sort((a,b)=>a.midi-b.midi);
+ const pairs=[];
+ for(let i=0;i+interval-1<sorted.length;i++){
+  pairs.push(sorted[i],sorted[i+interval-1]);
+ }
+ // Reverse the complete ascending phrase, preserving descending interval pairs.
+ return [...pairs,...pairs.slice().reverse()];
+}
+function drawTab(){
+ const notes=positionNotes(selectedPosition),sequence=intervalPairs(notes),first=POSITIONS[selectedPosition];
+ $('exercisePosition').textContent=`Position ${selectedPosition+1} · frets ${first}–${first+4}`;
+ $('exerciseMode').textContent=`Tonal centre: ${MODES[selectedMode].root} ${MODES[selectedMode].name} (same exercise)`;
+ const labels={3:'thirds',4:'fourths',5:'fifths',6:'sixths',7:'sevenths'};
+ $('pattern').textContent=`${labels[interval]}: ascending ↑ 1–${interval}, 2–${interval+1}, 3–${interval+2} … then descending ↓`;
+ const half=sequence.length/2;
+ const formatPairs=part=>part.map((n,i)=>n.name+(i%2===0?'–':i<part.length-1?'  ·  ':'')).join(' ');
+ $('noteSequence').textContent='↑ '+formatPairs(sequence.slice(0,half))+'   |   ↓ '+formatPairs(sequence.slice(half));
+ $('exerciseStatus').textContent=`${sequence.length/4} ascending pairs and ${sequence.length/4} descending pairs in position ${selectedPosition+1}. Scroll right to play from the lowest pitch to the highest and back to the lowest.`;
+ const out=$('tab');out.innerHTML='';
+ try{
+  const VF=(window.Vex&&window.Vex.Flow)||(window.VexFlow&&window.VexFlow.Flow)||window.VexFlow;
+  if(!VF||!VF.TabStave)throw Error('VexFlow was not loaded');
+  const wrap=document.createElement('div');out.appendChild(wrap);
+  const width=Math.max(680,sequence.length*48+130),renderer=new VF.Renderer(wrap,VF.Renderer.Backends.SVG);
+  renderer.resize(width,180);
+  const ctx=renderer.getContext(),stave=new VF.TabStave(18,23,width-38);
+  stave.addClef('tab').setContext(ctx).draw();
+  const tabNotes=sequence.map((n,i)=>new VF.TabNote({positions:[{str:6-n.string,fret:n.fret}],duration:'8'}));
+  const voice=new VF.Voice({num_beats:sequence.length,beat_value:8});voice.addTickables(tabNotes);
+  new VF.Formatter().joinVoices([voice]).format([voice],width-150);voice.draw(ctx,stave);
+  const svg=wrap.querySelector('svg');if(svg){svg.setAttribute('role','img');svg.setAttribute('aria-label','Complete ascending and descending diatonic interval exercise in guitar tablature');svg.style.width=width+'px';svg.style.maxWidth='none';svg.style.height='auto';}
+ }catch(e){console.error(e);out.innerHTML='<p class="help">VexFlow is unavailable. The exercise notes appear above.</p>';}
+}
+$('intervals').innerHTML=[3,4,5,6,7].map(n=>`<button type="button" data-interval="${n}" class="${n===interval?'active':''}">${({3:'Thirds',4:'Fourths',5:'Fifths',6:'Sixths',7:'Sevenths'})[n]}</button>`).join('');
+$('intervals').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{interval=Number(b.dataset.interval);$('intervals').querySelectorAll('button').forEach(x=>x.classList.toggle('active',x===b));drawTab();}));
+$('mode').addEventListener('change',e=>{selectedMode=Number(e.target.value);refreshMode()});
+$('print').addEventListener('click',()=>window.print());
+
+// Modal play-along. All notes are diatonic to C major; modal character
+// comes from the pedal bass and colour tones, not changing scale notes.
+// MIDI voicings vary in inversion and density every few bars.
+const BACKINGS=[
+ {name:'C Ionian',base:'C major',variants:['C','Cmaj7','Cmaj9'],bass:36,fifth:43,
+  triad:[60,64,67],seventh:71,ninth:74,colour:69,
+  advice:'Improvise over C as home. Listen to the major third E and leading tone B; try landing on C at the end of phrases.'},
+ {name:'D Dorian',base:'D minor',variants:['Dm','Dm7','Dm9 / Dm13'],bass:38,fifth:45,
+  triad:[62,65,69],seventh:72,ninth:76,colour:71,
+  advice:'Hear D as home. The minor third F and natural sixth B are the characteristic Dorian colours. Try holding B over Dm.'},
+ {name:'E Phrygian',base:'E minor',variants:['Em','Em7','Em7(♭9)'],bass:40,fifth:47,
+  triad:[64,67,71],seventh:74,ninth:77,colour:72,
+  advice:'Hear E as home. F is the characteristic flat second (♭9), just a semitone above E; try F resolving down to E.'},
+ {name:'F Lydian',base:'F major',variants:['F','Fmaj7','Fmaj9(♯11)'],bass:41,fifth:48,
+  triad:[65,69,72],seventh:76,ninth:79,colour:71,
+  advice:'Hear F as home. B natural is the distinctive raised fourth (♯11). Sustain B and listen to its colour against F.'},
+ {name:'G Mixolydian',base:'G major',variants:['G','G7','G9 / G13'],bass:43,fifth:50,
+  triad:[67,71,74],seventh:77,ninth:69,colour:76,
+  advice:'Hear G as home. The lowered seventh F is central to Mixolydian; compare it with the major third B.'},
+ {name:'A Aeolian',base:'A minor',variants:['Am','Am7','Am9'],bass:33,fifth:40,
+  triad:[57,60,64],seventh:67,ninth:71,colour:65,
+  advice:'Hear A as home. F natural is the flat sixth of A natural minor; try F resolving to E in a slow phrase.'},
+ {name:'B Locrian',base:'B diminished',variants:['Bdim','Bm7♭5','Bm7♭5(♭9)'],bass:35,fifth:41,
+  triad:[59,62,65],seventh:69,ninth:72,colour:67,
+  advice:'Hear B as home. The diminished fifth F and flat second C make Locrian unstable. Try resolving C to B and F to E.'}
+];
+// Validate modal voicings in development: no accidental pitches outside C major.
+for(const b of BACKINGS){
+ const pitches=[b.bass,b.fifth,...b.triad,b.seventh,b.ninth,b.colour];
+ if(pitches.some(n=>!SCALE.includes(mod(n,12))))console.warn('Unexpected pitch in modal backing',b.name,pitches);
+}
+let backingCtx=null,backingMaster=null,backingTimer=null,backingRunning=false;
+let nextBackingTime=0,backingBar=0,backingVoices=[];
+let backingVerb=null;
+const backingTempo=()=>Math.max(45,Math.min(160,Number($('backingTempo').value)||72));
+const midiHz=m=>440*Math.pow(2,(m-69)/12);
+const isIIVI=()=>false;
+function updateBackingInfo(){
+ const b=BACKINGS[selectedMode];if(!b)return;
+ $('backingMode').textContent=b.name+' · tonal centre '+MODES[selectedMode].root;
+ $('backingChord').textContent=b.variants.join(' → ');
+ $('backingDescription').textContent='A slow, sustained modal pad and warm bass. The harmonies remain within the seven notes of C major.';
+ $('backingSteps').innerHTML='<span>Warm sustained bass</span><span>Soft ambient pads</span><span>Spacious reverb</span><span>Occasional 7ths &amp; 9ths</span><span>One home chord</span>';
+ $('backingAdvice').textContent=b.advice;
+ if(backingRunning){stopBacking();startBacking();}
+}
+function makeReverb(ctx){
+ // Lush stereo room: a dense, low-passed impulse with a long tail and pre-delay.
+ const seconds=6.8,length=Math.round(ctx.sampleRate*seconds);
+ const buffer=ctx.createBuffer(2,length,ctx.sampleRate);
+ for(let channel=0;channel<2;channel++){
+  const data=buffer.getChannelData(channel);
+  let smooth=0;
+  for(let i=0;i<length;i++){
+   const t=i/ctx.sampleRate;
+   smooth=smooth*.67+(Math.random()*2-1)*.33;
+   const bloom=Math.min(1,t/.15);
+   data[i]=smooth*bloom*Math.exp(-t/2.15)*.55;
+  }
+ }
+ const pre=ctx.createDelay(.3);pre.delayTime.value=.072;
+ const verb=ctx.createConvolver();verb.buffer=buffer;
+ const dark=ctx.createBiquadFilter();dark.type='lowpass';dark.frequency.value=2500;
+ const wet=ctx.createGain();wet.gain.value=.66;
+ pre.connect(verb);verb.connect(dark);dark.connect(wet);wet.connect(backingMaster);
+ return pre;
+}
+function backingNote(midi,time,length,volume,kind='pad',pan=0){
+ const ctx=backingCtx;if(!ctx||!backingMaster)return;
+ const isBass=kind==='bass'||kind==='walking',isKeys=kind==='keys';
+ const hz=midiHz(midi);
+ const envelope=ctx.createGain(),tone=ctx.createBiquadFilter();
+ tone.type='lowpass';tone.frequency.setValueAtTime(isBass?410:1650,time);
+ tone.Q.value=isBass?.3:.45;
+ const attack=isBass?.12:1.25,release=isBass?1.3:4.5;
+ const sustainUntil=time+Math.max(attack+.018,length-(isBass?.18:.65));
+ envelope.gain.setValueAtTime(.0001,time);
+ envelope.gain.linearRampToValueAtTime(volume,time+attack);
+ envelope.gain.setValueAtTime(volume,sustainUntil);
+ envelope.gain.exponentialRampToValueAtTime(.0001,time+length+release);
+ tone.connect(envelope);
+ let output=envelope;
+ if(ctx.createStereoPanner){
+  const stereo=ctx.createStereoPanner();stereo.pan.setValueAtTime(pan,time);
+  envelope.connect(stereo);output=stereo;
+ }
+ output.connect(backingMaster);
+ if(!isBass&&backingVerb){
+  const send=ctx.createGain();send.gain.value=.85;
+  output.connect(send);send.connect(backingVerb);
+ }
+ // A rounded low bass: fundamental plus a quiet upper harmonic for definition.
+ // Pads layer slightly detuned waves, creating a slow chorus and fuller timbre.
+ const layers=isBass
+  ?[{type:'sine',level:.86},{type:'triangle',level:.16}]
+  :[{type:'sine',level:.78},{type:'triangle',level:.16},{type:'sine',level:.11,octave:true}];
+ for(const layer of layers){
+  const oscillator=ctx.createOscillator(),mix=ctx.createGain();
+  oscillator.type=layer.type;
+  oscillator.frequency.setValueAtTime(hz*(layer.octave?2:1),time);
+  mix.gain.value=layer.level;
+  oscillator.connect(mix);mix.connect(tone);
+  oscillator.start(time);oscillator.stop(time+length+release+.08);
+  backingVoices.push(oscillator);
+  oscillator.onended=()=>{const idx=backingVoices.indexOf(oscillator);if(idx>=0)backingVoices.splice(idx,1);};
+ }
+}
+function spreadChord(b,bar){
+ // Four related one-chord colours. Every tone remains in C major.
+ const v=bar%8;
+ let notes;
+ if(v===0||v===4)notes=[...b.triad];
+ else if(v===1||v===5)notes=[b.triad[1],b.triad[2],b.seventh];
+ else if(v===2||v===6)notes=[b.triad[0],b.triad[2],b.seventh,b.ninth];
+ else notes=[b.triad[1],b.seventh,b.ninth,b.colour];
+ // Rotate inversion / register without changing pitch class.
+ if(bar%4===1)notes=notes.map((n,i)=>i===0?n+12:n);
+ if(bar%4===2)notes=notes.map((n,i)=>i===notes.length-1?n-12:n);
+ return [...new Set(notes)].sort((a,c)=>a-c);
+}
+function scheduleBackingBar(time){
+ const b=BACKINGS[selectedMode],beat=60/backingTempo(),barSeconds=beat*4,bar=backingBar++;
+ // Each mode has a clear, stable home bass. No unrelated chromatic tones.
+ backingNote(b.bass,time,barSeconds*.98,.19,'bass');
+ if(bar%2===1)backingNote(b.fifth,time+beat*2,beat*1.65,.045,'bass');
+ const notes=spreadChord(b,bar);
+ // Broad, smooth pads, slight rolled entry rather than rhythmic comping.
+ notes.forEach((note,i)=>{
+  const delay=i*.09;
+  backingNote(note,time+delay,barSeconds*.97-delay,.046-(i*.002),'pad',(i-(notes.length-1)/2)*.21);
+ });
+}
+function pumpBacking(){
+ if(!backingRunning||!backingCtx)return;
+ while(nextBackingTime<backingCtx.currentTime+.18){
+  scheduleBackingBar(nextBackingTime);
+  nextBackingTime+=4*60/backingTempo();
+ }
+}
+function startBacking(){
+ if(backingRunning)return;
+ try{
+  const AC=window.AudioContext||window.webkitAudioContext;
+  if(!AC)throw Error('This browser does not support Web Audio.');
+  if(!backingCtx||backingCtx.state==='closed'){
+   backingCtx=new AC();backingMaster=backingCtx.createGain();
+   backingMaster.gain.value=Number($('backingVolume').value)/100*.7;
+   backingMaster.connect(backingCtx.destination);backingVerb=makeReverb(backingCtx);
+  }
+  backingCtx.resume();backingBar=0;nextBackingTime=backingCtx.currentTime+.1;
+  backingRunning=true;pumpBacking();backingTimer=setInterval(pumpBacking,45);
+  $('backingPlay').disabled=true;$('backingStop').disabled=false;
+  $('backingStatus').textContent='Playing '+BACKINGS[selectedMode].name+' · sustained modal ambience. Improvise freely!';
+ }catch(e){$('backingStatus').textContent='Audio could not start: '+e.message;}
+}
+function stopBacking(){
+ if(backingTimer!==null){clearInterval(backingTimer);backingTimer=null;}
+ backingRunning=false;
+ // Close to stop both active and future scheduled voices immediately.
+ if(backingCtx){backingCtx.close().catch(()=>{});backingCtx=null;backingMaster=null;backingVerb=null;backingVoices=[];}
+ $('backingPlay').disabled=false;$('backingStop').disabled=true;
+ $('backingStatus').textContent='Stopped. Select another mode or press Play to begin again.';
+}
+$('backingPlay').addEventListener('click',startBacking);
+$('backingStop').addEventListener('click',stopBacking);
+$('backingVolume').addEventListener('input',()=>{if(backingCtx&&backingMaster)backingMaster.gain.setTargetAtTime(Number($('backingVolume').value)/100*.7,backingCtx.currentTime,.06);});
+$('backingTempo').addEventListener('change',()=>{$('backingTempo').value=backingTempo();});
+window.addEventListener('pagehide',()=>{if(backingRunning)stopBacking();});
+refreshMode();drawTab();
+
+</script></body></html>
